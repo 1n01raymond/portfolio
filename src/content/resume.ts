@@ -236,22 +236,22 @@ export const projects: Project[] = [
       {
         src: '/projects/zombiehigh-multi.webp',
         caption: {
-          ko: '실시간 멀티플레이 로비. 100인 레이스와 학교생활 모드를 여기서 시작한다.',
-          en: 'The real-time multiplayer lobby — where the 100-player race and School Life modes begin.',
+          ko: 'Unity3D 클라이언트와 Java Netty 소켓 서버로 만든 실시간 멀티플레이. 모바일에서 동시 100명 레이싱을 구현함.',
+          en: 'Real-time multiplayer on a Unity3D client and a Java Netty socket server, running 100-player races on mobile.',
         },
       },
       {
         src: '/projects/zombiehigh-chase.webp',
         caption: {
-          ko: '좀비 추격전. 4·5·6주년 업데이트와 에피소드 업데이트를 라이브 서비스 기간 내내 맡았다.',
-          en: 'The zombie chase. I shipped the 4th, 5th and 6th anniversary updates and the episode updates across the live-service years.',
+          ko: '4주년 플라워 판타지아, 5주년 엘프고등학교, 6주년 학교생활까지 기념 초대형 업데이트와 에피소드 업데이트를 담당함.',
+          en: 'Anniversary and episode updates — Flower Fantasia (4th), Elf High (5th) and School Life (6th).',
         },
       },
       {
         src: '/projects/zombiehigh-chairman.webp',
         caption: {
-          ko: '역할군 캐릭터. 코스튬·펫·방꾸미기와 함께 시즌마다 늘어난 수집 콘텐츠다.',
-          en: 'One of the character roles — part of the collection content that grew each season alongside costumes, pets and room decoration.',
+          ko: '역할군 캐릭터. 코스튬·펫·방꾸미기와 함께 시즌마다 늘어난 수집 콘텐츠.',
+          en: 'One of the character roles — collection content that grew each season alongside costumes, pets and room decoration.',
         },
       },
     ],
@@ -262,6 +262,10 @@ export const projects: Project[] = [
           {
             ko: '모바일 게임 좀비고등학교 라이브 서비스 운영 및 신규 콘텐츠 제작',
             en: 'Ran live service and built new content for the mobile game Zombie High',
+          },
+          {
+            ko: '4주년 플라워 판타지아, 5주년 엘프고등학교, 6주년 학교생활 — 기념 초대형 업데이트 개발',
+            en: 'Shipped the flagship anniversary updates — Flower Fantasia (4th), Elf High (5th), School Life (6th)',
           },
           {
             ko: 'Unity3D 클라이언트 + Java Netty 소켓 서버 기반 멀티플레이 콘텐츠 개발',
@@ -405,15 +409,15 @@ export const projects: Project[] = [
       {
         src: '/projects/vanilla-tactics.webp',
         caption: {
-          ko: '2016년 신작 라인업 발표에서 공개된 바닐라택틱스. 프로젝트가 회사 사정으로 중단되면서, 남아 있는 공개 자료는 이 한 장이 전부다.',
-          en: 'Vanilla Tactics as revealed in the 2016 line-up announcement. The project was shelved for company reasons, and this still is the only public material that remains.',
+          ko: '2016년 신작 라인업 발표에서 공개된 바닐라택틱스. 이후 회사 사정으로 프로젝트가 중단됨.',
+          en: 'Vanilla Tactics, revealed in the 2016 line-up announcement. The project was later shelved for company reasons.',
         },
       },
       {
         src: '/projects/ilovecoffee-themes.webp',
         caption: {
-          ko: '아이러브커피의 시즌 테마 꾸미기 아이템. Cocos2d-X와 Lua로 이벤트·UI 콘텐츠를 만들고 유지보수했다.',
-          en: "I Love Coffee's seasonal decoration themes — the event and UI content I built and maintained on Cocos2d-X with Lua.",
+          ko: '아이러브커피의 시즌 테마 꾸미기 아이템. Cocos2d-X와 Lua로 이벤트·UI 콘텐츠를 제작하고 유지보수함.',
+          en: "I Love Coffee's seasonal decoration themes — event and UI content built and maintained on Cocos2d-X with Lua.",
         },
       },
     ],
