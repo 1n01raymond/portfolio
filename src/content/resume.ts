@@ -151,15 +151,23 @@ export const projects: Project[] = [
     title: { ko: 'ZEPETO', en: 'ZEPETO' },
     period: { ko: '2023.01 — 현재', en: 'Jan 2023 — Present' },
     summary: {
-      ko: '메타버스 플랫폼의 실시간 멀티플레이 월드 개발과 PC 크로스플랫폼 출시.',
-      en: 'Real-time multiplayer worlds on a metaverse platform, plus the cross-platform PC launch.',
+      ko: '메타버스 플랫폼의 실시간 멀티플레이 월드와 PC 크로스플랫폼 출시, LLM 기반 AI R&D와 크리에이터 플랫폼 개발.',
+      en: 'Real-time multiplayer worlds and the cross-platform PC launch, plus LLM-based AI R&D and creator platform work.',
     },
-    stack: ['Unity3D', 'C#', 'Multiplayer', 'iOS/Android Native', 'Windows/macOS'],
+    stack: ['Unity3D', 'C#', 'Multiplayer', 'LLM', 'WebGL', 'iOS/Android Native', 'Windows/macOS'],
     image: '/projects/zepeto.webp',
     sections: [
       {
         heading: { ko: '주요 성과', en: 'Highlights' },
         items: [
+          {
+            ko: 'LLM 기반 AI NPC(Companion) R&D',
+            en: 'LLM-based AI NPC (Companion) R&D',
+          },
+          {
+            ko: 'LLM 기반 AI 월드 생성 R&D',
+            en: 'LLM-based AI world generation R&D',
+          },
           {
             ko: "ZEPETO 'Slime Party' 월드 — 실시간 멀티플레이 기반 캐주얼 콘텐츠 개발 및 유지보수",
             en: "ZEPETO 'Slime Party' world — built and maintained real-time multiplayer casual content",
@@ -169,12 +177,28 @@ export const projects: Project[] = [
             en: "ZEPETO 'MyHome' world — new features and live operation centred on user customisation and social play",
           },
           {
-            ko: 'Unity 기반 YouTube Player — 월드 내 동영상 스트리밍 기능 구현 및 최적화',
-            en: 'Unity-based YouTube player — in-world video streaming, implemented and optimised',
-          },
-          {
             ko: 'ZEPETO PC(Windows/Mac) 출시 — 크로스 플랫폼 지원 및 런타임 이슈 대응',
             en: 'ZEPETO for PC (Windows/Mac) — cross-platform support and runtime issue resolution',
+          },
+        ],
+      },
+      {
+        heading: { ko: '플랫폼 · 개발 도구', en: 'Platform & Tooling' },
+        items: [
+          { ko: 'ZEPETO Studio 개발', en: 'ZEPETO Studio' },
+          { ko: 'ZEPETO SDK 모듈 개발', en: 'ZEPETO SDK modules' },
+          { ko: 'ZEPETO 월드 템플릿 제작', en: 'ZEPETO world templates' },
+          { ko: 'ZEPETO WebGL 빌드 구현', en: 'ZEPETO WebGL build' },
+          { ko: '사내 공용 에셋 리소스 라이브러리 구축', en: 'Internal shared asset resource library' },
+          { ko: 'LLM 기반 코드 리뷰 도구 개발', en: 'LLM-based code review tool' },
+        ],
+      },
+      {
+        heading: { ko: '클라이언트 엔지니어링', en: 'Client Engineering' },
+        items: [
+          {
+            ko: 'Unity 기반 YouTube Player — 월드 내 동영상 스트리밍 기능 구현 및 최적화',
+            en: 'Unity-based YouTube player — in-world video streaming, implemented and optimised',
           },
           {
             ko: '모바일 네이티브-Unity 연동 — iOS/Android 네이티브 시스템과 Unity 사이의 이슈 분석 및 해결',
@@ -601,7 +625,10 @@ export const education = [
     period: { ko: '2014.03 — 2018.02', en: 'Mar 2014 — Feb 2018' },
   },
   {
-    school: { ko: '한국디지털미디어고등학교', en: 'Korea Digital Media High School' },
+    school: {
+      ko: '한국디지털미디어고등학교 · 해킹방어과',
+      en: 'Korea Digital Media High School · Hacking & Security',
+    },
     detail: { ko: '', en: '' },
     period: { ko: '2011.03 — 2014.02', en: 'Mar 2011 — Feb 2014' },
   },
