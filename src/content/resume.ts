@@ -236,36 +236,36 @@ export const projects: Project[] = [
       {
         src: '/projects/zombiehigh-multi.webp',
         caption: {
-          ko: 'Unity3D 클라이언트와 Java Netty 소켓 서버로 만든 실시간 멀티플레이. 모바일에서 동시 100명 레이싱을 구현함.',
-          en: 'Real-time multiplayer on a Unity3D client and a Java Netty socket server, running 100-player races on mobile.',
+          ko: 'Unity3D 클라이언트와 Java Netty 소켓 서버 기반 실시간 멀티플레이. 모바일에서 동시 100명 접속 구현',
+          en: 'Real-time multiplayer on a Unity3D client and a Java Netty socket server, 100 concurrent players on mobile.',
         },
       },
       {
         src: '/projects/zombiehigh-elfhigh.webp',
         caption: {
-          ko: '5주년 기념 초대형 업데이트 엘프고등학교. 원소 기반 마법 전투를 얹은 RPG 어드벤처로, 별도의 게임에 가까운 규모였음.',
-          en: 'Elf High School, the fifth-anniversary update — an RPG adventure with elemental magic combat, close to a separate game in scope.',
+          ko: '5주년 초대형 업데이트 엘프고등학교. 원소 기반 마법 전투를 얹은 RPG 어드벤처',
+          en: 'Elf High School, the fifth-anniversary update — an RPG adventure with elemental magic combat.',
         },
       },
       {
         src: '/projects/zombiehigh-flower.webp',
         caption: {
-          ko: '4주년 기념 업데이트 플라워 판타지아. 축제 맵과 시즌 수집 콘텐츠를 함께 열었음.',
-          en: 'Flower Fantasia, the fourth-anniversary update — a festival map shipped alongside seasonal collection content.',
+          ko: '4주년 업데이트 플라워 판타지아. 축제 맵과 시즌 수집 콘텐츠 오픈',
+          en: 'Flower Fantasia, the fourth-anniversary update — a festival map with seasonal collection content.',
         },
       },
       {
         src: '/projects/zombiehigh-chase.webp',
         caption: {
-          ko: '시즌마다 이어진 에피소드 스토리 업데이트와 학교생활 콘텐츠를 담당함.',
+          ko: '시즌마다 이어진 에피소드 스토리 업데이트와 학교생활 콘텐츠 담당',
           en: 'Season-by-season episode story updates and the School Life content.',
         },
       },
       {
         src: '/projects/zombiehigh-circus.webp',
         caption: {
-          ko: '2020년 9월에 출시한 100인 서바이벌 모드 서바이벌 서커스. 5라운드 라스트 맨 스탠딩 규칙과 대기열 매칭을 구현함.',
-          en: 'Survival Circus, the 100-player survival mode launched in September 2020 — five last-man-standing rounds with queue-based matchmaking.',
+          ko: '2020년 9월 출시한 100인 서바이벌 모드 서바이벌 서커스. 5라운드 라스트 맨 스탠딩과 대기열 매칭 구현',
+          en: 'Survival Circus, the 100-player mode launched in September 2020 — five last-man-standing rounds with queue matchmaking.',
         },
       },
     ],
@@ -290,7 +290,7 @@ export const projects: Project[] = [
             en: 'Implemented 100-player concurrent multiplayer, including the Survival Circus mode — network load optimisation and sync architecture',
           },
           {
-            ko: '통합계정시스템 설계 및 개발 — 기기마다 나뉘어 있던 게임 데이터를 하나의 계정으로 통합하고, 이메일·구글·전화번호 로그인과 계정 복구를 지원함',
+            ko: '통합계정시스템 설계 및 개발 — 기기별로 분리된 게임 데이터 통합, 이메일·구글·전화번호 로그인 및 계정 복구 지원',
             en: 'Designed and built the unified account system — consolidated per-device save data into one account, with email, Google and phone sign-in plus account recovery',
           },
           {
@@ -427,14 +427,14 @@ export const projects: Project[] = [
       {
         src: '/projects/vanilla-tactics.webp',
         caption: {
-          ko: '2016년 신작 라인업 발표에서 공개된 바닐라택틱스. 이후 회사 사정으로 프로젝트가 중단됨.',
+          ko: '2016년 신작 라인업 발표에서 공개된 바닐라택틱스. 이후 회사 사정으로 프로젝트 중단',
           en: 'Vanilla Tactics, revealed in the 2016 line-up announcement. The project was later shelved for company reasons.',
         },
       },
       {
         src: '/projects/ilovecoffee-themes.webp',
         caption: {
-          ko: '아이러브커피의 시즌 테마 꾸미기 아이템. Cocos2d-X와 Lua로 이벤트·UI 콘텐츠를 제작하고 유지보수함.',
+          ko: '아이러브커피의 시즌 테마 꾸미기 아이템. Cocos2d-X와 Lua로 이벤트·UI 콘텐츠 제작·유지보수',
           en: "I Love Coffee's seasonal decoration themes — event and UI content built and maintained on Cocos2d-X with Lua.",
         },
       },
