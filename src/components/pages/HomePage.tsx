@@ -14,19 +14,9 @@ import {
 import { t, langPath } from '@/lib/i18n'
 import { formatDuration, formatPeriod } from '@/lib/format'
 import SideNav from '@/components/SideNav'
+import { GitHubMark, LinkedInMark } from '@/components/BrandIcon'
 import Spotlight from '@/components/Spotlight'
 import WireObject from '@/components/WireObject'
-
-/** 경력 한 줄이 가리키는 프로젝트. 펍지랩스·크래프톤은 같은 팀이라 한 프로젝트를 공유합니다. */
-const projectForJob: Record<string, string | undefined> = {
-  naverz: 'naverz',
-  metaz: 'metaz',
-  awesomepiece: 'awesomepiece',
-  krafton: 'krafton',
-  pubglabs: 'krafton',
-  patigames: 'patigames',
-  maxonsoft: 'maxonsoft',
-}
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -71,20 +61,17 @@ export default function HomePage({ lang }: { lang: Lang }) {
           <SideNav items={navItems} />
         </div>
 
-        <ul className="mono-label mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 text-muted lg:mt-0">
-          <li>
-            <a href={`mailto:${contact.email}`} className="transition-colors hover:text-accent">
-              Email
-            </a>
-          </li>
+        {/* 사이트에서 유일한 소셜 링크 자리 — 푸터에는 두지 않습니다 */}
+        <ul className="mono-label mt-12 flex flex-wrap items-center gap-x-5 gap-y-3 text-muted lg:mt-0">
           <li>
             <a
               href={contact.github}
               target="_blank"
               rel="noreferrer"
-              className="transition-colors hover:text-accent"
+              aria-label="GitHub"
+              className="block transition-colors hover:text-accent"
             >
-              GitHub
+              <GitHubMark className="h-[1.35rem] w-[1.35rem]" />
             </a>
           </li>
           <li>
@@ -92,9 +79,16 @@ export default function HomePage({ lang }: { lang: Lang }) {
               href={contact.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="transition-colors hover:text-accent"
+              aria-label="LinkedIn"
+              className="block transition-colors hover:text-accent"
             >
-              LinkedIn
+              <LinkedInMark className="h-[1.35rem] w-[1.35rem]" />
+            </a>
+          </li>
+          <li aria-hidden className="h-4 w-px bg-line" />
+          <li>
+            <a href={`mailto:${contact.email}`} className="transition-colors hover:text-accent">
+              Email
             </a>
           </li>
           <li>
@@ -148,11 +142,11 @@ export default function HomePage({ lang }: { lang: Lang }) {
         {/* ---------------------------------------------- Experience */}
         <section id="experience" className="mt-24 scroll-mt-24">
           <SectionTitle>{t(lang, ui.sections.experience)}</SectionTitle>
+          {/* 여긴 이력의 뼈대만 — 프로젝트 상세는 아래 Selected Work 한 곳에서만 엽니다 */}
           <ol className="dim-list -mx-3">
-            {experience.map((job) => {
-              const slug = projectForJob[job.slug]
-              const row = (
-                <div className="grid gap-x-6 gap-y-1 sm:grid-cols-[150px_1fr]">
+            {experience.map((job) => (
+              <li key={job.slug}>
+                <div className="grid gap-x-6 gap-y-1 p-3 sm:grid-cols-[150px_1fr]">
                   <span className="mono-label pt-1 text-[0.72rem] whitespace-nowrap text-muted">
                     {formatPeriod(job.start, job.end, lang)}
                     <span className="mt-0.5 block text-muted/60">
@@ -160,7 +154,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
                     </span>
                   </span>
                   <div>
-                    <p className="font-medium text-ink transition-colors group-hover:text-accent">
+                    <p className="font-medium text-ink">
                       {t(lang, job.company)}
                       <span className="mx-2 text-line" aria-hidden>
                         /
@@ -172,22 +166,8 @@ export default function HomePage({ lang }: { lang: Lang }) {
                     </p>
                   </div>
                 </div>
-              )
-              return (
-                <li key={job.slug}>
-                  {slug ? (
-                    <Link
-                      href={langPath(lang, `/work/${slug}/`)}
-                      className="group block rounded-lg p-3 transition-colors hover:bg-surface/80"
-                    >
-                      {row}
-                    </Link>
-                  ) : (
-                    <div className="p-3">{row}</div>
-                  )}
-                </li>
-              )
-            })}
+              </li>
+            ))}
           </ol>
         </section>
 

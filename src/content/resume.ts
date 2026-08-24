@@ -820,8 +820,8 @@ export const ui = {
     present: { ko: '현재', en: 'Present' },
   },
   archiveNote: {
-    ko: '고등학교와 대학 시절에 혼자, 혹은 팀으로 만들어 마무리한 것들입니다. 지금의 코드와는 거리가 멀지만 시작점이라 남겨 둡니다.',
-    en: 'Things I built and finished on my own or in small teams during high school and university. Far from the code I write now, but this is where it started.',
+    ko: '학생 시절(2011–2014), 혼자 또는 팀으로 만든 것들',
+    en: 'Student work, 2011–2014 — on my own or in small teams',
   },
   closing: {
     ko: '새로운 팀과 새로운 문제를 찾고 있습니다. 편하게 연락 주세요.',
