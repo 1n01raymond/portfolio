@@ -254,16 +254,9 @@ export const projects: Project[] = [
       ko: '리드 프로그래머로 라이브 서비스 운영과 신작 개발을 병행. 동시 100명 접속 멀티플레이 구현.',
       en: 'Lead Programmer balancing live operations with a new title. Shipped 100-player concurrent multiplayer.',
     },
-    stack: ['Unity3D', 'C#', 'Java (Netty, Spring)', 'Lua', 'MySQL', 'Redis', 'GCP', 'NCP', 'Django', 'Go'],
+    stack: ['Unity3D', 'C#', 'Java (Netty, Spring Boot)', 'Lua', 'MySQL', 'Redis', 'GCP', 'NCP', 'Django', 'Go'],
     image: '/projects/zombiehigh.webp',
     gallery: [
-      {
-        src: '/projects/zombiehigh-multi.webp',
-        caption: {
-          ko: 'Unity3D 클라이언트와 Java Netty 소켓 서버 기반 실시간 멀티플레이. 모바일에서 동시 100명 접속 구현',
-          en: 'Real-time multiplayer on a Unity3D client and a Java Netty socket server, 100 concurrent players on mobile.',
-        },
-      },
       {
         src: '/projects/zombiehigh-elfhigh.webp',
         caption: {
@@ -279,17 +272,17 @@ export const projects: Project[] = [
         },
       },
       {
-        src: '/projects/zombiehigh-chase.webp',
-        caption: {
-          ko: '시즌마다 이어진 에피소드 스토리 업데이트와 학교생활 콘텐츠 담당',
-          en: 'Season-by-season episode story updates and the School Life content.',
-        },
-      },
-      {
         src: '/projects/zombiehigh-circus.webp',
         caption: {
           ko: '2020년 9월 출시한 100인 서바이벌 모드 서바이벌 서커스. 5라운드 라스트 맨 스탠딩과 대기열 매칭 구현',
           en: 'Survival Circus, the 100-player mode launched in September 2020 — five last-man-standing rounds with queue matchmaking.',
+        },
+      },
+      {
+        src: '/projects/kinggodcastle.webp',
+        caption: {
+          ko: '킹갓캐슬. 신규 개발부터 출시, 라이브 서비스까지 메인 프로그래머로 담당',
+          en: 'King God Castle — main programmer from first build through launch and live service.',
         },
       },
     ],
@@ -376,8 +369,8 @@ export const projects: Project[] = [
             en: 'Main programmer on King God Castle, from first build through launch and into live service',
           },
           {
-            ko: 'Unity3D 클라이언트 + Java Spring 웹 서버로 전체 콘텐츠 제작 및 서비스 운영',
-            en: 'Built all content and ran the service on a Unity3D client with a Java Spring web server',
+            ko: 'Unity3D 클라이언트 + Java Spring Boot 서버로 전체 콘텐츠 제작 및 서비스 운영',
+            en: 'Built all content and ran the service on a Unity3D client with a Java Spring Boot server',
           },
           {
             ko: '캐릭터·스킬·몬스터 전투 시스템, 상점, 길드, 우편 등 핵심 게임 시스템 전반 구현',
@@ -561,15 +554,15 @@ export const skills: SkillGroup[] = [
       {
         label: 'Realtime Server',
         detail: {
-          ko: 'Java (Netty, Spring) — 동시 100명 멀티플레이, 매칭·랭킹, 채팅(ActiveMQ)',
-          en: 'Java (Netty, Spring) — 100-player multiplayer, matchmaking/ranking, chat (ActiveMQ)',
+          ko: 'Java Netty 소켓 서버 — 동시 100명 멀티플레이, 매칭·랭킹, 채팅(ActiveMQ)',
+          en: 'Java Netty socket servers — 100-player multiplayer, matchmaking/ranking, chat (ActiveMQ)',
         },
       },
       {
         label: 'Backend & Data',
         detail: {
-          ko: 'Nest.js, Django·Flask, Node.js, Go / MySQL, Redis, MongoDB',
-          en: 'Nest.js, Django/Flask, Node.js, Go / MySQL, Redis, MongoDB',
+          ko: 'Spring Boot, Nest.js, Django·Flask, Node.js, Go / MySQL, Redis, MongoDB',
+          en: 'Spring Boot, Nest.js, Django/Flask, Node.js, Go / MySQL, Redis, MongoDB',
         },
       },
       {
