@@ -84,6 +84,37 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* 리스트 위에 커서를 올리면 나머지 행이 물러난다 — 랜딩의 경력·프로젝트 목록 */
+.dim-list > li {
+  transition: opacity 220ms ease;
+}
+
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  .dim-list:hover > li {
+    opacity: 0.42;
+  }
+
+  .dim-list > li:hover,
+  .dim-list > li:focus-within {
+    opacity: 1;
+  }
+}
+
+/* 커서를 따라오는 광원 — Spotlight.tsx 가 --sx/--sy 를 갱신 */
+.spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  background: radial-gradient(
+    600px circle at var(--sx, 50%) var(--sy, 50%),
+    rgba(139, 157, 255, 0.07),
+    transparent 72%
+  );
+}
+
 /* WebGPU/WebGL2 모두 없을 때의 정적 히어로 배경 */
 .hero-static-fallback {
   background:

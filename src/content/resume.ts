@@ -688,6 +688,109 @@ export const misc = [
 ]
 
 /* ------------------------------------------------------------------ */
+/* 아카이브 — 취업 이전 학생 시절 작업. 이력서에는 넣지 않습니다.          */
+/* 출처: 2019년 타임라인 사이트(public/legacy) 원문.                     */
+/* ------------------------------------------------------------------ */
+
+export type ArchiveItem = {
+  slug: string
+  name: I18n
+  year: string
+  detail: I18n
+  stack: string[]
+  award?: I18n
+  image: string
+}
+
+export const archive: ArchiveItem[] = [
+  {
+    slug: 'blossomera',
+    name: { ko: 'BlossoMera', en: 'BlossoMera' },
+    year: '2014',
+    detail: {
+      ko: '사진 속 꽃을 분석해 어떤 꽃인지 알려주는 안드로이드 앱',
+      en: 'An Android app that analyses a photo of a flower and names the species',
+    },
+    stack: ['Android', 'Java'],
+    image: '/archive/blossomera.webp',
+  },
+  {
+    slug: 'baekui',
+    name: { ko: '백의 (白衣)', en: 'Baek-ui (白衣)' },
+    year: '2013',
+    detail: {
+      ko: '홍화가 지배하는 세상의 이야기를 따라가며 미션을 수행하는 플랫포머',
+      en: 'A story-driven platformer set in a world ruled by the red flower',
+    },
+    stack: ['PC', 'DirectX', 'C++'],
+    award: {
+      ko: '글로벌 게임제작 경진대회 청소년 인디부문 장려상',
+      en: 'Encouragement Award, Global Game Making Competition (youth indie division)',
+    },
+    image: '/archive/baekui.webp',
+  },
+  {
+    slug: 'fightofkites',
+    name: { ko: 'Fight of Kites : 연싸움', en: 'Fight of Kites' },
+    year: '2012',
+    detail: {
+      ko: '연과 함께 달리며 바람 에너지를 모아 겨루는 연싸움 게임',
+      en: 'A kite-fighting game where you run with the kite and gather wind energy',
+    },
+    stack: ['Android', 'Unity3D', 'C#'],
+    award: {
+      ko: 'SK 특성화고 앱 경진대회 장려상',
+      en: 'Encouragement Award, SK vocational high school app competition',
+    },
+    image: '/archive/fightofkites.webp',
+  },
+  {
+    slug: 'spinsoccer',
+    name: { ko: 'SpinSoccer', en: 'SpinSoccer' },
+    year: '2012',
+    detail: {
+      ko: '빙글빙글 돌아가며 서로 튕겨내는 축구 게임',
+      en: 'A soccer game where spinning players bounce each other off the pitch',
+    },
+    stack: ['PC', 'Web', 'C# XNA', 'Box2D'],
+    image: '/archive/spinsoccer.webp',
+  },
+  {
+    slug: 'lebeok',
+    name: { ko: '레벽', en: 'Lebeok' },
+    year: '2012',
+    detail: {
+      ko: '왼손으로 레이저를 피하면서 오른손으로 벽돌을 깨는 멀티태스킹 게임',
+      en: 'A multitasking game: dodge lasers with the left hand, break bricks with the right',
+    },
+    stack: ['PC', 'C# XNA'],
+    image: '/archive/lebeok.webp',
+  },
+  {
+    slug: 'dencode',
+    name: { ko: 'DEncode', en: 'DEncode' },
+    year: '2011',
+    detail: {
+      ko: '문자열 Base64 암·복호화와 각종 수치 변환을 해주는 iOS 앱',
+      en: 'An iOS utility for Base64 encoding/decoding and numeric conversion',
+    },
+    stack: ['iOS', 'Objective-C'],
+    image: '/archive/dencode.webp',
+  },
+  {
+    slug: 'ggracing',
+    name: { ko: 'GGRacing', en: 'GGRacing' },
+    year: '2011',
+    detail: {
+      ko: '무작위로 뽑힌 고양이들이 서로 싸우며 트랙을 완주하는 레이싱 게임',
+      en: 'A racing game where randomly drawn cats brawl their way around the track',
+    },
+    stack: ['PC', 'DirectX', 'C++'],
+    image: '/archive/ggracing.webp',
+  },
+]
+
+/* ------------------------------------------------------------------ */
 /* UI 문자열                                                            */
 /* ------------------------------------------------------------------ */
 
@@ -698,7 +801,9 @@ export const ui = {
     contact: { ko: '연락처', en: 'Contact' },
   },
   sections: {
+    about: { ko: 'About', en: 'About' },
     work: { ko: 'Selected Work', en: 'Selected Work' },
+    archive: { ko: 'Archive', en: 'Archive' },
     skills: { ko: 'Skills', en: 'Skills' },
     howIWork: { ko: 'How I Work', en: 'How I Work' },
     contact: { ko: 'Contact', en: 'Contact' },
@@ -717,5 +822,13 @@ export const ui = {
   legacy: {
     ko: '이전 버전 (2019)',
     en: 'Previous version (2019)',
+  },
+  archiveNote: {
+    ko: '고등학교와 대학 시절에 혼자, 혹은 팀으로 만들어 마무리한 것들입니다. 지금의 코드와는 거리가 멀지만 시작점이라 남겨 둡니다.',
+    en: 'Things I built and finished on my own or in small teams during high school and university. Far from the code I write now, but this is where it started.',
+  },
+  closing: {
+    ko: '새로운 팀과 새로운 문제를 찾고 있습니다. 편하게 연락 주세요.',
+    en: 'Open to new teams and new problems. Get in touch.',
   },
 }

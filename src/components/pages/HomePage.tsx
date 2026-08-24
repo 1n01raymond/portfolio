@@ -1,126 +1,307 @@
+import Link from 'next/link'
+import Image from 'next/image'
 import type { Lang } from '@/content/resume'
-import { contact, howIWork, profile, projects, skills, ui } from '@/content/resume'
-import { t } from '@/lib/i18n'
-import ParticleField from '@/components/ParticleField'
-import WorkCard from '@/components/WorkCard'
+import {
+  archive,
+  contact,
+  experience,
+  howIWork,
+  profile,
+  projects,
+  skills,
+  ui,
+} from '@/content/resume'
+import { t, langPath } from '@/lib/i18n'
+import { formatDuration, formatPeriod } from '@/lib/format'
+import { withBase } from '@/lib/base-path'
+import SideNav from '@/components/SideNav'
+import Spotlight from '@/components/Spotlight'
+
+/** 경력 한 줄이 가리키는 프로젝트. 펍지랩스·크래프톤은 같은 팀이라 한 프로젝트를 공유합니다. */
+const projectForJob: Record<string, string | undefined> = {
+  naverz: 'naverz',
+  metaz: 'metaz',
+  awesomepiece: 'awesomepiece',
+  krafton: 'krafton',
+  pubglabs: 'krafton',
+  patigames: 'patigames',
+  maxonsoft: 'maxonsoft',
+}
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="mono-label mb-8 tracking-[0.18em] text-accent uppercase">{children}</h2>
+  )
+}
+
+function Tag({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="mono-label rounded border border-line bg-surface-2/70 px-2 py-0.5 text-[0.7rem] text-muted">
+      {children}
+    </span>
+  )
+}
 
 export default function HomePage({ lang }: { lang: Lang }) {
+  const navItems = [
+    { id: 'about', label: t(lang, ui.sections.about) },
+    { id: 'experience', label: t(lang, ui.sections.experience) },
+    { id: 'work', label: t(lang, ui.sections.work) },
+    { id: 'archive', label: t(lang, ui.sections.archive) },
+  ]
+
   return (
-    <main>
-      {/* ------------------------------------------------ Hero */}
-      <section className="relative flex min-h-[68svh] flex-col justify-center overflow-hidden">
-        <ParticleField />
-        {/* 헤드라인 가독성 스크림 — 파티클 위, 텍스트 아래 */}
-        <div
-          aria-hidden
-          className="absolute inset-0 z-[5]"
-          style={{
-            background:
-              'radial-gradient(ellipse 60% 55% at 28% 45%, rgba(10,11,13,0.6), transparent 70%)',
-          }}
-        />
-        <div className="relative z-10 mx-auto w-full max-w-[1120px] px-5 pt-24 pb-16 sm:px-8">
-          <p className="mono-label mb-5 text-accent">
-            {t(lang, profile.role)}
-            <span className="text-muted"> · since {profile.since}</span>
-          </p>
-          <h1 className="max-w-[16ch] text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.08] font-semibold tracking-tight text-ink">
+    <div className="mx-auto w-full max-w-[1240px] px-6 sm:px-10 lg:flex lg:justify-between lg:gap-16 lg:px-14">
+      <Spotlight />
+
+      {/* ------------------------------------------------ 좌측 고정 패널 */}
+      <header className="pt-28 pb-10 lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[42%] lg:flex-col lg:justify-between lg:py-28">
+        <div>
+          <h1 className="text-[clamp(2.25rem,4.4vw,3.25rem)] leading-[1.1] font-semibold tracking-tight text-ink">
             {t(lang, profile.name)}
           </h1>
-          <p className="mt-6 max-w-[38ch] text-lg leading-relaxed text-muted sm:text-xl">
-            {t(lang, profile.tagline)}
+          <p className="mt-3 text-lg font-medium text-ink/85 sm:text-xl">
+            {t(lang, profile.role)}
+            <span className="mono-label ml-2 text-muted">since {profile.since}</span>
           </p>
-        </div>
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-b from-transparent to-bg"
-        />
-      </section>
+          <p className="mt-5 max-w-[34ch] leading-relaxed text-muted">{t(lang, profile.tagline)}</p>
 
-      {/* ------------------------------------------------ Selected Work */}
-      <section id="work" className="mx-auto w-full max-w-[1120px] scroll-mt-20 px-5 py-[clamp(6rem,12vh,10rem)] sm:px-8">
-        <h2 className="mono-label mb-10 text-accent uppercase">{t(lang, ui.sections.work)}</h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((p) => (
-            <WorkCard key={p.slug} lang={lang} project={p} />
-          ))}
+          <SideNav items={navItems} />
         </div>
-      </section>
 
-      {/* ------------------------------------------------ Skills */}
-      <section className="border-t border-line/60">
-        <div className="mx-auto w-full max-w-[1120px] px-5 py-[clamp(6rem,12vh,10rem)] sm:px-8">
-          <h2 className="mono-label mb-10 text-accent uppercase">{t(lang, ui.sections.skills)}</h2>
-          <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2">
+        <ul className="mono-label mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 text-muted lg:mt-0">
+          <li>
+            <a href={`mailto:${contact.email}`} className="transition-colors hover:text-accent">
+              Email
+            </a>
+          </li>
+          <li>
+            <a
+              href={contact.github}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-accent"
+            >
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a
+              href={contact.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-accent"
+            >
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <Link
+              href={langPath(lang, '/resume/')}
+              className="transition-colors hover:text-accent"
+            >
+              {t(lang, ui.nav.resume)} →
+            </Link>
+          </li>
+        </ul>
+      </header>
+
+      {/* ------------------------------------------------ 우측 스크롤 영역 */}
+      <main className="pb-24 lg:w-[58%] lg:py-28">
+        {/* ---------------------------------------------- About */}
+        <section id="about" className="scroll-mt-24">
+          <SectionTitle>{t(lang, ui.sections.about)}</SectionTitle>
+          <div className="space-y-4 leading-relaxed text-muted">
+            <p>{t(lang, profile.intro)}</p>
+            <p>
+              {t(lang, howIWork[0])} {t(lang, howIWork[1])}
+            </p>
+            <p>
+              {t(lang, howIWork[2])} {t(lang, howIWork[3])}
+            </p>
+          </div>
+
+          <div className="mt-10 space-y-6">
             {skills.map((group) => (
               <div key={group.heading.en}>
-                <h3 className="mono-label mb-5 text-muted uppercase">{t(lang, group.heading)}</h3>
-                <ul className="space-y-4">
+                <h3 className="mono-label mb-2 text-[0.72rem] tracking-[0.16em] text-accent-dim uppercase">
+                  {t(lang, group.heading)}
+                </h3>
+                <ul className="space-y-1.5">
                   {group.items.map((item) => (
-                    <li key={item.label} className="rounded-lg border border-line bg-surface p-4">
-                      <p className="mono-label mb-1 text-ink">{item.label}</p>
-                      <p className="text-sm leading-relaxed text-muted">{t(lang, item.detail)}</p>
+                    <li
+                      key={item.label}
+                      className="grid gap-x-4 gap-y-0.5 text-sm sm:grid-cols-[152px_1fr]"
+                    >
+                      <span className="mono-label text-[0.75rem] text-ink">{item.label}</span>
+                      <span className="leading-relaxed text-muted">{t(lang, item.detail)}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ------------------------------------------------ How I Work */}
-      <section className="border-t border-line/60">
-        <div className="mx-auto w-full max-w-[1120px] px-5 py-[clamp(6rem,12vh,10rem)] sm:px-8">
-          <h2 className="mono-label mb-10 text-accent uppercase">{t(lang, ui.sections.howIWork)}</h2>
-          <div className="grid gap-x-14 gap-y-8 md:grid-cols-2">
-            {howIWork.map((item, i) => (
-              <div key={i} className="flex gap-4">
-                <span className="mono-label pt-1 text-accent-dim">0{i + 1}</span>
-                <p className="max-w-[52ch] leading-relaxed text-ink/90">{t(lang, item)}</p>
-              </div>
+        {/* ---------------------------------------------- Experience */}
+        <section id="experience" className="mt-24 scroll-mt-24">
+          <SectionTitle>{t(lang, ui.sections.experience)}</SectionTitle>
+          <ol className="dim-list -mx-3">
+            {experience.map((job) => {
+              const slug = projectForJob[job.slug]
+              const row = (
+                <div className="grid gap-x-6 gap-y-1 sm:grid-cols-[150px_1fr]">
+                  <span className="mono-label pt-1 text-[0.72rem] whitespace-nowrap text-muted">
+                    {formatPeriod(job.start, job.end, lang)}
+                    <span className="mt-0.5 block text-muted/60">
+                      {formatDuration(job.start, job.end, lang)}
+                    </span>
+                  </span>
+                  <div>
+                    <p className="font-medium text-ink transition-colors group-hover:text-accent">
+                      {t(lang, job.company)}
+                      <span className="mx-2 text-line" aria-hidden>
+                        /
+                      </span>
+                      <span className="font-normal text-muted">{t(lang, job.title)}</span>
+                    </p>
+                    <p className="mono-label mt-1 text-[0.72rem] text-muted/80">
+                      {t(lang, job.team)}
+                    </p>
+                  </div>
+                </div>
+              )
+              return (
+                <li key={job.slug}>
+                  {slug ? (
+                    <Link
+                      href={langPath(lang, `/work/${slug}/`)}
+                      className="group block rounded-lg p-3 transition-colors hover:bg-surface/80"
+                    >
+                      {row}
+                    </Link>
+                  ) : (
+                    <div className="p-3">{row}</div>
+                  )}
+                </li>
+              )
+            })}
+          </ol>
+        </section>
+
+        {/* ---------------------------------------------- Selected Work */}
+        <section id="work" className="mt-24 scroll-mt-24">
+          <SectionTitle>{t(lang, ui.sections.work)}</SectionTitle>
+          <ul className="dim-list -mx-3">
+            {projects.map((p) => (
+              <li key={p.slug}>
+                <Link
+                  href={langPath(lang, `/work/${p.slug}/`)}
+                  className="group grid gap-x-6 gap-y-3 rounded-lg p-3 transition-colors hover:bg-surface/80 sm:grid-cols-[132px_1fr]"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden rounded border border-line">
+                    {p.image && (
+                      <Image
+                        src={p.image}
+                        alt=""
+                        fill
+                        sizes="140px"
+                        className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                      />
+                    )}
+                  </div>
+                  <div>
+                    <p className="font-medium text-ink transition-colors group-hover:text-accent">
+                      {t(lang, p.title)}
+                      <span className="mx-2 text-line" aria-hidden>
+                        /
+                      </span>
+                      <span className="font-normal text-muted">{t(lang, p.company)}</span>
+                    </p>
+                    <p className="mono-label mt-1 text-[0.72rem] text-muted/70">
+                      {t(lang, p.period)}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{t(lang, p.summary)}</p>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {p.stack.slice(0, 5).map((s) => (
+                        <Tag key={s}>{s}</Tag>
+                      ))}
+                      {p.stack.length > 5 && (
+                        <span className="mono-label px-1 py-0.5 text-[0.7rem] text-muted/60">
+                          +{p.stack.length - 5}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </Link>
+              </li>
             ))}
-          </div>
-        </div>
-      </section>
+          </ul>
+        </section>
 
-      {/* ------------------------------------------------ Contact */}
-      <section id="contact" className="border-t border-line/60">
-        <div className="mx-auto w-full max-w-[1120px] scroll-mt-20 px-5 py-[clamp(6rem,12vh,10rem)] sm:px-8">
-          <h2 className="mono-label mb-10 text-accent uppercase">{t(lang, ui.sections.contact)}</h2>
-          <p className="mb-8 max-w-[46ch] text-2xl leading-snug font-medium tracking-tight text-ink sm:text-3xl">
-            {lang === 'ko'
-              ? '새로운 팀과 문제를 찾고 있습니다. 편하게 연락 주세요.'
-              : 'Open to new teams and new problems. Get in touch.'}
+        {/* ---------------------------------------------- Archive */}
+        <section id="archive" className="mt-24 scroll-mt-24">
+          <SectionTitle>{t(lang, ui.sections.archive)}</SectionTitle>
+          <p className="mb-8 max-w-[52ch] text-sm leading-relaxed text-muted">
+            {t(lang, ui.archiveNote)}
           </p>
-          <div className="flex flex-col gap-3">
-            <a
-              href={`mailto:${contact.email}`}
-              className="mono-label w-fit text-lg text-accent transition-opacity hover:opacity-80"
-            >
-              {contact.email}
-            </a>
-            <div className="mono-label flex gap-6 text-muted">
-              <a
-                href={contact.github}
-                target="_blank"
-                rel="noreferrer"
-                className="transition-colors hover:text-ink"
-              >
-                GitHub ↗
-              </a>
-              <a
-                href={contact.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="transition-colors hover:text-ink"
-              >
-                LinkedIn ↗
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+          <ul className="dim-list -mx-3">
+            {archive.map((item) => (
+              <li key={item.slug}>
+                <div className="grid gap-x-6 gap-y-2 rounded-lg p-3 sm:grid-cols-[132px_1fr]">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded border border-line/70 bg-surface">
+                    <Image
+                      src={item.image}
+                      alt=""
+                      fill
+                      sizes="140px"
+                      className="object-cover object-center opacity-80"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-ink/90">
+                      {t(lang, item.name)}
+                      <span className="mono-label ml-2 text-[0.72rem] text-muted/70">
+                        {item.year}
+                      </span>
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">{t(lang, item.detail)}</p>
+                    {item.award && (
+                      <p className="mono-label mt-1.5 text-[0.7rem] text-accent">
+                        {t(lang, item.award)}
+                      </p>
+                    )}
+                    <div className="mt-2.5 flex flex-wrap gap-1.5">
+                      {item.stack.map((s) => (
+                        <Tag key={s}>{s}</Tag>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <a
+            href={withBase('/legacy/index.html')}
+            className="mono-label mt-6 ml-3 inline-block text-[0.75rem] text-muted transition-colors hover:text-accent"
+          >
+            {t(lang, ui.legacy)} ↗
+          </a>
+        </section>
+
+        {/* ---------------------------------------------- 마무리 */}
+        <section id="contact" className="mt-24 scroll-mt-24 border-t border-line/60 pt-10">
+          <p className="max-w-[40ch] text-xl leading-snug font-medium tracking-tight text-ink sm:text-2xl">
+            {t(lang, ui.closing)}
+          </p>
+          <a
+            href={`mailto:${contact.email}`}
+            className="mono-label mt-5 inline-block text-accent transition-opacity hover:opacity-80"
+          >
+            {contact.email}
+          </a>
+        </section>
+      </main>
+    </div>
   )
 }
