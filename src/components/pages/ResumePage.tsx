@@ -11,7 +11,7 @@ import {
   ui,
 } from '@/content/resume'
 import { t } from '@/lib/i18n'
-import { formatPeriod } from '@/lib/format'
+import { formatDuration, formatPeriod } from '@/lib/format'
 import SurfaceLight from '@/components/SurfaceLight'
 import PrintButton from '@/components/PrintButton'
 
@@ -72,6 +72,9 @@ export default function ResumePage({ lang }: { lang: Lang }) {
             <li key={job.slug} className="avoid-break grid gap-1 sm:grid-cols-[190px_1fr] sm:gap-6">
               <span className="mono-label pt-0.5 text-[0.78rem] text-muted">
                 {formatPeriod(job.start, job.end, lang)}
+                <span className="mt-0.5 block text-[0.72rem] text-muted/70">
+                  {formatDuration(job.start, job.end, lang)}
+                </span>
               </span>
               <div>
                 <p className="font-medium text-ink">

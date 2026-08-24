@@ -14,6 +14,35 @@ export function formatPeriod(start: string, end: string | null, lang: Lang): str
   return `${from} — ${to}`
 }
 
+/**
+ * 재직 기간의 길이. 일(day)까지 반영해 개월 수를 내림으로 계산한다.
+ * 진행 중인 경력은 빌드 시각 기준 — 정적 배포이므로 재배포 때 갱신된다.
+ */
+export function formatDuration(start: string, end: string | null, lang: Lang): string {
+  const [sy, sm, sd] = start.split('-').map(Number)
+  const endDate = end ? end.split('-').map(Number) : null
+  const now = new Date()
+  const [ey, em, ed] = endDate ?? [now.getFullYear(), now.getMonth() + 1, now.getDate()]
+
+  let months = (ey - sy) * 12 + (em - sm)
+  if (ed < sd) months -= 1
+  months = Math.max(1, months)
+
+  const years = Math.floor(months / 12)
+  const rest = months % 12
+
+  if (lang === 'ko') {
+    if (years === 0) return `${rest}개월`
+    if (rest === 0) return `${years}년`
+    return `${years}년 ${rest}개월`
+  }
+  const y = `${years} ${years === 1 ? 'yr' : 'yrs'}`
+  const m = `${rest} ${rest === 1 ? 'mo' : 'mos'}`
+  if (years === 0) return m
+  if (rest === 0) return y
+  return `${y} ${m}`
+}
+
 /** 회사별 시드 그라디언트 색상 (이미지 없는 카드용) */
 export function seedGradient(slug: string): { from: string; to: string; angle: number } {
   let h = 0

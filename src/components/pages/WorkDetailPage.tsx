@@ -83,6 +83,30 @@ export default function WorkDetailPage({ lang, slug }: { lang: Lang; slug: strin
           </section>
         ))}
       </div>
+
+      {project.gallery && project.gallery.length > 0 && (
+        <section className="mt-16">
+          <h2 className="mono-label mb-6 text-accent uppercase">{t(lang, ui.sections.gallery)}</h2>
+          <div className="grid gap-x-6 gap-y-9 sm:grid-cols-2">
+            {project.gallery.map((shot) => (
+              <figure key={shot.src}>
+                <div className="relative aspect-[16/9] overflow-hidden rounded-lg border border-line">
+                  <Image
+                    src={shot.src}
+                    alt={t(lang, shot.caption)}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 540px"
+                    className="object-cover object-center"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm leading-relaxed text-muted">
+                  {t(lang, shot.caption)}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   )
 }

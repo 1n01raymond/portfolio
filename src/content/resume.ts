@@ -140,6 +140,8 @@ export type Project = {
   sections: { heading: I18n; items: I18n[] }[]
   /** public/projects/ 아래 경로. 없으면 그라디언트 플레이스홀더로 대체 */
   image?: string
+  /** 상세 페이지 하단 갤러리. 대표 이미지 외의 장면들 */
+  gallery?: { src: string; caption: I18n }[]
 }
 
 export const projects: Project[] = [
@@ -153,6 +155,7 @@ export const projects: Project[] = [
       en: 'Real-time multiplayer worlds on a metaverse platform, plus the cross-platform PC launch.',
     },
     stack: ['Unity3D', 'C#', 'Multiplayer', 'iOS/Android Native', 'Windows/macOS'],
+    image: '/projects/zepeto.webp',
     sections: [
       {
         heading: { ko: '주요 성과', en: 'Highlights' },
@@ -192,7 +195,7 @@ export const projects: Project[] = [
       en: 'Led the Unity client and Nest.js server for a new title on the Fidelion IP, as Lead Game Programmer.',
     },
     stack: ['Unity3D', 'C#', 'Nest.js', 'TypeScript'],
-    image: '/projects/fidelion.png',
+    image: '/projects/fidelion.webp',
     sections: [
       {
         heading: { ko: '역할', en: 'Role' },
@@ -228,7 +231,30 @@ export const projects: Project[] = [
       en: 'Lead Programmer running live ops while solo-building a new title. Shipped 100-player concurrent racing.',
     },
     stack: ['Unity3D', 'C#', 'Java (Netty, Spring)', 'Lua', 'MySQL', 'Redis', 'GCP', 'NCP', 'Django', 'Go'],
-    image: '/projects/zombiehigh.png',
+    image: '/projects/zombiehigh.webp',
+    gallery: [
+      {
+        src: '/projects/zombiehigh-multi.webp',
+        caption: {
+          ko: '실시간 멀티플레이 로비. 100인 레이스와 학교생활 모드를 여기서 시작한다.',
+          en: 'The real-time multiplayer lobby — where the 100-player race and School Life modes begin.',
+        },
+      },
+      {
+        src: '/projects/zombiehigh-chase.webp',
+        caption: {
+          ko: '좀비 추격전. 4·5·6주년 업데이트와 에피소드 업데이트를 라이브 서비스 기간 내내 맡았다.',
+          en: 'The zombie chase. I shipped the 4th, 5th and 6th anniversary updates and the episode updates across the live-service years.',
+        },
+      },
+      {
+        src: '/projects/zombiehigh-chairman.webp',
+        caption: {
+          ko: '역할군 캐릭터. 코스튬·펫·방꾸미기와 함께 시즌마다 늘어난 수집 콘텐츠다.',
+          en: 'One of the character roles — part of the collection content that grew each season alongside costumes, pets and room decoration.',
+        },
+      },
+    ],
     sections: [
       {
         heading: { ko: '좀비고등학교 — 게임 서비스 & 콘텐츠 개발', en: 'Zombie High — Live Service & Content' },
@@ -335,7 +361,7 @@ export const projects: Project[] = [
       en: 'UI, combat and AI for a new mobile title, with a Flask backend and automated builds.',
     },
     stack: ['Unity3D', 'C#', 'Python (Flask)', 'Docker', 'Jenkins'],
-    image: '/projects/pocketcrew.png',
+    image: '/projects/pocketcrew.webp',
     sections: [
       {
         heading: { ko: '게임 개발', en: 'Game Development' },
@@ -374,6 +400,23 @@ export const projects: Project[] = [
       en: 'Core content and shaders on a new title, alongside live ops for an existing one.',
     },
     stack: ['Unity3D', 'C#', 'HLSL', 'Cocos2d-X', 'Lua', 'MongoDB', 'Redis', 'Jenkins'],
+    image: '/projects/ilovecoffee.webp',
+    gallery: [
+      {
+        src: '/projects/vanilla-tactics.webp',
+        caption: {
+          ko: '2016년 신작 라인업 발표에서 공개된 바닐라택틱스. 프로젝트가 회사 사정으로 중단되면서, 남아 있는 공개 자료는 이 한 장이 전부다.',
+          en: 'Vanilla Tactics as revealed in the 2016 line-up announcement. The project was shelved for company reasons, and this still is the only public material that remains.',
+        },
+      },
+      {
+        src: '/projects/ilovecoffee-themes.webp',
+        caption: {
+          ko: '아이러브커피의 시즌 테마 꾸미기 아이템. Cocos2d-X와 Lua로 이벤트·UI 콘텐츠를 만들고 유지보수했다.',
+          en: "I Love Coffee's seasonal decoration themes — the event and UI content I built and maintained on Cocos2d-X with Lua.",
+        },
+      },
+    ],
     sections: [
       {
         heading: { ko: '바닐라택틱스 — 게임 개발', en: 'Vanilla Tactics — Development' },
@@ -419,7 +462,7 @@ export const projects: Project[] = [
       en: 'Where it started. UI and combat systems for a PC online game, plus the Windows patch launcher.',
     },
     stack: ['Unity3D', 'C#', 'HLSL', 'WinForms'],
-    image: '/projects/worldheroes.png',
+    image: '/projects/worldheroes.webp',
     sections: [
       {
         heading: { ko: '주요 업무', en: 'Highlights' },
@@ -583,6 +626,7 @@ export const ui = {
     howIWork: { ko: 'How I Work', en: 'How I Work' },
     contact: { ko: 'Contact', en: 'Contact' },
     experience: { ko: '경력', en: 'Experience' },
+    gallery: { ko: '스크린샷', en: 'Screenshots' },
     education: { ko: '학력', en: 'Education' },
     languages: { ko: '외국어', en: 'Languages' },
     misc: { ko: '기타', en: 'Other' },
