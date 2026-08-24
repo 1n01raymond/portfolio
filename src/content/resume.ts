@@ -241,10 +241,24 @@ export const projects: Project[] = [
         },
       },
       {
+        src: '/projects/zombiehigh-elfhigh.webp',
+        caption: {
+          ko: '5주년 기념 초대형 업데이트 엘프고등학교. 원소 기반 마법 전투를 얹은 RPG 어드벤처로, 별도의 게임에 가까운 규모였음.',
+          en: 'Elf High School, the fifth-anniversary update — an RPG adventure with elemental magic combat, close to a separate game in scope.',
+        },
+      },
+      {
+        src: '/projects/zombiehigh-flower.webp',
+        caption: {
+          ko: '4주년 기념 업데이트 플라워 판타지아. 축제 맵과 시즌 수집 콘텐츠를 함께 열었음.',
+          en: 'Flower Fantasia, the fourth-anniversary update — a festival map shipped alongside seasonal collection content.',
+        },
+      },
+      {
         src: '/projects/zombiehigh-chase.webp',
         caption: {
-          ko: '4주년 플라워 판타지아, 5주년 엘프고등학교, 학교생활까지 기념 초대형 업데이트와 에피소드 업데이트를 담당함.',
-          en: 'Anniversary and episode updates — Flower Fantasia (4th), Elf High (5th) and School Life.',
+          ko: '시즌마다 이어진 에피소드 스토리 업데이트와 학교생활 콘텐츠를 담당함.',
+          en: 'Season-by-season episode story updates and the School Life content.',
         },
       },
       {
@@ -252,13 +266,6 @@ export const projects: Project[] = [
         caption: {
           ko: '2020년 9월에 출시한 100인 서바이벌 모드 서바이벌 서커스. 5라운드 라스트 맨 스탠딩 규칙과 대기열 매칭을 구현함.',
           en: 'Survival Circus, the 100-player survival mode launched in September 2020 — five last-man-standing rounds with queue-based matchmaking.',
-        },
-      },
-      {
-        src: '/projects/zombiehigh-chairman.webp',
-        caption: {
-          ko: '역할군 캐릭터. 코스튬·펫·방꾸미기와 함께 시즌마다 늘어난 수집 콘텐츠.',
-          en: 'One of the character roles — collection content that grew each season alongside costumes, pets and room decoration.',
         },
       },
     ],
@@ -281,6 +288,10 @@ export const projects: Project[] = [
           {
             ko: '100인 서바이벌 모드 서바이벌 서커스 등 동시 100명 멀티플레이 구현 — 네트워크 부하 최적화 및 동기화 구조 설계',
             en: 'Implemented 100-player concurrent multiplayer, including the Survival Circus mode — network load optimisation and sync architecture',
+          },
+          {
+            ko: '통합계정시스템 설계 및 개발 — 기기마다 나뉘어 있던 게임 데이터를 하나의 계정으로 통합하고, 이메일·구글·전화번호 로그인과 계정 복구를 지원함',
+            en: 'Designed and built the unified account system — consolidated per-device save data into one account, with email, Google and phone sign-in plus account recovery',
           },
           {
             ko: 'Java·Lua 스크립트를 활용한 몬스터 AI, 퀘스트 및 게임 플레이 시스템 제작',
