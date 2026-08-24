@@ -11,10 +11,10 @@ import { useEffect, useRef } from 'react'
 import type { WireBackend, WireState } from '@/gpu/types'
 
 const DPR_CAP = 2
-const SPIN = 0.13 // rad/s — 한 바퀴 약 48초
-const TILT_BASE = 0.22 // 살짝 위에서 내려다보는 기본 각
-const TILT_RANGE = 0.3
-const YAW_RANGE = 0.45
+const SPIN = 0.11 // rad/s — 한 바퀴 약 57초
+const TILT_BASE = 0.62 // 매듭 면을 비스듬히 내려다보는 기본 각
+const TILT_RANGE = 0.26
+const YAW_RANGE = 0.4
 
 export default function WireObject({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -28,7 +28,7 @@ export default function WireObject({ className }: { className?: string }) {
     let raf = 0
     let running = false
     let lastTs = 0
-    let spin = 0.6
+    let spin = 0.4
     let fade = 0
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -36,7 +36,7 @@ export default function WireObject({ className }: { className?: string }) {
     // 커서가 만드는 목표 각도와, 실제로 따라가는 현재 각도
     let targetTilt = TILT_BASE
     let targetYaw = 0
-    const state: WireState = { angleX: TILT_BASE, angleY: spin, fade: 0 }
+    const state: WireState = { angleX: TILT_BASE, angleY: 0, angleZ: spin, fade: 0 }
 
     const frame = (ts: number) => {
       if (disposed || !backend) return
@@ -48,7 +48,8 @@ export default function WireObject({ className }: { className?: string }) {
 
       const ease = Math.min(1, dt * 3)
       state.angleX += (targetTilt - state.angleX) * ease
-      state.angleY += (spin + targetYaw - state.angleY) * ease
+      state.angleY += (targetYaw - state.angleY) * ease
+      state.angleZ = spin
       state.fade = fade
 
       backend.frame(state)

@@ -3,25 +3,28 @@
  * WGSL 경로와 같은 지오메트리·같은 원근·같은 알파 규칙을 GLSL ES 300 으로
  * 옮긴 것입니다. 인덱스 버퍼로 gl.LINES 를 한 번 그립니다.
  */
-import { icosphereWire } from './wire-geometry'
+import { torusKnotWire } from './wire-geometry'
 import type { WireBackend, WireState } from './types'
 
 const VS = /* glsl */ `#version 300 es
 in vec3 aPos;
 uniform float uAngleX;
 uniform float uAngleY;
+uniform float uAngleZ;
 uniform float uAspect;
 out float vShade;
 
-const float DIST = 3.4;
+const float DIST = 3.2;
 const float FOCAL = 2.414;
 
 void main() {
   vec3 p = aPos;
-  float cy = cos(uAngleY), sy = sin(uAngleY);
-  p = vec3(p.x * cy + p.z * sy, p.y, -p.x * sy + p.z * cy);
+  float cz = cos(uAngleZ), sz = sin(uAngleZ);
+  p = vec3(p.x * cz - p.y * sz, p.x * sz + p.y * cz, p.z);
   float cx = cos(uAngleX), sx = sin(uAngleX);
   p = vec3(p.x, p.y * cx - p.z * sx, p.y * sx + p.z * cx);
+  float cy = cos(uAngleY), sy = sin(uAngleY);
+  p = vec3(p.x * cy + p.z * sy, p.y, -p.x * sy + p.z * cy);
 
   float z = p.z + DIST;
   float ax = FOCAL / max(uAspect, 1.0);
@@ -42,7 +45,7 @@ void main() {
   vec3 near = vec3(0.545, 0.616, 1.0);
   vec3 far = vec3(0.239, 0.290, 0.478);
   vec3 color = mix(far, near, vShade);
-  float alpha = mix(0.09, 0.72, vShade) * uFade;
+  float alpha = mix(0.06, 0.60, vShade) * uFade;
   fragColor = vec4(color * alpha, alpha);
 }
 `
@@ -60,7 +63,7 @@ function compile(gl: WebGL2RenderingContext, type: number, src: string) {
   return sh
 }
 
-export function createWebGL2Wire(canvas: HTMLCanvasElement, subdivisions = 1): WireBackend {
+export function createWebGL2Wire(canvas: HTMLCanvasElement): WireBackend {
   const gl = canvas.getContext('webgl2', {
     alpha: true,
     premultipliedAlpha: true,
@@ -69,7 +72,7 @@ export function createWebGL2Wire(canvas: HTMLCanvasElement, subdivisions = 1): W
   })
   if (!gl) throw new Error('no webgl2 context')
 
-  const geo = icosphereWire(subdivisions)
+  const geo = torusKnotWire()
 
   const vs = compile(gl, gl.VERTEX_SHADER, VS)
   const fs = compile(gl, gl.FRAGMENT_SHADER, FS)
@@ -103,6 +106,7 @@ export function createWebGL2Wire(canvas: HTMLCanvasElement, subdivisions = 1): W
 
   const uAngleX = gl.getUniformLocation(program, 'uAngleX')
   const uAngleY = gl.getUniformLocation(program, 'uAngleY')
+  const uAngleZ = gl.getUniformLocation(program, 'uAngleZ')
   const uAspect = gl.getUniformLocation(program, 'uAspect')
   const uFade = gl.getUniformLocation(program, 'uFade')
 
@@ -126,6 +130,7 @@ export function createWebGL2Wire(canvas: HTMLCanvasElement, subdivisions = 1): W
       gl.useProgram(program)
       gl.uniform1f(uAngleX, s.angleX)
       gl.uniform1f(uAngleY, s.angleY)
+      gl.uniform1f(uAngleZ, s.angleZ)
       gl.uniform1f(uAspect, aspect)
       gl.uniform1f(uFade, s.fade)
       gl.bindVertexArray(vao)

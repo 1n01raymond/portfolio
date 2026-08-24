@@ -5,21 +5,19 @@
  */
 import tgpu from 'typegpu'
 import * as d from 'typegpu/data'
-import { expandToLineList, icosphereWire } from './wire-geometry'
+import { expandToLineList, torusKnotWire } from './wire-geometry'
 import { wireWGSL } from './wire-shaders'
 import type { WireBackend, WireState } from './types'
 
 const Uniforms = d.struct({
   angleX: d.f32,
   angleY: d.f32,
+  angleZ: d.f32,
   aspect: d.f32,
   fade: d.f32,
 })
 
-export async function createWebGPUWire(
-  canvas: HTMLCanvasElement,
-  subdivisions = 1,
-): Promise<WireBackend> {
+export async function createWebGPUWire(canvas: HTMLCanvasElement): Promise<WireBackend> {
   const root = await tgpu.init()
   const device = root.device
 
@@ -29,7 +27,7 @@ export async function createWebGPUWire(
   // 프리멀티플라이드 알파 — 캔버스 뒤로 페이지 배경이 그대로 비칩니다
   context.configure({ device, format, alphaMode: 'premultiplied' })
 
-  const flat = expandToLineList(icosphereWire(subdivisions))
+  const flat = expandToLineList(torusKnotWire())
   const vertexCount = flat.length / 4
   const initial = Array.from({ length: vertexCount }, (_, i) =>
     d.vec4f(flat[i * 4], flat[i * 4 + 1], flat[i * 4 + 2], 1),
@@ -96,6 +94,7 @@ export async function createWebGPUWire(
       uniformBuffer.write({
         angleX: s.angleX,
         angleY: s.angleY,
+        angleZ: s.angleZ,
         aspect,
         fade: s.fade,
       })

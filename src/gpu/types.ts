@@ -11,8 +11,10 @@ export type FieldState = {
 export type WireState = {
   /** X축 기울기 (라디안) */
   angleX: number
-  /** Y축 회전 (라디안) */
+  /** Y축 요 — 커서가 만듭니다 (라디안) */
   angleY: number
+  /** Z축 자전 (라디안) */
+  angleZ: number
   /** 등장 페이드 0..1 */
   fade: number
 }
