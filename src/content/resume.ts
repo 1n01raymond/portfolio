@@ -35,12 +35,8 @@ export const profile = {
     en: 'A Unity developer with 12 years of experience who enjoys new technology and change, and collaborates with an open mind. Across game and non-game work alike, I like the problem-solving itself — and I find real satisfaction in building better services alongside a team.',
   } satisfies I18n,
 
-  // 히어로 하단 카운터. 자동 계산하지 말고 이 값을 쓰세요.
-  stats: [
-    { value: '12', label: { ko: '년차', en: 'years' } satisfies I18n },
-    { value: '7', label: { ko: '개 출시 타이틀', en: 'shipped titles' } satisfies I18n },
-    { value: '6', label: { ko: '개 스튜디오', en: 'studios' } satisfies I18n },
-  ],
+  /** 히어로 롤 라인에 붙는 연차 표기. 숫자 나열 대신 이것 하나만 씁니다. */
+  since: '2014',
 }
 
 export const contact = {
@@ -93,7 +89,10 @@ export const experience: Experience[] = [
   {
     slug: 'krafton',
     company: { ko: '크래프톤', en: 'KRAFTON' },
-    team: { ko: 'P.CREW 팀', en: 'P.CREW' },
+    team: {
+      ko: 'P.CREW 팀 · 펍지랩스에서 법인 전환 (동일 팀)',
+      en: 'P.CREW · corporate change from PUBG Labs (same team)',
+    },
     title: { ko: '클라이언트 & 서버 프로그래머', en: 'Client & Server Programmer' },
     start: '2017-11-05',
     end: '2018-01-23',
@@ -104,8 +103,7 @@ export const experience: Experience[] = [
     team: { ko: 'P.CREW 팀', en: 'P.CREW' },
     title: { ko: '클라이언트 & 서버 프로그래머', en: 'Client & Server Programmer' },
     start: '2017-02-01',
-    // TODO(verify): Notion 원본은 2018-11-05로 적혀 있으나 크래프톤 재직기간과 겹칩니다.
-    // 펍지랩스 → 크래프톤 이동 시점(2017-11-05)으로 추정해 넣었습니다. 확인 필요.
+    // 종료일 = 크래프톤으로 법인 전환된 날. 같은 팀에서 소속 법인만 바뀜.
     end: '2017-11-05',
   },
   {
@@ -213,7 +211,10 @@ export const projects: Project[] = [
             ko: 'Fidelion: 라이엇 게임즈 아트 디렉터 출신 임호교 디렉터가 이끈 포스트아포칼립스 IP 프로젝트',
             en: 'Fidelion: a post-apocalyptic IP project directed by Hokyo Lim, formerly art director at Riot Games',
           },
-          // TODO(content): 담당 시스템·성과를 3~4줄 보강하면 상세 페이지가 완성됩니다.
+          {
+            ko: '프로젝트는 회사 사정으로 중단되며 마무리',
+            en: 'The project was discontinued when the company wound down',
+          },
         ],
       },
     ],

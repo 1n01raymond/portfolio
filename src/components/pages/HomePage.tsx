@@ -8,7 +8,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
   return (
     <main>
       {/* ------------------------------------------------ Hero */}
-      <section className="relative flex min-h-svh flex-col justify-center overflow-hidden">
+      <section className="relative flex min-h-[68svh] flex-col justify-center overflow-hidden">
         <ParticleField />
         {/* 헤드라인 가독성 스크림 — 파티클 위, 텍스트 아래 */}
         <div
@@ -16,32 +16,20 @@ export default function HomePage({ lang }: { lang: Lang }) {
           className="absolute inset-0 z-[5]"
           style={{
             background:
-              'radial-gradient(ellipse 60% 55% at 28% 45%, rgba(10,11,13,0.72), transparent 70%)',
+              'radial-gradient(ellipse 60% 55% at 28% 45%, rgba(10,11,13,0.6), transparent 70%)',
           }}
         />
-        <div className="relative z-10 mx-auto w-full max-w-[1120px] px-5 pt-14 sm:px-8">
-          <p className="mono-label mb-5 text-accent">{t(lang, profile.role)}</p>
+        <div className="relative z-10 mx-auto w-full max-w-[1120px] px-5 pt-24 pb-16 sm:px-8">
+          <p className="mono-label mb-5 text-accent">
+            {t(lang, profile.role)}
+            <span className="text-muted"> · since {profile.since}</span>
+          </p>
           <h1 className="max-w-[16ch] text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.08] font-semibold tracking-tight text-ink">
             {t(lang, profile.name)}
           </h1>
           <p className="mt-6 max-w-[38ch] text-lg leading-relaxed text-muted sm:text-xl">
             {t(lang, profile.tagline)}
           </p>
-          <dl className="mt-12 flex flex-wrap gap-x-10 gap-y-4 sm:gap-x-14">
-            {profile.stats.map((s) => (
-              <div key={s.value + s.label.en}>
-                <dt className="sr-only">{t(lang, s.label)}</dt>
-                <dd className="flex items-baseline gap-2">
-                  <span className="font-mono text-3xl font-medium text-ink sm:text-4xl">
-                    {s.value}
-                  </span>
-                  <span className="mono-label whitespace-nowrap text-muted">
-                    {t(lang, s.label)}
-                  </span>
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
         <div
           aria-hidden

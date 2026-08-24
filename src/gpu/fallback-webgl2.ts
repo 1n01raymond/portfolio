@@ -71,14 +71,7 @@ void main() {
   if (age <= 0.0) {
     float h1 = hash12(vec2(fi * 0.6180339, 0.13));
     float h2 = hash12(vec2(fi * 0.7548776, 7.77));
-    float h3 = hash12(vec2(fi * 0.2887389, 3.21));
-    if (h3 < 0.28) {
-      float ang = h1 * 6.2831853;
-      float rad = sqrt(h2) * 0.9;
-      pos = vec2(-0.25, 0.1) + vec2(cos(ang), sin(ang) * 0.75) * rad;
-    } else {
-      pos = vec2(h1 * 2.0 - 1.0, h2 * 2.0 - 1.0) * 1.05;
-    }
+    pos = vec2(h1 * 2.0 - 1.0, h2 * 2.0 - 1.0) * 1.05;
     vel = vec2(0.0);
     life = mix(7.0, 15.0, hash12(vec2(fi, 11.3)));
     age = life;
@@ -137,10 +130,10 @@ void main() {
 
   float fadeIn = clamp((a_agelife.y - a_agelife.x) * 1.2, 0.0, 1.0);
   float fadeOut = clamp(a_agelife.x * 1.2, 0.0, 1.0);
-  v_alpha = 0.17 * fadeIn * fadeOut;
+  v_alpha = 0.12 * fadeIn * fadeOut;
 
   gl_Position = vec4(a_pos, 0.0, 1.0);
-  gl_PointSize = clamp(1.0 + speed * 16.0, 1.0, 2.0) * u_dpr;
+  gl_PointSize = clamp(1.0 + speed * 16.0, 1.0, 1.8) * u_dpr;
 }
 `
 

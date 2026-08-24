@@ -77,17 +77,10 @@ fn cs_main(@builtin(global_invocation_id) gid: vec3u) {
 
   p.age -= uni.dt;
   if (p.age <= 0.0) {
-    // 재배치. 히어로 헤드라인(좌상) 주변 밀도를 높이고 나머지는 화면 전체에.
+    // 재배치 — 화면 전체에 고르게. 뭉침 없이 희박하게 유지.
     let h1 = hash12(vec2f(f32(i) * 0.6180339, 0.13));
     let h2 = hash12(vec2f(f32(i) * 0.7548776, 7.77));
-    let h3 = hash12(vec2f(f32(i) * 0.2887389, 3.21));
-    if (h3 < 0.28) {
-      let ang = h1 * 6.2831853;
-      let rad = sqrt(h2) * 0.9;
-      p.pos = vec2f(-0.25, 0.1) + vec2f(cos(ang), sin(ang) * 0.75) * rad;
-    } else {
-      p.pos = vec2f(h1 * 2.0 - 1.0, h2 * 2.0 - 1.0) * 1.05;
-    }
+    p.pos = vec2f(h1 * 2.0 - 1.0, h2 * 2.0 - 1.0) * 1.05;
     p.vel = vec2f(0.0, 0.0);
     p.life = mix(7.0, 15.0, hash12(vec2f(f32(i), 11.3)));
     p.age = p.life;
@@ -144,7 +137,7 @@ fn vs_main(@builtin(vertex_index) vi: u32, @builtin(instance_index) ii: u32) -> 
   let corner = QUAD[vi];
   let speed = length(p.vel);
 
-  let size_px = clamp(1.0 + speed * 16.0, 1.0, 2.0);
+  let size_px = clamp(1.0 + speed * 16.0, 1.0, 1.8);
   let offset = corner * size_px * 2.0 / uni.resolution;
 
   var out: VSOut;
@@ -157,7 +150,7 @@ fn vs_main(@builtin(vertex_index) vi: u32, @builtin(instance_index) ii: u32) -> 
 
   let fade_in = clamp((p.life - p.age) * 1.2, 0.0, 1.0);
   let fade_out = clamp(p.age * 1.2, 0.0, 1.0);
-  out.alpha = 0.17 * fade_in * fade_out;
+  out.alpha = 0.12 * fade_in * fade_out;
   return out;
 }
 

@@ -130,8 +130,8 @@ export default function ParticleField() {
     const init = async () => {
       // 밀도를 화면 크기와 무관하게 유지: CSS 픽셀 면적 비례로 입자 수 산정
       const area = window.innerWidth * window.innerHeight
-      const gpuCount = Math.min(200_000, Math.max(10_000, Math.floor(area * 0.15)))
-      const glCount = Math.min(30_000, Math.max(5_000, Math.floor(area * 0.028)))
+      const gpuCount = Math.min(60_000, Math.max(6_000, Math.floor(area * 0.05)))
+      const glCount = Math.min(12_000, Math.max(3_000, Math.floor(area * 0.011)))
       if ('gpu' in navigator) {
         try {
           const { createWebGPUField } = await import('@/gpu/field')
