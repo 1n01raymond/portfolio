@@ -7,6 +7,22 @@ export type FieldState = {
   scroll: number
 }
 
+/** 와이어 오브젝트의 프레임 상태. 회전각은 루프(WireObject)가 계산합니다. */
+export type WireState = {
+  /** X축 기울기 (라디안) */
+  angleX: number
+  /** Y축 회전 (라디안) */
+  angleY: number
+  /** 등장 페이드 0..1 */
+  fade: number
+}
+
+export interface WireBackend {
+  frame(state: WireState): void
+  resize(width: number, height: number): void
+  destroy(): void
+}
+
 export interface FieldBackend {
   /** 한 프레임: 시뮬레이션 + 렌더 */
   frame(dt: number, state: FieldState): void

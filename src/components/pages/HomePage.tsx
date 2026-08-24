@@ -15,6 +15,7 @@ import { t, langPath } from '@/lib/i18n'
 import { formatDuration, formatPeriod } from '@/lib/format'
 import SideNav from '@/components/SideNav'
 import Spotlight from '@/components/Spotlight'
+import WireObject from '@/components/WireObject'
 
 /** 경력 한 줄이 가리키는 프로젝트. 펍지랩스·크래프톤은 같은 팀이라 한 프로젝트를 공유합니다. */
 const projectForJob: Record<string, string | undefined> = {
@@ -55,7 +56,9 @@ export default function HomePage({ lang }: { lang: Lang }) {
 
       {/* ------------------------------------------------ 좌측 고정 패널 */}
       <header className="pt-28 pb-10 lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[42%] lg:flex-col lg:justify-between lg:py-28">
-        <div>
+        <div className="relative isolate">
+          {/* 이름 뒤에서 천천히 도는 와이어프레임 — WebGPU(typegpu), 커서에 따라 기웁니다 */}
+          <WireObject className="absolute -top-16 -right-2 -z-10 h-[210px] w-[210px] opacity-70 sm:-top-24 sm:right-4 sm:h-[300px] sm:w-[300px] sm:opacity-80 lg:-top-24 lg:right-0 lg:h-[300px] lg:w-[300px] xl:-top-28 xl:right-6 xl:h-[380px] xl:w-[380px]" />
           <h1 className="text-[clamp(2.25rem,4.4vw,3.25rem)] leading-[1.1] font-semibold tracking-tight text-ink">
             {t(lang, profile.name)}
           </h1>
