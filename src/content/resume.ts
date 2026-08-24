@@ -243,8 +243,15 @@ export const projects: Project[] = [
       {
         src: '/projects/zombiehigh-chase.webp',
         caption: {
-          ko: '4주년 플라워 판타지아, 5주년 엘프고등학교, 6주년 학교생활까지 기념 초대형 업데이트와 에피소드 업데이트를 담당함.',
-          en: 'Anniversary and episode updates — Flower Fantasia (4th), Elf High (5th) and School Life (6th).',
+          ko: '4주년 플라워 판타지아, 5주년 엘프고등학교, 학교생활까지 기념 초대형 업데이트와 에피소드 업데이트를 담당함.',
+          en: 'Anniversary and episode updates — Flower Fantasia (4th), Elf High (5th) and School Life.',
+        },
+      },
+      {
+        src: '/projects/zombiehigh-circus.webp',
+        caption: {
+          ko: '2020년 9월에 출시한 100인 서바이벌 모드 서바이벌 서커스. 5라운드 라스트 맨 스탠딩 규칙과 대기열 매칭을 구현함.',
+          en: 'Survival Circus, the 100-player survival mode launched in September 2020 — five last-man-standing rounds with queue-based matchmaking.',
         },
       },
       {
@@ -264,16 +271,16 @@ export const projects: Project[] = [
             en: 'Ran live service and built new content for the mobile game Zombie High',
           },
           {
-            ko: '4주년 플라워 판타지아, 5주년 엘프고등학교, 6주년 학교생활 — 기념 초대형 업데이트 개발',
-            en: 'Shipped the flagship anniversary updates — Flower Fantasia (4th), Elf High (5th), School Life (6th)',
+            ko: '4주년 플라워 판타지아, 5주년 엘프고등학교, 학교생활 — 기념 초대형 업데이트 개발',
+            en: 'Shipped the flagship anniversary updates — Flower Fantasia (4th), Elf High (5th), School Life',
           },
           {
             ko: 'Unity3D 클라이언트 + Java Netty 소켓 서버 기반 멀티플레이 콘텐츠 개발',
             en: 'Built multiplayer content on a Unity3D client with a Java Netty socket server',
           },
           {
-            ko: '모바일 환경에서 동시 100명 레이싱 멀티플레이 구현 — 네트워크 부하 최적화 및 동기화 구조 설계',
-            en: 'Implemented 100-player concurrent racing on mobile — network load optimisation and sync architecture',
+            ko: '100인 서바이벌 모드 서바이벌 서커스 등 동시 100명 멀티플레이 구현 — 네트워크 부하 최적화 및 동기화 구조 설계',
+            en: 'Implemented 100-player concurrent multiplayer, including the Survival Circus mode — network load optimisation and sync architecture',
           },
           {
             ko: 'Java·Lua 스크립트를 활용한 몬스터 AI, 퀘스트 및 게임 플레이 시스템 제작',
