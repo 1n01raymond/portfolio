@@ -15,8 +15,6 @@ export type I18n<T = string> = Record<Lang, T>
 /* ------------------------------------------------------------------ */
 
 export const profile = {
-  // TODO(verify): 영문 표기. 핸들이 1n01raymond이므로 'Raymond Choi' 또는
-  // 'Soonhyung (Raymond) Choi'를 선호하실 수 있습니다.
   name: { ko: '최순형', en: 'Soonhyung Choi' } satisfies I18n,
 
   role: {
@@ -107,8 +105,8 @@ export const experience: Experience[] = [
     end: '2017-11-05',
   },
   {
-    slug: 'partygames',
-    company: { ko: '넥스쳐 (파티게임즈)', en: 'Nexture (Partygames)' },
+    slug: 'patigames',
+    company: { ko: '넥스쳐 (파티게임즈)', en: 'Nexture (Pati Games)' },
     team: { ko: '커피팀 → 몰디브팀', en: 'Coffee → Maldives' },
     title: { ko: '클라이언트 & 서버 프로그래머', en: 'Client & Server Programmer' },
     start: '2015-12-07',
@@ -367,8 +365,8 @@ export const projects: Project[] = [
   },
 
   {
-    slug: 'partygames',
-    company: { ko: '넥스쳐 (파티게임즈)', en: 'Nexture (Partygames)' },
+    slug: 'patigames',
+    company: { ko: '넥스쳐 (파티게임즈)', en: 'Nexture (Pati Games)' },
     title: { ko: '바닐라택틱스 · 아이러브커피', en: 'Vanilla Tactics · I Love Coffee' },
     period: { ko: '2015.12 — 2017.02', en: 'Dec 2015 — Feb 2017' },
     summary: {
@@ -545,7 +543,13 @@ export const education = [
 ]
 
 export const languages = [
-  { label: { ko: '영어', en: 'English' }, detail: { ko: 'TOEIC 950 / 990', en: 'TOEIC 950 / 990' } },
+  {
+    label: { ko: '영어', en: 'English' },
+    detail: {
+      ko: 'TOEIC 950 (LC 490 · RC 460) · 2021.02.21 응시',
+      en: 'TOEIC 950 (LC 490 · RC 460), taken Feb 21, 2021',
+    },
+  },
 ]
 
 export const misc = [
