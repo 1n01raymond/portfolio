@@ -1,7 +1,6 @@
 import type { Lang } from '@/content/resume'
-import { contact, profile, ui } from '@/content/resume'
+import { contact, profile } from '@/content/resume'
 import { t } from '@/lib/i18n'
-import { withBase } from '@/lib/base-path'
 
 export default function Footer({ lang }: { lang: Lang }) {
   return (
@@ -26,13 +25,6 @@ export default function Footer({ lang }: { lang: Lang }) {
             className="text-muted transition-colors hover:text-ink"
           >
             LinkedIn
-          </a>
-          {/* 옛 사이트(Knight Lab 타임라인)는 v0-timeline 태그와 /legacy 로 보존 */}
-          <a
-            href={withBase('/legacy/index.html')}
-            className="text-muted/70 transition-colors hover:text-ink"
-          >
-            {t(lang, ui.legacy)}
           </a>
         </div>
       </div>

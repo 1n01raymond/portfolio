@@ -819,10 +819,6 @@ export const ui = {
     back: { ko: '돌아가기', en: 'Back' },
     present: { ko: '현재', en: 'Present' },
   },
-  legacy: {
-    ko: '이전 버전 (2019)',
-    en: 'Previous version (2019)',
-  },
   archiveNote: {
     ko: '고등학교와 대학 시절에 혼자, 혹은 팀으로 만들어 마무리한 것들입니다. 지금의 코드와는 거리가 멀지만 시작점이라 남겨 둡니다.',
     en: 'Things I built and finished on my own or in small teams during high school and university. Far from the code I write now, but this is where it started.',

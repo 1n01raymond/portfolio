@@ -13,12 +13,15 @@ export default function WorkDetailPage({ lang, slug }: { lang: Lang; slug: strin
 
   return (
     <main className="mx-auto w-full max-w-[1120px] px-5 pt-28 pb-24 sm:px-8">
-      <Link
-        href={`${langHome(lang)}#work`}
-        className="mono-label text-muted transition-colors hover:text-ink"
-      >
-        ← {t(lang, ui.actions.back)}
-      </Link>
+      {/* 스크롤을 따라오지 않고 상단 내비 바로 아래에 붙어 있는 돌아가기 */}
+      <div className="sticky top-[4.5rem] z-40">
+        <Link
+          href={`${langHome(lang)}#work`}
+          className="mono-label inline-flex items-center gap-2 rounded-full border border-line bg-surface/85 px-3.5 py-1.5 text-muted shadow-sm backdrop-blur-md transition-colors hover:border-accent-dim hover:text-ink"
+        >
+          ← {t(lang, ui.actions.back)}
+        </Link>
+      </div>
 
       <header className="mt-8 mb-10">
         <div className="mono-label mb-4 flex flex-wrap items-baseline gap-x-4 gap-y-1 text-muted">

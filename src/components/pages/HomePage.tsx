@@ -13,7 +13,6 @@ import {
 } from '@/content/resume'
 import { t, langPath } from '@/lib/i18n'
 import { formatDuration, formatPeriod } from '@/lib/format'
-import { withBase } from '@/lib/base-path'
 import SideNav from '@/components/SideNav'
 import Spotlight from '@/components/Spotlight'
 
@@ -281,12 +280,6 @@ export default function HomePage({ lang }: { lang: Lang }) {
               </li>
             ))}
           </ul>
-          <a
-            href={withBase('/legacy/index.html')}
-            className="mono-label mt-6 ml-3 inline-block text-[0.75rem] text-muted transition-colors hover:text-accent"
-          >
-            {t(lang, ui.legacy)} ↗
-          </a>
         </section>
 
         {/* ---------------------------------------------- 마무리 */}

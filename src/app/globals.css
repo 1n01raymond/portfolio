@@ -37,9 +37,10 @@
   --color-accent: var(--accent);
   --color-accent-dim: var(--accent-dim);
 
-  --font-sans: var(--font-inter-tight), 'Pretendard Variable', Pretendard,
-    -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', 'Apple SD Gothic Neo',
-    'Noto Sans KR', sans-serif;
+  /* 라틴은 Inter Tight, 한글은 나눔고딕. Pretendard 는 남은 글리프의 보험. */
+  --font-sans: var(--font-inter-tight), var(--font-nanum-gothic), 'Pretendard Variable',
+    Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI',
+    'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo,
     Consolas, monospace;
 }
