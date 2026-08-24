@@ -251,8 +251,8 @@ export const projects: Project[] = [
     title: { ko: '좀비고등학교 · 킹갓캐슬', en: 'Zombie High · King God Castle' },
     period: { ko: '2018.01 — 2022.04', en: 'Jan 2018 — Apr 2022' },
     summary: {
-      ko: '리드 프로그래머로 라이브 서비스 운영과 신작 원맨 개발을 병행. 동시 100명 레이싱 멀티플레이 구현.',
-      en: 'Lead Programmer running live ops while solo-building a new title. Shipped 100-player concurrent racing.',
+      ko: '리드 프로그래머로 라이브 서비스 운영과 신작 개발을 병행. 동시 100명 접속 멀티플레이 구현.',
+      en: 'Lead Programmer balancing live operations with a new title. Shipped 100-player concurrent multiplayer.',
     },
     stack: ['Unity3D', 'C#', 'Java (Netty, Spring)', 'Lua', 'MySQL', 'Redis', 'GCP', 'NCP', 'Django', 'Go'],
     image: '/projects/zombiehigh.webp',
@@ -372,8 +372,8 @@ export const projects: Project[] = [
         heading: { ko: '킹갓캐슬 — 신규 개발부터 라이브까지', en: 'King God Castle — From Zero to Live' },
         items: [
           {
-            ko: '모바일 게임 킹갓캐슬 신규 개발부터 출시, 라이브 서비스까지 원맨 개발 주도',
-            en: 'Solo-drove King God Castle from initial development through launch and into live service',
+            ko: '모바일 게임 킹갓캐슬의 메인 프로그래머로 신규 개발부터 출시, 라이브 서비스까지 담당',
+            en: 'Main programmer on King God Castle, from first build through launch and into live service',
           },
           {
             ko: 'Unity3D 클라이언트 + Java Spring 웹 서버로 전체 콘텐츠 제작 및 서비스 운영',
@@ -537,51 +537,86 @@ export type SkillGroup = {
 
 export const skills: SkillGroup[] = [
   {
-    heading: { ko: 'Core', en: 'Core' },
+    heading: { ko: 'Client', en: 'Client' },
     items: [
       {
         label: 'Unity3D / C#',
         detail: {
-          ko: '실시간 멀티플레이, Addressables, 최적화, 툴링',
-          en: 'Real-time multiplayer, Addressables, optimisation, tooling',
+          ko: '실시간 멀티플레이, Addressables, 렌더링·메모리 최적화, 에디터 툴링',
+          en: 'Real-time multiplayer, Addressables, rendering and memory optimisation, editor tooling',
         },
       },
       {
-        label: 'Networking & Server',
+        label: 'Cross-Platform',
         detail: {
-          ko: 'Java (Spring, Netty), 멀티플레이 서버, 매칭/랭킹, 커뮤니티',
-          en: 'Java (Spring, Netty), multiplayer servers, matchmaking/ranking, community',
-        },
-      },
-      {
-        label: 'LiveOps & Optimization',
-        detail: {
-          ko: '모바일·서버 성능 프로파일링, GC(ZGC) 교체, 데이터 핸들링',
-          en: 'Mobile and server profiling, ZGC migration, data handling',
-        },
-      },
-      {
-        label: 'Native & Cross-Platform',
-        detail: {
-          ko: 'iOS/Android 빌드 및 Unity 네이티브 연동, C++ 플러그인',
-          en: 'iOS/Android builds, Unity native bridging, C++ plugins',
+          ko: 'iOS/Android 네이티브 연동, Windows/macOS 출시, WebGL 빌드, C++ 플러그인',
+          en: 'iOS/Android native bridging, Windows/macOS releases, WebGL builds, C++ plugins',
         },
       },
     ],
   },
   {
-    heading: { ko: 'Supporting', en: 'Supporting' },
+    heading: { ko: 'Server & Infra', en: 'Server & Infra' },
     items: [
-      { label: 'Backend', detail: { ko: 'Python (Flask, Django), Node.js', en: 'Python (Flask, Django), Node.js' } },
-      { label: 'Database', detail: { ko: 'MySQL, MongoDB, Redis', en: 'MySQL, MongoDB, Redis' } },
-      { label: 'Cloud / Infra', detail: { ko: 'GCP, NCP, AWS, Docker, Firebase', en: 'GCP, NCP, AWS, Docker, Firebase' } },
+      {
+        label: 'Realtime Server',
+        detail: {
+          ko: 'Java (Netty, Spring) — 동시 100명 멀티플레이, 매칭·랭킹, 채팅(ActiveMQ)',
+          en: 'Java (Netty, Spring) — 100-player multiplayer, matchmaking/ranking, chat (ActiveMQ)',
+        },
+      },
+      {
+        label: 'Backend & Data',
+        detail: {
+          ko: 'Nest.js, Django·Flask, Node.js, Go / MySQL, Redis, MongoDB',
+          en: 'Nest.js, Django/Flask, Node.js, Go / MySQL, Redis, MongoDB',
+        },
+      },
+      {
+        label: 'Cloud & Delivery',
+        detail: {
+          ko: 'GCP, NCP, AWS, Docker, Firebase / Jenkins 기반 빌드·배포 자동화',
+          en: 'GCP, NCP, AWS, Docker, Firebase / Jenkins build and deploy automation',
+        },
+      },
     ],
   },
   {
-    heading: { ko: 'Tooling & Collaboration', en: 'Tooling & Collaboration' },
+    heading: { ko: 'Performance & LiveOps', en: 'Performance & LiveOps' },
     items: [
-      { label: 'Toolchain', detail: { ko: 'Jenkins, Git, Jira, Notion, Slack, Confluence', en: 'Jenkins, Git, Jira, Notion, Slack, Confluence' } },
-      { label: 'Observability', detail: { ko: 'Log4j, ElasticSearch, Firebase', en: 'Log4j, Elasticsearch, Firebase' } },
+      {
+        label: 'Profiling',
+        detail: {
+          ko: 'Simpleperf·FlameGraph, Unity Profiler, JVM GC 튜닝(ZGC 전환)',
+          en: 'Simpleperf/FlameGraph, Unity Profiler, JVM GC tuning (ZGC migration)',
+        },
+      },
+      {
+        label: 'Operations',
+        detail: {
+          ko: '운영툴, 장애 대응, 긴급 데이터 핸들링, 로그 분석(Log4j, Elasticsearch)',
+          en: 'Internal ops tools, incident response, emergency data handling, log analysis (Log4j, Elasticsearch)',
+        },
+      },
+    ],
+  },
+  {
+    heading: { ko: 'Platform & AI', en: 'Platform & AI' },
+    items: [
+      {
+        label: 'LLM Applications',
+        detail: {
+          ko: 'AI NPC(Companion)·AI 월드 생성 R&D, LLM 기반 코드 리뷰 도구',
+          en: 'AI NPC (Companion) and AI world generation R&D, LLM-based code review tooling',
+        },
+      },
+      {
+        label: 'Creator Platform',
+        detail: {
+          ko: 'ZEPETO Studio, SDK 모듈, 월드 템플릿, 사내 공용 에셋 라이브러리',
+          en: 'ZEPETO Studio, SDK modules, world templates, internal shared asset library',
+        },
+      },
     ],
   },
 ]
@@ -592,20 +627,20 @@ export const skills: SkillGroup[] = [
 
 export const howIWork: I18n[] = [
   {
-    ko: '새로운 기술과 업무를 배우고 빠르게 적응하는 과정을 즐깁니다.',
-    en: 'I enjoy picking up unfamiliar technology and adapting quickly.',
+    ko: '처음 보는 기술일수록 직접 만들어보며 익힙니다. 습득이 빠르다는 평을 꾸준히 들어왔습니다.',
+    en: 'The less familiar something is, the more I learn it by building with it. People have consistently told me I pick things up fast.',
   },
   {
-    ko: '주어진 자원(인력, 시간, 비용) 안에서 최선의 결과를 만들어내는 데 집중합니다.',
-    en: 'I focus on getting the best result out of the people, time and budget actually available.',
+    ko: '난이도가 높고 여러 시스템이 얽힌 문제를 좋아합니다. 오래 붙잡고 파고드는 쪽이 성향에 맞습니다.',
+    en: 'I gravitate to hard problems that span several systems. Staying with one until it gives is the part I enjoy.',
   },
   {
-    ko: '문제 상황에서는 원인을 신속히 파악하고 해결한 경험이 많습니다.',
-    en: 'When things break, I have a long track record of finding the cause fast and fixing it.',
+    ko: '장애나 마감처럼 압박이 큰 상황에서 오히려 침착해집니다. 라이브 서비스를 오래 하며 몸에 밴 부분입니다.',
+    en: 'Outages and deadlines make me calmer, not louder — a habit built over years of live service.',
   },
   {
-    ko: '팀원과 타팀과의 원활한 소통과 상호 이해를 위해 항상 노력합니다.',
-    en: 'I put steady effort into communication and mutual understanding, within my team and across others.',
+    ko: '클라이언트에서 멈추지 않습니다. 서버, 인프라, 운영 툴까지 필요한 곳은 직접 열어봅니다.',
+    en: "I don't stop at the client — server, infrastructure and internal tooling are all fair game when that's where the answer is.",
   },
 ]
 

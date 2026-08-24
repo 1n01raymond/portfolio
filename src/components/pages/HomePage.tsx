@@ -51,7 +51,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
       <section className="border-t border-line/60">
         <div className="mx-auto w-full max-w-[1120px] px-5 py-[clamp(6rem,12vh,10rem)] sm:px-8">
           <h2 className="mono-label mb-10 text-accent uppercase">{t(lang, ui.sections.skills)}</h2>
-          <div className="grid gap-10 md:grid-cols-3">
+          <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2">
             {skills.map((group) => (
               <div key={group.heading.en}>
                 <h3 className="mono-label mb-5 text-muted uppercase">{t(lang, group.heading)}</h3>

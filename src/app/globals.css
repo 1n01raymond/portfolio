@@ -135,19 +135,24 @@ body {
   /* 화면용 큰 섹션 여백을 문서 밀도로 압축 */
   main > section,
   main > header {
-    margin-bottom: 1.3rem !important;
+    margin-bottom: 1.1rem !important;
   }
 
   main .space-y-10 > * + * {
-    margin-top: 0.85rem !important;
+    margin-top: 0.78rem !important;
   }
 
   main .space-y-6 > * + * {
-    margin-top: 0.6rem !important;
+    margin-top: 0.5rem !important;
   }
 
   main h2 {
-    margin-bottom: 0.7rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  /* 스킬 그룹 제목만 (프로젝트 제목 h3에는 여백을 주지 않는다) */
+  main h3.mono-label {
+    margin-bottom: 0.25rem !important;
   }
 
   /* 프로젝트 불릿은 인쇄에서 상위 3개만 */
