@@ -1,0 +1,183 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/* 디자인 토큰 — HANDOFF §5. 액센트는 하나만 씁니다.                     */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --bg: #0a0b0d;
+  --surface: #121317;
+  --surface-2: #1a1c22;
+  --border: #24272f;
+  --text: #e8e9ed;
+  --text-muted: #8b8f9a;
+  --accent: #8b9dff;
+  --accent-dim: #3d4a7a;
+}
+
+/* 이력서 페이지: 다크 모드에서도 라이트 서피스 고정 */
+[data-surface='light'] {
+  --bg: #ffffff;
+  --surface: #fafafa;
+  --surface-2: #f1f2f4;
+  --border: #e2e4e8;
+  --text: #16171a;
+  --text-muted: #5c606b;
+  --accent: #4a5bd4;
+  --accent-dim: #b9c1f0;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-ink: var(--text);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+
+  --font-sans: var(--font-inter-tight), 'Pretendard Variable', Pretendard,
+    -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', 'Apple SD Gothic Neo',
+    'Noto Sans KR', sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo,
+    Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--text);
+}
+
+/* 모노 레이블 — 연도·기간·스킬 태그. 계측기 느낌의 핵심 */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+/* 포커스 링 유지 */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* 이미지 없는 프로젝트 카드: 회사별 시드 그라디언트 + 미세 노이즈 */
+.placeholder-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* WebGPU/WebGL2 모두 없을 때의 정적 히어로 배경 */
+.hero-static-fallback {
+  background:
+    radial-gradient(ellipse 70% 55% at 32% 38%, rgba(139, 157, 255, 0.14), transparent 65%),
+    radial-gradient(ellipse 55% 45% at 72% 68%, rgba(61, 74, 122, 0.22), transparent 70%),
+    var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* 인쇄 — /resume 를 A4 클린 문서로. HANDOFF §6                         */
+/* ------------------------------------------------------------------ */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm;
+  }
+
+  /* Tailwind 크기·간격이 rem 기반이므로 루트 축소 하나로 전체가 조밀해짐 */
+  html {
+    font-size: 11px;
+  }
+
+  /* 날짜 열은 px 고정폭이라 별도로 좁힘 */
+  main .grid {
+    grid-template-columns: 110px 1fr !important;
+    column-gap: 1.2rem !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #16171a !important;
+    line-height: 1.5;
+  }
+
+  /* 화면용 큰 섹션 여백을 문서 밀도로 압축 */
+  main > section,
+  main > header {
+    margin-bottom: 1.3rem !important;
+  }
+
+  main .space-y-10 > * + * {
+    margin-top: 0.85rem !important;
+  }
+
+  main .space-y-6 > * + * {
+    margin-top: 0.6rem !important;
+  }
+
+  main h2 {
+    margin-bottom: 0.7rem !important;
+  }
+
+  /* 프로젝트 불릿은 인쇄에서 상위 3개만 */
+  .print-clamp li:nth-child(n + 4) {
+    display: none;
+  }
+
+  .print-hidden {
+    display: none !important;
+  }
+
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* 외부 링크는 URL을 각주처럼 노출 */
+  .print-href[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #5c606b;
+  }
+
+  .avoid-break {
+    break-inside: avoid;
+  }
+}
