@@ -75,8 +75,8 @@ export const experience: Experience[] = [
     current: true,
   },
   {
-    slug: 'metage',
-    company: { ko: '메타지', en: 'Metage' },
+    slug: 'metaz',
+    company: { ko: '메타지', en: 'MetaZ' },
     team: { ko: 'Tidal Flats Studio', en: 'Tidal Flats Studio' },
     title: { ko: '리드 게임 프로그래머', en: 'Lead Game Programmer' },
     start: '2022-08-01',
@@ -187,29 +187,33 @@ export const projects: Project[] = [
   },
 
   {
-    slug: 'metage',
-    company: { ko: '메타지', en: 'Metage' },
-    title: { ko: 'Tidal Flats Studio 신규 프로젝트', en: 'Tidal Flats Studio — New Title' },
+    slug: 'metaz',
+    company: { ko: '메타지', en: 'MetaZ' },
+    title: { ko: 'Fidelion — Tidal Flats Studio', en: 'Fidelion — Tidal Flats Studio' },
     period: { ko: '2022.08 — 2023.01', en: 'Aug 2022 — Jan 2023' },
     summary: {
-      ko: '리드 게임 프로그래머로서 Unity 클라이언트와 Nest.js 서버 기반 신규 프로젝트를 주도.',
-      en: 'Led a new title as Lead Game Programmer, on a Unity client with a Nest.js server.',
+      ko: '리드 게임 프로그래머로서 Fidelion IP 기반 신규 프로젝트의 Unity 클라이언트와 Nest.js 서버 개발을 주도.',
+      en: 'Led the Unity client and Nest.js server for a new title on the Fidelion IP, as Lead Game Programmer.',
     },
     stack: ['Unity3D', 'C#', 'Nest.js', 'TypeScript'],
+    image: '/projects/fidelion.png',
     sections: [
       {
         heading: { ko: '역할', en: 'Role' },
         items: [
           {
-            ko: 'Tidal Flats Studio 리드 게임 프로그래머로 신규 프로젝트 개발 주도',
-            en: 'Lead Game Programmer at Tidal Flats Studio, driving development of a new title',
+            ko: 'Tidal Flats Studio(MetaZ) 리드 게임 프로그래머로 신규 프로젝트 개발 주도',
+            en: 'Lead Game Programmer at Tidal Flats Studio (MetaZ), driving development of a new title',
           },
           {
             ko: 'Unity3D 클라이언트와 Nest.js 서버를 함께 설계·구현',
             en: 'Designed and implemented both the Unity3D client and the Nest.js server',
           },
-          // TODO(content): Notion 프로젝트 DB에 이 회사 항목이 없습니다.
-          // 담당 시스템·성과를 3~4줄 보강하면 상세 페이지가 완성됩니다.
+          {
+            ko: 'Fidelion: 라이엇 게임즈 아트 디렉터 출신 임호교 디렉터가 이끈 포스트아포칼립스 IP 프로젝트',
+            en: 'Fidelion: a post-apocalyptic IP project directed by Hokyo Lim, formerly art director at Riot Games',
+          },
+          // TODO(content): 담당 시스템·성과를 3~4줄 보강하면 상세 페이지가 완성됩니다.
         ],
       },
     ],
