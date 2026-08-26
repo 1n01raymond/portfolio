@@ -48,8 +48,8 @@ export const profile = {
       en: "Currently I'm a Unity programmer at NAVER Z, working on ZEPETO. I've built and operated real-time multiplayer worlds, and took on the cross-platform PC release for Windows and macOS. Lately I've been on LLM-based R&D — AI NPCs and world generation — alongside ZEPETO Studio and the SDK that creators build on.",
     },
     {
-      ko: '그 전에는 어썸피스에서 킹갓캐슬을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 같은 회사의 좀비고등학교에서는 동시 100명이 붙는 서바이벌 모드와, 기기마다 흩어져 있던 데이터를 하나로 합치는 통합 계정 시스템을 만들었습니다. 그 과정에서 Java 소켓 서버를 짜고, 인프라를 IDC에서 클라우드로 옮기고, 운영 툴과 빌드 자동화를 만들었습니다. 그보다 앞서 펍지랩스와 크래프톤, 파티게임즈, 맥스온소프트를 거쳤습니다.',
-      en: 'Before that, at Awesomepiece, I was main programmer on King God Castle from the first build through global live service. On Zombie High at the same studio I built the survival mode that holds 100 concurrent players, and the unified account system that consolidated data scattered across devices. Along the way I wrote the Java socket server, moved the infrastructure from IDC to the cloud, and built the internal tooling and build automation. Earlier still: PUBG Labs and KRAFTON, Pati Games, and MaxonSoft.',
+      ko: '그 전에는 어썸피스에서 킹갓캐슬을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 같은 회사의 좀비고등학교에서는 동시 100명이 붙는 서바이벌 모드와, 이메일·구글·페이스북으로 갈라져 있던 계정을 대표 계정 하나로 묶고 캐릭터를 여러 개 둘 수 있게 한 통합 계정 시스템을 만들었습니다. 그 과정에서 Java 소켓 서버를 짜고, 인프라를 IDC에서 클라우드로 옮기고, 운영 툴과 빌드 자동화를 만들었습니다. 그보다 앞서 펍지랩스와 크래프톤, 파티게임즈, 맥스온소프트를 거쳤습니다.',
+      en: 'Before that, at Awesomepiece, I was main programmer on King God Castle from the first build through global live service. On Zombie High at the same studio I built the survival mode that holds 100 concurrent players, and the unified account system that pulled email, Google and Facebook logins into one primary account holding several characters. Along the way I wrote the Java socket server, moved the infrastructure from IDC to the cloud, and built the internal tooling and build automation. Earlier still: PUBG Labs and KRAFTON, Pati Games, and MaxonSoft.',
     },
     {
       ko: '새로운 기술을 겁내지 않습니다. 보안을 가르치는 고등학교에서 시작해 PC 온라인 게임과 모바일, 웹, 서버와 인프라까지 오가며 일했습니다. 그러다 보니 처음 보는 것도 대개 어디선가 본 구조의 변형으로 읽힙니다. 세부를 다 읽기 전에 이건 무엇과 무엇을 맞바꾼 설계인지가 먼저 보입니다. 빠른 대신 복잡하구나, 생산성을 속도와 바꿨구나 하는 식으로요. 그래서 이해가 빠른 편입니다.',
@@ -380,8 +380,8 @@ export const projects: Project[] = [
             en: 'Implemented 100-player concurrent multiplayer, including the Survival Circus mode — network load optimisation and sync architecture',
           },
           {
-            ko: '통합계정시스템 설계 및 개발 — 기기별로 분리된 게임 데이터 통합, 이메일·구글·전화번호 로그인 및 계정 복구 지원',
-            en: 'Designed and built the unified account system — consolidated per-device save data into one account, with email, Google and phone sign-in plus account recovery',
+            ko: '통합 계정 시스템 설계 및 개발 — 이메일·구글·페이스북 계정이 저마다 1계정 1캐릭터로 갈라져 있던 구조를, 대표 계정 하나에 기존 계정을 묶고 캐릭터를 여러 개 만들어 골라 접속하는 구조로 전환. 대표 계정은 휴대폰 본인인증 필수, 계정 복구 지원',
+            en: 'Designed and built the unified account system — email, Google and Facebook logins had each been a separate account with one character; they now merge into a single primary account that holds several characters to pick between, with phone-based identity verification required to create it and account recovery on top',
           },
           {
             ko: 'Java·Lua 스크립트를 활용한 몬스터 AI, 퀘스트 및 게임 플레이 시스템 제작',
@@ -415,8 +415,8 @@ export const projects: Project[] = [
         heading: { ko: '인프라 & 운영 시스템', en: 'Infrastructure & Ops Tooling' },
         items: [
           {
-            ko: 'NCP 기반 핸드폰 본인인증 시스템 제작 및 서비스 적용',
-            en: 'Built and shipped phone-based identity verification on NCP',
+            ko: 'NCP 기반 휴대폰 본인인증 시스템 제작 — 통합 계정의 대표 계정 생성에 필수 절차로 적용',
+            en: 'Built phone-based identity verification on NCP — a required step for creating a primary account',
           },
           {
             ko: 'Jenkins + Slack 연동 자동 빌드·배포 파이프라인 구축',
