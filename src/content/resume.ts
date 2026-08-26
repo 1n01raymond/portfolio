@@ -36,7 +36,9 @@ export const profile = {
 
 export const contact = {
   email: '1n01raymond@gmail.com',
-  phone: '+82 10-8131-7338',
+  /** 표기는 언어별로, 링크는 국제 표기 하나로 */
+  phone: { ko: '010-8131-7338', en: '+82 10-8131-7338' } satisfies I18n,
+  phoneHref: 'tel:+821081317338',
   linkedin: 'https://www.linkedin.com/in/1n01raymond/',
   github: 'https://github.com/1n01raymond',
 }
@@ -830,12 +832,12 @@ export const ui = {
     contact: { ko: '연락처', en: 'Contact' },
   },
   sections: {
-    about: { ko: 'About', en: 'About' },
-    work: { ko: 'Selected Work', en: 'Selected Work' },
-    archive: { ko: 'Archive', en: 'Archive' },
-    skills: { ko: 'Skills', en: 'Skills' },
-    howIWork: { ko: 'How I Work', en: 'How I Work' },
-    contact: { ko: 'Contact', en: 'Contact' },
+    about: { ko: '소개', en: 'About' },
+    work: { ko: '프로젝트', en: 'Work' },
+    archive: { ko: '아카이브', en: 'Archive' },
+    skills: { ko: '기술', en: 'Skills' },
+    howIWork: { ko: '일하는 방식', en: 'How I Work' },
+    contact: { ko: '연락처', en: 'Contact' },
     experience: { ko: '경력', en: 'Experience' },
     gallery: { ko: '스크린샷', en: 'Screenshots' },
     education: { ko: '학력', en: 'Education' },

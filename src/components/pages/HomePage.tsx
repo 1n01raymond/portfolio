@@ -83,11 +83,6 @@ export default function HomePage({ lang }: { lang: Lang }) {
           </li>
           <li aria-hidden className="h-4 w-px bg-line" />
           <li>
-            <a href={`mailto:${contact.email}`} className="transition-colors hover:text-accent">
-              Email
-            </a>
-          </li>
-          <li>
             <Link
               href={langPath(lang, '/resume/')}
               className="transition-colors hover:text-accent"
@@ -267,12 +262,17 @@ export default function HomePage({ lang }: { lang: Lang }) {
             {t(lang, ui.closing)}
           </p>
           <p className="mt-3 text-muted">{t(lang, ui.closingNote)}</p>
-          <a
-            href={`mailto:${contact.email}`}
-            className="mono-label mt-5 inline-block text-accent transition-opacity hover:opacity-80"
-          >
-            {contact.email}
-          </a>
+          <div className="mono-label mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-accent">
+            <a
+              href={`mailto:${contact.email}`}
+              className="transition-opacity hover:opacity-80"
+            >
+              {contact.email}
+            </a>
+            <a href={contact.phoneHref} className="transition-opacity hover:opacity-80">
+              {t(lang, contact.phone)}
+            </a>
+          </div>
         </section>
       </main>
     </div>

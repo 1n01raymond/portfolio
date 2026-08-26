@@ -37,7 +37,7 @@ export default function ResumePage({ lang }: { lang: Lang }) {
             <a href={`mailto:${contact.email}`} className="hover:text-accent">
               {contact.email}
             </a>
-            <span>{contact.phone}</span>
+            <span>{t(lang, contact.phone)}</span>
             <a
               href={contact.github}
               target="_blank"
