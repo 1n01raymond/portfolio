@@ -415,8 +415,8 @@ export const projects: Project[] = [
         heading: { ko: '인프라 & 운영 시스템', en: 'Infrastructure & Ops Tooling' },
         items: [
           {
-            ko: 'NCP 기반 휴대폰 본인인증 시스템 제작 — 통합 계정의 대표 계정 생성에 필수 절차로 적용',
-            en: 'Built phone-based identity verification on NCP — a required step for creating a primary account',
+            ko: 'NCP 기반 휴대폰 본인인증 시스템 제작 — 본인인증 요구가 급격히 강해지던 시기에 통합 계정의 대표 계정 생성 필수 절차로 적용',
+            en: 'Built phone-based identity verification on NCP — made a required step for creating a primary account, at a point when verification requirements were tightening sharply',
           },
           {
             ko: 'Jenkins + Slack 연동 자동 빌드·배포 파이프라인 구축',
