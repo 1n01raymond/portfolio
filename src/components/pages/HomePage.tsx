@@ -153,6 +153,9 @@ export default function HomePage({ lang }: { lang: Lang }) {
               </li>
             ))}
           </ol>
+          <p className="mt-6 max-w-[52ch] text-sm leading-relaxed text-dim">
+            {t(lang, ui.experienceNote)}
+          </p>
         </section>
 
         {/* ---------------------------------------------- Projects */}

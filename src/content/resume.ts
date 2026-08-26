@@ -859,6 +859,16 @@ export const ui = {
     back: { ko: '돌아가기', en: 'Back' },
     present: { ko: '현재', en: 'Present' },
   },
+  /**
+   * 경력 목록 바로 아래 한 줄. 2015-2017 의 짧은 재직들은 회사를 고른
+   * 결과가 아니라 지정업체 제도의 결과라, 그 질문이 생기는 자리에서
+   * 사실만 답합니다. 변명하지 않습니다 — 기간과 제도 이름이면 충분합니다.
+   */
+  experienceNote: {
+    ko: '맥스온소프트부터 크래프톤까지는 현역 산업기능요원 복무 기간입니다 (2015.01 — 2017.11).',
+    en: 'MaxonSoft through KRAFTON covers my mandatory military service, served as industrial technical personnel (Jan 2015 — Nov 2017).',
+  },
+
   archiveNote: {
     ko: '학생 시절(2011–2014), 혼자 또는 팀으로 만든 것들',
     en: 'Student work, 2011–2014 — on my own or in small teams',
