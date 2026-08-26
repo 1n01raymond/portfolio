@@ -15,6 +15,7 @@ import { formatDuration, formatPeriod } from '@/lib/format'
 import SideNav from '@/components/SideNav'
 import { GitHubMark, LinkedInMark } from '@/components/BrandIcon'
 import Spotlight from '@/components/Spotlight'
+import RichText from '@/components/RichText'
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -97,7 +98,9 @@ export default function HomePage({ lang }: { lang: Lang }) {
           <SectionTitle>{t(lang, ui.sections.about)}</SectionTitle>
           <div className="max-w-[62ch] space-y-4 leading-relaxed text-muted">
             {profile.about.map((para, i) => (
-              <p key={i}>{t(lang, para)}</p>
+              <p key={i}>
+                <RichText lang={lang} text={t(lang, para)} />
+              </p>
             ))}
           </div>
 

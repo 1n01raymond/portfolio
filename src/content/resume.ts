@@ -37,6 +37,10 @@ export const profile = {
   /**
    * 랜딩 About — 한 문단씩 이어 읽는 서술. 성향을 나열하지 않고,
    * 한 일과 그때 어떻게 했는지로 대신합니다.
+   *
+   * `[[이름]]` 은 본문색으로 올라오는 강조, `[[이름|/work/slug/]]` 는 강조 +
+   * 프로젝트 상세 링크입니다 (RichText.tsx). 훑는 사람이 회사와 제품 이름만은
+   * 집어 가게 하려는 장치라, 한 문단에 두세 개까지만 답니다.
    */
   about: [
     {
@@ -44,12 +48,12 @@ export const profile = {
       en: "Hi, I'm Soonhyung, and I like building things. I've been making mobile games since 2014 — I started on the client and kept opening up whatever else the game needed: server, infrastructure, internal tooling. I like problems that span several systems, where no single side shows you the cause, and I tend to stay with one until it gives.",
     },
     {
-      ko: '지금은 네이버제트에서 ZEPETO의 Unity 클라이언트를 만듭니다. 실시간 멀티플레이 월드를 만들어 운영했고, Windows와 macOS로 나가는 PC 크로스플랫폼 출시를 맡았습니다. 요즘은 LLM 기반 AI NPC와 월드 생성 R&D를, 크리에이터가 쓰는 ZEPETO Studio·SDK 작업과 함께 보고 있습니다.',
-      en: "Currently I'm a Unity programmer at NAVER Z, working on ZEPETO. I've built and operated real-time multiplayer worlds, and took on the cross-platform PC release for Windows and macOS. Lately I've been on LLM-based R&D — AI NPCs and world generation — alongside ZEPETO Studio and the SDK that creators build on.",
+      ko: '지금은 [[네이버제트]]에서 [[ZEPETO|/work/naverz/]]의 Unity 클라이언트를 만듭니다. 실시간 멀티플레이 월드를 만들어 운영했고, Windows와 macOS로 나가는 PC 크로스플랫폼 출시를 맡았습니다. 요즘은 LLM 기반 AI NPC와 월드 생성 R&D를, 크리에이터가 쓰는 ZEPETO Studio·SDK 작업과 함께 보고 있습니다.',
+      en: "Currently I'm a Unity programmer at [[NAVER Z]], working on [[ZEPETO|/work/naverz/]]. I've built and operated real-time multiplayer worlds, and took on the cross-platform PC release for Windows and macOS. Lately I've been on LLM-based R&D — AI NPCs and world generation — alongside ZEPETO Studio and the SDK that creators build on.",
     },
     {
-      ko: '그 전에는 어썸피스에서 킹갓캐슬을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 같은 회사의 좀비고등학교에서는 동시 100명이 붙는 서바이벌 모드와, 이메일·구글·페이스북으로 갈라져 있던 계정을 대표 계정 하나로 묶고 캐릭터를 여러 개 둘 수 있게 한 통합 계정 시스템을 만들었습니다. 그 과정에서 Java 소켓 서버를 짜고, 인프라를 IDC에서 클라우드로 옮기고, 운영 툴과 빌드 자동화를 만들었습니다. 그보다 앞서 펍지랩스와 크래프톤, 파티게임즈, 맥스온소프트를 거쳤습니다.',
-      en: 'Before that, at Awesomepiece, I was main programmer on King God Castle from the first build through global live service. On Zombie High at the same studio I built the survival mode that holds 100 concurrent players, and the unified account system that pulled email, Google and Facebook logins into one primary account holding several characters. Along the way I wrote the Java socket server, moved the infrastructure from IDC to the cloud, and built the internal tooling and build automation. Earlier still: PUBG Labs and KRAFTON, Pati Games, and MaxonSoft.',
+      ko: '그 전에는 어썸피스에서 [[킹갓캐슬|/work/kinggodcastle/]]을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 같은 회사의 [[좀비고등학교|/work/zombiehigh/]]에서는 동시 100명이 붙는 서바이벌 모드와, 이메일·구글·페이스북으로 갈라져 있던 계정을 대표 계정 하나로 묶고 캐릭터를 여러 개 둘 수 있게 한 통합 계정 시스템을 만들었습니다. 그 과정에서 Java 소켓 서버를 짜고, 인프라를 IDC에서 클라우드로 옮기고, 운영 툴과 빌드 자동화를 만들었습니다. 그보다 앞서 [[펍지랩스와 크래프톤|/work/krafton/]], [[파티게임즈|/work/ilovecoffee/]], [[맥스온소프트|/work/maxonsoft/]]를 거쳤습니다.',
+      en: 'Before that, at Awesomepiece, I was main programmer on [[King God Castle|/work/kinggodcastle/]] from the first build through global live service. On [[Zombie High|/work/zombiehigh/]] at the same studio I built the survival mode that holds 100 concurrent players, and the unified account system that pulled email, Google and Facebook logins into one primary account holding several characters. Along the way I wrote the Java socket server, moved the infrastructure from IDC to the cloud, and built the internal tooling and build automation. Earlier still: [[PUBG Labs and KRAFTON|/work/krafton/]], [[Pati Games|/work/ilovecoffee/]], and [[MaxonSoft|/work/maxonsoft/]].',
     },
     {
       ko: '새로운 기술을 겁내지 않습니다. 보안을 가르치는 고등학교에서 시작해 PC 온라인 게임과 모바일, 웹, 서버와 인프라까지 오가며 일했습니다. 그러다 보니 처음 보는 것도 대개 어디선가 본 구조의 변형으로 읽힙니다. 세부를 다 읽기 전에 이건 무엇과 무엇을 맞바꾼 설계인지가 먼저 보입니다. 빠른 대신 복잡하구나, 생산성을 속도와 바꿨구나 하는 식으로요. 그래서 이해가 빠른 편입니다.',
