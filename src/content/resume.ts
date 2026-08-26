@@ -52,8 +52,8 @@ export const profile = {
       en: "Currently I'm a Unity programmer at [[NAVER Z]], working on [[ZEPETO|/work/naverz/]]. I've built and operated real-time multiplayer worlds, and took on the cross-platform PC release for Windows and macOS. Lately I've been on LLM-based R&D — AI NPCs and world generation — alongside ZEPETO Studio and the SDK that creators build on.",
     },
     {
-      ko: '그 전에는 어썸피스에서 [[킹갓캐슬|/work/kinggodcastle/]]을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 같은 회사의 [[좀비고등학교|/work/zombiehigh/]]에서는 동시 100명이 붙는 서바이벌 모드와, 이메일·구글·페이스북으로 갈라져 있던 계정을 대표 계정 하나로 묶고 캐릭터를 여러 개 둘 수 있게 한 통합 계정 시스템을 만들었습니다. 그 과정에서 Java 소켓 서버를 짜고, 인프라를 IDC에서 클라우드로 옮기고, 운영 툴과 빌드 자동화를 만들었습니다. 그보다 앞서 [[펍지랩스와 크래프톤|/work/krafton/]], [[파티게임즈|/work/ilovecoffee/]], [[맥스온소프트|/work/maxonsoft/]]를 거쳤습니다.',
-      en: 'Before that, at Awesomepiece, I was main programmer on [[King God Castle|/work/kinggodcastle/]] from the first build through global live service. On [[Zombie High|/work/zombiehigh/]] at the same studio I built the survival mode that holds 100 concurrent players, and the unified account system that pulled email, Google and Facebook logins into one primary account holding several characters. Along the way I wrote the Java socket server, moved the infrastructure from IDC to the cloud, and built the internal tooling and build automation. Earlier still: [[PUBG Labs and KRAFTON|/work/krafton/]], [[Pati Games|/work/ilovecoffee/]], and [[MaxonSoft|/work/maxonsoft/]].',
+      ko: '그 전에는 [[어썸피스]]에서 [[킹갓캐슬|/work/kinggodcastle/]]을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 같은 회사의 [[좀비고등학교|/work/zombiehigh/]]에서는 동시 100명이 붙는 서바이벌 모드와, 이메일·구글·페이스북으로 갈라져 있던 계정을 대표 계정 하나로 묶고 캐릭터를 여러 개 둘 수 있게 한 통합 계정 시스템을 만들었습니다. 그 과정에서 Java 소켓 서버를 짜고, 인프라를 IDC에서 클라우드로 옮기고, 운영 툴과 빌드 자동화를 만들었습니다. 그보다 앞서 [[펍지랩스와 크래프톤|/work/krafton/]], [[파티게임즈|/work/ilovecoffee/]], [[맥스온소프트|/work/maxonsoft/]]를 거쳤습니다.',
+      en: 'Before that, at [[Awesomepiece]], I was main programmer on [[King God Castle|/work/kinggodcastle/]] from the first build through global live service. On [[Zombie High|/work/zombiehigh/]] at the same studio I built the survival mode that holds 100 concurrent players, and the unified account system that pulled email, Google and Facebook logins into one primary account holding several characters. Along the way I wrote the Java socket server, moved the infrastructure from IDC to the cloud, and built the internal tooling and build automation. Earlier still: [[PUBG Labs and KRAFTON|/work/krafton/]], [[Pati Games|/work/ilovecoffee/]], and [[MaxonSoft|/work/maxonsoft/]].',
     },
     {
       ko: '새로운 기술을 겁내지 않습니다. 보안을 가르치는 고등학교에서 시작해 PC 온라인 게임과 모바일, 웹, 서버와 인프라까지 오가며 일했습니다. 그러다 보니 처음 보는 것도 대개 어디선가 본 구조의 변형으로 읽힙니다. 세부를 다 읽기 전에 이건 무엇과 무엇을 맞바꾼 설계인지가 먼저 보입니다. 빠른 대신 복잡하구나, 생산성을 속도와 바꿨구나 하는 식으로요. 그래서 이해가 빠른 편입니다.',
@@ -87,6 +87,12 @@ export type Experience = {
   start: string // YYYY-MM-DD
   end: string | null // null = 현재
   current?: boolean
+  /**
+   * 현역 산업기능요원 복무 기간에 속한 재직. 지정업체 안에서만 옮길 수
+   * 있던 시기라 재직이 짧게 끊깁니다. 목록에서 연속한 구간을 하나로 묶어
+   * 보여주려고 데이터에 둡니다 (HomePage 의 복무 괄호).
+   */
+  service?: boolean
 }
 
 export const experience: Experience[] = [
@@ -117,6 +123,7 @@ export const experience: Experience[] = [
   },
   {
     slug: 'krafton',
+    service: true,
     company: { ko: '크래프톤', en: 'KRAFTON' },
     team: {
       ko: 'P.CREW 팀 · 펍지랩스에서 법인 전환 (동일 팀)',
@@ -128,6 +135,7 @@ export const experience: Experience[] = [
   },
   {
     slug: 'pubglabs',
+    service: true,
     company: { ko: '펍지랩스', en: 'PUBG Labs' },
     team: { ko: 'P.CREW 팀', en: 'P.CREW' },
     title: { ko: '클라이언트 & 서버 프로그래머', en: 'Client & Server Programmer' },
@@ -137,6 +145,7 @@ export const experience: Experience[] = [
   },
   {
     slug: 'patigames',
+    service: true,
     company: { ko: '넥스쳐 (파티게임즈)', en: 'Nexture (Pati Games)' },
     team: { ko: '커피팀 → 몰디브팀', en: 'Coffee → Maldives' },
     title: { ko: '클라이언트 & 서버 프로그래머', en: 'Client & Server Programmer' },
@@ -145,6 +154,7 @@ export const experience: Experience[] = [
   },
   {
     slug: 'maxonsoft',
+    service: true,
     company: { ko: '맥스온소프트', en: 'MaxonSoft' },
     team: { ko: 'WHO 팀', en: 'WHO' },
     title: { ko: '클라이언트 프로그래머', en: 'Client Programmer' },
@@ -868,9 +878,10 @@ export const ui = {
    * 결과가 아니라 지정업체 제도의 결과라, 그 질문이 생기는 자리에서
    * 사실만 답합니다. 변명하지 않습니다 — 기간과 제도 이름이면 충분합니다.
    */
+  /** 복무 괄호에 붙는 라벨. 어느 줄이 묶이는지는 괄호가 이미 보여줍니다. */
   experienceNote: {
-    ko: '맥스온소프트부터 크래프톤까지는 현역 산업기능요원 복무 기간입니다 (2015.01 — 2017.11).',
-    en: 'MaxonSoft through KRAFTON covers my mandatory military service, served as industrial technical personnel (Jan 2015 — Nov 2017).',
+    ko: '현역 산업기능요원 복무 · 2015.01 — 2017.11',
+    en: 'Military service · industrial technical personnel · Jan 2015 — Nov 2017',
   },
 
   archiveNote: {

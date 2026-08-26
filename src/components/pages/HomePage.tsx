@@ -30,6 +30,9 @@ function Tag({ children }: { children: React.ReactNode }) {
 }
 
 export default function HomePage({ lang }: { lang: Lang }) {
+  /** 복무 구간 레일의 끝 — 라벨을 여기 아래에 답니다. */
+  const serviceEnd = experience.reduce((last, job, i) => (job.service ? i : last), -1)
+
   const navItems = [
     { id: 'about', label: t(lang, ui.sections.about) },
     { id: 'experience', label: t(lang, ui.sections.experience) },
@@ -132,7 +135,11 @@ export default function HomePage({ lang }: { lang: Lang }) {
           {/* 여긴 이력의 뼈대만 — 프로젝트 상세는 아래 Projects 한 곳에서만 엽니다 */}
           <ol className="dim-list -mx-3">
             {experience.map((job) => (
-              <li key={job.slug}>
+              <li
+                key={job.slug}
+                /* 레일은 음수 마진 쪽 여백에 그려서 날짜 열이 밀리지 않게 합니다 */
+                className={job.service ? '-ml-0.5 border-l-2 border-accent/40' : undefined}
+              >
                 <div className="grid gap-x-6 gap-y-1 p-3 sm:grid-cols-[150px_1fr]">
                   <span className="mono-label pt-1 text-[0.72rem] whitespace-nowrap text-muted">
                     {formatPeriod(job.start, job.end, lang)}
@@ -156,9 +163,11 @@ export default function HomePage({ lang }: { lang: Lang }) {
               </li>
             ))}
           </ol>
-          <p className="mt-6 max-w-[52ch] text-sm leading-relaxed text-dim">
-            {t(lang, ui.experienceNote)}
-          </p>
+          {serviceEnd >= 0 && (
+            <div className="-ml-3.5 border-l-2 border-accent/40 pt-2.5 pb-1 pl-3">
+              <span className="tag">{t(lang, ui.experienceNote)}</span>
+            </div>
+          )}
         </section>
 
         {/* ---------------------------------------------- Projects */}
