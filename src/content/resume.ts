@@ -246,15 +246,68 @@ export const projects: Project[] = [
   },
 
   {
-    slug: 'awesomepiece',
+    slug: 'kinggodcastle',
     company: { ko: '어썸피스', en: 'Awesomepiece' },
-    title: { ko: '좀비고등학교 · 킹갓캐슬', en: 'Zombie High · King God Castle' },
+    title: { ko: '킹갓캐슬', en: 'King God Castle' },
     period: { ko: '2018.01 — 2022.04', en: 'Jan 2018 — Apr 2022' },
     summary: {
-      ko: '리드 프로그래머로 라이브 서비스 운영과 신작 개발을 병행. 동시 100명 접속 멀티플레이 구현.',
-      en: 'Lead Programmer balancing live operations with a new title. Shipped 100-player concurrent multiplayer.',
+      ko: '메인 프로그래머로 신규 개발부터 출시, 글로벌 라이브 서비스까지 담당한 모바일 전략 RPG.',
+      en: 'A mobile strategy RPG I took from first build through launch into global live service, as main programmer.',
     },
-    stack: ['Unity3D', 'C#', 'Java (Netty, Spring Boot)', 'Lua', 'MySQL', 'Redis', 'GCP', 'NCP', 'Django', 'Go'],
+    stack: ['Unity3D', 'C#', 'Java (Spring Boot)', 'GCP', 'Jenkins', 'Python'],
+    image: '/projects/kinggodcastle.webp',
+    sections: [
+      {
+        heading: { ko: '신규 개발부터 라이브까지', en: 'From Zero to Live' },
+        items: [
+          {
+            ko: '모바일 게임 킹갓캐슬의 메인 프로그래머로 신규 개발부터 출시, 라이브 서비스까지 담당',
+            en: 'Main programmer on King God Castle, from first build through launch and into live service',
+          },
+          {
+            ko: 'Unity3D 클라이언트 + Java Spring Boot 서버로 전체 콘텐츠 제작 및 서비스 운영',
+            en: 'Built all content and ran the service on a Unity3D client with a Java Spring Boot server',
+          },
+          {
+            ko: '캐릭터·스킬·몬스터 전투 시스템, 상점, 길드, 우편 등 핵심 게임 시스템 전반 구현',
+            en: 'Implemented core systems throughout — character/skill/monster combat, shop, guild, mail',
+          },
+          { ko: 'GCP 기반 에셋 번들 리소스 패치 시스템 구축', en: 'Built an asset bundle patching system on GCP' },
+          {
+            ko: 'Jenkins + Slack + Python을 활용한 자동 빌드·배포 봇 제작',
+            en: 'Built an automated build/deploy bot with Jenkins, Slack and Python',
+          },
+          {
+            ko: 'GCP 미국 리전 이전으로 글로벌 서비스 안정화 및 성능 개선',
+            en: 'Moved to a GCP US region, stabilising and speeding up global service',
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    slug: 'zombiehigh',
+    company: { ko: '어썸피스', en: 'Awesomepiece' },
+    title: { ko: '좀비고등학교', en: 'Zombie High' },
+    period: { ko: '2018.01 — 2022.04', en: 'Jan 2018 — Apr 2022' },
+    summary: {
+      ko: '리드 프로그래머로 라이브 서비스를 운영하며 기념 초대형 업데이트와 동시 100명 멀티플레이를 구현.',
+      en: 'Lead Programmer running live service — flagship anniversary updates and 100-player concurrent multiplayer.',
+    },
+    stack: [
+      'Unity3D',
+      'C#',
+      'Java (Netty)',
+      'Lua',
+      'MySQL',
+      'Redis',
+      'ActiveMQ',
+      'NCP',
+      'GCP',
+      'Django',
+      'Go',
+    ],
     image: '/projects/zombiehigh.webp',
     gallery: [
       {
@@ -278,17 +331,10 @@ export const projects: Project[] = [
           en: 'Survival Circus, the 100-player mode launched in September 2020 — five last-man-standing rounds with queue matchmaking.',
         },
       },
-      {
-        src: '/projects/kinggodcastle.webp',
-        caption: {
-          ko: '킹갓캐슬. 신규 개발부터 출시, 라이브 서비스까지 메인 프로그래머로 담당',
-          en: 'King God Castle — main programmer from first build through launch and live service.',
-        },
-      },
     ],
     sections: [
       {
-        heading: { ko: '좀비고등학교 — 게임 서비스 & 콘텐츠 개발', en: 'Zombie High — Live Service & Content' },
+        heading: { ko: '게임 서비스 & 콘텐츠 개발', en: 'Live Service & Content' },
         items: [
           {
             ko: '모바일 게임 좀비고등학교 라이브 서비스 운영 및 신규 콘텐츠 제작',
@@ -361,32 +407,6 @@ export const projects: Project[] = [
           { ko: 'IDC → NCP → GCP 서버 환경 이전 및 안정화', en: 'Migrated and stabilised infrastructure: IDC → NCP → GCP' },
         ],
       },
-      {
-        heading: { ko: '킹갓캐슬 — 신규 개발부터 라이브까지', en: 'King God Castle — From Zero to Live' },
-        items: [
-          {
-            ko: '모바일 게임 킹갓캐슬의 메인 프로그래머로 신규 개발부터 출시, 라이브 서비스까지 담당',
-            en: 'Main programmer on King God Castle, from first build through launch and into live service',
-          },
-          {
-            ko: 'Unity3D 클라이언트 + Java Spring Boot 서버로 전체 콘텐츠 제작 및 서비스 운영',
-            en: 'Built all content and ran the service on a Unity3D client with a Java Spring Boot server',
-          },
-          {
-            ko: '캐릭터·스킬·몬스터 전투 시스템, 상점, 길드, 우편 등 핵심 게임 시스템 전반 구현',
-            en: 'Implemented core systems throughout — character/skill/monster combat, shop, guild, mail',
-          },
-          { ko: 'GCP 기반 에셋 번들 리소스 패치 시스템 구축', en: 'Built an asset bundle patching system on GCP' },
-          {
-            ko: 'Jenkins + Slack + Python을 활용한 자동 빌드·배포 봇 제작',
-            en: 'Built an automated build/deploy bot with Jenkins, Slack and Python',
-          },
-          {
-            ko: 'GCP 미국 리전 이전으로 글로벌 서비스 안정화 및 성능 개선',
-            en: 'Moved to a GCP US region, stabilising and speeding up global service',
-          },
-        ],
-      },
     ],
   },
 
@@ -430,35 +450,19 @@ export const projects: Project[] = [
   },
 
   {
-    slug: 'patigames',
+    slug: 'vanillatactics',
     company: { ko: '넥스쳐 (파티게임즈)', en: 'Nexture (Pati Games)' },
-    title: { ko: '바닐라택틱스 · 아이러브커피', en: 'Vanilla Tactics · I Love Coffee' },
+    title: { ko: '바닐라택틱스', en: 'Vanilla Tactics' },
     period: { ko: '2015.12 — 2017.02', en: 'Dec 2015 — Feb 2017' },
     summary: {
-      ko: '신작의 핵심 콘텐츠 구현과 쉐이더 작업, 그리고 기존 타이틀의 라이브 서비스 운영.',
-      en: 'Core content and shaders on a new title, alongside live ops for an existing one.',
+      ko: '신작 모바일 게임의 UI·전투·AI 등 핵심 콘텐츠와 쉐이더를 구현. 공개 이후 회사 사정으로 중단.',
+      en: 'Core content — UI, combat, AI — and shaders for a new mobile title, shelved after its public reveal.',
     },
-    stack: ['Unity3D', 'C#', 'HLSL', 'Cocos2d-X', 'Lua', 'MongoDB', 'Redis', 'Jenkins'],
-    image: '/projects/ilovecoffee.webp',
-    gallery: [
-      {
-        src: '/projects/vanilla-tactics.webp',
-        caption: {
-          ko: '2016년 신작 라인업 발표에서 공개된 바닐라택틱스. 이후 회사 사정으로 프로젝트 중단',
-          en: 'Vanilla Tactics, revealed in the 2016 line-up announcement. The project was later shelved for company reasons.',
-        },
-      },
-      {
-        src: '/projects/ilovecoffee-themes.webp',
-        caption: {
-          ko: '아이러브커피의 시즌 테마 꾸미기 아이템. Cocos2d-X와 Lua로 이벤트·UI 콘텐츠 제작·유지보수',
-          en: "I Love Coffee's seasonal decoration themes — event and UI content built and maintained on Cocos2d-X with Lua.",
-        },
-      },
-    ],
+    stack: ['Unity3D', 'C#', 'HLSL', 'MongoDB', 'Redis', 'Jenkins'],
+    image: '/projects/vanilla-tactics.webp',
     sections: [
       {
-        heading: { ko: '바닐라택틱스 — 게임 개발', en: 'Vanilla Tactics — Development' },
+        heading: { ko: '게임 개발', en: 'Development' },
         items: [
           { ko: '모바일 게임 바닐라택틱스 신규 개발', en: 'Developed the new mobile title Vanilla Tactics' },
           {
@@ -466,6 +470,10 @@ export const projects: Project[] = [
             en: 'Implemented core content — UI, combat, AI — on a Unity3D client with a C# web server',
           },
           { ko: '아트팀과 협업하여 Unity 쉐이더 코드 작성', en: 'Wrote Unity shader code in collaboration with the art team' },
+          {
+            ko: '2016년 신작 라인업 발표에서 공개, 이후 회사 사정으로 프로젝트 중단',
+            en: 'Revealed in the 2016 new-title line-up; the project was later shelved for company reasons',
+          },
         ],
       },
       {
@@ -478,8 +486,32 @@ export const projects: Project[] = [
           },
         ],
       },
+    ],
+  },
+
+  {
+    slug: 'ilovecoffee',
+    company: { ko: '넥스쳐 (파티게임즈)', en: 'Nexture (Pati Games)' },
+    title: { ko: '아이러브커피', en: 'I Love Coffee' },
+    period: { ko: '2015.12 — 2017.02', en: 'Dec 2015 — Feb 2017' },
+    summary: {
+      ko: 'Cocos2d-X 기반 라이브 서비스 운영. 시즌 테마와 이벤트·UI 콘텐츠를 제작·유지보수.',
+      en: 'Live service on a Cocos2d-X client — seasonal themes and event/UI content, built and maintained.',
+    },
+    stack: ['Cocos2d-X', 'Lua'],
+    image: '/projects/ilovecoffee.webp',
+    gallery: [
       {
-        heading: { ko: '아이러브커피 — 라이브 서비스', en: 'I Love Coffee — Live Service' },
+        src: '/projects/ilovecoffee-themes.webp',
+        caption: {
+          ko: '아이러브커피의 시즌 테마 꾸미기 아이템. Cocos2d-X와 Lua로 이벤트·UI 콘텐츠 제작·유지보수',
+          en: "I Love Coffee's seasonal decoration themes — event and UI content built and maintained on Cocos2d-X with Lua.",
+        },
+      },
+    ],
+    sections: [
+      {
+        heading: { ko: '라이브 서비스', en: 'Live Service' },
         items: [
           { ko: '모바일 게임 아이러브커피 라이브 서비스 운영', en: 'Ran live service for the mobile game I Love Coffee' },
           {

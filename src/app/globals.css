@@ -161,17 +161,17 @@ body {
   body {
     background: #ffffff !important;
     color: #16171a !important;
-    line-height: 1.5;
+    line-height: 1.45;
   }
 
   /* 화면용 큰 섹션 여백을 문서 밀도로 압축 */
   main > section,
   main > header {
-    margin-bottom: 1.1rem !important;
+    margin-bottom: 0.72rem !important;
   }
 
   main .space-y-10 > * + * {
-    margin-top: 0.78rem !important;
+    margin-top: 0.48rem !important;
   }
 
   main .space-y-6 > * + * {
@@ -187,9 +187,22 @@ body {
     margin-bottom: 0.25rem !important;
   }
 
-  /* 프로젝트 불릿은 인쇄에서 상위 3개만 */
-  .print-clamp li:nth-child(n + 4) {
+  /* 프로젝트 불릿은 인쇄에서 상위 2개만 (제품 단위 8개 항목 기준) */
+  .print-clamp li:nth-child(n + 3) {
     display: none;
+  }
+
+  /* 항목이 8개로 늘어난 만큼 블록 내부 여백도 함께 조인다 */
+  .print-clamp {
+    margin-top: 0.35rem !important;
+  }
+
+  .print-clamp > li + li {
+    margin-top: 0.15rem !important;
+  }
+
+  main article > p.mono-label {
+    margin-top: 0.35rem !important;
   }
 
   .print-hidden {
