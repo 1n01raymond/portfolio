@@ -17,7 +17,7 @@ import PrintButton from '@/components/PrintButton'
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="mono-label mb-6 border-b border-line pb-2 text-accent uppercase">{children}</h2>
+    <h2 className="section-title mb-6 border-b border-line pb-2">{children}</h2>
   )
 }
 

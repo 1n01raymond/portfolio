@@ -5,7 +5,6 @@ import {
   archive,
   contact,
   experience,
-  howIWork,
   profile,
   projects,
   skills,
@@ -19,15 +18,13 @@ import Spotlight from '@/components/Spotlight'
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="mono-label mb-8 tracking-[0.18em] text-accent uppercase">{children}</h2>
+    <h2 className="section-title mb-8">{children}</h2>
   )
 }
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="mono-label rounded border border-line bg-surface-2/70 px-2 py-0.5 text-[0.7rem] text-muted">
-      {children}
-    </span>
+    <span className="tag">{children}</span>
   )
 }
 
@@ -46,13 +43,13 @@ export default function HomePage({ lang }: { lang: Lang }) {
       {/* ------------------------------------------------ 좌측 고정 패널 */}
       <header className="pt-28 pb-10 lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[42%] lg:flex-col lg:justify-between lg:py-28">
         <div>
-          <h1 className="text-[clamp(2.25rem,4.4vw,3.25rem)] leading-[1.1] font-semibold tracking-tight text-ink">
+          <h1 className="text-[clamp(2.25rem,4.4vw,3rem)] leading-[1.05] font-bold tracking-[-0.025em] text-ink">
             {t(lang, profile.name)}
           </h1>
-          <p className="mt-3 text-lg font-medium text-ink/85 sm:text-xl">
+          <p className="mt-3 text-xl font-medium tracking-tight text-ink">
             {t(lang, profile.role)}
           </p>
-          <p className="mt-5 max-w-[34ch] leading-relaxed text-muted">{t(lang, profile.tagline)}</p>
+          <p className="mt-4 max-w-[34ch] leading-relaxed text-muted">{t(lang, profile.tagline)}</p>
 
           <SideNav items={navItems} />
         </div>
@@ -98,20 +95,16 @@ export default function HomePage({ lang }: { lang: Lang }) {
         {/* ---------------------------------------------- About */}
         <section id="about" className="scroll-mt-24">
           <SectionTitle>{t(lang, ui.sections.about)}</SectionTitle>
-          <div className="space-y-4 leading-relaxed text-muted">
-            <p>{t(lang, profile.intro)}</p>
-            <p>
-              {t(lang, howIWork[0])} {t(lang, howIWork[1])}
-            </p>
-            <p>
-              {t(lang, howIWork[2])} {t(lang, howIWork[3])}
-            </p>
+          <div className="max-w-[62ch] space-y-4 leading-relaxed text-muted">
+            {profile.about.map((para, i) => (
+              <p key={i}>{t(lang, para)}</p>
+            ))}
           </div>
 
           <div className="mt-10 space-y-6">
             {skills.map((group) => (
               <div key={group.heading.en}>
-                <h3 className="mono-label mb-2 text-[0.72rem] tracking-[0.16em] text-accent-dim uppercase">
+                <h3 className="mono-label mb-2 text-[0.72rem] font-semibold tracking-[0.12em] text-accent uppercase">
                   {t(lang, group.heading)}
                 </h3>
                 <ul className="space-y-1.5">
@@ -133,7 +126,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
         {/* ---------------------------------------------- Experience */}
         <section id="experience" className="mt-24 scroll-mt-24">
           <SectionTitle>{t(lang, ui.sections.experience)}</SectionTitle>
-          {/* 여긴 이력의 뼈대만 — 프로젝트 상세는 아래 Selected Work 한 곳에서만 엽니다 */}
+          {/* 여긴 이력의 뼈대만 — 프로젝트 상세는 아래 Projects 한 곳에서만 엽니다 */}
           <ol className="dim-list -mx-3">
             {experience.map((job) => (
               <li key={job.slug}>
@@ -162,7 +155,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
           </ol>
         </section>
 
-        {/* ---------------------------------------------- Selected Work */}
+        {/* ---------------------------------------------- Projects */}
         <section id="work" className="mt-24 scroll-mt-24">
           <SectionTitle>{t(lang, ui.sections.work)}</SectionTitle>
           <ul className="dim-list -mx-3">

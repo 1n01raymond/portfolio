@@ -28,10 +28,34 @@ export const profile = {
     en: 'I build mobile games — client, server, infrastructure.',
   } satisfies I18n,
 
+  /** 이력서 상단 요약 한 문단. 랜딩의 About 은 아래 `about` 을 씁니다. */
   intro: {
-    ko: '좀비고등학교에서 동시 100명이 접속하는 서바이벌 모드와, 기기마다 흩어져 있던 데이터를 하나로 합치는 통합 계정 시스템을 만들었습니다. 킹갓캐슬은 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 그 과정에서 Java 소켓 서버를 짜고, 인프라를 IDC에서 클라우드로 옮기고, 운영 툴과 빌드 자동화를 만들었습니다.',
-    en: 'On Zombie High I built the survival mode that holds 100 concurrent players, and the unified account system that consolidated data scattered across devices. On King God Castle I was main programmer from the first build through global live service. Along the way I wrote the Java socket server, moved the infrastructure from IDC to the cloud, and built the internal tooling and build automation.',
+    ko: '2014년부터 모바일 게임의 클라이언트와 서버, 인프라를 만들어 왔습니다. 킹갓캐슬을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았고, 좀비고등학교에서 동시 100명 서바이벌 모드와 통합 계정 시스템을 만들었습니다. 지금은 네이버제트에서 ZEPETO의 실시간 멀티플레이 월드와 PC 크로스플랫폼 출시, LLM 기반 R&D를 맡고 있습니다.',
+    en: 'Building mobile games since 2014 — client, server, infrastructure. Main programmer on King God Castle from the first build through global live service; on Zombie High I built the 100-player survival mode and the unified account system. Currently at NAVER Z on ZEPETO: real-time multiplayer worlds, the cross-platform PC release, and LLM-based R&D.',
   } satisfies I18n,
+
+  /**
+   * 랜딩 About — 한 문단씩 이어 읽는 서술. 성향을 나열하지 않고,
+   * 한 일과 그때 어떻게 했는지로 대신합니다.
+   */
+  about: [
+    {
+      ko: '안녕하세요, 최순형입니다. 뭔가 만드는 걸 좋아합니다. 2014년부터 모바일 게임을 만들었고, 클라이언트에서 시작해 게임에 필요한 곳이라면 서버와 인프라, 운영 툴까지 계속 열어봤습니다. 여러 시스템이 얽혀 어느 한쪽만 봐서는 원인이 보이지 않는 문제를 좋아하고, 풀릴 때까지 붙잡는 편입니다.',
+      en: "Hi, I'm Soonhyung, and I like building things. I've been making mobile games since 2014 — I started on the client and kept opening up whatever else the game needed: server, infrastructure, internal tooling. I like problems that span several systems, where no single side shows you the cause, and I tend to stay with one until it gives.",
+    },
+    {
+      ko: '지금은 네이버제트에서 ZEPETO의 Unity 클라이언트를 만듭니다. 실시간 멀티플레이 월드를 만들어 운영했고, Windows와 macOS로 나가는 PC 크로스플랫폼 출시를 맡았습니다. 요즘은 LLM 기반 AI NPC와 월드 생성 R&D를, 크리에이터가 쓰는 ZEPETO Studio·SDK 작업과 함께 보고 있습니다.',
+      en: "Currently I'm a Unity programmer at NAVER Z, working on ZEPETO. I've built and operated real-time multiplayer worlds, and took on the cross-platform PC release for Windows and macOS. Lately I've been on LLM-based R&D — AI NPCs and world generation — alongside ZEPETO Studio and the SDK that creators build on.",
+    },
+    {
+      ko: '그 전에는 어썸피스에서 킹갓캐슬을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 같은 회사의 좀비고등학교에서는 동시 100명이 붙는 서바이벌 모드와, 기기마다 흩어져 있던 데이터를 하나로 합치는 통합 계정 시스템을 만들었습니다. 그 과정에서 Java 소켓 서버를 짜고, 인프라를 IDC에서 클라우드로 옮기고, 운영 툴과 빌드 자동화를 만들었습니다. 그보다 앞서 펍지랩스와 크래프톤, 파티게임즈, 맥스온소프트를 거쳤습니다.',
+      en: 'Before that, at Awesomepiece, I was main programmer on King God Castle from the first build through global live service. On Zombie High at the same studio I built the survival mode that holds 100 concurrent players, and the unified account system that consolidated data scattered across devices. Along the way I wrote the Java socket server, moved the infrastructure from IDC to the cloud, and built the internal tooling and build automation. Earlier still: PUBG Labs and KRAFTON, Pati Games, and MaxonSoft.',
+    },
+    {
+      ko: '장애나 마감 앞에서는 오히려 침착해집니다. 라이브 서비스를 오래 하면서 몸에 뱄습니다. 처음 보는 기술은 문서를 읽기 전에 일단 만들어보며 익히는 편이고, 그렇게 익힌 것들이 대체로 다음 프로젝트에서 쓰였습니다.',
+      en: "Outages and deadlines tend to make me calmer rather than the opposite — years of live service did that. When something is new to me I learn it by building with it before reading about it, and more often than not that's what ended up being useful on the next project.",
+    },
+  ] satisfies I18n[],
 }
 
 export const contact = {
@@ -646,29 +670,6 @@ export const skills: SkillGroup[] = [
 ]
 
 /* ------------------------------------------------------------------ */
-/* 일하는 방식                                                          */
-/* ------------------------------------------------------------------ */
-
-export const howIWork: I18n[] = [
-  {
-    ko: '처음 보는 기술은 만들어보며 익힙니다. 습득이 빠릅니다.',
-    en: 'I learn unfamiliar technology by building with it. I pick things up fast.',
-  },
-  {
-    ko: '여러 시스템이 얽힌 어려운 문제를 좋아합니다. 풀릴 때까지 붙잡습니다.',
-    en: 'I like hard problems that span several systems. I stay with one until it gives.',
-  },
-  {
-    ko: '장애나 마감 앞에서 침착해집니다. 라이브 서비스에서 몸에 뱄습니다.',
-    en: 'Outages and deadlines make me calmer. Live service taught me that.',
-  },
-  {
-    ko: '클라이언트에서 멈추지 않습니다. 서버, 인프라, 운영 툴까지 열어봅니다.',
-    en: "I don't stop at the client. Server, infrastructure, internal tooling — I open them too.",
-  },
-]
-
-/* ------------------------------------------------------------------ */
 /* 학력 · 기타                                                          */
 /* ------------------------------------------------------------------ */
 
@@ -831,18 +832,22 @@ export const ui = {
     resume: { ko: '이력서', en: 'Resume' },
     contact: { ko: '연락처', en: 'Contact' },
   },
+  /**
+   * 섹션 제목은 두 언어 모두 영어입니다. 한 화면에서 'About / 경력 /
+   * Selected Work' 처럼 섞이면 어느 쪽도 아니게 읽혀서, 라벨은 영어로
+   * 통일하고 본문만 언어를 따릅니다.
+   */
   sections: {
-    about: { ko: '소개', en: 'About' },
-    work: { ko: '프로젝트', en: 'Work' },
-    archive: { ko: '아카이브', en: 'Archive' },
-    skills: { ko: '기술', en: 'Skills' },
-    howIWork: { ko: '일하는 방식', en: 'How I Work' },
-    contact: { ko: '연락처', en: 'Contact' },
-    experience: { ko: '경력', en: 'Experience' },
-    gallery: { ko: '스크린샷', en: 'Screenshots' },
-    education: { ko: '학력', en: 'Education' },
-    languages: { ko: '외국어', en: 'Languages' },
-    misc: { ko: '기타', en: 'Other' },
+    about: { ko: 'About', en: 'About' },
+    work: { ko: 'Projects', en: 'Projects' },
+    archive: { ko: 'Archive', en: 'Archive' },
+    skills: { ko: 'Skills', en: 'Skills' },
+    contact: { ko: 'Contact', en: 'Contact' },
+    experience: { ko: 'Experience', en: 'Experience' },
+    gallery: { ko: 'Screenshots', en: 'Screenshots' },
+    education: { ko: 'Education', en: 'Education' },
+    languages: { ko: 'Languages', en: 'Languages' },
+    misc: { ko: 'Other', en: 'Other' },
   },
   actions: {
     savePdf: { ko: 'PDF로 저장', en: 'Save as PDF' },

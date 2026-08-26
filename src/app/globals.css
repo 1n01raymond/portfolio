@@ -1,30 +1,38 @@
 @import 'tailwindcss';
 
 /* ------------------------------------------------------------------ */
-/* 디자인 토큰 — HANDOFF §5. 액센트는 하나만 씁니다.                     */
+/* 디자인 토큰 — 액센트는 하나만 씁니다.                                 */
+/*                                                                      */
+/* 순검정 배경(#0a0b0d)은 흰색 말고는 글자가 죽어서 걷어냈습니다.        */
+/* 남색 지면 위 slate 3단(본문·강조·흐림) + teal 액센트 한 색.          */
 /* ------------------------------------------------------------------ */
 
 :root {
-  --bg: #0a0b0d;
-  --surface: #121317;
-  --surface-2: #1a1c22;
-  --border: #24272f;
-  --text: #e8e9ed;
-  --text-muted: #8b8f9a;
-  --accent: #8b9dff;
-  --accent-dim: #3d4a7a;
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-2: #273449;
+  --border: #334155;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent: #5eead4;
+  --accent-dim: #2dd4bf;
+  --accent-soft: rgba(45, 212, 191, 0.1);
 }
 
 /* 이력서 페이지: 다크 모드에서도 라이트 서피스 고정 */
 [data-surface='light'] {
   --bg: #ffffff;
-  --surface: #fafafa;
-  --surface-2: #f1f2f4;
-  --border: #e2e4e8;
-  --text: #16171a;
-  --text-muted: #5c606b;
-  --accent: #4a5bd4;
-  --accent-dim: #b9c1f0;
+  --surface: #f8fafc;
+  --surface-2: #f1f5f9;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+  /* 인쇄에서도 살아남는 진한 teal — 밝은 teal-300 은 흰 종이에서 사라집니다 */
+  --accent: #0f766e;
+  --accent-dim: #14b8a6;
+  --accent-soft: rgba(13, 148, 136, 0.08);
 }
 
 @theme inline {
@@ -34,15 +42,16 @@
   --color-line: var(--border);
   --color-ink: var(--text);
   --color-muted: var(--text-muted);
+  --color-dim: var(--text-dim);
   --color-accent: var(--accent);
   --color-accent-dim: var(--accent-dim);
+  --color-accent-soft: var(--accent-soft);
 
-  /* 라틴은 Inter Tight, 한글은 나눔고딕. Pretendard 는 남은 글리프의 보험. */
-  --font-sans: var(--font-inter-tight), var(--font-nanum-gothic), 'Pretendard Variable',
+  /* 라틴은 Inter, 한글은 Noto Sans KR. Pretendard 는 남은 글리프의 보험. */
+  --font-sans: var(--font-inter), var(--font-noto-sans-kr), 'Pretendard Variable',
     Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI',
-    'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo,
-    Consolas, monospace;
+    'Apple SD Gothic Neo', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 html {
@@ -53,21 +62,48 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
-  line-height: 1.7;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--accent-dim);
+  background: var(--accent);
+  color: #042f2e;
+}
+
+/*
+ * 보조 레이블 — 연도·기간·팀·스택. 예전엔 모노스페이스였는데, 어두운 지면에서
+ * 13px 모노는 가장 먼저 읽기 힘들어지는 요소였습니다. 본문과 같은 산세리프로
+ * 두되 숫자만 tabular 로 고정해 날짜 열이 흔들리지 않게 합니다.
+ */
+.mono-label {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 섹션 제목 — 작은 대문자 볼드. 액센트가 아니라 본문 강조색을 씁니다. */
+.section-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--text);
 }
 
-/* 모노 레이블 — 연도·기간·스킬 태그. 계측기 느낌의 핵심 */
-.mono-label {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  letter-spacing: 0.02em;
+/* 스택 태그 — teal 10% 알약 */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background: var(--accent-soft);
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--accent);
 }
 
 /* 포커스 링 유지 */
@@ -111,7 +147,7 @@ body {
   transition: opacity 400ms ease;
   background: radial-gradient(
     600px circle at var(--sx, 50%) var(--sy, 50%),
-    rgba(139, 157, 255, 0.07),
+    rgba(29, 78, 216, 0.12),
     transparent 72%
   );
 }
@@ -119,8 +155,8 @@ body {
 /* WebGPU/WebGL2 모두 없을 때의 정적 히어로 배경 */
 .hero-static-fallback {
   background:
-    radial-gradient(ellipse 70% 55% at 32% 38%, rgba(139, 157, 255, 0.14), transparent 65%),
-    radial-gradient(ellipse 55% 45% at 72% 68%, rgba(61, 74, 122, 0.22), transparent 70%),
+    radial-gradient(ellipse 70% 55% at 32% 38%, rgba(45, 212, 191, 0.1), transparent 65%),
+    radial-gradient(ellipse 55% 45% at 72% 68%, rgba(29, 78, 216, 0.18), transparent 70%),
     var(--bg);
 }
 
@@ -160,7 +196,7 @@ body {
 
   body {
     background: #ffffff !important;
-    color: #16171a !important;
+    color: #0f172a !important;
     line-height: 1.45;
   }
 
@@ -224,7 +260,7 @@ body {
     content: ' (' attr(href) ')';
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    color: #5c606b;
+    color: #475569;
   }
 
   .avoid-break {

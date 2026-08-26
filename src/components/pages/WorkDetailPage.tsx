@@ -38,7 +38,7 @@ export default function WorkDetailPage({ lang, slug }: { lang: Lang; slug: strin
           {project.stack.map((s) => (
             <span
               key={s}
-              className="mono-label rounded border border-line bg-surface-2 px-2 py-0.5 text-[0.72rem] text-muted"
+              className="tag"
             >
               {s}
             </span>
@@ -72,7 +72,7 @@ export default function WorkDetailPage({ lang, slug }: { lang: Lang; slug: strin
       <div className="max-w-[68ch] space-y-12">
         {project.sections.map((section) => (
           <section key={section.heading.en}>
-            <h2 className="mono-label mb-5 text-accent uppercase">{t(lang, section.heading)}</h2>
+            <h2 className="section-title mb-5">{t(lang, section.heading)}</h2>
             <ul className="space-y-3">
               {section.items.map((item, i) => (
                 <li key={i} className="flex gap-3 leading-relaxed text-ink/90">
@@ -89,7 +89,7 @@ export default function WorkDetailPage({ lang, slug }: { lang: Lang; slug: strin
 
       {project.gallery && project.gallery.length > 0 && (
         <section className="mt-16">
-          <h2 className="mono-label mb-6 text-accent uppercase">{t(lang, ui.sections.gallery)}</h2>
+          <h2 className="section-title mb-6">{t(lang, ui.sections.gallery)}</h2>
           <div className="grid gap-x-6 gap-y-9 sm:grid-cols-2">
             {project.gallery.map((shot) => (
               <figure key={shot.src}>
