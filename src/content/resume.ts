@@ -853,7 +853,13 @@ export const ui = {
     en: 'Student work, 2011–2014 — on my own or in small teams',
   },
   closing: {
-    ko: '새로운 팀과 새로운 문제를 찾고 있습니다. 편하게 연락 주세요.',
-    en: 'Open to new teams and new problems. Get in touch.',
+    ko: '새로운 팀과 새로운 문제를 찾고 있습니다.',
+    en: 'Open to new teams and new problems.',
+  },
+
+  /** 마무리 문장 아래 한 줄. 위 문장과 붙이지 않습니다. */
+  closingNote: {
+    ko: '편하게 연락 주세요.',
+    en: 'Get in touch.',
   },
 }

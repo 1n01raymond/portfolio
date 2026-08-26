@@ -266,6 +266,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
           <p className="max-w-[40ch] text-xl leading-snug font-medium tracking-tight text-ink sm:text-2xl">
             {t(lang, ui.closing)}
           </p>
+          <p className="mt-3 text-muted">{t(lang, ui.closingNote)}</p>
           <a
             href={`mailto:${contact.email}`}
             className="mono-label mt-5 inline-block text-accent transition-opacity hover:opacity-80"
