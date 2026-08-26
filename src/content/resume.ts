@@ -24,14 +24,14 @@ export const profile = {
 
   // 히어로 한 줄. 짧게 유지하세요.
   tagline: {
-    ko: '모바일 게임의 클라이언트와 서버, 인프라를 만듭니다.',
-    en: 'I build mobile games — client, server, infrastructure.',
+    ko: '클라이언트에서 서버와 인프라까지 만듭니다.',
+    en: 'I build the client, the server, and the infrastructure under it.',
   } satisfies I18n,
 
   /** 이력서 상단 요약 한 문단. 랜딩의 About 은 아래 `about` 을 씁니다. */
   intro: {
-    ko: '2014년부터 모바일 게임의 클라이언트와 서버, 인프라를 만들어 왔습니다. 킹갓캐슬을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았고, 좀비고등학교에서 동시 100명 서바이벌 모드와 통합 계정 시스템을 만들었습니다. 지금은 네이버제트에서 ZEPETO의 실시간 멀티플레이 월드와 PC 크로스플랫폼 출시, LLM 기반 R&D를 맡고 있습니다.',
-    en: 'Building mobile games since 2014 — client, server, infrastructure. Main programmer on King God Castle from the first build through global live service; on Zombie High I built the 100-player survival mode and the unified account system. Currently at NAVER Z on ZEPETO: real-time multiplayer worlds, the cross-platform PC release, and LLM-based R&D.',
+    ko: '2014년부터 게임의 클라이언트와 서버, 인프라를 만들어 왔습니다. 킹갓캐슬을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았고, 좀비고등학교에서 동시 100명 서바이벌 모드와 통합 계정 시스템을 만들었습니다. 지금은 네이버제트에서 ZEPETO의 실시간 멀티플레이 월드와 PC 크로스플랫폼 출시, LLM 기반 R&D를 맡고 있습니다.',
+    en: 'Building games since 2014 — client, server, infrastructure. Main programmer on King God Castle from the first build through global live service; on Zombie High I built the 100-player survival mode and the unified account system. Currently at NAVER Z on ZEPETO: real-time multiplayer worlds, the cross-platform PC release, and LLM-based R&D.',
   } satisfies I18n,
 
   /**
@@ -44,8 +44,8 @@ export const profile = {
    */
   about: [
     {
-      ko: '안녕하세요, 최순형입니다. 뭔가 만드는 걸 좋아합니다. 2014년부터 모바일 게임을 만들었고, 클라이언트에서 시작해 게임에 필요한 곳이라면 서버와 인프라, 운영 툴까지 계속 열어봤습니다. 여러 시스템이 얽혀 어느 한쪽만 봐서는 원인이 보이지 않는 문제를 좋아하고, 풀릴 때까지 붙잡는 편입니다.',
-      en: "Hi, I'm Soonhyung, and I like building things. I've been making mobile games since 2014 — I started on the client and kept opening up whatever else the game needed: server, infrastructure, internal tooling. I like problems that span several systems, where no single side shows you the cause, and I tend to stay with one until it gives.",
+      ko: '안녕하세요, 최순형입니다. 뭔가 만드는 걸 좋아합니다. 2014년부터 게임을 만들었고, 클라이언트에서 시작해 게임에 필요한 곳이라면 서버와 인프라, 운영 툴까지 계속 열어봤습니다. 여러 시스템이 얽혀 어느 한쪽만 봐서는 원인이 보이지 않는 문제를 좋아하고, 풀릴 때까지 붙잡는 편입니다.',
+      en: "Hi, I'm Soonhyung, and I like building things. I've been making games since 2014 — I started on the client and kept opening up whatever else the game needed: server, infrastructure, internal tooling. I like problems that span several systems, where no single side shows you the cause, and I tend to stay with one until it gives.",
     },
     {
       ko: '지금은 [[네이버제트]]에서 [[ZEPETO|/work/naverz/]]의 Unity 클라이언트를 만듭니다. 실시간 멀티플레이 월드를 만들어 운영했고, Windows와 macOS로 나가는 PC 크로스플랫폼 출시를 맡았습니다. 요즘은 LLM 기반 AI NPC와 월드 생성 R&D를, 크리에이터가 쓰는 ZEPETO Studio·SDK 작업과 함께 보고 있습니다.',
