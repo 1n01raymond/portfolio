@@ -52,8 +52,8 @@ export const profile = {
       en: 'Before that, at Awesomepiece, I was main programmer on King God Castle from the first build through global live service. On Zombie High at the same studio I built the survival mode that holds 100 concurrent players, and the unified account system that consolidated data scattered across devices. Along the way I wrote the Java socket server, moved the infrastructure from IDC to the cloud, and built the internal tooling and build automation. Earlier still: PUBG Labs and KRAFTON, Pati Games, and MaxonSoft.',
     },
     {
-      ko: '새로운 기술을 겁내지 않습니다. PC 온라인에서 시작해 모바일과 웹, 서버와 인프라까지 오가며 일하다 보니, 처음 보는 것도 대개 어디선가 본 구조의 변형으로 읽힙니다. 세부를 다 읽기 전에 이건 무엇과 무엇을 맞바꾼 설계인지가 먼저 보입니다. 빠른 대신 복잡하구나, 생산성을 속도와 바꿨구나 하는 식으로요. 그래서 이해가 빠른 편입니다.',
-      en: "New technology doesn't intimidate me. I started on PC online games and have worked across mobile and web, servers and infrastructure since, so something I haven't seen usually reads as a variant of a structure I have. Before I've read all the detail, what I see first is the trade-off it made — faster but harder to work with here, productivity given up for speed there. That's what makes me quick to understand things.",
+      ko: '새로운 기술을 겁내지 않습니다. 보안을 가르치는 고등학교에서 시작해 PC 온라인 게임과 모바일, 웹, 서버와 인프라까지 오가며 일했습니다. 그러다 보니 처음 보는 것도 대개 어디선가 본 구조의 변형으로 읽힙니다. 세부를 다 읽기 전에 이건 무엇과 무엇을 맞바꾼 설계인지가 먼저 보입니다. 빠른 대신 복잡하구나, 생산성을 속도와 바꿨구나 하는 식으로요. 그래서 이해가 빠른 편입니다.',
+      en: "New technology doesn't intimidate me. I started at a high school that taught security, and have worked across PC online games, mobile and web, servers and infrastructure since. Something I haven't seen usually reads as a variant of a structure I have. Before I've read all the detail, what I see first is the trade-off it made — faster but harder to work with here, productivity given up for speed there. That's what makes me quick to understand things.",
     },
     {
       ko: '장애나 마감 앞에서는 오히려 침착해집니다. 라이브 서비스를 오래 하면서 그렇게 됐습니다.',
