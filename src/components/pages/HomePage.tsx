@@ -51,7 +51,6 @@ export default function HomePage({ lang }: { lang: Lang }) {
           </h1>
           <p className="mt-3 text-lg font-medium text-ink/85 sm:text-xl">
             {t(lang, profile.role)}
-            <span className="mono-label ml-2 text-muted">since {profile.since}</span>
           </p>
           <p className="mt-5 max-w-[34ch] leading-relaxed text-muted">{t(lang, profile.tagline)}</p>
 

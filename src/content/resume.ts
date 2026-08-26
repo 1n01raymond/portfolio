@@ -24,17 +24,14 @@ export const profile = {
 
   // 히어로 한 줄. 짧게 유지하세요.
   tagline: {
-    ko: '12년차 Unity 개발자. 클라이언트부터 서버·인프라까지 직접 만듭니다.',
-    en: 'Unity developer, 12 years in. I build the client, the server, and the infrastructure under both.',
+    ko: '동시에 100명이 붙는 모드도, 그 아래 서버와 인프라도 같은 손으로 만듭니다.',
+    en: 'The mode that holds 100 players at once, and the server and infrastructure under it — same pair of hands.',
   } satisfies I18n,
 
   intro: {
-    ko: '12년차 Unity 개발자로, 새로운 기술과 변화를 즐기며 긍정적으로 협업합니다. 게임을 넘어 다양한 개발 경험 속에서 문제 해결 과정 자체를 좋아하고, 함께 더 나은 서비스를 만들어가는 데 보람을 느낍니다.',
-    en: 'A Unity developer with 12 years of experience who enjoys new technology and change, and collaborates with an open mind. Across game and non-game work alike, I like the problem-solving itself — and I find real satisfaction in building better services alongside a team.',
+    ko: '문제가 있는 자리로 갑니다. 동시 100명이 붙는 모드를 만들려고 Java 소켓 서버를 짰고, 기기마다 흩어져 있던 계정을 합치려고 인증 시스템을 새로 설계했습니다. 킹갓캐슬은 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 인프라 이전도, 운영 툴도, 빌드 자동화도 필요한 순간에 직접 했습니다.',
+    en: 'I go where the problem is. Building a mode that holds 100 players at once meant writing the Java socket server; consolidating accounts scattered across devices meant designing a new auth system. On King God Castle I was main programmer from the first build through global live service. Infrastructure moves, internal tooling and build automation followed the same rule — I did them when that was what the work needed.',
   } satisfies I18n,
-
-  /** 히어로 롤 라인에 붙는 연차 표기. 숫자 나열 대신 이것 하나만 씁니다. */
-  since: '2014',
 }
 
 export const contact = {

@@ -9,7 +9,7 @@ export const site = {
     en: 'Soonhyung Choi — Unity Programmer',
   },
   description: {
-    ko: '12년차 Unity 개발자. 클라이언트부터 서버·인프라까지 직접 만듭니다.',
-    en: 'Unity developer, 12 years in. I build the client, the server, and the infrastructure under both.',
+    ko: '동시에 100명이 붙는 모드도, 그 아래 서버와 인프라도 같은 손으로 만드는 Unity 프로그래머.',
+    en: 'Unity programmer. The mode that holds 100 players at once, and the server and infrastructure under it, come from the same pair of hands.',
   },
 } as const
