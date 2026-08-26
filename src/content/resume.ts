@@ -649,20 +649,20 @@ export const skills: SkillGroup[] = [
 
 export const howIWork: I18n[] = [
   {
-    ko: '처음 보는 기술일수록 직접 만들어보며 익힙니다. 습득이 빠르다는 평을 꾸준히 들어왔습니다.',
-    en: 'The less familiar something is, the more I learn it by building with it. People have consistently told me I pick things up fast.',
+    ko: '처음 보는 기술은 만들어보며 익힙니다. 습득이 빠릅니다.',
+    en: 'I learn unfamiliar technology by building with it. I pick things up fast.',
   },
   {
-    ko: '난이도가 높고 여러 시스템이 얽힌 문제를 좋아합니다. 오래 붙잡고 파고드는 쪽이 성향에 맞습니다.',
-    en: 'I gravitate to hard problems that span several systems. Staying with one until it gives is the part I enjoy.',
+    ko: '여러 시스템이 얽힌 어려운 문제를 좋아합니다. 풀릴 때까지 붙잡습니다.',
+    en: 'I like hard problems that span several systems. I stay with one until it gives.',
   },
   {
-    ko: '장애나 마감처럼 압박이 큰 상황에서 오히려 침착해집니다. 라이브 서비스를 오래 하며 몸에 밴 부분입니다.',
-    en: 'Outages and deadlines make me calmer, not louder — a habit built over years of live service.',
+    ko: '장애나 마감 앞에서 침착해집니다. 라이브 서비스에서 몸에 뱄습니다.',
+    en: 'Outages and deadlines make me calmer. Live service taught me that.',
   },
   {
-    ko: '클라이언트에서 멈추지 않습니다. 서버, 인프라, 운영 툴까지 필요한 곳은 직접 열어봅니다.',
-    en: "I don't stop at the client — server, infrastructure and internal tooling are all fair game when that's where the answer is.",
+    ko: '클라이언트에서 멈추지 않습니다. 서버, 인프라, 운영 툴까지 열어봅니다.',
+    en: "I don't stop at the client. Server, infrastructure, internal tooling — I open them too.",
   },
 ]
 
