@@ -24,13 +24,13 @@ export const profile = {
 
   // 히어로 한 줄. 짧게 유지하세요.
   tagline: {
-    ko: '동시에 100명이 붙는 모드도, 그 아래 서버와 인프라도 같은 손으로 만듭니다.',
-    en: 'The mode that holds 100 players at once, and the server and infrastructure under it — same pair of hands.',
+    ko: '모바일 게임의 클라이언트와 서버, 인프라를 만듭니다.',
+    en: 'I build mobile games — client, server, infrastructure.',
   } satisfies I18n,
 
   intro: {
-    ko: '문제가 있는 자리로 갑니다. 동시 100명이 붙는 모드를 만들려고 Java 소켓 서버를 짰고, 기기마다 흩어져 있던 계정을 합치려고 인증 시스템을 새로 설계했습니다. 킹갓캐슬은 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 인프라 이전도, 운영 툴도, 빌드 자동화도 필요한 순간에 직접 했습니다.',
-    en: 'I go where the problem is. Building a mode that holds 100 players at once meant writing the Java socket server; consolidating accounts scattered across devices meant designing a new auth system. On King God Castle I was main programmer from the first build through global live service. Infrastructure moves, internal tooling and build automation followed the same rule — I did them when that was what the work needed.',
+    ko: '좀비고등학교에서 동시 100명이 접속하는 서바이벌 모드와, 기기마다 흩어져 있던 데이터를 하나로 합치는 통합 계정 시스템을 만들었습니다. 킹갓캐슬은 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 그 과정에서 Java 소켓 서버를 짜고, 인프라를 IDC에서 클라우드로 옮기고, 운영 툴과 빌드 자동화를 만들었습니다.',
+    en: 'On Zombie High I built the survival mode that holds 100 concurrent players, and the unified account system that consolidated data scattered across devices. On King God Castle I was main programmer from the first build through global live service. Along the way I wrote the Java socket server, moved the infrastructure from IDC to the cloud, and built the internal tooling and build automation.',
   } satisfies I18n,
 }
 
