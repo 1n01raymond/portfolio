@@ -22,10 +22,15 @@ export const profile = {
     en: 'Unity Programmer',
   } satisfies I18n,
 
-  // 히어로 한 줄. 짧게 유지하세요.
+  /**
+   * 히어로 한 줄. 짧게 유지하세요.
+   * 동사가 없는 건 의도입니다 — 클라이언트는 만들지만 인프라는 만드는 게
+   * 아니라 올리는 것이라, 셋을 한 동사로 묶으면 마지막이 어긋납니다.
+   * 범위만 말하고 무엇을 했는지는 About 과 Experience 가 이어받습니다.
+   */
   tagline: {
-    ko: '클라이언트에서 서버와 인프라까지 만듭니다.',
-    en: 'I build the client, the server, and the infrastructure under it.',
+    ko: '클라이언트에서 서버와 인프라까지.',
+    en: 'From the client through the server to the infrastructure.',
   } satisfies I18n,
 
   /** 이력서 상단 요약 한 문단. 랜딩의 About 은 아래 `about` 을 씁니다. */
