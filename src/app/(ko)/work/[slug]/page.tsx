@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import WorkDetailPage from '@/components/pages/WorkDetailPage'
 import { projects } from '@/content/resume'
-import { site } from '@/config/site'
+import { projectMetadata } from '@/lib/project-metadata'
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
@@ -15,14 +15,7 @@ export async function generateMetadata({
   const { slug } = await params
   const project = projects.find((p) => p.slug === slug)
   if (!project) return {}
-  return {
-    title: `${project.title.ko} — ${site.title.ko}`,
-    description: project.summary.ko,
-    alternates: {
-      canonical: `/work/${slug}/`,
-      languages: { ko: `/work/${slug}/`, en: `/en/work/${slug}/` },
-    },
-  }
+  return projectMetadata(project, 'ko')
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

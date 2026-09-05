@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { Lang } from '@/content/resume'
 import {
   contact,
@@ -10,7 +11,7 @@ import {
   skills,
   ui,
 } from '@/content/resume'
-import { t } from '@/lib/i18n'
+import { t, langPath } from '@/lib/i18n'
 import { formatDuration, formatPeriod } from '@/lib/format'
 import SurfaceLight from '@/components/SurfaceLight'
 import PrintButton from '@/components/PrintButton'
@@ -33,6 +34,7 @@ export default function ResumePage({ lang }: { lang: Lang }) {
             {t(lang, profile.name)}
           </h1>
           <p className="mt-2 text-lg text-muted">{t(lang, profile.role)}</p>
+          <p className="mt-1 text-sm text-muted">{t(lang, profile.specialty)}</p>
           <div className="mono-label mt-5 flex flex-col gap-1 text-[0.78rem] text-muted">
             <a href={`mailto:${contact.email}`} className="hover:text-accent">
               {contact.email}
@@ -72,7 +74,7 @@ export default function ResumePage({ lang }: { lang: Lang }) {
             <li key={job.slug} className="avoid-break grid gap-1 sm:grid-cols-[190px_1fr] sm:gap-6">
               <span className="mono-label pt-0.5 text-[0.78rem] text-muted">
                 {formatPeriod(job.start, job.end, lang)}
-                <span className="mt-0.5 block text-[0.72rem] text-muted/70">
+                <span className="mt-0.5 block text-[0.72rem] text-muted">
                   {formatDuration(job.start, job.end, lang)}
                 </span>
               </span>
@@ -83,8 +85,13 @@ export default function ResumePage({ lang }: { lang: Lang }) {
                     /
                   </span>
                   <span className="font-normal text-muted">{t(lang, job.title)}</span>
+                  {job.scope && (
+                    <span className="mono-label ml-2 inline-block text-[0.68rem] font-normal text-dim">
+                      {t(lang, job.scope)}
+                    </span>
+                  )}
                 </p>
-                <p className="mono-label mt-0.5 text-[0.75rem] text-muted/80">{t(lang, job.team)}</p>
+                <p className="mono-label mt-0.5 text-[0.75rem] text-muted">{t(lang, job.team)}</p>
               </div>
             </li>
           ))}
@@ -99,7 +106,9 @@ export default function ResumePage({ lang }: { lang: Lang }) {
             <article key={p.slug} className="avoid-break">
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <h3 className="font-medium text-ink">
-                  {t(lang, p.title)}
+                  <Link href={langPath(lang, `/work/${p.slug}/`)} className="hover:text-accent">
+                    {t(lang, p.title)}
+                  </Link>
                   <span className="mx-2 text-line" aria-hidden>
                     /
                   </span>
@@ -107,23 +116,23 @@ export default function ResumePage({ lang }: { lang: Lang }) {
                 </h3>
                 <span className="mono-label text-[0.75rem] text-muted">{t(lang, p.period)}</span>
               </div>
+              {p.periodNote && (
+                <p className="mono-label mt-1 text-muted">{t(lang, p.periodNote)}</p>
+              )}
               <p className="print-hidden mt-1.5 max-w-[68ch] text-sm leading-relaxed text-muted">
                 {t(lang, p.summary)}
               </p>
-              <ul className="print-clamp mt-3 space-y-1.5">
-                {p.sections
-                  .flatMap((s) => s.items)
-                  .slice(0, 5)
-                  .map((item, i) => (
-                    <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-ink/85">
-                      <span aria-hidden className="pt-[0.55rem]">
-                        <span className="block h-[3px] w-[3px] rounded-full bg-accent-dim" />
-                      </span>
-                      <span>{t(lang, item)}</span>
-                    </li>
-                  ))}
+              <ul className="resume-highlights mt-3 space-y-1.5">
+                {p.resumeHighlights.map((item, i) => (
+                  <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-ink/85">
+                    <span aria-hidden className="pt-[0.55rem]">
+                      <span className="block h-[3px] w-[3px] rounded-full bg-accent-dim" />
+                    </span>
+                    <span>{t(lang, item)}</span>
+                  </li>
+                ))}
               </ul>
-              <p className="mono-label mt-2.5 text-[0.72rem] text-muted/80">
+              <p className="mono-label mt-2.5 text-[0.72rem] text-muted">
                 {p.stack.join(' · ')}
               </p>
             </article>

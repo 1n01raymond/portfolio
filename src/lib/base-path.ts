@@ -1,6 +1,6 @@
 /**
- * public/ 정적 자산을 <a href> 등으로 직접 참조할 때 basePath를 붙입니다.
- * (next/image, next/link는 스스로 처리하므로 이 헬퍼가 필요 없습니다.)
+ * public/ 정적 자산과 next/image의 src에 basePath를 붙입니다.
+ * next/link의 href에는 Next.js가 자동으로 붙이므로 사용하지 않습니다.
  */
 export function withBase(path: string): string {
   return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${path}`

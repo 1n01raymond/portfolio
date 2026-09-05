@@ -18,19 +18,13 @@ export const profile = {
   name: { ko: '최순형', en: 'Soonhyung Choi' } satisfies I18n,
 
   role: {
-    ko: 'Unity 프로그래머',
-    en: 'Unity Programmer',
+    ko: 'Software Engineer',
+    en: 'Software Engineer',
   } satisfies I18n,
 
-  /**
-   * 히어로 한 줄. 짧게 유지하세요.
-   * 동사가 없는 건 의도입니다 — 클라이언트는 만들지만 인프라는 만드는 게
-   * 아니라 올리는 것이라, 셋을 한 동사로 묶으면 마지막이 어긋납니다.
-   * 범위만 말하고 무엇을 했는지는 About 과 Experience 가 이어받습니다.
-   */
-  tagline: {
-    ko: '클라이언트에서 서버와 인프라까지.',
-    en: 'From the client through the server to the infrastructure.',
+  specialty: {
+    ko: 'Unity',
+    en: 'Unity',
   } satisfies I18n,
 
   /** 이력서 상단 요약 한 문단. 랜딩의 About 은 아래 `about` 을 씁니다. */
@@ -40,8 +34,7 @@ export const profile = {
   } satisfies I18n,
 
   /**
-   * 랜딩 About — 한 문단씩 이어 읽는 서술. 성향을 나열하지 않고,
-   * 한 일과 그때 어떻게 했는지로 대신합니다.
+   * 랜딩 About — 관심사를 짧게 소개한 뒤 실제 업무와 경험으로 이어집니다.
    *
    * `[[이름]]` 은 본문색으로 올라오는 강조, `[[이름|/work/slug/]]` 는 강조 +
    * 프로젝트 상세 링크입니다 (RichText.tsx). 훑는 사람이 회사와 제품 이름만은
@@ -49,24 +42,20 @@ export const profile = {
    */
   about: [
     {
-      ko: '안녕하세요, 최순형입니다. 뭔가 만드는 걸 좋아합니다. 2014년부터 게임을 만들었고, 클라이언트에서 시작해 게임에 필요한 곳이라면 서버와 인프라, 운영 툴까지 계속 열어봤습니다. 여러 시스템이 얽혀 어느 한쪽만 봐서는 원인이 보이지 않는 문제를 좋아하고, 풀릴 때까지 붙잡는 편입니다.',
-      en: "Hi, I'm Soonhyung, and I like building things. I've been making games since 2014 — I started on the client and kept opening up whatever else the game needed: server, infrastructure, internal tooling. I like problems that span several systems, where no single side shows you the cause, and I tend to stay with one until it gives.",
+      ko: '새로운 기술을 익히고, 낯선 문제를 해결하는 일을 좋아합니다.',
+      en: 'I enjoy learning new technologies and solving unfamiliar problems.',
     },
     {
-      ko: '지금은 [[네이버제트]]에서 [[ZEPETO|/work/naverz/]]의 Unity 클라이언트를 만듭니다. 실시간 멀티플레이 월드를 만들어 운영했고, Windows와 macOS로 나가는 PC 크로스플랫폼 출시를 맡았습니다. 요즘은 LLM 기반 AI NPC와 월드 생성 R&D를, 크리에이터가 쓰는 ZEPETO Studio·SDK 작업과 함께 보고 있습니다.',
-      en: "Currently I'm a Unity programmer at [[NAVER Z]], working on [[ZEPETO|/work/naverz/]]. I've built and operated real-time multiplayer worlds, and took on the cross-platform PC release for Windows and macOS. Lately I've been on LLM-based R&D — AI NPCs and world generation — alongside ZEPETO Studio and the SDK that creators build on.",
+      ko: '현재 [[네이버제트]]에서 [[ZEPETO|/work/naverz/]]의 Unity 클라이언트와 크리에이터용 Studio·SDK를 개발합니다.',
+      en: 'Currently at [[NAVER Z]], I develop the Unity client and creator tools, Studio and SDK, for [[ZEPETO|/work/naverz/]].',
     },
     {
-      ko: '그 전에는 [[어썸피스]]에서 [[킹갓캐슬|/work/kinggodcastle/]]을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았습니다. 같은 회사의 [[좀비고등학교|/work/zombiehigh/]]에서는 동시 100명이 붙는 서바이벌 모드와, 이메일·구글·페이스북으로 갈라져 있던 계정을 대표 계정 하나로 묶고 캐릭터를 여러 개 둘 수 있게 한 통합 계정 시스템을 만들었습니다. 그 과정에서 Java 소켓 서버를 짜고, 인프라를 IDC에서 클라우드로 옮기고, 운영 툴과 빌드 자동화를 만들었습니다. 그보다 앞서 [[펍지랩스와 크래프톤|/work/krafton/]], [[파티게임즈|/work/ilovecoffee/]], [[맥스온소프트|/work/maxonsoft/]]를 거쳤습니다.',
-      en: 'Before that, at [[Awesomepiece]], I was main programmer on [[King God Castle|/work/kinggodcastle/]] from the first build through global live service. On [[Zombie High|/work/zombiehigh/]] at the same studio I built the survival mode that holds 100 concurrent players, and the unified account system that pulled email, Google and Facebook logins into one primary account holding several characters. Along the way I wrote the Java socket server, moved the infrastructure from IDC to the cloud, and built the internal tooling and build automation. Earlier still: [[PUBG Labs and KRAFTON|/work/krafton/]], [[Pati Games|/work/ilovecoffee/]], and [[MaxonSoft|/work/maxonsoft/]].',
+      ko: 'ZEPETO의 실시간 멀티플레이 월드를 개발·운영했고, Windows·macOS 출시를 맡았습니다. 현재 LLM 기반 AI NPC와 월드 생성 R&D에도 참여하고 있습니다.',
+      en: 'I built and operated real-time multiplayer worlds for ZEPETO and worked on its Windows and macOS release. I also work on LLM-based R&D for AI NPCs and world generation.',
     },
     {
-      ko: '새로운 기술을 겁내지 않습니다. 보안을 가르치는 고등학교에서 시작해 PC 온라인 게임과 모바일, 웹, 서버와 인프라까지 오가며 일했습니다. 그러다 보니 처음 보는 것도 대개 어디선가 본 구조의 변형으로 읽힙니다. 세부를 다 읽기 전에 이건 무엇과 무엇을 맞바꾼 설계인지가 먼저 보입니다. 빠른 대신 복잡하구나, 생산성을 속도와 바꿨구나 하는 식으로요. 그래서 이해가 빠른 편입니다.',
-      en: "New technology doesn't intimidate me. I started at a high school that taught security, and have worked across PC online games, mobile and web, servers and infrastructure since. Something I haven't seen usually reads as a variant of a structure I have. Before I've read all the detail, what I see first is the trade-off it made — faster but harder to work with here, productivity given up for speed there. That's what makes me quick to understand things.",
-    },
-    {
-      ko: '장애나 마감 앞에서는 오히려 침착해집니다. 라이브 서비스를 오래 하면서 그렇게 됐습니다.',
-      en: 'Outages and deadlines tend to make me calmer rather than the opposite. Years of live service did that.',
+      ko: '이전에는 [[어썸피스]]에서 [[좀비고등학교|/work/zombiehigh/]]의 100인 서바이벌 모드와 통합 계정 시스템을 만들었습니다. 이후 [[킹갓캐슬|/work/kinggodcastle/]] 팀으로 옮겨 첫 빌드부터 출시, 글로벌 라이브 서비스까지 메인 프로그래머로 맡았습니다.',
+      en: 'At [[Awesomepiece]], I built the 100-player survival mode and unified account system for [[Zombie High|/work/zombiehigh/]]. I then moved to the [[King God Castle|/work/kinggodcastle/]] team as main programmer, from the first build through launch and global live service.',
     },
   ] satisfies I18n[],
 }
@@ -89,6 +78,7 @@ export type Experience = {
   company: I18n
   team: I18n
   title: I18n
+  scope?: I18n
   start: string // YYYY-MM-DD
   end: string | null // null = 현재
   current?: boolean
@@ -115,6 +105,7 @@ export const experience: Experience[] = [
     company: { ko: '메타지', en: 'MetaZ' },
     team: { ko: 'Tidal Flats Studio', en: 'Tidal Flats Studio' },
     title: { ko: '리드 게임 프로그래머', en: 'Lead Game Programmer' },
+    scope: { ko: '클라이언트 · 서버', en: 'Client · Server' },
     start: '2022-08-01',
     end: '2023-01-07',
   },
@@ -123,6 +114,7 @@ export const experience: Experience[] = [
     company: { ko: '어썸피스', en: 'Awesomepiece' },
     team: { ko: '좀비고 팀 → 킹갓캐슬 팀', en: 'Zombie High → King God Castle' },
     title: { ko: '리드 프로그래머', en: 'Lead Programmer' },
+    scope: { ko: '클라이언트 · 서버', en: 'Client · Server' },
     start: '2018-01-29',
     end: '2022-04-01',
   },
@@ -134,7 +126,8 @@ export const experience: Experience[] = [
       ko: 'P.CREW 팀 · 펍지랩스에서 법인 전환 (동일 팀)',
       en: 'P.CREW · corporate change from PUBG Labs (same team)',
     },
-    title: { ko: '클라이언트 & 서버 프로그래머', en: 'Client & Server Programmer' },
+    title: { ko: '프로그래머', en: 'Programmer' },
+    scope: { ko: '클라이언트 · 서버', en: 'Client · Server' },
     start: '2017-11-05',
     end: '2018-01-23',
   },
@@ -143,7 +136,8 @@ export const experience: Experience[] = [
     service: true,
     company: { ko: '펍지랩스', en: 'PUBG Labs' },
     team: { ko: 'P.CREW 팀', en: 'P.CREW' },
-    title: { ko: '클라이언트 & 서버 프로그래머', en: 'Client & Server Programmer' },
+    title: { ko: '프로그래머', en: 'Programmer' },
+    scope: { ko: '클라이언트 · 서버', en: 'Client · Server' },
     start: '2017-02-01',
     // 종료일 = 크래프톤으로 법인 전환된 날. 같은 팀에서 소속 법인만 바뀜.
     end: '2017-11-05',
@@ -153,7 +147,8 @@ export const experience: Experience[] = [
     service: true,
     company: { ko: '넥스쳐 (파티게임즈)', en: 'Nexture (Pati Games)' },
     team: { ko: '커피팀 → 몰디브팀', en: 'Coffee → Maldives' },
-    title: { ko: '클라이언트 & 서버 프로그래머', en: 'Client & Server Programmer' },
+    title: { ko: '프로그래머', en: 'Programmer' },
+    scope: { ko: '클라이언트 · 서버', en: 'Client · Server' },
     start: '2015-12-07',
     end: '2017-02-01',
   },
@@ -162,7 +157,8 @@ export const experience: Experience[] = [
     service: true,
     company: { ko: '맥스온소프트', en: 'MaxonSoft' },
     team: { ko: 'WHO 팀', en: 'WHO' },
-    title: { ko: '클라이언트 프로그래머', en: 'Client Programmer' },
+    title: { ko: '프로그래머', en: 'Programmer' },
+    scope: { ko: '클라이언트', en: 'Client' },
     start: '2014-06-09',
     end: '2015-12-08',
   },
@@ -174,12 +170,32 @@ export const experience: Experience[] = [
 
 export type Project = {
   slug: string
+  /** 홈에서 자세히 소개할 대표 작업 */
+  featured?: boolean
   company: I18n
   /** 이 프로젝트를 소개할 대표 타이틀 */
   title: I18n
   period: I18n
+  /** 회사 재직기간과 프로젝트 참여 순서 등 기간 표기에 필요한 맥락 */
+  periodNote?: I18n
   /** 카드에 걸리는 한 줄 요약 */
   summary: I18n
+  /** 대표 이미지 앞에서 읽을 역할·과제·담당 범위 */
+  overview?: { role: I18n; focus: I18n; contribution: I18n }
+  /** 확인된 사실로 구성한 기술 사례. 수치나 결과가 불명확하면 outcome은 생략 */
+  caseStudies?: {
+    id: string
+    title: I18n
+    context: I18n
+    approach: I18n[]
+    outcome?: I18n
+    diagram?: {
+      caption: I18n
+      panels: { title: I18n; items: I18n[] }[]
+    }
+  }[]
+  /** 이력서와 PDF에 공통으로 표시할 대표 성과. 상세 본문 순서와 별도로 선정 */
+  resumeHighlights: I18n[]
   /** 모노 태그로 렌더 */
   stack: string[]
   /** 상세 페이지 본문. 그룹 제목 + 불릿 */
@@ -193,6 +209,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: 'naverz',
+    featured: true,
     company: { ko: '네이버제트', en: 'NAVER Z' },
     title: { ko: 'ZEPETO', en: 'ZEPETO' },
     period: { ko: '2023.01 — 현재', en: 'Jan 2023 — Present' },
@@ -200,6 +217,51 @@ export const projects: Project[] = [
       ko: '메타버스 플랫폼의 실시간 멀티플레이 월드와 PC 크로스플랫폼 출시, LLM 기반 AI R&D와 크리에이터 플랫폼 개발.',
       en: 'Real-time multiplayer worlds and the cross-platform PC launch, plus LLM-based AI R&D and creator platform work.',
     },
+    overview: {
+      role: { ko: 'Unity 프로그래머', en: 'Unity Programmer' },
+      focus: {
+        ko: '실시간 멀티플레이 월드 운영, PC 플랫폼 지원, 크리에이터 개발 환경.',
+        en: 'Live multiplayer worlds, PC platform support and creator development tools.',
+      },
+      contribution: {
+        ko: 'Unity 클라이언트와 Studio·SDK 개발, Windows·macOS 출시 대응 및 모바일 네이티브 연동 문제 해결.',
+        en: 'Unity client, Studio and SDK development; Windows and macOS release support; mobile native integration debugging.',
+      },
+    },
+    caseStudies: [
+      {
+        id: 'pc-release',
+        title: { ko: 'Windows·macOS 출시 대응', en: 'Supporting the Windows and macOS release' },
+        context: {
+          ko: 'ZEPETO의 지원 범위를 Windows·macOS로 확장하는 PC 출시 작업에 참여했습니다.',
+          en: 'Contributed to ZEPETO’s PC release, extending platform support to Windows and macOS.',
+        },
+        approach: [
+          {
+            ko: 'Unity 클라이언트의 PC 크로스플랫폼 지원을 맡았습니다.',
+            en: 'Worked on cross-platform PC support in the Unity client.',
+          },
+          {
+            ko: 'Windows·macOS 환경에서 발생한 런타임 이슈를 분석하고 해결했습니다.',
+            en: 'Investigated and resolved runtime issues on Windows and macOS.',
+          },
+        ],
+      },
+    ],
+    resumeHighlights: [
+      {
+        ko: 'ZEPETO Windows·macOS 출시 — 크로스플랫폼 지원 및 런타임 이슈 대응',
+        en: 'ZEPETO Windows and macOS release — cross-platform support and runtime issue resolution',
+      },
+      {
+        ko: 'Slime Party 실시간 멀티플레이 콘텐츠 개발·유지보수 및 MyHome 신규 기능 개발·운영',
+        en: 'Built and maintained real-time multiplayer content for Slime Party and new features for MyHome',
+      },
+      {
+        ko: 'ZEPETO Studio·SDK 모듈 개발 및 LLM 기반 AI NPC·월드 생성 R&D',
+        en: 'ZEPETO Studio and SDK module development, plus LLM-based AI NPC and world generation R&D',
+      },
+    ],
     stack: ['Unity3D', 'C#', 'Multiplayer', 'LLM', 'WebGL', 'iOS/Android Native', 'Windows/macOS'],
     image: '/projects/zepeto.webp',
     sections: [
@@ -221,10 +283,6 @@ export const projects: Project[] = [
           {
             ko: "ZEPETO 'MyHome' 월드 — 유저 커스터마이징·소셜 기능 중심의 신규 기능 개발 및 운영",
             en: "ZEPETO 'MyHome' world — new features and live operation centred on user customisation and social play",
-          },
-          {
-            ko: 'ZEPETO PC(Windows/Mac) 출시 — 크로스 플랫폼 지원 및 런타임 이슈 대응',
-            en: 'ZEPETO for PC (Windows/Mac) — cross-platform support and runtime issue resolution',
           },
         ],
       },
@@ -264,6 +322,16 @@ export const projects: Project[] = [
       ko: '리드 게임 프로그래머로서 Fidelion IP 기반 신규 프로젝트의 Unity 클라이언트와 Nest.js 서버 개발을 주도.',
       en: 'Led the Unity client and Nest.js server for a new title on the Fidelion IP, as Lead Game Programmer.',
     },
+    resumeHighlights: [
+      {
+        ko: 'Fidelion IP 기반 신규 프로젝트의 리드 게임 프로그래머로 개발 주도',
+        en: 'Led development of a new title on the Fidelion IP as Lead Game Programmer',
+      },
+      {
+        ko: 'Unity 클라이언트와 Nest.js 서버 설계·구현. 회사가 사업을 정리하면서 프로젝트 중단',
+        en: 'Designed and implemented the Unity client and Nest.js server; the project ended when the company wound down',
+      },
+    ],
     stack: ['Unity3D', 'C#', 'Nest.js', 'TypeScript'],
     image: '/projects/fidelion.webp',
     sections: [
@@ -283,7 +351,7 @@ export const projects: Project[] = [
             en: 'Fidelion: a post-apocalyptic IP project directed by Hokyo Lim, formerly art director at Riot Games',
           },
           {
-            ko: '프로젝트는 회사 사정으로 중단되며 마무리',
+            ko: '회사가 사업을 정리하면서 프로젝트 중단',
             en: 'The project was discontinued when the company wound down',
           },
         ],
@@ -293,13 +361,62 @@ export const projects: Project[] = [
 
   {
     slug: 'kinggodcastle',
+    featured: true,
     company: { ko: '어썸피스', en: 'Awesomepiece' },
     title: { ko: '킹갓캐슬', en: 'King God Castle' },
-    period: { ko: '2018.01 — 2022.04', en: 'Jan 2018 — Apr 2022' },
+    period: {
+      ko: '2018.01 — 2022.04 · 회사 재직기간',
+      en: 'Jan 2018 — Apr 2022 · employment at Awesomepiece',
+    },
+    periodNote: {
+      ko: '좀비고 팀 근무 후 킹갓캐슬 팀으로 이동',
+      en: 'Moved to the King God Castle team after working on Zombie High',
+    },
     summary: {
       ko: '메인 프로그래머로 신규 개발부터 출시, 글로벌 라이브 서비스까지 담당한 모바일 전략 RPG.',
       en: 'A mobile strategy RPG I took from first build through launch into global live service, as main programmer.',
     },
+    overview: {
+      role: { ko: '메인 프로그래머 · 클라이언트·서버', en: 'Main Programmer · Client & Server' },
+      focus: {
+        ko: '첫 빌드부터 출시 이후 글로벌 라이브 서비스까지 게임 개발과 운영.',
+        en: 'Game development and operations from the first build through launch and global live service.',
+      },
+      contribution: {
+        ko: 'Unity 클라이언트와 Java Spring Boot 서버, 핵심 게임 시스템, 리소스 패치 및 빌드·배포 자동화 구현.',
+        en: 'Unity client, Java Spring Boot server, core game systems, resource patching and build/deployment automation.',
+      },
+    },
+    caseStudies: [
+      {
+        id: 'release-tooling',
+        title: { ko: '게임 개발과 함께 만든 패치·배포 도구', en: 'Patching and deployment alongside game development' },
+        context: {
+          ko: '메인 프로그래머로 클라이언트·서버 개발부터 출시 이후 라이브 서비스까지 맡으며, 리소스 패치와 빌드·배포 환경도 함께 구축했습니다.',
+          en: 'As main programmer from client and server development through live service, I also built the resource patching and build/deployment tools.',
+        },
+        approach: [
+          {
+            ko: 'GCP 기반 에셋 번들 리소스 패치 시스템을 구현했습니다.',
+            en: 'Implemented an asset bundle resource patching system on GCP.',
+          },
+          {
+            ko: 'Jenkins·Slack·Python을 연결한 자동 빌드·배포 봇을 제작했습니다.',
+            en: 'Built an automated build and deployment bot connecting Jenkins, Slack and Python.',
+          },
+        ],
+      },
+    ],
+    resumeHighlights: [
+      {
+        ko: '메인 프로그래머로 Unity 클라이언트·Java Spring Boot 서버 개발부터 출시, 글로벌 라이브 서비스까지 담당',
+        en: 'Main programmer from Unity client and Java Spring Boot server development through launch and global live service',
+      },
+      {
+        ko: 'GCP 에셋 번들 패치 시스템과 Jenkins·Slack·Python 기반 빌드·배포 자동화 구축',
+        en: 'Built GCP asset bundle patching and automated builds and deployment with Jenkins, Slack and Python',
+      },
+    ],
     stack: ['Unity3D', 'C#', 'Java (Spring Boot)', 'GCP', 'Jenkins', 'Python'],
     image: '/projects/kinggodcastle.webp',
     sections: [
@@ -318,11 +435,6 @@ export const projects: Project[] = [
             ko: '캐릭터·스킬·몬스터 전투 시스템, 상점, 길드, 우편 등 핵심 게임 시스템 전반 구현',
             en: 'Implemented core systems throughout — character/skill/monster combat, shop, guild, mail',
           },
-          { ko: 'GCP 기반 에셋 번들 리소스 패치 시스템 구축', en: 'Built an asset bundle patching system on GCP' },
-          {
-            ko: 'Jenkins + Slack + Python을 활용한 자동 빌드·배포 봇 제작',
-            en: 'Built an automated build/deploy bot with Jenkins, Slack and Python',
-          },
           {
             ko: 'GCP 미국 리전 이전으로 글로벌 서비스 안정화 및 성능 개선',
             en: 'Moved to a GCP US region, stabilising and speeding up global service',
@@ -334,13 +446,176 @@ export const projects: Project[] = [
 
   {
     slug: 'zombiehigh',
+    featured: true,
     company: { ko: '어썸피스', en: 'Awesomepiece' },
     title: { ko: '좀비고등학교', en: 'Zombie High' },
-    period: { ko: '2018.01 — 2022.04', en: 'Jan 2018 — Apr 2022' },
+    period: {
+      ko: '2018.01 — 2022.04 · 회사 재직기간',
+      en: 'Jan 2018 — Apr 2022 · employment at Awesomepiece',
+    },
+    periodNote: {
+      ko: '좀비고 팀에서 근무한 뒤 킹갓캐슬 팀으로 이동',
+      en: 'Worked on the Zombie High team before moving to King God Castle',
+    },
     summary: {
       ko: '리드 프로그래머로 라이브 서비스를 운영하며 기념 초대형 업데이트와 동시 100명 멀티플레이를 구현.',
       en: 'Lead Programmer running live service — flagship anniversary updates and 100-player concurrent multiplayer.',
     },
+    overview: {
+      role: { ko: '리드 프로그래머 · 클라이언트·서버', en: 'Lead Programmer · Client & Server' },
+      focus: {
+        ko: '라이브 서비스의 성능·동시성 문제 대응과 신규 멀티플레이 콘텐츠 개발.',
+        en: 'Performance and concurrency issues in live service, alongside new multiplayer content.',
+      },
+      contribution: {
+        ko: '100인 동기화 구조, 통합 계정 설계·구현, Java 서버 프로파일링·데드락 해결 및 인프라 이전.',
+        en: '100-player synchronisation, unified account design and implementation, Java profiling, deadlock resolution and infrastructure migration.',
+      },
+    },
+    caseStudies: [
+      {
+        id: 'java-gc',
+        title: { ko: 'GC 정지 시간 개선을 위한 라이브 프로파일링', en: 'Profiling live servers to reduce GC pauses' },
+        context: {
+          ko: 'Java 서버의 GC로 인한 멈춤 시간을 줄이기 위해 ZGC 전환을 진행했습니다. 상황이 다양하고 서비스가 계속 운영 중이어서, 분석 과정이 라이브 서버에 주는 영향을 최소화하는 것이 중요한 제약이었습니다.',
+          en: 'Worked on a move to ZGC to reduce Java server GC pauses. With varied conditions in an active live service, minimising the impact of analysis on production was an important constraint.',
+        },
+        approach: [
+          {
+            ko: '다양한 라이브 상황에서 반복적으로 프로파일링하며 Java 서버의 동작과 성능을 분석했습니다.',
+            en: 'Repeatedly profiled Java server behaviour and performance across varied live conditions.',
+          },
+          {
+            ko: '서비스에 미치는 영향을 고려하며 분석을 진행하고, GC pause를 줄이기 위한 ZGC 전환 작업을 맡았습니다.',
+            en: 'Accounted for the impact on live service during analysis and worked on the ZGC transition to reduce GC pauses.',
+          },
+        ],
+      },
+      {
+        id: 'live-deadlocks',
+        title: { ko: '덤프 분석으로 대응한 멀티스레드 데드락', en: 'Investigating multithreaded deadlocks with dumps' },
+        context: {
+          ko: '멀티스레드 Java 서버를 운영하며 여러 상황에서 발생하는 데드락에 대응했습니다.',
+          en: 'Handled deadlocks arising in varied situations while operating a multithreaded Java server.',
+        },
+        approach: [
+          {
+            ko: 'Jmap·Jstack 등 JVM 진단 도구로 문제 상황의 정보를 수집하고, 스레드 덤프를 분석했습니다.',
+            en: 'Gathered diagnostic information with JVM tools including Jmap and Jstack, and analysed thread dumps.',
+          },
+          {
+            ko: '덤프 분석으로 확인한 원인을 수정하며, 서로 다른 운영 상황에서 발생하는 데드락을 해결했습니다.',
+            en: 'Fixed causes identified through dump analysis and resolved deadlocks encountered in different live conditions.',
+          },
+        ],
+      },
+      {
+        id: 'unified-accounts',
+        title: { ko: '분리된 로그인 계정을 하나의 대표 계정으로', en: 'Bringing separate logins under one primary account' },
+        context: {
+          ko: '이메일·Google·Facebook 로그인이 각각 별도 계정이었고, 계정 하나에 캐릭터 하나가 연결된 구조였습니다.',
+          en: 'Email, Google and Facebook logins were separate accounts, each associated with one character.',
+        },
+        approach: [
+          {
+            ko: '기존 계정을 대표 계정 아래 연결하고, 여러 캐릭터를 만들어 선택해 접속하는 통합 계정 시스템을 설계·개발했습니다.',
+            en: 'Designed and built unified accounts that link existing accounts under a primary account and let users create and select multiple characters.',
+          },
+          {
+            ko: '본인인증 요구가 강화되던 시기에 NCP 기반 휴대폰 본인인증을 대표 계정 생성의 필수 절차로 적용하고, 계정 복구를 지원했습니다.',
+            en: 'As identity verification requirements grew, required NCP-based phone verification when creating a primary account and added account recovery support.',
+          },
+        ],
+        outcome: {
+          ko: '로그인 방식마다 나뉜 계정을 대표 계정 아래 묶고, 다중 캐릭터 선택과 계정 복구를 지원하는 구조로 전환했습니다.',
+          en: 'Replaced accounts separated by login method with a primary-account model supporting multiple characters and account recovery.',
+        },
+        diagram: {
+          caption: {
+            ko: '계정 모델 변경 전후 — 로그인 계정과 캐릭터 관계의 개념도',
+            en: 'Before and after: a conceptual view of the account and character relationship',
+          },
+          panels: [
+            {
+              title: { ko: '이전', en: 'Before' },
+              items: [
+                { ko: '이메일 계정 → 캐릭터 1개', en: 'Email account → one character' },
+                { ko: 'Google 계정 → 캐릭터 1개', en: 'Google account → one character' },
+                { ko: 'Facebook 계정 → 캐릭터 1개', en: 'Facebook account → one character' },
+              ],
+            },
+            {
+              title: { ko: '통합 후', en: 'After' },
+              items: [
+                { ko: '휴대폰 본인인증을 거친 대표 계정', en: 'Primary account with phone identity verification' },
+                { ko: '기존 이메일·Google·Facebook 계정 연결', en: 'Linked existing email, Google and Facebook accounts' },
+                { ko: '복수 캐릭터 생성·선택 및 계정 복구', en: 'Multiple character creation/selection and account recovery' },
+              ],
+            },
+          ],
+        },
+      },
+      {
+        id: 'cloud-migration',
+        title: { ko: '운영 조건에 맞춘 IDC → NCP → GCP 이전', en: 'Moving from IDC to NCP to GCP as operating needs changed' },
+        context: {
+          ko: 'IDC 서버를 클라우드로 옮기면서 비용을 고려해 NCP를 선택했습니다. 이후 NCP 운영 중 겪은 문제들로 대안을 검토했고, GCP 한국 리전 개설을 계기로 이전했습니다.',
+          en: 'Chose NCP for its cost when moving the servers from an IDC to the cloud. Operational issues on NCP prompted consideration of alternatives, and the opening of a GCP region in Korea provided an opportunity to move.',
+        },
+        approach: [
+          {
+            ko: 'IDC에서 NCP로 서버 환경을 이전했습니다.',
+            en: 'Migrated the server environment from the IDC to NCP.',
+          },
+          {
+            ko: '이후 GCP 한국 리전으로 이전하고, 변경된 서버 환경의 운영과 안정화에 대응했습니다.',
+            en: 'Subsequently migrated to GCP’s Korea region and handled operations and stabilisation in the new environment.',
+          },
+        ],
+        diagram: {
+          caption: {
+            ko: '서버 운영 환경의 이동과 선택 배경',
+            en: 'Server environment migrations and the reasons for each move',
+          },
+          panels: [
+            {
+              title: { ko: 'IDC', en: 'IDC' },
+              items: [{ ko: '기존 서버 운영 환경', en: 'Original server environment' }],
+            },
+            {
+              title: { ko: 'NCP', en: 'NCP' },
+              items: [{ ko: '클라우드 이전 시 비용을 고려해 선택', en: 'Selected for cost when moving to the cloud' }],
+            },
+            {
+              title: { ko: 'GCP', en: 'GCP' },
+              items: [{ ko: 'NCP 운영 문제와 한국 리전 개설을 계기로 이전', en: 'Moved following NCP operational issues and the Korea region opening' }],
+            },
+          ],
+        },
+      },
+    ],
+    resumeHighlights: [
+      {
+        ko: '동시 100명 서바이벌 서커스 구현 — Unity·Java Netty 기반 동기화 구조 설계 및 네트워크 부하 최적화',
+        en: 'Implemented 100-player Survival Circus with Unity and Java Netty — sync architecture and network load optimisation',
+      },
+      {
+        ko: '이메일·구글·페이스북 계정을 대표 계정 하나로 묶는 통합 계정 시스템 설계·개발 — 다중 캐릭터 및 계정 복구 지원',
+        en: 'Designed and built unified accounts merging email, Google and Facebook logins, with multiple characters and account recovery',
+      },
+      {
+        ko: 'Java 서버 GC pause 감소를 위한 라이브 프로파일링과 ZGC 전환',
+        en: 'Profiled live Java servers and transitioned to ZGC to reduce GC pauses',
+      },
+      {
+        ko: '멀티스레드 서버 덤프 분석을 통한 데드락 원인 파악·수정',
+        en: 'Identified and fixed multithreaded server deadlocks through dump analysis',
+      },
+      {
+        ko: '비용·운영 조건을 고려한 IDC → NCP → GCP 서버 환경 이전 및 안정화',
+        en: 'Migrated and stabilised servers from IDC to NCP to GCP, considering cost and operating conditions',
+      },
+    ],
     stack: [
       'Unity3D',
       'C#',
@@ -399,10 +674,6 @@ export const projects: Project[] = [
             en: 'Implemented 100-player concurrent multiplayer, including the Survival Circus mode — network load optimisation and sync architecture',
           },
           {
-            ko: '통합 계정 시스템 설계 및 개발 — 이메일·구글·페이스북 계정이 저마다 1계정 1캐릭터로 갈라져 있던 구조를, 대표 계정 하나에 기존 계정을 묶고 캐릭터를 여러 개 만들어 골라 접속하는 구조로 전환. 대표 계정은 휴대폰 본인인증 필수, 계정 복구 지원',
-            en: 'Designed and built the unified account system — email, Google and Facebook logins had each been a separate account with one character; they now merge into a single primary account that holds several characters to pick between, with phone-based identity verification required to create it and account recovery on top',
-          },
-          {
             ko: 'Java·Lua 스크립트를 활용한 몬스터 AI, 퀘스트 및 게임 플레이 시스템 제작',
             en: 'Built monster AI, quests and gameplay systems in Java and Lua',
           },
@@ -421,10 +692,6 @@ export const projects: Project[] = [
             en: 'Android performance profiling (Simpleperf, FlameGraph) and optimisation',
           },
           {
-            ko: 'Java 서버 성능 개선 — GC 교체(ZGC), Jmap/Jstack을 활용한 데드락 해결',
-            en: 'Java server performance — moved to ZGC, resolved deadlocks with Jmap/Jstack',
-          },
-          {
             ko: 'MySQL 프로시저 작성 및 긴급 데이터 핸들링',
             en: 'Wrote MySQL procedures and handled emergency data operations',
           },
@@ -433,10 +700,6 @@ export const projects: Project[] = [
       {
         heading: { ko: '인프라 & 운영 시스템', en: 'Infrastructure & Ops Tooling' },
         items: [
-          {
-            ko: 'NCP 기반 휴대폰 본인인증 시스템 제작 — 본인인증 요구가 급격히 강해지던 시기에 통합 계정의 대표 계정 생성 필수 절차로 적용',
-            en: 'Built phone-based identity verification on NCP — made a required step for creating a primary account, at a point when verification requirements were tightening sharply',
-          },
           {
             ko: 'Jenkins + Slack 연동 자동 빌드·배포 파이프라인 구축',
             en: 'Set up an automated build/deploy pipeline with Jenkins and Slack',
@@ -450,7 +713,6 @@ export const projects: Project[] = [
           { ko: 'Redis 자동 백업·복구 Python 스크립트 작성', en: 'Wrote Python scripts for automated Redis backup and restore' },
           { ko: 'Go 기반 악성 환불 유저 제재 시스템 개발', en: 'Built a refund-abuse sanction system in Go' },
           { ko: 'JWT 인증 기반 CS 페이지 개발', en: 'Built a JWT-authenticated customer support page' },
-          { ko: 'IDC → NCP → GCP 서버 환경 이전 및 안정화', en: 'Migrated and stabilised infrastructure: IDC → NCP → GCP' },
         ],
       },
     ],
@@ -465,6 +727,16 @@ export const projects: Project[] = [
       ko: '신규 모바일 게임의 UI·전투·AI 구현과 Flask 기반 서버 연동, 빌드 자동화.',
       en: 'UI, combat and AI for a new mobile title, with a Flask backend and automated builds.',
     },
+    resumeHighlights: [
+      {
+        ko: 'Unity 클라이언트 UI·전투·AI 구현 및 Python Flask 서버 기반 게임 콘텐츠 개발·연동',
+        en: 'Implemented Unity UI, combat and AI, with game content development and integration on a Python Flask server',
+      },
+      {
+        ko: 'Flask 운영툴과 Docker·Jenkins 기반 자동 빌드·테스트 시스템 구축',
+        en: 'Built Flask ops tools and automated builds and tests with Docker and Jenkins',
+      },
+    ],
     stack: ['Unity3D', 'C#', 'Python (Flask)', 'Docker', 'Jenkins'],
     image: '/projects/pocketcrew.webp',
     sections: [
@@ -504,6 +776,16 @@ export const projects: Project[] = [
       ko: '신작 모바일 게임의 UI·전투·AI 등 핵심 콘텐츠와 쉐이더를 구현. 공개 이후 회사 사정으로 중단.',
       en: 'Core content — UI, combat, AI — and shaders for a new mobile title, shelved after its public reveal.',
     },
+    resumeHighlights: [
+      {
+        ko: 'Unity 클라이언트·C# 웹 서버로 UI·전투·AI 구현 및 아트팀과 협업한 쉐이더 개발',
+        en: 'Implemented UI, combat and AI on a Unity client and C# web server, and developed shaders with the art team',
+      },
+      {
+        ko: 'MongoDB·Redis 데이터 저장·캐싱 구조 설계 및 Jenkins 자동 빌드 파이프라인 구축',
+        en: 'Designed MongoDB and Redis storage and caching, and built a Jenkins automated build pipeline',
+      },
+    ],
     stack: ['Unity3D', 'C#', 'HLSL', 'MongoDB', 'Redis', 'Jenkins'],
     image: '/projects/vanilla-tactics.webp',
     sections: [
@@ -544,6 +826,16 @@ export const projects: Project[] = [
       ko: 'Cocos2d-X 기반 라이브 서비스 운영. 시즌 테마와 이벤트·UI 콘텐츠를 제작·유지보수.',
       en: 'Live service on a Cocos2d-X client — seasonal themes and event/UI content, built and maintained.',
     },
+    resumeHighlights: [
+      {
+        ko: 'Cocos2d-X 기반 모바일 게임 라이브 서비스 운영',
+        en: 'Ran live service for the Cocos2d-X mobile game',
+      },
+      {
+        ko: 'Lua 스크립트로 시즌 테마·이벤트·UI 콘텐츠 제작 및 유지보수',
+        en: 'Built and maintained seasonal themes, events and UI content with Lua scripting',
+      },
+    ],
     stack: ['Cocos2d-X', 'Lua'],
     image: '/projects/ilovecoffee.webp',
     gallery: [
@@ -578,6 +870,16 @@ export const projects: Project[] = [
       ko: '첫 커리어. PC 온라인 게임의 UI·전투 시스템과 Windows 패치 런처를 개발.',
       en: 'Where it started. UI and combat systems for a PC online game, plus the Windows patch launcher.',
     },
+    resumeHighlights: [
+      {
+        ko: 'Unity 기반 PC 온라인 게임 UI·전투 시스템 구현 및 아트팀과 협업한 쉐이더 개발',
+        en: 'Implemented UI and combat for a Unity PC online game and developed shaders with the art team',
+      },
+      {
+        ko: 'C# 기반 Windows 패치 런처 개발',
+        en: 'Built the Windows patch launcher in C#',
+      },
+    ],
     stack: ['Unity3D', 'C#', 'HLSL', 'WinForms'],
     image: '/projects/worldheroes.webp',
     sections: [
@@ -826,7 +1128,7 @@ export const archive: ArchiveItem[] = [
     name: { ko: 'DEncode', en: 'DEncode' },
     year: '2011',
     detail: {
-      ko: '문자열 Base64 암·복호화와 각종 수치 변환을 해주는 iOS 앱',
+      ko: '문자열 Base64 인코딩·디코딩과 각종 수치 변환을 해주는 iOS 앱',
       en: 'An iOS utility for Base64 encoding/decoding and numeric conversion',
     },
     stack: ['iOS', 'Objective-C'],
@@ -850,6 +1152,18 @@ export const archive: ArchiveItem[] = [
 /* ------------------------------------------------------------------ */
 
 export const ui = {
+  projectLabels: {
+    selectedWork: { ko: 'Selected Work', en: 'Selected Work' },
+    otherWork: { ko: 'More Work', en: 'More Work' },
+    role: { ko: '역할', en: 'Role' },
+    focus: { ko: '핵심 과제', en: 'Focus' },
+    contribution: { ko: '담당 범위', en: 'Contribution' },
+    caseStudies: { ko: 'Engineering Notes', en: 'Engineering Notes' },
+    context: { ko: '문제와 배경', en: 'Context' },
+    approach: { ko: '판단과 구현', en: 'Approach' },
+    outcome: { ko: '확인된 결과', en: 'Outcome' },
+    moreWork: { ko: '다른 프로젝트 보기', en: 'Explore more work' },
+  },
   nav: {
     work: { ko: '프로젝트', en: 'Work' },
     resume: { ko: '이력서', en: 'Resume' },

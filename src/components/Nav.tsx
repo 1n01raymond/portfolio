@@ -14,7 +14,7 @@ export default function Nav({ lang }: { lang: Lang }) {
         >
           SHC
         </Link>
-        <div className="flex items-center gap-5 sm:gap-7">
+        <div className="flex items-center gap-3 sm:gap-7">
           <Link
             href={`${langHome(lang)}#work`}
             className="mono-label text-muted transition-colors hover:text-ink"
@@ -29,7 +29,7 @@ export default function Nav({ lang }: { lang: Lang }) {
           </Link>
           <Link
             href={`${langHome(lang)}#contact`}
-            className="mono-label hidden text-muted transition-colors hover:text-ink sm:inline"
+            className="mono-label text-muted transition-colors hover:text-ink"
           >
             {t(lang, ui.nav.contact)}
           </Link>
