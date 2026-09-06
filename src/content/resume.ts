@@ -782,6 +782,10 @@ export const projects: Project[] = [
         en: 'Implemented UI, combat and AI on a Unity client and C# web server, and developed shaders with the art team',
       },
       {
+        ko: 'Unity 클라이언트와 C# 웹 서버에서 데이터 모델·게임 로직을 공유하고, 공통 로직으로 클라이언트의 게임 진행 결과를 서버에서 검증',
+        en: 'Shared data models and game logic between the Unity client and C# web server, using the shared logic to validate client gameplay results on the server',
+      },
+      {
         ko: 'MongoDB·Redis 데이터 저장·캐싱 구조 설계 및 Jenkins 자동 빌드 파이프라인 구축',
         en: 'Designed MongoDB and Redis storage and caching, and built a Jenkins automated build pipeline',
       },
@@ -796,6 +800,10 @@ export const projects: Project[] = [
           {
             ko: 'Unity3D 클라이언트 및 C# 기반 웹 서버로 UI·전투·AI 등 핵심 콘텐츠 구현',
             en: 'Implemented core content — UI, combat, AI — on a Unity3D client with a C# web server',
+          },
+          {
+            ko: '클라이언트와 서버가 데이터 모델·게임 로직을 공유하도록 구성하고, 공통 로직을 활용해 클라이언트의 게임 진행 결과를 서버에서 검증',
+            en: 'Shared data models and game logic across client and server, and used the common logic for server-side validation of client gameplay results',
           },
           { ko: '아트팀과 협업하여 Unity 쉐이더 코드 작성', en: 'Wrote Unity shader code in collaboration with the art team' },
           {
@@ -934,15 +942,15 @@ export const skills: SkillGroup[] = [
       {
         label: 'Realtime Server',
         detail: {
-          ko: 'Java Netty 소켓 서버 — 동시 100명 멀티플레이, 매칭·랭킹, 채팅(ActiveMQ)',
-          en: 'Java Netty socket servers — 100-player multiplayer, matchmaking/ranking, chat (ActiveMQ)',
+          ko: 'Java Netty 소켓 서버 — 동시 100명 멀티플레이, 매칭·랭킹, 채팅(ActiveMQ) / Java 서버 통신에 Protocol Buffers 활용',
+          en: 'Java Netty socket servers — 100-player multiplayer, matchmaking/ranking, chat (ActiveMQ) / Protocol Buffers for Java server communication',
         },
       },
       {
         label: 'Backend & Data',
         detail: {
-          ko: 'Spring Boot, Nest.js, Django·Flask, Node.js, Go / MySQL, Redis, MongoDB',
-          en: 'Spring Boot, Nest.js, Django/Flask, Node.js, Go / MySQL, Redis, MongoDB',
+          ko: 'C# 웹 서버, Spring Boot, Nest.js, Django·Flask, Node.js, Go / MySQL, Redis, MongoDB',
+          en: 'C# web servers, Spring Boot, Nest.js, Django/Flask, Node.js, Go / MySQL, Redis, MongoDB',
         },
       },
       {
