@@ -44,7 +44,7 @@ export default function ResumePage({ lang }: { lang: Lang }) {
               href={contact.github}
               target="_blank"
               rel="noreferrer"
-              className="print-href hover:text-accent"
+              className="hover:text-accent"
             >
               github.com/1n01raymond
             </a>
@@ -52,7 +52,7 @@ export default function ResumePage({ lang }: { lang: Lang }) {
               href={contact.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="print-href hover:text-accent"
+              className="hover:text-accent"
             >
               linkedin.com/in/1n01raymond
             </a>
@@ -114,14 +114,16 @@ export default function ResumePage({ lang }: { lang: Lang }) {
                   </span>
                   <span className="font-normal text-muted">{t(lang, p.company)}</span>
                 </h3>
-                <span className="mono-label text-[0.75rem] text-muted">{t(lang, p.period)}</span>
+                {p.period && <span className="mono-label text-[0.75rem] text-muted">{t(lang, p.period)}</span>}
               </div>
               {p.periodNote && (
                 <p className="mono-label mt-1 text-muted">{t(lang, p.periodNote)}</p>
               )}
-              <p className="print-hidden mt-1.5 max-w-[68ch] text-sm leading-relaxed text-muted">
-                {t(lang, p.summary)}
-              </p>
+              {p.resumeContext && (
+                <p className="mt-1.5 max-w-[68ch] text-sm leading-relaxed text-muted">
+                  {t(lang, p.resumeContext)}
+                </p>
+              )}
               <ul className="resume-highlights mt-3 space-y-1.5">
                 {p.resumeHighlights.map((item, i) => (
                   <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-ink/85">

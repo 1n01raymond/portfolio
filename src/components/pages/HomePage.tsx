@@ -19,7 +19,7 @@ import RichText from '@/components/RichText'
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="section-title mb-8">{children}</h2>
+    <h2 className="section-title mb-6 flex items-center gap-4 after:h-px after:flex-1 after:bg-line/50">{children}</h2>
   )
 }
 
@@ -44,9 +44,9 @@ export default function HomePage({ lang }: { lang: Lang }) {
   ]
 
   return (
-    <div className="mx-auto w-full max-w-[1240px] px-6 sm:px-10 lg:flex lg:justify-between lg:gap-16 lg:px-14">
+    <div className="portfolio-home mx-auto w-full max-w-[1240px] px-6 sm:px-10 lg:grid lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-16 lg:px-14">
       {/* ------------------------------------------------ 좌측 고정 패널 */}
-      <header className="pt-28 pb-10 lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[42%] lg:flex-col lg:justify-between lg:py-28">
+      <header className="pt-24 pb-8 lg:sticky lg:top-0 lg:flex lg:h-screen lg:max-h-[800px] lg:flex-col lg:justify-between lg:py-24">
         <div>
           <h1 className="text-[clamp(2.25rem,4.4vw,3rem)] leading-[1.05] font-bold tracking-[-0.025em] text-ink">
             {t(lang, profile.name)}
@@ -54,7 +54,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
           <p className="mt-3 text-xl font-medium tracking-tight text-ink">
             {t(lang, profile.role)}
           </p>
-          <p className="mt-1.5 text-sm text-muted">
+          <p className="mt-2 inline-flex items-center gap-2 text-sm text-accent before:h-px before:w-5 before:bg-accent/70">
             {t(lang, profile.specialty)}
           </p>
 
@@ -106,13 +106,13 @@ export default function HomePage({ lang }: { lang: Lang }) {
       </header>
 
       {/* ------------------------------------------------ 우측 스크롤 영역 */}
-      <main className="pb-24 break-keep lg:w-[58%] lg:py-28">
+      <main className="min-w-0 pb-24 break-keep lg:py-24">
         {/* ---------------------------------------------- About */}
         <section id="about" className="scroll-mt-24">
           <SectionTitle>{t(lang, ui.sections.about)}</SectionTitle>
-          <div className="max-w-[62ch] space-y-4 leading-relaxed text-muted">
+          <div className="space-y-4 leading-relaxed text-muted">
             {profile.about.map((para, i) => (
-              <p key={i}>
+              <p key={i} className={i === 0 ? 'mb-5 text-lg leading-relaxed font-medium tracking-tight text-ink' : undefined}>
                 <RichText lang={lang} text={t(lang, para)} />
               </p>
             ))}
@@ -120,14 +120,14 @@ export default function HomePage({ lang }: { lang: Lang }) {
         </section>
 
         {/* ---------------------------------------------- Projects */}
-        <section id="work" className="mt-24 scroll-mt-24">
+        <section id="work" className="mt-14 scroll-mt-24">
           <SectionTitle>{t(lang, ui.projectLabels.selectedWork)}</SectionTitle>
-          <ul className="-mx-3">
+          <ul className="divide-y divide-line/50">
             {selectedProjects.map((p) => (
               <li key={p.slug}>
                 <Link
                   href={langPath(lang, `/work/${p.slug}/`)}
-                  className="group grid gap-x-6 gap-y-3 rounded-lg p-3 transition-colors hover:bg-surface/80 sm:grid-cols-[132px_1fr]"
+                  className="group -mx-3 grid gap-x-5 gap-y-4 rounded-lg px-3 py-6 transition-colors hover:bg-surface/70 focus-visible:bg-surface/70 sm:grid-cols-[144px_minmax(0,1fr)]"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden rounded border border-line">
                     {p.image && (
@@ -135,26 +135,24 @@ export default function HomePage({ lang }: { lang: Lang }) {
                         src={withBase(p.image)}
                         alt=""
                         fill
-                        sizes="(max-width: 639px) 100vw, 140px"
+                        sizes="(max-width: 639px) calc(100vw - 48px), 144px"
                         className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
                       />
                     )}
                   </div>
                   <div>
-                    <p className="font-medium text-ink transition-colors group-hover:text-accent">
+                    <p className="flex flex-wrap items-baseline gap-x-2 text-lg font-semibold text-ink transition-colors group-hover:text-accent">
                       {t(lang, p.title)}
-                      <span className="mx-2 text-line" aria-hidden>
-                        /
-                      </span>
-                      <span className="font-normal text-muted">{t(lang, p.company)}</span>
+                      <span className="text-sm font-normal text-muted">{t(lang, p.company)}</span>
+                      <span aria-hidden className="ml-auto text-base font-normal text-accent transition-transform group-hover:translate-x-1">↗</span>
                     </p>
-                    <p className="mono-label mt-1 text-[0.72rem] text-muted">
+                    {p.period && <p className="mono-label mt-1 text-muted">
                       {t(lang, p.period)}
-                    </p>
+                    </p>}
                     {p.periodNote && (
                       <p className="mono-label mt-1 text-muted">{t(lang, p.periodNote)}</p>
                     )}
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{t(lang, p.summary)}</p>
+                    <p className="mt-2 leading-relaxed text-muted">{t(lang, p.summary)}</p>
                     <div className="mt-3 flex flex-wrap gap-1.5">
                       {p.stack.slice(0, 5).map((s) => (
                         <Tag key={s}>{s}</Tag>
@@ -185,7 +183,7 @@ export default function HomePage({ lang }: { lang: Lang }) {
                     <span aria-hidden className="text-muted transition-transform group-hover:translate-x-1">→</span>
                   </div>
                   <p className="mono-label mt-1 text-muted">
-                    {t(lang, p.company)} · {t(lang, p.period)}
+                    {t(lang, p.company)}{p.period && <> · {t(lang, p.period)}</>}
                   </p>
                   <p className="mt-1.5 text-sm leading-relaxed text-muted">{t(lang, p.summary)}</p>
                 </Link>

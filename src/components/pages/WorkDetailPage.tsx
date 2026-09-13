@@ -26,7 +26,7 @@ export default function WorkDetailPage({ lang, slug }: { lang: Lang; slug: strin
       <header className="mt-6 mb-10">
         <div className="mono-label mb-3 flex flex-wrap items-baseline gap-x-4 gap-y-1 text-muted">
           <span>{t(lang, project.company)}</span>
-          <span>{t(lang, project.period)}</span>
+          {project.period && <span>{t(lang, project.period)}</span>}
         </div>
         <h1 className="text-[clamp(2rem,5vw,3.5rem)] leading-tight font-semibold tracking-tight text-ink">
           {t(lang, project.title)}

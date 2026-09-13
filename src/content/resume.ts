@@ -29,12 +29,12 @@ export const profile = {
 
   /** 이력서 상단 요약 한 문단. 랜딩의 About 은 아래 `about` 을 씁니다. */
   intro: {
-    ko: '2014년부터 게임의 클라이언트와 서버, 인프라를 만들어 왔습니다. 킹갓캐슬을 첫 빌드부터 글로벌 라이브까지 메인 프로그래머로 맡았고, 좀비고등학교에서 동시 100명 서바이벌 모드와 통합 계정 시스템을 만들었습니다. 지금은 네이버제트에서 ZEPETO의 실시간 멀티플레이 월드와 PC 크로스플랫폼 출시, LLM 기반 R&D를 맡고 있습니다.',
-    en: 'Building games since 2014 — client, server, infrastructure. Main programmer on King God Castle from the first build through global live service; on Zombie High I built the 100-player survival mode and the unified account system. Currently at NAVER Z on ZEPETO: real-time multiplayer worlds, the cross-platform PC release, and LLM-based R&D.',
+    ko: '2014년부터 Unity 기반 게임의 클라이언트·서버 개발과 라이브 운영을 담당해 왔습니다. 현재 네이버제트에서 ZEPETO Unity 클라이언트와 Studio·SDK를 개발하고 LLM 기반 R&D에 참여하고 있습니다. 어썸피스에서는 킹갓캐슬의 초기 개발부터 출시·운영을 메인 프로그래머로 담당했으며, 좀비고등학교의 콘텐츠 개발, 서버 최적화와 통합 계정 시스템을 맡았습니다.',
+    en: 'Software engineer working on Unity game clients, servers and live operations since 2014. At NAVER Z, I develop the ZEPETO Unity client, Studio and SDK, and contribute to LLM-based R&D. At Awesomepiece, I was the main programmer for King God Castle from initial development through launch and live operations, and worked on content, server optimisation and unified accounts for Zombie High.',
   } satisfies I18n,
 
   /**
-   * 랜딩 About — 관심사를 짧게 소개한 뒤 실제 업무와 경험으로 이어집니다.
+   * 랜딩 About — 전문 분야를 짧게 소개한 뒤 실제 업무와 경험으로 이어집니다.
    *
    * `[[이름]]` 은 본문색으로 올라오는 강조, `[[이름|/work/slug/]]` 는 강조 +
    * 프로젝트 상세 링크입니다 (RichText.tsx). 훑는 사람이 회사와 제품 이름만은
@@ -42,8 +42,8 @@ export const profile = {
    */
   about: [
     {
-      ko: '새로운 기술을 익히고, 낯선 문제를 해결하는 일을 좋아합니다.',
-      en: 'I enjoy learning new technologies and solving unfamiliar problems.',
+      ko: 'Unity 기반 게임과 실시간 서비스를 개발하는 소프트웨어 엔지니어입니다. 클라이언트·서버 개발부터 출시와 라이브 운영까지 맡아왔습니다.',
+      en: 'I build Unity games and real-time services, from client and server development through launch and live operations.',
     },
     {
       ko: '현재 [[네이버제트]]에서 [[ZEPETO|/work/naverz/]]의 Unity 클라이언트와 크리에이터용 Studio·SDK를 개발합니다.',
@@ -175,7 +175,8 @@ export type Project = {
   company: I18n
   /** 이 프로젝트를 소개할 대표 타이틀 */
   title: I18n
-  period: I18n
+  /** 정확한 프로젝트 참여기간을 아는 경우에만 표시. 회사 재직기간은 experience에 둡니다. */
+  period?: I18n
   /** 회사 재직기간과 프로젝트 참여 순서 등 기간 표기에 필요한 맥락 */
   periodNote?: I18n
   /** 카드에 걸리는 한 줄 요약 */
@@ -196,6 +197,8 @@ export type Project = {
   }[]
   /** 이력서와 PDF에 공통으로 표시할 대표 성과. 상세 본문 순서와 별도로 선정 */
   resumeHighlights: I18n[]
+  /** 업무 목록과 별개로 필요한 서비스 맥락. 화면과 인쇄에 동일하게 표시 */
+  resumeContext?: I18n
   /** 모노 태그로 렌더 */
   stack: string[]
   /** 상세 페이지 본문. 그룹 제목 + 불릿 */
@@ -328,8 +331,8 @@ export const projects: Project[] = [
         en: 'Led development of a new title on the Fidelion IP as Lead Game Programmer',
       },
       {
-        ko: 'Unity 클라이언트와 Nest.js 서버 설계·구현. 회사가 사업을 정리하면서 프로젝트 중단',
-        en: 'Designed and implemented the Unity client and Nest.js server; the project ended when the company wound down',
+        ko: 'Unity 클라이언트와 Nest.js 서버 설계·구현 (사업 종료로 프로젝트 중단)',
+        en: 'Designed and implemented the Unity client and Nest.js server (project discontinued when the business closed)',
       },
     ],
     stack: ['Unity3D', 'C#', 'Nest.js', 'TypeScript'],
@@ -364,10 +367,6 @@ export const projects: Project[] = [
     featured: true,
     company: { ko: '어썸피스', en: 'Awesomepiece' },
     title: { ko: '킹갓캐슬', en: 'King God Castle' },
-    period: {
-      ko: '2018.01 — 2022.04 · 회사 재직기간',
-      en: 'Jan 2018 — Apr 2022 · employment at Awesomepiece',
-    },
     periodNote: {
       ko: '좀비고 팀 근무 후 킹갓캐슬 팀으로 이동',
       en: 'Moved to the King God Castle team after working on Zombie High',
@@ -449,17 +448,17 @@ export const projects: Project[] = [
     featured: true,
     company: { ko: '어썸피스', en: 'Awesomepiece' },
     title: { ko: '좀비고등학교', en: 'Zombie High' },
-    period: {
-      ko: '2018.01 — 2022.04 · 회사 재직기간',
-      en: 'Jan 2018 — Apr 2022 · employment at Awesomepiece',
+    resumeContext: {
+      ko: '최대 동시접속자 13만 명을 기록한 모바일 게임',
+      en: 'Mobile game with a peak of 130,000 concurrent players',
     },
     periodNote: {
       ko: '좀비고 팀에서 근무한 뒤 킹갓캐슬 팀으로 이동',
       en: 'Worked on the Zombie High team before moving to King God Castle',
     },
     summary: {
-      ko: '리드 프로그래머로 라이브 서비스를 운영하며 기념 초대형 업데이트와 동시 100명 멀티플레이를 구현.',
-      en: 'Lead Programmer running live service — flagship anniversary updates and 100-player concurrent multiplayer.',
+      ko: '최대 동시접속자 13만 명을 기록한 게임의 라이브 서비스. 리드 프로그래머로 콘텐츠 개발, 서버 최적화와 통합 계정 시스템을 담당.',
+      en: 'Live service for a game that reached 130,000 peak concurrent players. As Lead Programmer, I worked on content, server optimisation and unified accounts.',
     },
     overview: {
       role: { ko: '리드 프로그래머 · 클라이언트·서버', en: 'Lead Programmer · Client & Server' },
@@ -875,8 +874,8 @@ export const projects: Project[] = [
     title: { ko: '월드 히어로즈 온라인', en: 'World Heroes Online' },
     period: { ko: '2014.06 — 2015.12', en: 'Jun 2014 — Dec 2015' },
     summary: {
-      ko: '첫 커리어. PC 온라인 게임의 UI·전투 시스템과 Windows 패치 런처를 개발.',
-      en: 'Where it started. UI and combat systems for a PC online game, plus the Windows patch launcher.',
+      ko: 'PC 온라인 게임의 UI·전투 시스템과 Windows 패치 런처 개발.',
+      en: 'UI and combat systems for a PC online game, plus a Windows patch launcher.',
     },
     resumeHighlights: [
       {
@@ -975,7 +974,7 @@ export const skills: SkillGroup[] = [
       {
         label: 'Operations',
         detail: {
-          ko: '운영툴, 장애 대응, 긴급 데이터 핸들링, 로그 분석(Log4j, Elasticsearch)',
+        ko: '운영 도구 개발, 장애 대응, 긴급 데이터 처리, 로그 분석(Log4j, Elasticsearch)',
           en: 'Internal ops tools, incident response, emergency data handling, log analysis (Log4j, Elasticsearch)',
         },
       },
@@ -1044,11 +1043,11 @@ export const misc = [
   },
   {
     label: { ko: '정보처리산업기사', en: 'Industrial Engineer Information Processing' },
-    detail: { ko: '2017.05.26 · 17201012112B', en: '26 May 2017 · 17201012112B' },
+    detail: { ko: '2017.05.26', en: '26 May 2017' },
   },
   {
     label: { ko: '프로그래밍기능사', en: 'Craftsman Programming' },
-    detail: { ko: '2013.07.04 · 13849700094B', en: '4 Jul 2013 · 13849700094B' },
+    detail: { ko: '2013.07.04', en: '4 Jul 2013' },
   },
 ]
 

@@ -12,8 +12,8 @@
   --surface-2: #34465a;
   --border: #4a5b6e;
   --text: #f1f5f9;
-  --text-muted: #b7c4d3;
-  --text-dim: #9caebf;
+  --text-muted: #c5d0dc;
+  --text-dim: #afbfce;
   --accent: #83dccb;
   --accent-dim: #69c9b8;
   --accent-soft: rgba(105, 201, 184, 0.13);
@@ -90,6 +90,15 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text);
+}
+
+/* 홈의 보조 정보는 읽기 쉬운 크기로 통일하고 인쇄용 이력서 밀도는 유지합니다. */
+.portfolio-home .mono-label {
+  font-size: 0.8125rem;
+}
+
+.portfolio-home main > section:not(:first-child):not(#work) {
+  margin-top: 4.5rem;
 }
 
 /* 스택 태그 — teal 10% 알약 */
@@ -204,6 +213,7 @@ body {
 
   main h2 {
     margin-bottom: 0.6rem !important;
+    break-after: avoid;
   }
 
   /* 스킬 그룹 제목만 (프로젝트 제목 h3에는 여백을 주지 않는다) */
@@ -240,14 +250,6 @@ body {
   a {
     color: inherit;
     text-decoration: none;
-  }
-
-  /* 외부 링크는 URL을 각주처럼 노출 */
-  .print-href[href^='http']::after {
-    content: ' (' attr(href) ')';
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: #475569;
   }
 
   .avoid-break {
