@@ -63,7 +63,7 @@ export default function ResumePage({ lang }: { lang: Lang }) {
 
       {/* ---------------------------------------------- 요약 */}
       <section className="avoid-break mb-14">
-        <p className="max-w-[68ch] leading-relaxed text-ink/90">{t(lang, profile.intro)}</p>
+        <p className="max-w-[68ch] leading-relaxed text-ink/90 print:max-w-none">{t(lang, profile.intro)}</p>
       </section>
 
       {/* ---------------------------------------------- 경력 */}

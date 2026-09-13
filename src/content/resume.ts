@@ -614,6 +614,10 @@ export const projects: Project[] = [
         ko: '비용·운영 조건을 고려한 IDC → NCP → GCP 서버 환경 이전 및 안정화',
         en: 'Migrated and stabilised servers from IDC to NCP to GCP, considering cost and operating conditions',
       },
+      {
+        ko: 'Python·Django 기반 웹 운영 도구 개발',
+        en: 'Developed web-based operations tools with Python and Django',
+      },
     ],
     stack: [
       'Unity3D',
@@ -707,7 +711,7 @@ export const projects: Project[] = [
             ko: 'Log4j, Firebase, Elasticsearch를 통한 실시간 로그 수집·분석',
             en: 'Real-time log collection and analysis via Log4j, Firebase and Elasticsearch',
           },
-          { ko: 'Django 기반 운영툴 페이지 개발', en: 'Built internal ops tooling in Django' },
+          { ko: 'Python·Django 기반 웹 운영 도구 개발', en: 'Developed web-based operations tools with Python and Django' },
           { ko: 'C# WinForms 기반 쿠폰 자동 생성 툴 제작', en: 'Built a coupon generation tool in C# WinForms' },
           { ko: 'Redis 자동 백업·복구 Python 스크립트 작성', en: 'Wrote Python scripts for automated Redis backup and restore' },
           { ko: 'Go 기반 악성 환불 유저 제재 시스템 개발', en: 'Built a refund-abuse sanction system in Go' },
@@ -732,8 +736,8 @@ export const projects: Project[] = [
         en: 'Implemented Unity UI, combat and AI, with game content development and integration on a Python Flask server',
       },
       {
-        ko: 'Flask 운영툴과 Docker·Jenkins 기반 자동 빌드·테스트 시스템 구축',
-        en: 'Built Flask ops tools and automated builds and tests with Docker and Jenkins',
+        ko: 'Python·Flask 기반 웹 운영 도구 개발 및 Docker·Jenkins 기반 자동 빌드·테스트 시스템 구축',
+        en: 'Developed web-based operations tools with Python and Flask, and automated builds and tests with Docker and Jenkins',
       },
     ],
     stack: ['Unity3D', 'C#', 'Python (Flask)', 'Docker', 'Jenkins'],
@@ -756,7 +760,7 @@ export const projects: Project[] = [
       {
         heading: { ko: '운영 & 자동화', en: 'Ops & Automation' },
         items: [
-          { ko: 'Flask 기반 운영툴 페이지 개발', en: 'Built internal ops tooling in Flask' },
+          { ko: 'Python·Flask 기반 웹 운영 도구 개발', en: 'Developed web-based operations tools with Python and Flask' },
           {
             ko: 'Docker + Jenkins를 활용한 자동 빌드·테스트 시스템 구축',
             en: 'Set up automated build and test with Docker and Jenkins',
