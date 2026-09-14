@@ -222,21 +222,139 @@ export const projects: Project[] = [
     title: { ko: 'ZEPETO', en: 'ZEPETO' },
     period: { ko: '2023.01 — 현재', en: 'Jan 2023 — Present' },
     summary: {
-      ko: 'TypeScript·React 기반 WebPETO·GenWorld R&D와 크리에이터 플랫폼 개발, Unity 멀티플레이 월드 및 PC 크로스플랫폼 출시.',
-      en: 'TypeScript and React development for WebPETO and GenWorld R&D, creator platform work, Unity multiplayer worlds and the cross-platform PC release.',
+      ko: 'WebPETO의 웹·WebGL 초기 로딩 최적화와 React 전환, GenWorld AI 제작 도구 R&D, ZEPETO SDK 및 Windows·macOS 출시 대응.',
+      en: 'Web and WebGL loading optimisation and React migration for WebPETO, GenWorld AI authoring R&D, ZEPETO SDK development and Windows/macOS release support.',
     },
     overview: {
       role: { ko: '소프트웨어 엔지니어 · 웹·Unity', en: 'Software Engineer · Web & Unity' },
       focus: {
-        ko: 'WebPETO·GenWorld R&D, 크리에이터 개발 환경, 실시간 멀티플레이와 PC 플랫폼 지원.',
-        en: 'WebPETO and GenWorld R&D, creator development tools, live multiplayer and PC platform support.',
+        ko: '브라우저에서 기존 앱의 아바타·상점 경험을 제공하고, AI가 만든 월드를 실행·확인·수정하는 제작 환경 개발.',
+        en: 'Bringing the app’s avatar and shop experience to the browser, and building tools to run, inspect and revise AI-authored worlds.',
       },
       contribution: {
-        ko: 'TypeScript·React 웹 개발과 Vite·Webpack 빌드 환경, Studio·SDK 및 Unity 클라이언트 개발, Windows·macOS 출시 대응.',
-        en: 'TypeScript and React web development with Vite and Webpack, Studio and SDK and Unity client development, plus Windows and macOS release support.',
+        ko: 'React UI·서버 상태 관리, JavaScript–Unity 브리지, WebGL 빌드 경량화와 로딩 순서 개선, TypeScript 기반 제작 도구·MCP 연동을 개발했습니다. 기존 Studio·SDK와 PC 클라이언트 출시 업무도 담당했습니다.',
+        en: 'Developed React interfaces and server-state handling, JavaScript–Unity bridges, smaller WebGL builds and staged loading, plus TypeScript authoring tools and MCP integration. Also worked on Studio, SDKs and the PC client release.',
       },
     },
     caseStudies: [
+      {
+        id: 'webpeto-loading',
+        title: { ko: 'WebPETO — 아바타 첫 화면까지의 로딩 경로 개선', en: 'WebPETO — improving the path to the first avatar render' },
+        context: {
+          ko: '웹 상단의 아바타 뷰어에 범용 텍스처 편집기용 기능과 리소스가 포함돼 있었습니다. Unity 초기화와 캐릭터 데이터·부가 리소스 로딩도 첫 화면을 보여주는 경로에 걸려 있어, 다운로드 용량과 표시 순서를 함께 개선했습니다.',
+          en: 'The embedded avatar viewer carried features and resources from a general-purpose texture editor. Unity startup, character data and optional content also sat on the path to the first render, so I addressed both download size and loading order.',
+        },
+        approach: [
+          {
+            ko: '텍스처 편집·UV·디버그 UI와 불필요한 패키지를 제거하고, 선택 리소스를 초기 빌드에서 제외했습니다. SDK 리소스의 중복 포함을 제거하고 Brotli 압축, IL2CPP 크기 우선 설정과 코드 스트리핑을 적용했습니다.',
+            en: 'Removed texture-editing, UV and debug interfaces and unnecessary packages, and excluded optional resources from the initial build. Removed duplicate SDK resources and applied Brotli compression, size-focused IL2CPP output and code stripping.',
+          },
+          {
+            ko: '로그인 화면에서 유휴 시간과 로그인 의도를 활용해 빌드 파일을 미리 받고 런타임을 준비했습니다. 캐시된 캐릭터를 먼저 표시한 뒤 최신 응답과 비교해 필요한 경우에만 갱신하고, 배경·액세서리 등 부가 리소스는 첫 표시 이후로 미뤘습니다.',
+            en: 'Preloaded build files and prepared the runtime during login, using idle time and login intent. Rendered cached character data first, refreshed only when the latest response differed, and deferred optional backgrounds and accessories until after the initial render.',
+          },
+          {
+            ko: 'SDK가 리플렉션으로 생성하는 타입은 link.xml로 보존하고 WebGL 셰이더 폴백을 유지했습니다. 데이터 절약 모드에서는 자동 사전 로딩을 생략하고, 초기화·메타데이터 전달·콘텐츠 로드 단계에 성능 마커를 남겼습니다.',
+            en: 'Preserved SDK types created through reflection with link.xml and retained WebGL shader fallbacks. Skipped automatic preloading in data-saving mode and instrumented runtime startup, metadata delivery and content loading.',
+          },
+        ],
+        outcome: {
+          ko: '2026년 6월 최적화 기록 기준, 초기 WebGL 압축 산출물(data·wasm·framework) 합계를 약 13.29MB에서 7.64MB로 약 43% 줄였습니다. 첫 표시와 후속 콘텐츠 갱신을 분리했으며, 수치는 로딩 시간이나 전체 페이지 용량이 아닌 해당 빌드 파일의 전송 용량 기준입니다.',
+          en: 'The June 2026 optimisation reduced the combined compressed WebGL data, wasm and framework files from about 13.29 MB to 7.64 MB, approximately 43%. Separated the initial render from later content updates; the figure measures those build files, not elapsed loading time or total page weight.',
+        },
+      },
+      {
+        id: 'webpeto-react',
+        title: { ko: 'WebPETO — 기존 앱과 WebGL을 연결하는 React UI', en: 'WebPETO — React interfaces connecting app behaviour and WebGL' },
+        context: {
+          ko: '기존 Android 앱의 API·이동 규칙·아바타 표현을 웹에서도 이어가면서, DOM 기반 화면을 React로 점진적으로 옮겨야 했습니다.',
+          en: 'The web prototype needed to preserve the Android app’s APIs, navigation rules and avatar rendering while incrementally moving DOM-based interfaces to React.',
+        },
+        approach: [
+          {
+            ko: 'React 앱 셸과 상점 화면을 분리하고 Redux Toolkit·RTK Query로 상태와 API 조회를 구성했습니다. 기존 화면과 새 화면이 공유하는 상품 판별·표시·구매 로직은 공통 모듈로 추출했습니다.',
+            en: 'Separated the React app shell and shop surface, using Redux Toolkit and RTK Query for state and API access. Extracted shared product, display and purchase logic for both legacy and React interfaces.',
+          },
+          {
+            ko: '웹이 라우팅·입력·UI를 관리하고 Unity가 아바타 렌더링을 맡도록 경계를 나눴습니다. SendMessage와 준비·로드 콜백으로 캐릭터 메타데이터와 카메라 상태를 전달하고, hash·직접 URL 이동을 공통 scheme 해석 경로로 연결했습니다.',
+            en: 'Kept routing, input and interfaces in the web layer and avatar rendering in Unity. Connected character metadata and camera state through SendMessage and readiness/load callbacks, and routed hash and direct-URL navigation through a shared scheme parser.',
+          },
+          {
+            ko: '기존 화면을 비교용 폴백으로 유지하고 라우트별 스모크·스크린샷 검증을 구성해 단계적으로 전환했습니다. 일부 화면과 동작은 여전히 이관 중인 내부 프로토타입입니다.',
+            en: 'Retained legacy interfaces as comparison fallbacks and used route-level smoke checks and screenshots during the migration. This remains an internal prototype with some interfaces and actions still being migrated.',
+          },
+        ],
+      },
+      {
+        id: 'web-lab-auth',
+        title: { ko: 'Web Lab — 여러 웹 서비스와 개발 도구의 로그인 연동', en: 'Web Lab — shared sign-in for web services and developer tools' },
+        context: {
+          ko: 'WebPETO·월드 Player·AI 제작 포털을 하나의 실험실에서 제공하면서, 서비스마다 다른 세션 방식과 Unity Editor·CLI 등 브라우저 밖 도구의 로그인 경로를 연결해야 했습니다.',
+          en: 'WebPETO, world players and AI authoring portals shared one lab but used different session models. Developer tools such as Unity Editor and CLI clients also needed a sign-in integration path.',
+        },
+        approach: [
+          {
+            ko: 'Node.js 공통 로그인 허브와 Caddy 로그인 게이트를 구성하고, 로그인 후 원래 서비스로 돌아가 각 서비스의 세션을 이어주는 핸드오프를 구현했습니다. 로그인 실패·만료·로그아웃과 서비스별 진입 경로를 함께 다뤘습니다.',
+            en: 'Built a shared Node.js sign-in hub and Caddy login gate, with handoffs that return users to the original service and establish its session. Handled failed sign-in, expiry, sign-out and service-specific entry paths.',
+          },
+          {
+            ko: '다른 origin의 웹앱과 Unity Editor·CLI에는 OAuth 2.0 authorization code + PKCE 연동을 제공했습니다. 등록된 redirect URI와 요청 권한을 검증하고, 브로커 클라이언트에는 원본 계정 토큰 대신 허브 세션에 종속된 토큰과 허용된 API 프록시를 제공했습니다.',
+            en: 'Provided OAuth 2.0 authorization code and PKCE integration for other-origin web apps, Unity Editor and CLI clients. Validated registered redirect URIs and scopes, and gave broker clients session-bound tokens and an allowlisted API proxy instead of the upstream account token.',
+          },
+          {
+            ko: '세션 종료와 클라이언트 등록 해지를 토큰 무효화에 연결하고, 브로커 계약 테스트와 로그인 핸드오프 종단 점검 도구를 구성했습니다. 내부 도구 연동 범위의 구현으로, 외부 공개 인증 플랫폼 출시는 별도입니다.',
+            en: 'Linked session termination and client deregistration to token invalidation, and added broker contract tests and end-to-end handoff checks. This implementation supports internal tool integration; it is separate from launching a public identity platform.',
+          },
+        ],
+      },
+      {
+        id: 'genworld-authoring',
+        title: { ko: 'GenWorld — AI 제작·실행·피드백을 잇는 웹 도구', en: 'GenWorld — connecting AI authoring, execution and feedback' },
+        context: {
+          ko: 'AI가 작성한 월드 코드를 빠르게 실행하면서, 사용자가 변경 내용과 실행 실패 원인을 웹에서 확인할 수 있는 제작 환경이 필요했습니다.',
+          en: 'The authoring environment needed to run AI-written world code quickly while showing users what changed and why an execution failed.',
+        },
+        approach: [
+          {
+            ko: 'React·TypeScript 편집기와 MCP 도구를 소스 저장→실행→입력·화면·오류 관찰→수정 흐름으로 연결했습니다. 미리 빌드한 Unity WebGL Player에서 코드를 교체해 월드 수정마다 Unity를 다시 빌드하지 않도록 구성했습니다.',
+            en: 'Connected the React and TypeScript editor with MCP tools for saving, running, observing input/screens/errors and revising code. Reused a prebuilt Unity WebGL Player so world-code changes did not require another Unity build.',
+          },
+          {
+            ko: '별도 origin의 sandbox iframe에 실행을 격리하고 메시지 발신 프레임·origin·nonce를 검사했습니다. 프레임 외부 watchdog으로 응답 중단을 감지하고, 문제가 생긴 실행을 종료한 뒤 새 프레임으로 복구하도록 구현했습니다.',
+            en: 'Isolated execution in a sandboxed iframe on a separate origin and validated the sender frame, origin and nonce. Used a watchdog outside the frame to detect stalled execution, terminate it and recover in a fresh frame.',
+          },
+          {
+            ko: '소스 버전별 변경 설명·작성자·파일 diff와 실행·입력·관측 기록을 웹에서 함께 표시했습니다. 로딩·실패·연결 끊김을 구분해 안내하고, Vitest·Unity 배치 테스트와 실제 Chrome 실행으로 코드 교체와 무한 루프 종료·복구를 확인했습니다.',
+            en: 'Displayed version messages, authors, file diffs and execution/input/observation records together. Distinguished loading, failure and disconnection states, and checked code replacement and infinite-loop termination/recovery through Vitest, Unity batch tests and real Chrome runs.',
+          },
+        ],
+        outcome: {
+          ko: '별도 Unity 빌드 없이 코드 수정과 재실행을 반복하고, 웹에서 변경 내역과 실행 결과를 확인하는 R&D 흐름을 구현했습니다. 생성 코드의 실행 범위는 소유자 전용 저작 미리보기이며, 공개 월드 출시와는 구분합니다.',
+          en: 'Implemented an R&D workflow for repeated code edits and execution without rebuilding Unity, with changes and results visible in the web interface. Generated code runs only in owner-specific authoring previews, separately from public world releases.',
+        },
+      },
+      {
+        id: 'zepetofield-jobs',
+        title: { ko: 'ZepetoField — 오래 걸리는 생성 작업의 상태와 재시작 처리', en: 'ZepetoField — managing long-running generation jobs and restarts' },
+        context: {
+          ko: '자연어로 게임을 생성하는 포털에서 여러 사용자의 요청을 받되, Unity 프로젝트를 동시에 빌드해 작업 파일이 충돌하거나 요청 재전송으로 같은 게임을 중복 생성하지 않도록 해야 했습니다.',
+          en: 'The prompt-to-game portal needed to accept requests from multiple users without concurrent builds colliding in the same Unity project or retries generating the same game twice.',
+        },
+        approach: [
+          {
+            ko: '요청별 idempotency key로 중복 접수를 방지하고, 사용자별 작업 조회와 활성 작업 수 제한을 구성했습니다. 웹에는 대기 순서·생성 단계·완료·실패 상태를 제공하고 작업 상태를 파일에 영속화했습니다.',
+            en: 'Used per-request idempotency keys to prevent duplicate submissions, scoped job queries to their owners and limited active jobs. Exposed queue position, generation stage, completion and failure in the portal, with persisted job state.',
+          },
+          {
+            ko: '공유 Unity 프로젝트의 빌드는 직렬로 실행하고, 워커 슬롯을 늘릴 때는 별도 프로젝트 루트에 작업을 배정하도록 구성했습니다. 서버 재시작 시 실행 중이던 작업은 중단 상태로 복구해 자동 중복 실행을 피했습니다.',
+            en: 'Serialised builds within a shared Unity project and assigned additional worker slots to separate project roots. On server restart, recovered previously running jobs as interrupted instead of automatically executing them again.',
+          },
+        ],
+        outcome: {
+          ko: '프롬프트 입력·생성 진행 상태·결과 카탈로그·WebGL 플레이를 연결한 PoC를 구현했습니다. GenWorld의 미리 빌드한 Player 재사용 방식과 달리, 이 파이프라인은 생성한 게임마다 Unity 씬과 WebGL 빌드를 산출합니다.',
+          en: 'Implemented a PoC connecting prompt entry, generation progress, a result catalogue and WebGL play. This pipeline builds a Unity scene and WebGL output for each generated game; GenWorld separately reuses a prebuilt Player.',
+        },
+      },
       {
         id: 'pc-release',
         title: { ko: 'Windows·macOS 출시 대응', en: 'Supporting the Windows and macOS release' },
@@ -258,31 +376,68 @@ export const projects: Project[] = [
     ],
     resumeHighlights: [
       {
-        ko: 'TypeScript·React 기반 WebPETO 및 GenWorld R&D 개발 — Vite·Webpack 기반 웹 빌드 환경 사용',
-        en: 'Developed WebPETO and GenWorld R&D with TypeScript and React using Vite and Webpack build environments',
+        ko: 'WebPETO 초기 WebGL 압축 빌드 약 43% 축소(13.29→7.64MB, 2026.06) — 리소스·의존성 정리, 캐시 우선 표시·부가 콘텐츠 지연 로딩',
+        en: 'Reduced WebPETO’s compressed WebGL build by ~43% (13.29→7.64 MB, Jun 2026); pruned resources/dependencies, rendered cached data first and deferred optional content',
       },
       {
-        ko: 'ZEPETO Windows·macOS 출시 — 크로스플랫폼 지원 및 런타임 이슈 대응',
-        en: 'ZEPETO Windows and macOS release — cross-platform support and runtime issue resolution',
+        ko: 'React·RTK Query 기반 웹 UI·API 상태 관리, JavaScript–Unity 브리지 및 OAuth·PKCE 기반 공통 로그인 연동',
+        en: 'React/RTK Query interfaces and API state, JavaScript–Unity bridges and shared OAuth/PKCE sign-in integration',
       },
       {
-        ko: 'ZEPETO Studio·SDK 모듈 개발 및 LLM 기반 AI NPC·월드 생성 R&D',
-        en: 'ZEPETO Studio and SDK module development, plus LLM-based AI NPC and world generation R&D',
+        ko: 'GenWorld·ZepetoField R&D — TypeScript·MCP 제작 도구, 실행 격리·복구, 사용자별 생성 작업 큐·중복 요청 방지',
+        en: 'GenWorld/ZepetoField R&D: TypeScript/MCP authoring tools, execution isolation/recovery, per-user generation queues and request deduplication',
+      },
+      {
+        ko: 'ZEPETO Studio·SDK 모듈 개발 및 Windows·macOS 출시 — 크로스플랫폼 지원과 런타임 이슈 해결',
+        en: 'Developed ZEPETO Studio/SDK modules and supported the Windows/macOS release, resolving cross-platform runtime issues',
       },
     ],
-    stack: ['TypeScript', 'React', 'Vite', 'Webpack', 'Unity3D', 'C#', 'WebGL', 'Windows/macOS'],
+    stack: ['TypeScript', 'React', 'Redux Toolkit', 'RTK Query', 'Vite', 'Node.js', 'Unity3D', 'C#', 'WebGL', 'MCP', 'Vitest'],
     image: '/projects/zepeto.webp',
     sections: [
+      {
+        heading: { ko: 'Web Lab · 프로젝트 범위', en: 'Web Lab · Project Scope' },
+        items: [
+          {
+            ko: 'WebPETO — 기존 모바일 앱의 홈·상점·피드·프로필을 웹으로 옮긴 프로토타입과 아바타 WebGL 뷰어',
+            en: 'WebPETO — a web prototype of the mobile app’s home, shop, feed and profile, with a WebGL avatar viewer',
+          },
+          {
+            ko: 'NewWorld Package WebGL Player — NewWorld 패키지의 브라우저 실행, 월드 입장·매치메이킹·릴레이 연동 R&D',
+            en: 'NewWorld Package WebGL Player — R&D on browser execution, world entry, matchmaking and relay integration for NewWorld packages',
+          },
+          {
+            ko: 'ZepetoField — 자연어 기반 게임 설계·Unity 빌드·결과 카탈로그·브라우저 플레이를 연결한 PoC',
+            en: 'ZepetoField — a PoC connecting prompt-based game design, Unity builds, a result catalogue and browser play',
+          },
+          {
+            ko: 'Prop Atlas — 월드 제작용 프롭 카탈로그 검색 도구',
+            en: 'Prop Atlas — a searchable prop catalogue for world authoring',
+          },
+          {
+            ko: 'GenWorld — AI와 사용자가 코드를 수정하고 실행 결과·오류·변경 기록을 확인하는 웹 제작 환경',
+            en: 'GenWorld — a web authoring environment where AI and users revise code and inspect execution results, errors and change history',
+          },
+          {
+            ko: 'ZS Runtime Test — 생성한 TypeScript를 서버에서 컴파일하고 격리된 WebGL 런타임에 부착하는 실험',
+            en: 'ZS Runtime Test — an experiment compiling generated TypeScript on the server and attaching it to an isolated WebGL runtime',
+          },
+        ],
+      },
       {
         heading: { ko: '웹 플랫폼', en: 'Web Platform' },
         items: [
           {
-            ko: 'TypeScript·React 기반 WebPETO 개발 및 GenWorld R&D 참여',
-            en: 'Developed WebPETO and contributed to GenWorld R&D with TypeScript and React',
+            ko: 'WebPETO의 React 앱 셸·상점 UI와 API 상태 관리, 기존 DOM 화면의 점진적 이관',
+            en: 'React app shell, shop interfaces and API state management for WebPETO, with incremental migration from legacy DOM interfaces',
           },
           {
-            ko: 'Vite·Webpack 기반 웹 개발 및 빌드 환경 사용',
-            en: 'Worked with Vite and Webpack web development and build environments',
+            ko: '아바타 WebGL 빌드 경량화·초기 로딩 경로 개선 및 웹–Unity 메타데이터·카메라 연동',
+            en: 'Smaller avatar WebGL builds, improved initial loading and web–Unity metadata/camera integration',
+          },
+          {
+            ko: 'GenWorld의 React·TypeScript 편집기, MCP 코드 제작·관찰 도구와 AI 변경 기록 UI 개발',
+            en: 'React and TypeScript editor, MCP code-authoring/observation tools and AI change-history interfaces for GenWorld',
           },
         ],
       },
