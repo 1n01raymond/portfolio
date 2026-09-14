@@ -54,6 +54,15 @@ export default function WorkDetailPage({ lang, slug }: { lang: Lang; slug: strin
         <div className="mt-5 flex flex-wrap gap-1.5">
           {project.stack.map((s) => <span key={s} className="tag">{s}</span>)}
         </div>
+        {project.links && (
+          <div className="mono-label mt-5 flex flex-wrap gap-x-5 gap-y-2">
+            {project.links.map((link) => (
+              <a key={link.href} href={link.href} target="_blank" rel="noreferrer" className="text-accent underline-offset-4 hover:underline">
+                {t(lang, link.label)} ↗
+              </a>
+            ))}
+          </div>
+        )}
       </header>
 
       {project.caseStudies && project.caseStudies.length > 0 && (

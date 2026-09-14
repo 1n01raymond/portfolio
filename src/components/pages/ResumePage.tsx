@@ -49,6 +49,14 @@ export default function ResumePage({ lang }: { lang: Lang }) {
               github.com/1n01raymond
             </a>
             <a
+              href={contact.portfolio}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-accent"
+            >
+              portfolio-1n01raymonds-projects.vercel.app
+            </a>
+            <a
               href={contact.linkedin}
               target="_blank"
               rel="noreferrer"
@@ -102,7 +110,7 @@ export default function ResumePage({ lang }: { lang: Lang }) {
       <section className="mb-14">
         <SectionHeading>{t(lang, ui.sections.work)}</SectionHeading>
         <div className="space-y-10">
-          {projects.map((p) => (
+          {projects.filter((p) => p.resumeVisible !== false).map((p) => (
             <article key={p.slug} className="avoid-break">
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <h3 className="font-medium text-ink">

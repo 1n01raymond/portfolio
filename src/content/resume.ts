@@ -23,14 +23,14 @@ export const profile = {
   } satisfies I18n,
 
   specialty: {
-    ko: 'Unity',
-    en: 'Unity',
+    ko: 'Frontend Platform · Unity',
+    en: 'Frontend Platform · Unity',
   } satisfies I18n,
 
   /** 이력서 상단 요약 한 문단. 랜딩의 About 은 아래 `about` 을 씁니다. */
   intro: {
-    ko: '2014년부터 Unity 기반 게임의 클라이언트·서버 개발과 라이브 운영을 담당해 왔습니다. 현재 네이버제트에서 ZEPETO Unity 클라이언트와 Studio·SDK를 개발하고 LLM 기반 R&D에 참여하고 있습니다. 어썸피스에서는 킹갓캐슬의 초기 개발부터 출시·운영을 메인 프로그래머로 담당했으며, 좀비고등학교의 콘텐츠 개발, 서버 최적화와 통합 계정 시스템을 맡았습니다.',
-    en: 'Software engineer working on Unity game clients, servers and live operations since 2014. At NAVER Z, I develop the ZEPETO Unity client, Studio and SDK, and contribute to LLM-based R&D. At Awesomepiece, I was the main programmer for King God Castle from initial development through launch and live operations, and worked on content, server optimisation and unified accounts for Zombie High.',
+    ko: 'TypeScript·React 기반 웹 플랫폼과 Unity 클라이언트, 서버 및 라이브 운영을 경험한 소프트웨어 엔지니어입니다. 현재 네이버제트에서 WebPETO와 GenWorld R&D를 중심으로 웹 개발을 맡고 있으며, ZEPETO Studio·SDK와 Windows·macOS 출시에도 참여했습니다. 이전에는 킹갓캐슬의 초기 개발부터 출시·운영을 메인 프로그래머로 담당하고, 좀비고등학교의 콘텐츠·서버·운영 시스템을 개발했습니다.',
+    en: 'Software engineer experienced in TypeScript and React web platforms, Unity clients, servers and live operations. At NAVER Z, I focus on web development for WebPETO and GenWorld R&D, and have also contributed to ZEPETO Studio and SDK development and the Windows and macOS release. Previously, I was the main programmer for King God Castle from initial development through launch and live operations, and developed content, servers and operations systems for Zombie High.',
   } satisfies I18n,
 
   /**
@@ -42,12 +42,12 @@ export const profile = {
    */
   about: [
     {
-      ko: 'Unity 기반 게임과 실시간 서비스를 개발하는 소프트웨어 엔지니어입니다. 클라이언트·서버 개발부터 출시와 라이브 운영까지 맡아왔습니다.',
-      en: 'I build Unity games and real-time services, from client and server development through launch and live operations.',
+      ko: 'TypeScript·React 기반 웹 플랫폼과 Unity 클라이언트를 개발합니다. 클라이언트·서버 개발부터 출시와 라이브 운영까지 맡아왔습니다.',
+      en: 'I build TypeScript and React web platforms and Unity clients, with experience spanning client and server development, launch and live operations.',
     },
     {
-      ko: '현재 [[네이버제트]]에서 [[ZEPETO|/work/naverz/]]의 Unity 클라이언트와 크리에이터용 Studio·SDK를 개발합니다.',
-      en: 'Currently at [[NAVER Z]], I develop the Unity client and creator tools, Studio and SDK, for [[ZEPETO|/work/naverz/]].',
+      ko: '현재 [[네이버제트]]에서 [[ZEPETO|/work/naverz/]]의 WebPETO와 GenWorld R&D를 중심으로 웹 개발을 맡고, 크리에이터용 Studio·SDK를 개발합니다.',
+      en: 'At [[NAVER Z]], I focus on web development for WebPETO and GenWorld R&D and build creator-facing Studio and SDK tools for [[ZEPETO|/work/naverz/]].',
     },
     {
       ko: 'ZEPETO의 실시간 멀티플레이 월드를 개발·운영했고, Windows·macOS 출시를 맡았습니다. 현재 LLM 기반 AI NPC와 월드 생성 R&D에도 참여하고 있습니다.',
@@ -65,6 +65,7 @@ export const contact = {
   /** 표기는 언어별로, 링크는 국제 표기 하나로 */
   phone: { ko: '010-8131-7338', en: '+82 10-8131-7338' } satisfies I18n,
   phoneHref: 'tel:+821081317338',
+  portfolio: 'https://portfolio-1n01raymonds-projects.vercel.app',
   linkedin: 'https://www.linkedin.com/in/1n01raymond/',
   github: 'https://github.com/1n01raymond',
 }
@@ -96,6 +97,7 @@ export const experience: Experience[] = [
     company: { ko: '네이버제트', en: 'NAVER Z' },
     team: { ko: 'World → Unity', en: 'World → Unity' },
     title: { ko: 'Unity 프로그래머', en: 'Unity Programmer' },
+    scope: { ko: '웹 · Unity', en: 'Web · Unity' },
     start: '2023-01-16',
     end: null,
     current: true,
@@ -199,6 +201,9 @@ export type Project = {
   resumeHighlights: I18n[]
   /** 업무 목록과 별개로 필요한 서비스 맥락. 화면과 인쇄에 동일하게 표시 */
   resumeContext?: I18n
+  /** 경력 목록에는 남기되 긴 이력서 프로젝트 목록에서 제외할 때 사용 */
+  resumeVisible?: boolean
+  links?: { label: I18n; href: string }[]
   /** 모노 태그로 렌더 */
   stack: string[]
   /** 상세 페이지 본문. 그룹 제목 + 불릿 */
@@ -217,18 +222,18 @@ export const projects: Project[] = [
     title: { ko: 'ZEPETO', en: 'ZEPETO' },
     period: { ko: '2023.01 — 현재', en: 'Jan 2023 — Present' },
     summary: {
-      ko: '메타버스 플랫폼의 실시간 멀티플레이 월드와 PC 크로스플랫폼 출시, LLM 기반 AI R&D와 크리에이터 플랫폼 개발.',
-      en: 'Real-time multiplayer worlds and the cross-platform PC launch, plus LLM-based AI R&D and creator platform work.',
+      ko: 'TypeScript·React 기반 WebPETO·GenWorld R&D와 크리에이터 플랫폼 개발, Unity 멀티플레이 월드 및 PC 크로스플랫폼 출시.',
+      en: 'TypeScript and React development for WebPETO and GenWorld R&D, creator platform work, Unity multiplayer worlds and the cross-platform PC release.',
     },
     overview: {
-      role: { ko: 'Unity 프로그래머', en: 'Unity Programmer' },
+      role: { ko: '소프트웨어 엔지니어 · 웹·Unity', en: 'Software Engineer · Web & Unity' },
       focus: {
-        ko: '실시간 멀티플레이 월드 운영, PC 플랫폼 지원, 크리에이터 개발 환경.',
-        en: 'Live multiplayer worlds, PC platform support and creator development tools.',
+        ko: 'WebPETO·GenWorld R&D, 크리에이터 개발 환경, 실시간 멀티플레이와 PC 플랫폼 지원.',
+        en: 'WebPETO and GenWorld R&D, creator development tools, live multiplayer and PC platform support.',
       },
       contribution: {
-        ko: 'Unity 클라이언트와 Studio·SDK 개발, Windows·macOS 출시 대응 및 모바일 네이티브 연동 문제 해결.',
-        en: 'Unity client, Studio and SDK development; Windows and macOS release support; mobile native integration debugging.',
+        ko: 'TypeScript·React 웹 개발과 Vite·Webpack 빌드 환경, Studio·SDK 및 Unity 클라이언트 개발, Windows·macOS 출시 대응.',
+        en: 'TypeScript and React web development with Vite and Webpack, Studio and SDK and Unity client development, plus Windows and macOS release support.',
       },
     },
     caseStudies: [
@@ -253,21 +258,34 @@ export const projects: Project[] = [
     ],
     resumeHighlights: [
       {
-        ko: 'ZEPETO Windows·macOS 출시 — 크로스플랫폼 지원 및 런타임 이슈 대응',
-        en: 'ZEPETO Windows and macOS release — cross-platform support and runtime issue resolution',
+        ko: 'TypeScript·React 기반 WebPETO 및 GenWorld R&D 개발 — Vite·Webpack 기반 웹 빌드 환경 사용',
+        en: 'Developed WebPETO and GenWorld R&D with TypeScript and React using Vite and Webpack build environments',
       },
       {
-        ko: 'Slime Party 실시간 멀티플레이 콘텐츠 개발·유지보수 및 MyHome 신규 기능 개발·운영',
-        en: 'Built and maintained real-time multiplayer content for Slime Party and new features for MyHome',
+        ko: 'ZEPETO Windows·macOS 출시 — 크로스플랫폼 지원 및 런타임 이슈 대응',
+        en: 'ZEPETO Windows and macOS release — cross-platform support and runtime issue resolution',
       },
       {
         ko: 'ZEPETO Studio·SDK 모듈 개발 및 LLM 기반 AI NPC·월드 생성 R&D',
         en: 'ZEPETO Studio and SDK module development, plus LLM-based AI NPC and world generation R&D',
       },
     ],
-    stack: ['Unity3D', 'C#', 'Multiplayer', 'LLM', 'WebGL', 'iOS/Android Native', 'Windows/macOS'],
+    stack: ['TypeScript', 'React', 'Vite', 'Webpack', 'Unity3D', 'C#', 'WebGL', 'Windows/macOS'],
     image: '/projects/zepeto.webp',
     sections: [
+      {
+        heading: { ko: '웹 플랫폼', en: 'Web Platform' },
+        items: [
+          {
+            ko: 'TypeScript·React 기반 WebPETO 개발 및 GenWorld R&D 참여',
+            en: 'Developed WebPETO and contributed to GenWorld R&D with TypeScript and React',
+          },
+          {
+            ko: 'Vite·Webpack 기반 웹 개발 및 빌드 환경 사용',
+            en: 'Worked with Vite and Webpack web development and build environments',
+          },
+        ],
+      },
       {
         heading: { ko: '주요 성과', en: 'Highlights' },
         items: [
@@ -310,6 +328,90 @@ export const projects: Project[] = [
           {
             ko: '모바일 네이티브-Unity 연동 — iOS/Android 네이티브 시스템과 Unity 사이의 이슈 분석 및 해결',
             en: 'Mobile native ↔ Unity bridge — diagnosed and fixed issues across the iOS/Android native boundary',
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    slug: 'brickisland',
+    company: { ko: '개인 프로젝트', en: 'Personal Project' },
+    title: { ko: '브릭아일랜드', en: 'BrickIsland' },
+    period: { ko: '2025.03 — 현재', en: 'Mar 2025 — Present' },
+    summary: {
+      ko: '수상레저 현장의 운영자·코치·회원·대형 디스플레이를 하나의 실시간 웹 서비스로 연결한 멀티 디바이스 PWA.',
+      en: 'A multi-device PWA connecting operators, coaches, members and large displays in a real-time water sports venue service.',
+    },
+    overview: {
+      role: { ko: '기획·설계·개발·운영', en: 'Product, architecture, development & operations' },
+      focus: {
+        ko: '현장 대기열과 회원·티켓·탑승 기록을 여러 역할과 디바이스에서 일관되게 관리.',
+        en: 'Consistent queue, member, ticket and ride record management across roles and devices.',
+      },
+      contribution: {
+        ko: 'Next.js·React·TypeScript 기반 전체 서비스와 API를 개발하고 Supabase Realtime, PWA, Vercel 배포를 구성.',
+        en: 'Built the full Next.js, React and TypeScript service and APIs with Supabase Realtime, PWA support and Vercel deployment.',
+      },
+    },
+    caseStudies: [
+      {
+        id: 'multi-device-operations',
+        title: { ko: '여러 현장 화면을 하나의 운영 상태로', en: 'One operating state across venue screens' },
+        context: {
+          ko: '운영자·코치·회원과 대형 화면이 서로 다른 UI를 사용하면서도 같은 대기열 상태를 빠르게 공유해야 했습니다.',
+          en: 'Operators, coaches, members and large displays use different interfaces while sharing the same queue state.',
+        },
+        approach: [
+          {
+            ko: '역할별 화면을 분리하고 공통 데이터 흐름을 React Query 훅으로 구성했습니다.',
+            en: 'Separated role-specific interfaces and organised shared data flows with React Query hooks.',
+          },
+          {
+            ko: 'Supabase Realtime 변경 알림과 폴백 조회를 조합해 여러 디바이스의 상태를 갱신했습니다.',
+            en: 'Combined Supabase Realtime change notifications with fallback polling to refresh state across devices.',
+          },
+          {
+            ko: '대형 화면용 뷰어에 Screen Wake Lock을 적용하고 화면 복귀 시 잠금을 다시 요청하도록 구성했습니다.',
+            en: 'Applied Screen Wake Lock to the large-display viewer and reacquired it when the page became visible again.',
+          },
+        ],
+      },
+    ],
+    resumeHighlights: [
+      {
+        ko: '운영자·코치·회원·대형 디스플레이용 화면을 하나의 Next.js·React·TypeScript 서비스로 개발',
+        en: 'Built operator, coach, member and large-display interfaces as one Next.js, React and TypeScript service',
+      },
+      {
+        ko: 'Supabase Realtime과 React Query를 결합해 여러 디바이스의 대기열 상태 동기화',
+        en: 'Synchronised queue state across devices with Supabase Realtime and React Query',
+      },
+      {
+        ko: 'PWA와 Screen Wake Lock을 적용해 모바일 및 장시간 실행되는 현장 뷰어 환경 지원',
+        en: 'Supported mobile use and long-running venue displays with PWA and Screen Wake Lock',
+      },
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'Supabase Realtime', 'React Query', 'PWA', 'Vercel'],
+    links: [
+      { label: { ko: '서비스', en: 'Live service' }, href: 'https://brick-island.vercel.app' },
+      { label: { ko: 'GitHub', en: 'GitHub' }, href: 'https://github.com/1n01raymond/BrickIsland' },
+    ],
+    sections: [
+      {
+        heading: { ko: '현장 운영 제품', en: 'Venue Operations Product' },
+        items: [
+          {
+            ko: '여러 대기열의 생성·정렬·일시정지·다음 순번 처리와 탑승 완료·결제 기록 관리',
+            en: 'Queue creation, ordering, pausing and next-rider flows, plus ride completion and payment records',
+          },
+          {
+            ko: '회원별 티켓 내역과 카카오 로그인 기반 마이페이지, 운영자용 관리 화면 개발',
+            en: 'Member ticket records, Kakao-login member pages and operator administration interfaces',
+          },
+          {
+            ko: '모바일 현장 조작 화면과 TV·대형 디스플레이용 실시간 대기열 뷰어 제공',
+            en: 'Mobile venue controls and a real-time queue viewer for TVs and large displays',
           },
         ],
       },
@@ -830,6 +932,7 @@ export const projects: Project[] = [
 
   {
     slug: 'ilovecoffee',
+    resumeVisible: false,
     company: { ko: '넥스쳐 (파티게임즈)', en: 'Nexture (Pati Games)' },
     title: { ko: '아이러브커피', en: 'I Love Coffee' },
     period: { ko: '2015.12 — 2017.02', en: 'Dec 2015 — Feb 2017' },
@@ -874,6 +977,7 @@ export const projects: Project[] = [
 
   {
     slug: 'maxonsoft',
+    resumeVisible: false,
     company: { ko: '맥스온소프트', en: 'MaxonSoft' },
     title: { ko: '월드 히어로즈 온라인', en: 'World Heroes Online' },
     period: { ko: '2014.06 — 2015.12', en: 'Jun 2014 — Dec 2015' },
@@ -920,6 +1024,25 @@ export type SkillGroup = {
 }
 
 export const skills: SkillGroup[] = [
+  {
+    heading: { ko: 'Web & Platform', en: 'Web & Platform' },
+    items: [
+      {
+        label: 'TypeScript / React',
+        detail: {
+          ko: 'WebPETO·GenWorld R&D, Next.js App Router, TanStack React Query, PWA',
+          en: 'WebPETO and GenWorld R&D, Next.js App Router, TanStack React Query, PWA',
+        },
+      },
+      {
+        label: 'Build & Runtime',
+        detail: {
+          ko: 'Vite, Webpack, WebGL, Windows/macOS, iOS/Android 네이티브 연동',
+          en: 'Vite, Webpack, WebGL, Windows/macOS and iOS/Android native integration',
+        },
+      },
+    ],
+  },
   {
     heading: { ko: 'Client', en: 'Client' },
     items: [
