@@ -671,8 +671,12 @@ export const projects: Project[] = [
         ko: 'GCP 에셋 번들 패치 시스템과 Jenkins·Slack·Python 기반 빌드·배포 자동화 구축',
         en: 'Built GCP asset bundle patching and automated builds and deployment with Jenkins, Slack and Python',
       },
+      {
+        ko: 'Unity 클라이언트에 Sentry 연동 — 크래시·예외를 정기적으로 검토해 수정 우선순위를 정하고, 심각하거나 원인이 불분명한 이슈의 진단 로깅에 활용',
+        en: 'Integrated Sentry into the Unity client; reviewed crashes and exceptions regularly to prioritise fixes and log severe or unclear issues',
+      },
     ],
-    stack: ['Unity3D', 'C#', 'Java (Spring Boot)', 'GCP', 'Jenkins', 'Python'],
+    stack: ['Unity3D', 'C#', 'Java (Spring Boot)', 'GCP', 'Jenkins', 'Python', 'Sentry'],
     image: '/projects/kinggodcastle.webp',
     sections: [
       {
@@ -694,6 +698,10 @@ export const projects: Project[] = [
             ko: 'GCP 미국 리전 이전으로 글로벌 서비스 안정화 및 성능 개선',
             en: 'Moved to a GCP US region, stabilising and speeding up global service',
           },
+          {
+            ko: 'Unity 클라이언트 Sentry 연동 — 크래시·예외 정기 검토로 수정 우선순위 결정, 심각하거나 원인이 불분명한 이슈의 진단 로깅',
+            en: 'Sentry on the Unity client — regular crash/exception review to prioritise fixes, diagnostic logging for severe or unclear issues',
+          },
         ],
       },
     ],
@@ -707,10 +715,6 @@ export const projects: Project[] = [
     resumeContext: {
       ko: '최대 동시접속자 13만 명을 기록한 모바일 게임',
       en: 'Mobile game with a peak of 130,000 concurrent players',
-    },
-    periodNote: {
-      ko: '좀비고 팀에서 근무한 뒤 킹갓캐슬 팀으로 이동',
-      en: 'Worked on the Zombie High team before moving to King God Castle',
     },
     summary: {
       ko: '최대 동시접속자 13만 명을 기록한 게임의 라이브 서비스. 리드 프로그래머로 콘텐츠 개발, 서버 최적화와 통합 계정 시스템을 담당.',
@@ -887,6 +891,7 @@ export const projects: Project[] = [
       'GCP',
       'Django',
       'Go',
+      'Sentry',
     ],
     image: '/projects/zombiehigh.webp',
     gallery: [
@@ -967,6 +972,10 @@ export const projects: Project[] = [
             ko: 'Log4j, Firebase, Elasticsearch를 통한 실시간 로그 수집·분석',
             en: 'Real-time log collection and analysis via Log4j, Firebase and Elasticsearch',
           },
+          {
+            ko: 'Unity 클라이언트 Sentry 연동 — 크래시·예외 정기 검토로 수정 우선순위 결정, 심각하거나 원인이 불분명한 이슈의 진단 로깅',
+            en: 'Sentry on the Unity client — regular crash/exception review to prioritise fixes, diagnostic logging for severe or unclear issues',
+          },
           { ko: 'Python·Django 기반 웹 운영 도구 개발', en: 'Developed web-based operations tools with Python and Django' },
           { ko: 'C# WinForms 기반 쿠폰 자동 생성 툴 제작', en: 'Built a coupon generation tool in C# WinForms' },
           { ko: 'Redis 자동 백업·복구 Python 스크립트 작성', en: 'Wrote Python scripts for automated Redis backup and restore' },
@@ -996,7 +1005,7 @@ export const projects: Project[] = [
         en: 'Developed web-based operations tools with Python and Flask, and automated builds and tests with Docker and Jenkins',
       },
     ],
-    stack: ['Unity3D', 'C#', 'Python (Flask)', 'Docker', 'Jenkins'],
+    stack: ['Unity3D', 'C#', 'Python (Flask)', 'Docker', 'Jenkins', 'Sentry'],
     image: '/projects/pocketcrew.webp',
     sections: [
       {
@@ -1021,6 +1030,7 @@ export const projects: Project[] = [
             ko: 'Docker + Jenkins를 활용한 자동 빌드·테스트 시스템 구축',
             en: 'Set up automated build and test with Docker and Jenkins',
           },
+          { ko: 'Unity 클라이언트 Sentry 연동 및 크래시·예외 추적', en: 'Integrated Sentry into the Unity client for crash and exception tracking' },
         ],
       },
     ],
@@ -1255,8 +1265,8 @@ export const skills: SkillGroup[] = [
       {
         label: 'Operations',
         detail: {
-        ko: '운영 도구 개발, 장애 대응, 긴급 데이터 처리, 로그 분석(Log4j, Elasticsearch)',
-          en: 'Internal ops tools, incident response, emergency data handling, log analysis (Log4j, Elasticsearch)',
+          ko: '운영 도구 개발, 장애 대응, 긴급 데이터 처리, Sentry 기반 Unity 크래시·예외 추적, 로그 분석(Log4j, Elasticsearch)',
+          en: 'Internal ops tools, incident response, emergency data handling, Sentry crash tracking, log analysis (Log4j, Elasticsearch)',
         },
       },
     ],
