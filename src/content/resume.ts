@@ -376,8 +376,8 @@ export const projects: Project[] = [
     ],
     resumeHighlights: [
       {
-        ko: 'WebPETO 초기 WebGL 압축 빌드 약 43% 축소(13.29→7.64MB, 2026.06) — 리소스·의존성 정리, 캐시 우선 표시·부가 콘텐츠 지연 로딩',
-        en: 'Reduced WebPETO’s compressed WebGL build by ~43% (13.29→7.64 MB, Jun 2026); pruned resources/dependencies, rendered cached data first and deferred optional content',
+        ko: 'WebPETO 초기 WebGL 압축 빌드 약 43% 축소(13.29→7.64MB) — 리소스·의존성 정리, 캐시 우선 표시·부가 콘텐츠 지연 로딩',
+        en: 'Reduced WebPETO’s compressed WebGL build by ~43% (13.29→7.64 MB); pruned resources/dependencies, rendered cached data first and deferred optional content',
       },
       {
         ko: 'React·RTK Query 기반 웹 UI·API 상태 관리, JavaScript–Unity 브리지 및 OAuth·PKCE 기반 공통 로그인 연동',
