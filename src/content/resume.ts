@@ -29,8 +29,8 @@ export const profile = {
 
   /** 이력서 상단 요약 한 문단. 랜딩의 About 은 아래 `about` 을 씁니다. */
   intro: {
-    ko: 'TypeScript·React 기반 웹 플랫폼과 Unity 클라이언트, 서버 및 라이브 운영을 경험한 소프트웨어 엔지니어입니다. 현재 네이버제트에서 WebPETO와 GenWorld R&D를 중심으로 웹 개발을 맡고 있으며, ZEPETO Studio·SDK와 Windows·macOS 출시에도 참여했습니다. 이전에는 킹갓캐슬의 초기 개발부터 출시·운영을 메인 프로그래머로 담당하고, 좀비고등학교의 콘텐츠·서버·운영 시스템을 개발했습니다.',
-    en: 'Software engineer experienced in TypeScript and React web platforms, Unity clients, servers and live operations. At NAVER Z, I focus on web development for WebPETO and GenWorld R&D, and have also contributed to ZEPETO Studio and SDK development and the Windows and macOS release. Previously, I was the main programmer for King God Castle from initial development through launch and live operations, and developed content, servers and operations systems for Zombie High.',
+    ko: 'TypeScript·React 기반 웹 플랫폼과 Unity 클라이언트, 서버 및 라이브 운영을 경험한 소프트웨어 엔지니어입니다. 현재 네이버제트에서 웹 기반 아바타 제작 도구(WebPETO)와 AI 월드 제작 플랫폼 R&D(GenWorld·ZepetoField)를 중심으로 웹 개발을 맡고 있으며, ZEPETO Studio·SDK와 Windows·macOS 출시에도 참여했습니다. 이전에는 킹갓캐슬의 초기 개발부터 출시·운영을 메인 프로그래머로 담당하고, 좀비고등학교의 콘텐츠·서버·운영 시스템을 개발했습니다.',
+    en: 'Software engineer experienced in TypeScript and React web platforms, Unity clients, servers and live operations. At NAVER Z, I focus on web development for a web-based avatar authoring tool (WebPETO) and AI world-authoring platform R&D (GenWorld and ZepetoField), and have also contributed to ZEPETO Studio and SDK development and the Windows and macOS release. Previously, I was the main programmer for King God Castle from initial development through launch and live operations, and developed content, servers and operations systems for Zombie High.',
   } satisfies I18n,
 
   /**
@@ -46,8 +46,8 @@ export const profile = {
       en: 'I build TypeScript and React web platforms and Unity clients, with experience spanning client and server development, launch and live operations.',
     },
     {
-      ko: '현재 [[네이버제트]]에서 [[ZEPETO|/work/naverz/]]의 WebPETO와 GenWorld R&D를 중심으로 웹 개발을 맡고, 크리에이터용 Studio·SDK를 개발합니다.',
-      en: 'At [[NAVER Z]], I focus on web development for WebPETO and GenWorld R&D and build creator-facing Studio and SDK tools for [[ZEPETO|/work/naverz/]].',
+      ko: '현재 [[네이버제트]]에서 [[ZEPETO|/work/naverz/]]의 웹 기반 아바타 제작 도구(WebPETO)와 AI 월드 제작 플랫폼 R&D(GenWorld·ZepetoField)를 중심으로 웹 개발을 맡고, 크리에이터용 Studio·SDK를 개발합니다.',
+      en: 'At [[NAVER Z]], I focus on web development for a web-based avatar authoring tool (WebPETO) and AI world-authoring platform R&D (GenWorld and ZepetoField), and build creator-facing Studio and SDK tools for [[ZEPETO|/work/naverz/]].',
     },
     {
       ko: 'ZEPETO의 실시간 멀티플레이 월드를 개발·운영했고, Windows·macOS 출시를 맡았습니다. 현재 LLM 기반 AI NPC와 월드 생성 R&D에도 참여하고 있습니다.',
@@ -96,8 +96,7 @@ export const experience: Experience[] = [
     slug: 'naverz',
     company: { ko: '네이버제트', en: 'NAVER Z' },
     team: { ko: 'World → Unity', en: 'World → Unity' },
-    title: { ko: 'Unity 프로그래머', en: 'Unity Programmer' },
-    scope: { ko: '웹 · Unity', en: 'Web · Unity' },
+    title: { ko: '소프트웨어 엔지니어 · 웹·Unity', en: 'Software Engineer · Web & Unity' },
     start: '2023-01-16',
     end: null,
     current: true,
@@ -222,8 +221,8 @@ export const projects: Project[] = [
     title: { ko: 'ZEPETO', en: 'ZEPETO' },
     period: { ko: '2023.01 — 현재', en: 'Jan 2023 — Present' },
     summary: {
-      ko: 'WebPETO의 웹·WebGL 초기 로딩 최적화와 React 전환, GenWorld AI 제작 도구 R&D, ZEPETO SDK 및 Windows·macOS 출시 대응.',
-      en: 'Web and WebGL loading optimisation and React migration for WebPETO, GenWorld AI authoring R&D, ZEPETO SDK development and Windows/macOS release support.',
+      ko: '웹 기반 아바타 제작 도구(WebPETO)의 웹·WebGL 초기 로딩 최적화와 React 전환, AI 월드 제작 플랫폼 R&D(GenWorld·ZepetoField), ZEPETO SDK 및 Windows·macOS 출시 대응.',
+      en: 'Web and WebGL loading optimisation and React migration for a web-based avatar authoring tool (WebPETO), AI world-authoring platform R&D (GenWorld and ZepetoField), ZEPETO SDK development and Windows/macOS release support.',
     },
     overview: {
       role: { ko: '소프트웨어 엔지니어 · 웹·Unity', en: 'Software Engineer · Web & Unity' },
@@ -376,16 +375,16 @@ export const projects: Project[] = [
     ],
     resumeHighlights: [
       {
-        ko: 'WebPETO 초기 WebGL 압축 빌드 약 43% 축소(13.29→7.64MB) — 리소스·의존성 정리, 캐시 우선 표시·부가 콘텐츠 지연 로딩',
-        en: 'Reduced WebPETO’s compressed WebGL build by ~43% (13.29→7.64 MB); pruned resources/dependencies, rendered cached data first and deferred optional content',
+        ko: '웹 기반 아바타 제작 도구(WebPETO)의 초기 WebGL 압축 빌드 약 43% 축소(13.29→7.64MB) — 리소스·의존성 정리, 캐시 우선 표시·부가 콘텐츠 지연 로딩',
+        en: 'Reduced the initial compressed WebGL build of a web-based avatar authoring tool (WebPETO) by ~43% (13.29→7.64 MB); pruned resources/dependencies, rendered cached data first and deferred optional content',
       },
       {
         ko: 'React·RTK Query 기반 웹 UI·API 상태 관리, JavaScript–Unity 브리지 및 OAuth·PKCE 기반 공통 로그인 연동',
         en: 'React/RTK Query interfaces and API state, JavaScript–Unity bridges and shared OAuth/PKCE sign-in integration',
       },
       {
-        ko: 'GenWorld·ZepetoField R&D — TypeScript·MCP 제작 도구, 실행 격리·복구, 사용자별 생성 작업 큐·중복 요청 방지',
-        en: 'GenWorld/ZepetoField R&D: TypeScript/MCP authoring tools, execution isolation/recovery, per-user generation queues and request deduplication',
+        ko: 'AI 월드 제작 플랫폼 R&D(GenWorld·ZepetoField) — TypeScript·MCP 제작 도구, 실행 격리·복구, 사용자별 생성 작업 큐·중복 요청 방지',
+        en: 'AI world-authoring platform R&D (GenWorld and ZepetoField): TypeScript/MCP authoring tools, execution isolation/recovery, per-user generation queues and request deduplication',
       },
       {
         ko: 'ZEPETO Studio·SDK 모듈 개발 및 Windows·macOS 출시 — 크로스플랫폼 지원과 런타임 이슈 해결',
@@ -1185,8 +1184,8 @@ export const skills: SkillGroup[] = [
       {
         label: 'TypeScript / React',
         detail: {
-          ko: 'WebPETO·GenWorld R&D, Next.js App Router, TanStack React Query, PWA',
-          en: 'WebPETO and GenWorld R&D, Next.js App Router, TanStack React Query, PWA',
+          ko: '웹 기반 아바타 제작 도구(WebPETO)·AI 월드 제작 플랫폼 R&D(GenWorld), Next.js App Router, TanStack React Query, PWA',
+          en: 'Web-based avatar authoring tool (WebPETO) and AI world-authoring platform R&D (GenWorld), Next.js App Router, TanStack React Query, PWA',
         },
       },
       {
