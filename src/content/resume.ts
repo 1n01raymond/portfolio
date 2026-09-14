@@ -294,16 +294,16 @@ export const projects: Project[] = [
         },
         approach: [
           {
-            ko: 'Node.js 공통 로그인 허브와 Caddy 로그인 게이트를 구성하고, 로그인 후 원래 서비스로 돌아가 각 서비스의 세션을 이어주는 핸드오프를 구현했습니다. 로그인 실패·만료·로그아웃과 서비스별 진입 경로를 함께 다뤘습니다.',
-            en: 'Built a shared Node.js sign-in hub and Caddy login gate, with handoffs that return users to the original service and establish its session. Handled failed sign-in, expiry, sign-out and service-specific entry paths.',
+            ko: 'Node.js 기반 공통 로그인 허브를 두고, 인증 후 원래 서비스로 돌아가 각 서비스의 세션을 이어주는 흐름을 구현했습니다. 로그인 실패·만료·로그아웃과 서비스별 진입 경로를 함께 다뤘습니다.',
+            en: 'Built a shared Node.js sign-in hub that returned users to the originating service and established its session. Handled failed sign-in, expiry, sign-out and service-specific entry paths.',
           },
           {
-            ko: '다른 origin의 웹앱과 Unity Editor·CLI에는 OAuth 2.0 authorization code + PKCE 연동을 제공했습니다. 등록된 redirect URI와 요청 권한을 검증하고, 브로커 클라이언트에는 원본 계정 토큰 대신 허브 세션에 종속된 토큰과 허용된 API 프록시를 제공했습니다.',
-            en: 'Provided OAuth 2.0 authorization code and PKCE integration for other-origin web apps, Unity Editor and CLI clients. Validated registered redirect URIs and scopes, and gave broker clients session-bound tokens and an allowlisted API proxy instead of the upstream account token.',
+            ko: '다른 origin의 웹앱과 Unity Editor·CLI에는 OAuth 2.0 authorization code + PKCE를 적용했습니다. 등록된 redirect URI와 요청 권한을 검증하고, 상위 계정 토큰을 클라이언트에 직접 노출하지 않도록 세션 경계를 설계했습니다.',
+            en: 'Applied OAuth 2.0 authorization code and PKCE to other-origin web apps, Unity Editor and CLI clients. Validated registered redirect URIs and scopes, and designed the session boundary to avoid exposing the upstream account token directly to clients.',
           },
           {
-            ko: '세션 종료와 클라이언트 등록 해지를 토큰 무효화에 연결하고, 브로커 계약 테스트와 로그인 핸드오프 종단 점검 도구를 구성했습니다. 내부 도구 연동 범위의 구현으로, 외부 공개 인증 플랫폼 출시는 별도입니다.',
-            en: 'Linked session termination and client deregistration to token invalidation, and added broker contract tests and end-to-end handoff checks. This implementation supports internal tool integration; it is separate from launching a public identity platform.',
+            ko: '세션 종료와 클라이언트 등록 해지를 토큰 무효화에 연결하고, 계약 테스트와 로그인 흐름의 종단 점검을 구성했습니다.',
+            en: 'Linked session termination and client deregistration to token invalidation, with contract tests and end-to-end checks for the sign-in flow.',
           },
         ],
       },
@@ -392,7 +392,7 @@ export const projects: Project[] = [
         en: 'Developed ZEPETO Studio/SDK modules and supported the Windows/macOS release, resolving cross-platform runtime issues',
       },
     ],
-    stack: ['TypeScript', 'React', 'Redux Toolkit', 'RTK Query', 'Vite', 'Node.js', 'Unity3D', 'C#', 'WebGL', 'MCP', 'Vitest'],
+    stack: ['TypeScript', 'React', 'Redux Toolkit', 'RTK Query', 'Vite', 'Webpack', 'Node.js', 'Unity3D', 'C#', 'WebGL', 'MCP', 'Vitest', 'Windows/macOS'],
     image: '/projects/zepeto.webp',
     sections: [
       {
