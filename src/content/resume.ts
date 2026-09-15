@@ -30,7 +30,7 @@ export const profile = {
   /** 이력서 상단 요약 한 문단. 랜딩의 About 은 아래 `about` 을 씁니다. */
   intro: {
     ko: 'TypeScript·React 기반 웹 플랫폼과 Unity 클라이언트, 서버 및 라이브 운영을 경험한 소프트웨어 엔지니어입니다. 현재 네이버제트에서 웹 기반 아바타 제작 도구(WebPETO)와 AI 월드 제작 플랫폼 R&D(GenWorld·ZepetoField)를 중심으로 웹 개발을 맡고 있으며, ZEPETO Studio·SDK와 Windows·macOS 출시에도 참여했습니다. 이전에는 킹갓캐슬의 초기 개발부터 출시·운영을 메인 프로그래머로 담당하고, 좀비고등학교의 콘텐츠·서버·운영 시스템을 개발했습니다.',
-    en: 'Software engineer experienced in TypeScript and React web platforms, Unity clients, servers and live operations. At NAVER Z, I focus on web development for a web-based avatar authoring tool (WebPETO) and AI world-authoring platform R&D (GenWorld and ZepetoField), and have also contributed to ZEPETO Studio and SDK development and the Windows and macOS release. Previously, I was the main programmer for King God Castle from initial development through launch and live operations, and developed content, servers and operations systems for Zombie High.',
+    en: 'Software engineer experienced in TypeScript/React web platforms, Unity clients, servers and live operations. At NAVER Z, I work on a web-based avatar authoring tool (WebPETO) and AI world-authoring platform R&D (GenWorld, ZepetoField), and also worked on ZEPETO Studio/SDK and the Windows/macOS release. Previously, I was the main programmer for King God Castle from initial development to launch and live operations, and built content, server and ops systems for Zombie High.',
   } satisfies I18n,
 
   /**
@@ -384,7 +384,11 @@ export const projects: Project[] = [
       },
       {
         ko: 'AI 월드 제작 플랫폼 R&D(GenWorld·ZepetoField) — TypeScript·MCP 제작 도구, 실행 격리·복구, 사용자별 생성 작업 큐·중복 요청 방지',
-        en: 'AI world-authoring platform R&D (GenWorld and ZepetoField): TypeScript/MCP authoring tools, execution isolation/recovery, per-user generation queues and request deduplication',
+        en: 'AI world-authoring platform R&D (GenWorld, ZepetoField): TypeScript/MCP tools, execution isolation/recovery, per-user queues, deduplication',
+      },
+      {
+        ko: 'Prop Atlas — 약 11,000개 프롭을 Unity 렌더 썸네일과 OpenAI 모델(GPT-5.5)로 자동 라벨링하고, 텍스트·이미지 임베딩 검색과 리랭킹을 MCP 서버로 GenWorld LLM에 제공한 RAG 프롭 검색',
+        en: 'Prop Atlas — RAG prop search: ~11,000 props auto-labelled from Unity thumbnails via an OpenAI model (GPT-5.5); text/image embedding search and reranking served over MCP to GenWorld’s LLM',
       },
       {
         ko: 'ZEPETO Studio·SDK 모듈 개발 및 Windows·macOS 출시 — 크로스플랫폼 지원과 런타임 이슈 해결',
@@ -410,8 +414,8 @@ export const projects: Project[] = [
             en: 'ZepetoField — a PoC connecting prompt-based game design, Unity builds, a result catalogue and browser play',
           },
           {
-            ko: 'Prop Atlas — 월드 제작용 프롭 카탈로그 검색 도구',
-            en: 'Prop Atlas — a searchable prop catalogue for world authoring',
+            ko: 'Prop Atlas — 월드 제작용 프롭 검색 RAG 도구. Unity에서 약 11,000개 프롭의 썸네일을 렌더링해 OpenAI 모델(GPT-5.5)로 라벨을 자동 생성하고, 텍스트(multilingual-e5)·이미지(CLIP) 임베딩 검색과 cross-encoder 리랭킹을 MCP 서버로 제공해 GenWorld의 LLM이 프롭을 찾아 쓰도록 연결. transformers.js ONNX 로컬 실행과 OpenAI 임베딩을 환경변수로 전환',
+            en: 'Prop Atlas — RAG prop search for world authoring: ~11,000 Unity-rendered thumbnails auto-labelled with an OpenAI model (GPT-5.5); text (multilingual-e5) and image (CLIP) embedding search with cross-encoder reranking, served over MCP to GenWorld’s LLM; local transformers.js ONNX inference switchable to OpenAI embeddings',
           },
           {
             ko: 'GenWorld — AI와 사용자가 코드를 수정하고 실행 결과·오류·변경 기록을 확인하는 웹 제작 환경',
@@ -583,12 +587,8 @@ export const projects: Project[] = [
     },
     resumeHighlights: [
       {
-        ko: 'Fidelion IP 기반 신규 프로젝트의 리드 게임 프로그래머로 개발 주도',
-        en: 'Led development of a new title on the Fidelion IP as Lead Game Programmer',
-      },
-      {
-        ko: 'Unity 클라이언트와 Nest.js 서버 설계·구현 (사업 종료로 프로젝트 중단)',
-        en: 'Designed and implemented the Unity client and Nest.js server (project discontinued when the business closed)',
+        ko: 'Fidelion IP 기반 신규 프로젝트의 리드 게임 프로그래머로 개발 주도, Unity 클라이언트와 Nest.js 서버 설계·구현 (사업 종료로 프로젝트 중단)',
+        en: 'Led a new Fidelion IP title as Lead Game Programmer; built the Unity client and Nest.js server (discontinued when the business closed)',
       },
     ],
     stack: ['Unity3D', 'C#', 'Nest.js', 'TypeScript'],
@@ -1052,7 +1052,7 @@ export const projects: Project[] = [
       },
       {
         ko: 'Unity 클라이언트와 C# 웹 서버에서 데이터 모델·게임 로직을 공유하고, 공통 로직으로 클라이언트의 게임 진행 결과를 서버에서 검증',
-        en: 'Shared data models and game logic between the Unity client and C# web server, using the shared logic to validate client gameplay results on the server',
+        en: 'Shared data models and game logic between the Unity client and C# web server to validate client gameplay results server-side',
       },
       {
         ko: 'MongoDB·Redis 데이터 저장·캐싱 구조 설계 및 Jenkins 자동 빌드 파이프라인 구축',
@@ -1195,7 +1195,7 @@ export const skills: SkillGroup[] = [
         label: 'TypeScript / React',
         detail: {
           ko: '웹 기반 아바타 제작 도구(WebPETO)·AI 월드 제작 플랫폼 R&D(GenWorld), Next.js App Router, TanStack React Query, PWA',
-          en: 'Web-based avatar authoring tool (WebPETO) and AI world-authoring platform R&D (GenWorld), Next.js App Router, TanStack React Query, PWA',
+          en: 'Avatar authoring tool (WebPETO), AI world-authoring platform R&D (GenWorld), Next.js App Router, TanStack React Query, PWA',
         },
       },
       {
@@ -1233,7 +1233,7 @@ export const skills: SkillGroup[] = [
         label: 'Realtime Server',
         detail: {
           ko: 'Java Netty 소켓 서버 — 동시 100명 멀티플레이, 매칭·랭킹, 채팅(ActiveMQ) / Java 서버 통신에 Protocol Buffers 활용',
-          en: 'Java Netty socket servers — 100-player multiplayer, matchmaking/ranking, chat (ActiveMQ) / Protocol Buffers for Java server communication',
+          en: 'Java Netty socket servers — 100-player multiplayer, matchmaking/ranking, chat (ActiveMQ), Protocol Buffers',
         },
       },
       {
@@ -1266,7 +1266,7 @@ export const skills: SkillGroup[] = [
         label: 'Operations',
         detail: {
           ko: '운영 도구 개발, 장애 대응, 긴급 데이터 처리, Sentry 기반 Unity 크래시·예외 추적, 로그 분석(Log4j, Elasticsearch)',
-          en: 'Internal ops tools, incident response, emergency data handling, Sentry crash tracking, log analysis (Log4j, Elasticsearch)',
+          en: 'Ops tools, incident response, emergency data handling, Sentry, log analysis (Log4j, Elasticsearch)',
         },
       },
     ],
@@ -1277,8 +1277,8 @@ export const skills: SkillGroup[] = [
       {
         label: 'LLM Applications',
         detail: {
-          ko: 'AI NPC(Companion)·AI 월드 생성 R&D, LLM 기반 코드 리뷰 도구',
-          en: 'AI NPC (Companion) and AI world generation R&D, LLM-based code review tooling',
+          ko: 'AI NPC(Companion)·AI 월드 생성 R&D, LLM 기반 코드 리뷰 도구, LLM 자동 라벨링·텍스트/이미지 임베딩 검색·리랭킹(RAG)·MCP 서버',
+          en: 'AI NPC and AI world generation R&D, LLM code review tooling, LLM auto-labelling, text/image embedding search and reranking (RAG), MCP servers',
         },
       },
       {
