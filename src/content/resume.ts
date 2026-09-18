@@ -29,8 +29,8 @@ export const profile = {
 
   /** 이력서 상단 요약 한 문단. 랜딩의 About 은 아래 `about` 을 씁니다. */
   intro: {
-    ko: 'TypeScript·React 기반 웹 플랫폼과 Unity 클라이언트, 서버 및 라이브 운영을 경험한 소프트웨어 엔지니어입니다. 현재 네이버제트에서 WebPETO와 GenWorld R&D를 중심으로 웹 개발을 맡고 있으며, ZEPETO Studio·SDK와 Windows·macOS 출시에도 참여했습니다. 이전에는 킹갓캐슬의 초기 개발부터 출시·운영을 메인 프로그래머로 담당하고, 좀비고등학교의 콘텐츠·서버·운영 시스템을 개발했습니다.',
-    en: 'Software engineer experienced in TypeScript and React web platforms, Unity clients, servers and live operations. At NAVER Z, I focus on web development for WebPETO and GenWorld R&D, and have also contributed to ZEPETO Studio and SDK development and the Windows and macOS release. Previously, I was the main programmer for King God Castle from initial development through launch and live operations, and developed content, servers and operations systems for Zombie High.',
+    ko: 'TypeScript·React 기반 웹 플랫폼과 Unity 클라이언트, 서버 및 라이브 운영을 경험한 소프트웨어 엔지니어입니다. 현재 네이버제트에서 ZEPETO 앱을 브라우저로 옮기는 WebPETO·WebGL 런타임과, AI가 쓴 월드 코드를 실행·격리·공유하는 GenWorld R&D를 맡고 있습니다. 그 전에는 ZEPETO Unity 클라이언트에서 월드 내 YouTube 플레이어와 다중 초대를 출시하고 NewWorld의 Windows·macOS 지원을 맡았으며, ZEPETO Studio·SDK 개발에도 참여했습니다. 이전에는 킹갓캐슬의 초기 개발부터 출시·운영을 메인 프로그래머로 담당하고, 좀비고등학교의 콘텐츠·서버·운영 시스템을 개발했습니다.',
+    en: 'Software engineer experienced in TypeScript and React web platforms, Unity clients, servers and live operations. At NAVER Z, I work on WebPETO and the WebGL runtimes that bring the ZEPETO app to the browser, and on GenWorld R&D for running, isolating and sharing AI-written world code. Before that I shipped the in-world YouTube player and multi-user invites in the ZEPETO Unity client, brought NewWorld to Windows and macOS, and contributed to ZEPETO Studio and SDK development. Previously, I was the main programmer for King God Castle from initial development through launch and live operations, and developed content, servers and operations systems for Zombie High.',
   } satisfies I18n,
 
   /**
@@ -46,12 +46,12 @@ export const profile = {
       en: 'I build TypeScript and React web platforms and Unity clients, with experience spanning client and server development, launch and live operations.',
     },
     {
-      ko: '현재 [[네이버제트]]에서 [[ZEPETO|/work/naverz/]]의 WebPETO와 GenWorld R&D를 중심으로 웹 개발을 맡고, 크리에이터용 Studio·SDK를 개발합니다.',
-      en: 'At [[NAVER Z]], I focus on web development for WebPETO and GenWorld R&D and build creator-facing Studio and SDK tools for [[ZEPETO|/work/naverz/]].',
+      ko: '현재 [[네이버제트]]에서 [[ZEPETO|/work/naverz/]] 앱을 브라우저로 옮기는 WebPETO와 아바타·마이룸·월드 WebGL 런타임, 그리고 AI 코딩 앱이 월드 코드를 쓰고 사용자가 브라우저에서 실행·검토·공유하는 GenWorld R&D를 맡고 있습니다.',
+      en: 'At [[NAVER Z]], I work on WebPETO and the avatar, MyRoom and world WebGL runtimes that bring the [[ZEPETO|/work/naverz/]] app to the browser, and on GenWorld R&D, where AI coding apps write world code that users run, review and share in the browser.',
     },
     {
-      ko: 'ZEPETO의 실시간 멀티플레이 월드를 개발·운영했고, Windows·macOS 출시를 맡았습니다. 현재 LLM 기반 AI NPC와 월드 생성 R&D에도 참여하고 있습니다.',
-      en: 'I built and operated real-time multiplayer worlds for ZEPETO and worked on its Windows and macOS release. I also work on LLM-based R&D for AI NPCs and world generation.',
+      ko: 'ZEPETO Unity 클라이언트에서는 월드 내 YouTube 플레이어와 다중 초대를 출시하고 NewWorld의 Windows·macOS 지원을 맡았습니다. 실시간 멀티플레이 월드를 개발·운영했고, LLM 기반 AI NPC와 월드 생성 R&D도 진행했습니다.',
+      en: 'In the ZEPETO Unity client I shipped the in-world YouTube player and multi-user invites and brought NewWorld to Windows and macOS. I have built and operated real-time multiplayer worlds, and run LLM-based R&D on AI NPCs and world generation.',
     },
     {
       ko: '이전에는 [[어썸피스]]에서 [[좀비고등학교|/work/zombiehigh/]]의 100인 서바이벌 모드와 통합 계정 시스템을 만들었습니다. 이후 [[킹갓캐슬|/work/kinggodcastle/]] 팀으로 옮겨 첫 빌드부터 출시, 글로벌 라이브 서비스까지 메인 프로그래머로 맡았습니다.',
@@ -188,6 +188,11 @@ export type Project = {
   /** 확인된 사실로 구성한 기술 사례. 수치나 결과가 불명확하면 outcome은 생략 */
   caseStudies?: {
     id: string
+    /**
+     * 사례가 많은 프로젝트에서 묶음 제목. 같은 group 이 연속으로 이어지면
+     * 상세 페이지가 그 앞에 소제목을 한 번 그립니다 (WorkDetailPage).
+     */
+    group?: I18n
     title: I18n
     context: I18n
     approach: I18n[]
@@ -222,71 +227,106 @@ export const projects: Project[] = [
     title: { ko: 'ZEPETO', en: 'ZEPETO' },
     period: { ko: '2023.01 — 현재', en: 'Jan 2023 — Present' },
     summary: {
-      ko: 'WebPETO의 웹·WebGL 초기 로딩 최적화와 React 전환, GenWorld AI 제작 도구 R&D, ZEPETO SDK 및 Windows·macOS 출시 대응.',
-      en: 'Web and WebGL loading optimisation and React migration for WebPETO, GenWorld AI authoring R&D, ZEPETO SDK development and Windows/macOS release support.',
+      ko: 'ZEPETO 앱을 브라우저로 옮기는 WebPETO와 아바타·마이룸·월드 WebGL 런타임, AI가 쓴 월드 코드를 실행·격리·공유하는 GenWorld, Unity 클라이언트의 월드 기능 출시와 NewWorld의 Windows·macOS 지원.',
+      en: 'WebPETO and the avatar, MyRoom and world WebGL runtimes that bring the ZEPETO app to the browser, GenWorld for running, isolating and sharing AI-written world code, and Unity client world features with NewWorld on Windows and macOS.',
     },
     overview: {
       role: { ko: '소프트웨어 엔지니어 · 웹·Unity', en: 'Software Engineer · Web & Unity' },
       focus: {
-        ko: '브라우저에서 기존 앱의 아바타·상점 경험을 제공하고, AI가 만든 월드를 실행·확인·수정하는 제작 환경 개발.',
-        en: 'Bringing the app’s avatar and shop experience to the browser, and building tools to run, inspect and revise AI-authored worlds.',
+        ko: '기존 앱의 아바타·상점·마이룸·월드 경험을 브라우저에서 제공하고, AI가 만든 월드를 안전하게 실행·검토·공유하는 제작 환경을 만드는 것.',
+        en: 'Bringing the app’s avatar, shop, MyRoom and world experiences to the browser, and building an environment that runs, inspects and shares AI-authored worlds safely.',
       },
       contribution: {
-        ko: 'React UI·서버 상태 관리, JavaScript–Unity 브리지, WebGL 빌드 경량화와 로딩 순서 개선, TypeScript 기반 제작 도구·MCP 연동을 개발했습니다. 기존 Studio·SDK와 PC 클라이언트 출시 업무도 담당했습니다.',
-        en: 'Developed React interfaces and server-state handling, JavaScript–Unity bridges, smaller WebGL builds and staged loading, plus TypeScript authoring tools and MCP integration. Also worked on Studio, SDKs and the PC client release.',
+        ko: 'React·RTK Query UI와 API 상태 관리, JavaScript–Unity 브리지, WebGL 빌드 경량화와 로딩 경로 개선, 원본 Unity 런타임의 WebGL 이식, MCP 서버·OAuth 연결 도구·격리 실행 런타임을 개발했습니다. Unity 클라이언트에서는 월드 내 YouTube 플레이어·다중 초대·NewWorld PC 지원을 출시하고 SDK 모듈의 PC 대응을 맡았습니다.',
+        en: 'Developed React and RTK Query interfaces with API state, JavaScript–Unity bridges, smaller WebGL builds with staged loading, WebGL ports of the original Unity runtimes, and an MCP server, OAuth connector and isolated execution runtime. In the Unity client, shipped the in-world YouTube player, multi-user invites and NewWorld on PC, and adapted SDK modules for PC.',
       },
     },
     caseStudies: [
+      /* ---------------------------------------------- Web Platform */
       {
         id: 'webpeto-loading',
+        group: { ko: 'Web Platform — WebPETO · WebGL 런타임', en: 'Web Platform — WebPETO & WebGL runtimes' },
         title: { ko: 'WebPETO — 아바타 첫 화면까지의 로딩 경로 개선', en: 'WebPETO — improving the path to the first avatar render' },
         context: {
-          ko: '웹 상단의 아바타 뷰어에 범용 텍스처 편집기용 기능과 리소스가 포함돼 있었습니다. Unity 초기화와 캐릭터 데이터·부가 리소스 로딩도 첫 화면을 보여주는 경로에 걸려 있어, 다운로드 용량과 표시 순서를 함께 개선했습니다.',
-          en: 'The embedded avatar viewer carried features and resources from a general-purpose texture editor. Unity startup, character data and optional content also sat on the path to the first render, so I addressed both download size and loading order.',
+          ko: '웹 상단의 아바타 뷰어는 ZEPETO Studio용 범용 텍스처 편집기 빌드를 그대로 쓰고 있어 편집 기능과 리소스를 함께 내려받았습니다. Unity 초기화와 캐릭터 데이터·부가 리소스 로딩도 첫 화면을 보여주는 경로에 걸려 있어, Unity 빌드와 웹 클라이언트 양쪽에서 다운로드 용량과 표시 순서를 함께 개선했습니다.',
+          en: 'The avatar viewer at the top of the page reused a general-purpose texture-editor build made for ZEPETO Studio, so editing features and their resources were downloaded too. Unity startup, character data and optional content also sat on the path to the first render, so I addressed download size and loading order on both the Unity build and the web client.',
         },
         approach: [
           {
-            ko: '텍스처 편집·UV·디버그 UI와 불필요한 패키지를 제거하고, 선택 리소스를 초기 빌드에서 제외했습니다. SDK 리소스의 중복 포함을 제거하고 Brotli 압축, IL2CPP 크기 우선 설정과 코드 스트리핑을 적용했습니다.',
-            en: 'Removed texture-editing, UV and debug interfaces and unnecessary packages, and excluded optional resources from the initial build. Removed duplicate SDK resources and applied Brotli compression, size-focused IL2CPP output and code stripping.',
+            ko: 'Unity 쪽에서는 텍스처 편집·UV·디버그 UI와 불필요한 패키지·씬을 제거해 아바타 뷰어 전용 빌드로 전환했습니다. Brotli 압축, IL2CPP 크기 우선 코드 생성과 코드 스트리핑을 적용하고, SDK가 리플렉션으로 생성하는 타입은 link.xml로 보존했습니다. 빌드 파이프라인이 8MB짜리 SDK 내부 리소스를 데이터 아카이브에 중복으로 넣던 회귀를 찾아 막고, WebGL2·Safari에서 실패하는 셰이더는 런타임 폴백으로 대체했습니다.',
+            en: 'On the Unity side, removed texture-editing, UV and debug interfaces plus unnecessary packages and scenes, turning the build into a dedicated avatar viewer. Applied Brotli compression, size-focused IL2CPP code generation and code stripping, preserving SDK types created through reflection with link.xml. Found and stopped a pipeline regression that baked an 8 MB internal SDK resource into the data archive twice, and added runtime fallbacks for shaders that fail on WebGL2 and Safari.',
           },
           {
-            ko: '로그인 화면에서 유휴 시간과 로그인 의도를 활용해 빌드 파일을 미리 받고 런타임을 준비했습니다. 캐시된 캐릭터를 먼저 표시한 뒤 최신 응답과 비교해 필요한 경우에만 갱신하고, 배경·액세서리 등 부가 리소스는 첫 표시 이후로 미뤘습니다.',
-            en: 'Preloaded build files and prepared the runtime during login, using idle time and login intent. Rendered cached character data first, refreshed only when the latest response differed, and deferred optional backgrounds and accessories until after the initial render.',
+            ko: '웹 클라이언트에서는 로그인 화면의 유휴 시간과 로그인 의도를 이용해 빌드 파일을 미리 받고 런타임을 준비했습니다. 캐시된 캐릭터를 먼저 표시한 뒤 최신 응답과 다를 때만 갱신하고, 배경·액세서리 등 선택 슬롯은 첫 표시 이후로 미뤘습니다. 데이터 절약 모드에서는 자동 사전 로딩을 생략하고, 빌드 버전을 캐시 키로 써 재배포 뒤에도 브라우저 캐시가 맞게 동작하도록 했습니다.',
+            en: 'On the web client, used idle time and login intent on the sign-in screen to prefetch build files and prepare the runtime. Rendered cached character data first, refreshed only when the latest response differed, and deferred optional slots such as backgrounds and accessories until after the initial render. Skipped automatic preloading in data-saving mode and keyed the browser cache by build version so redeploys stayed consistent.',
           },
           {
-            ko: 'SDK가 리플렉션으로 생성하는 타입은 link.xml로 보존하고 WebGL 셰이더 폴백을 유지했습니다. 데이터 절약 모드에서는 자동 사전 로딩을 생략하고, 초기화·메타데이터 전달·콘텐츠 로드 단계에 성능 마커를 남겼습니다.',
-            en: 'Preserved SDK types created through reflection with link.xml and retained WebGL shader fallbacks. Skipped automatic preloading in data-saving mode and instrumented runtime startup, metadata delivery and content loading.',
+            ko: '초기 WASM 힙을 32MB에서 128MB로 늘려 힙 확장 정지를 없애고, SendMessage 큐 때문에 생기던 마우스 입력 지터는 목표 프레임을 60fps로 올려 해결했습니다. 초기화·메타데이터 전달·콘텐츠 로드 단계에 성능 마커를 남겨 측정했습니다. Unity를 Three.js로 대체하는 PoC(에셋 번들→GLB 변환 서버)도 만들어 비교했지만, 콜드 로딩 4~8초 대 Unity 1.2초와 셰이더·텍스처 재구현 부담을 근거로 Unity 유지를 결정하고 문서화했습니다.',
+            en: 'Raised the initial WASM heap from 32 MB to 128 MB to remove heap-growth stalls, and fixed mouse-input jitter caused by SendMessage queuing by targeting 60 fps. Instrumented runtime startup, metadata delivery and content loading. Also built a Three.js replacement PoC with an asset-bundle-to-GLB conversion server, but measured 4–8 s cold loads against 1.2 s on Unity and documented the decision to keep Unity given the shader and texture re-implementation cost.',
           },
         ],
         outcome: {
-          ko: '2026년 6월 최적화 기록 기준, 초기 WebGL 압축 산출물(data·wasm·framework) 합계를 약 13.29MB에서 7.64MB로 약 43% 줄였습니다. 첫 표시와 후속 콘텐츠 갱신을 분리했으며, 수치는 로딩 시간이나 전체 페이지 용량이 아닌 해당 빌드 파일의 전송 용량 기준입니다.',
-          en: 'The June 2026 optimisation reduced the combined compressed WebGL data, wasm and framework files from about 13.29 MB to 7.64 MB, approximately 43%. Separated the initial render from later content updates; the figure measures those build files, not elapsed loading time or total page weight.',
+          ko: '2026년 5월 작업 기준(6월 기록), 초기 WebGL 압축 산출물(data·wasm·framework) 합계를 약 13.29MB에서 7.64MB로 약 42% 줄였고, 첫 gzip 산출물 17.2MB와 비교하면 절반 이하입니다. 테스트 서버에서 측정한 콜드 로그인 클릭→아바타 표시 시간은 약 2.6초에서 1.2초(중앙값)로 줄었습니다. 수치는 해당 빌드 파일의 전송 용량과 테스트 환경 기준이며, 서비스 지표가 아닙니다.',
+          en: 'As of the May 2026 work (recorded in June), the combined compressed WebGL data, wasm and framework files fell from about 13.29 MB to 7.64 MB, roughly 42%, and to under half of the original 17.2 MB gzip artefact. Cold time from login click to avatar reveal on a test server dropped from about 2.6 s to a 1.2 s median. These figures measure build files and a test environment, not production metrics.',
         },
       },
       {
         id: 'webpeto-react',
-        title: { ko: 'WebPETO — 기존 앱과 WebGL을 연결하는 React UI', en: 'WebPETO — React interfaces connecting app behaviour and WebGL' },
+        group: { ko: 'Web Platform — WebPETO · WebGL 런타임', en: 'Web Platform — WebPETO & WebGL runtimes' },
+        title: { ko: 'WebPETO — Android 앱을 명세로 삼은 React 전환과 백엔드 어댑터', en: 'WebPETO — React migration and a backend adapter with the Android app as the spec' },
         context: {
-          ko: '기존 Android 앱의 API·이동 규칙·아바타 표현을 웹에서도 이어가면서, DOM 기반 화면을 React로 점진적으로 옮겨야 했습니다.',
-          en: 'The web prototype needed to preserve the Android app’s APIs, navigation rules and avatar rendering while incrementally moving DOM-based interfaces to React.',
+          ko: 'DOM 기반으로 시작한 상점 프로토타입을 홈·피드·프로필·메시지·라이브·클럽 등 앱의 비월드 화면 전반으로 넓히면서, 기존 Android 앱의 API·문구·딥링크·이동 규칙을 그대로 따라야 했습니다. 브라우저는 모바일 클라이언트로 인증되지 않았고, Unity WebGL은 cross-origin isolation을 요구했습니다.',
+          en: 'A DOM-based shop prototype grew into the app’s non-world surfaces — home, feed, profile, messages, live, clubs — and had to follow the Android app’s APIs, copy, deep links and navigation rules. The browser could not authenticate as the mobile client, and Unity WebGL required cross-origin isolation.',
         },
         approach: [
           {
-            ko: 'React 앱 셸과 상점 화면을 분리하고 Redux Toolkit·RTK Query로 상태와 API 조회를 구성했습니다. 기존 화면과 새 화면이 공유하는 상품 판별·표시·구매 로직은 공통 모듈로 추출했습니다.',
-            en: 'Separated the React app shell and shop surface, using Redux Toolkit and RTK Query for state and API access. Extracted shared product, display and purchase logic for both legacy and React interfaces.',
+            ko: 'React 19 앱 셸과 Redux Toolkit·RTK Query 상태 계층을 피처 플래그 뒤에 두고 화면을 단계적으로 옮겼습니다. 기존 API 모듈은 queryFn으로 감싸 재사용하고, 모듈 전역 상태는 useSyncExternalStore 브리지로 연결했으며, 라우트마다 ErrorBoundary를 두어 한 화면의 실패가 앱 전체로 퍼지지 않게 했습니다. 변경 뒤에는 전체 재조회 대신 서버 확인 응답으로 캐시를 패치했고, 기존 화면은 비교용 폴백으로 남겼습니다.',
+            en: 'Placed a React 19 app shell and a Redux Toolkit/RTK Query state layer behind feature flags and moved surfaces incrementally. Reused existing API modules through queryFn, bridged module-level state with useSyncExternalStore, and wrapped each route in an ErrorBoundary so one failing surface could not take down the app. Patched caches from server acknowledgements instead of blanket refetches, and kept legacy surfaces as comparison fallbacks.',
           },
           {
-            ko: '웹이 라우팅·입력·UI를 관리하고 Unity가 아바타 렌더링을 맡도록 경계를 나눴습니다. SendMessage와 준비·로드 콜백으로 캐릭터 메타데이터와 카메라 상태를 전달하고, hash·직접 URL 이동을 공통 scheme 해석 경로로 연결했습니다.',
-            en: 'Kept routing, input and interfaces in the web layer and avatar rendering in Unity. Connected character metadata and camera state through SendMessage and readiness/load callbacks, and routed hash and direct-URL navigation through a shared scheme parser.',
+            ko: 'Android 앱을 실행 가능한 명세로 삼았습니다. strings.xml에서 문자열 테이블을 생성하는 파이프라인, 원시 hex 색상을 디자인 토큰으로 바꾸는 치환, 앱 scheme 딥링크·공유 URL·직접 경로를 하나의 해석 경로로 처리하는 파서를 만들고, 하드코딩 문구나 누락 키가 있으면 실패하는 smoke 검사로 강제했습니다.',
+            en: 'Treated the Android app as the executable spec: a pipeline generating the string table from strings.xml, replacement of raw hex colours with design tokens, and a parser routing app-scheme deep links, share URLs and direct paths through one path, all enforced by smoke checks that fail on hard-coded copy or missing keys.',
           },
           {
-            ko: '기존 화면을 비교용 폴백으로 유지하고 라우트별 스모크·스크린샷 검증을 구성해 단계적으로 전환했습니다. 일부 화면과 동작은 여전히 이관 중인 내부 프로토타입입니다.',
-            en: 'Retained legacy interfaces as comparison fallbacks and used route-level smoke checks and screenshots during the migration. This remains an internal prototype with some interfaces and actions still being migrated.',
+            ko: 'Vite 개발·프리뷰 서버를 백엔드 어댑터로 구성했습니다. 한 라우트 맵으로 실서비스·RC·개발 환경 프록시를 전환하고 모바일 클라이언트 헤더를 주입하며, COOP·COEP·CORP 헤더와 Unity 파일용 Content-Encoding·immutable 캐시 헤더를 처리했습니다. 웹이 라우팅·입력·UI를, Unity가 아바타 렌더링을 맡도록 경계를 나누고 SendMessage와 준비·로드 콜백으로 캐릭터 메타데이터·카메라 상태를 전달했습니다.',
+            en: 'Configured the Vite dev and preview server as a backend adapter: one route map switching production, RC and dev proxies with mobile-client header injection, plus COOP/COEP/CORP headers and Content-Encoding and immutable cache headers for Unity files. Kept routing, input and interfaces in the web layer and avatar rendering in Unity, passing character metadata and camera state through SendMessage and readiness/load callbacks.',
           },
         ],
+        outcome: {
+          ko: '20여 개 라우트를 React로 전환하고 홈을 React 기본 화면으로 바꿨습니다(2026.06). 일부 화면은 여전히 이관 중인 내부 프로토타입이며, 공개 서비스가 아닙니다.',
+          en: 'Converted more than 20 routes to React and made the React home the default (June 2026). Some surfaces are still migrating; this remains an internal prototype, not a public service.',
+        },
+      },
+      {
+        id: 'webpeto-qa',
+        group: { ko: 'Web Platform — WebPETO · WebGL 런타임', en: 'Web Platform — WebPETO & WebGL runtimes' },
+        title: { ko: 'WebPETO — 인증된 WebGL 앱을 위한 QA 하네스와 단일 호스트 배포', en: 'WebPETO — a QA harness and single-host releases for an authenticated WebGL app' },
+        context: {
+          ko: '인증이 필요한 20여 개 라우트와 Unity 캔버스, 실제 결제·선물 같은 변경 동작이 있는 앱을 단위 테스트 프레임워크 없이 빠르게 바꿔야 했습니다. 배포는 Windows 호스트 한 대에서 이뤄져 잘못된 릴리스를 빨리 되돌릴 수 있어야 했습니다.',
+          en: 'The app had more than 20 authenticated routes, a Unity canvas and real mutations such as purchases and gifts, and had to change quickly without a unit-test framework. Releases ran on a single Windows host, so a bad release had to be reversible fast.',
+        },
+        approach: [
+          {
+            ko: '빌드 전 게이트로 정적·런타임 계약을 검사하는 Node smoke 검사를 두고, Playwright로 전체 라우트를 iPhone Safari 에뮬레이션·safaridriver 기반 실제 Safari·Windows Chromium에서 스캔했습니다. 스캔은 기본 읽기 전용이고, 변경 프로브는 읽기 확인과 실행 확인 두 플래그를 함께 켜야만 동작합니다.',
+            en: 'Added Node smoke checks over static and runtime contracts as a pre-build gate, and Playwright scans of every route in iPhone Safari emulation, real Safari via safaridriver and Windows Chromium. Scans are read-only by default; mutation probes run only when a read-back flag and a confirm flag are both set.',
+          },
+          {
+            ko: '실행마다 요약·콘솔·네트워크 기록·스크린샷을 산출물로 남기고 앱 안의 리포트 페이지에서 볼 수 있게 했습니다. 릴리스 게이트는 커밋 SHA나 배포 시각이 다르면 리포트를 stale로 표시하고, CI는 PR마다 smoke·타입 검사·빌드를 실행합니다.',
+            en: 'Recorded a summary, console and network logs and screenshots per run and rendered them in an in-app report page. The release gate marks reports stale when the commit SHA or deploy time mismatches, and CI runs smoke, typecheck and build on every PR.',
+          },
+          {
+            ko: '배포는 타임스탬프 릴리스 디렉터리를 만들고 Caddy 설정을 바꿔 전환하며, HTTPS 헬스체크가 실패하면 자동으로 이전 설정으로 되돌립니다. 최근 릴리스 5개만 보존합니다.',
+            en: 'Releases create a timestamped directory and switch a Caddy snippet, rolling back automatically when the HTTPS health check fails and keeping the last five releases.',
+          },
+        ],
+        outcome: {
+          ko: '라우트 정의 30개, 계약 모듈 1,272개를 갖췄고, 2026년 6월 마지막 점검에서 대상 라우트 5개가 오류 없이 통과했습니다.',
+          en: 'Reached 30 route definitions and 1,272 contract modules; the final June 2026 run passed all five target routes with no errors.',
+        },
       },
       {
         id: 'web-lab-auth',
+        group: { ko: 'Web Platform — WebPETO · WebGL 런타임', en: 'Web Platform — WebPETO & WebGL runtimes' },
         title: { ko: 'Web Lab — 여러 웹 서비스와 개발 도구의 로그인 연동', en: 'Web Lab — shared sign-in for web services and developer tools' },
         context: {
           ko: 'WebPETO·월드 Player·AI 제작 포털을 하나의 실험실에서 제공하면서, 서비스마다 다른 세션 방식과 Unity Editor·CLI 등 브라우저 밖 도구의 로그인 경로를 연결해야 했습니다.',
@@ -308,119 +348,277 @@ export const projects: Project[] = [
         ],
       },
       {
-        id: 'genworld-authoring',
-        title: { ko: 'GenWorld — AI 제작·실행·피드백을 잇는 웹 도구', en: 'GenWorld — connecting AI authoring, execution and feedback' },
+        id: 'myroom-webgl',
+        group: { ko: 'Web Platform — WebPETO · WebGL 런타임', en: 'Web Platform — WebPETO & WebGL runtimes' },
+        title: { ko: 'MyRoom WebGL — 원본 Unity 런타임을 브라우저로 옮기고 동일함을 증명하기', en: 'MyRoom WebGL — porting the original Unity runtime to the browser and proving parity' },
         context: {
-          ko: 'AI가 작성한 월드 코드를 빠르게 실행하면서, 사용자가 변경 내용과 실행 실패 원인을 웹에서 확인할 수 있는 제작 환경이 필요했습니다.',
-          en: 'The authoring environment needed to run AI-written world code quickly while showing users what changed and why an execution failed.',
+          ko: 'ZEPETO 마이룸을 웹에서 보여주려면 glTF 변환 뷰어를 새로 만들거나 앱의 원본 Unity 런타임을 WebGL로 올려야 했습니다. 처음 시도한 glTF 프록시 방식은 렌더링을 재현할 수 없어 폐기하고, 원본 런타임을 옮기되 원본과 같다는 것을 기계적으로 증명하는 쪽을 택했습니다.',
+          en: 'Showing MyRoom on the web meant either building a new glTF viewer or running the app’s original Unity runtime in WebGL. The first glTF proxy attempt could not reproduce the rendering and was dropped in favour of porting the original runtime while proving, mechanically, that it stayed the original.',
         },
         approach: [
           {
-            ko: 'React·TypeScript 편집기와 MCP 도구를 소스 저장→실행→입력·화면·오류 관찰→수정 흐름으로 연결했습니다. 미리 빌드한 Unity WebGL Player에서 코드를 교체해 월드 수정마다 Unity를 다시 빌드하지 않도록 구성했습니다.',
-            en: 'Connected the React and TypeScript editor with MCP tools for saving, running, observing input/screens/errors and revising code. Reused a prebuilt Unity WebGL Player so world-code changes did not require another Unity build.',
+            ko: '앱 릴리스의 커밋을 고정하고 파일 단위 3-way 머지로 WebGL 어댑터만 추가했습니다. 모든 차이를 바이트 동일·의미 동일·의도된 웹 어댑터·원본 버그 수정·알려진 부채로 분류하는 드리프트 매니페스트와, 설명되지 않은 차이가 하나라도 있으면 실패하는 검증기, SHA-256 프로비넌스 기록을 만들었습니다.',
+            en: 'Pinned the app release commit and added only WebGL adapters through per-file three-way merges. Built a drift manifest classifying every difference as byte-identical, semantically equivalent, intentional web adapter, canonical bug fix or known debt, with verifiers that fail on any unexplained difference and SHA-256 provenance records.',
           },
           {
-            ko: '별도 origin의 sandbox iframe에 실행을 격리하고 메시지 발신 프레임·origin·nonce를 검사했습니다. 프레임 외부 watchdog으로 응답 중단을 감지하고, 문제가 생긴 실행을 종료한 뒤 새 프레임으로 복구하도록 구현했습니다.',
-            en: 'Isolated execution in a sandboxed iframe on a separate origin and validated the sender frame, origin and nonce. Used a watchdog outside the frame to detect stalled execution, terminate it and recover in a fresh frame.',
+            ko: 'Safari(ANGLE-on-Metal)에서 생기는 검은 프레임·조명 타일 결손·CSG 벽 구멍 아티팩트·아웃라인과 퍼 셰이더 실패를 원인별로 수정했습니다. WebGL이 읽지 못하는 LZMA 번들은 LZ4로 바꾸고, 호스팅 텍스처 용량과 동시 디코드 제한, CJK 폰트 포인터 재매핑, 종료 시 화이트스크린을 처리했습니다.',
+            en: 'Fixed Safari (ANGLE-on-Metal) black frames, dropped light tiles, CSG wall-hole artefacts and outline/fur shader failures cause by cause. Replaced LZMA bundles WebGL cannot read with LZ4, capped hosted texture sizes and concurrent decodes, remapped CJK font pointers and fixed a white screen on exit.',
           },
           {
-            ko: '소스 버전별 변경 설명·작성자·파일 diff와 실행·입력·관측 기록을 웹에서 함께 표시했습니다. 로딩·실패·연결 끊김을 구분해 안내하고, Vitest·Unity 배치 테스트와 실제 Chrome 실행으로 코드 교체와 무한 루프 종료·복구를 확인했습니다.',
-            en: 'Displayed version messages, authors, file diffs and execution/input/observation records together. Distinguished loading, failure and disconnection states, and checked code replacement and infinite-loop termination/recovery through Vitest, Unity batch tests and real Chrome runs.',
+            ko: '브라우저에 gRPC가 없어 다인 홈파티에는 WebSocket 릴레이 계약을 설계하고, 재접속을 스테이징 루트·델타 저널·순수 리듀서로 구성한 원자적 트랜잭션으로 만들었습니다. 승인된 백엔드가 없으면 실패로 닫히도록 했습니다.',
+            en: 'With no gRPC in the browser, designed a WebSocket relay contract for multi-user rooms and made reconnection an atomic transaction built from a staging root, a delta journal and a pure reducer, failing closed without an approved backend.',
           },
         ],
         outcome: {
-          ko: '별도 Unity 빌드 없이 코드 수정과 재실행을 반복하고, 웹에서 변경 내역과 실행 결과를 확인하는 R&D 흐름을 구현했습니다. 생성 코드의 실행 범위는 소유자 전용 저작 미리보기이며, 공개 월드 출시와는 구분합니다.',
-          en: 'Implemented an R&D workflow for repeated code edits and execution without rebuilding Unity, with changes and results visible in the web interface. Generated code runs only in owner-specific authoring previews, separately from public world releases.',
+          ko: '약 한 달(2026.06–07) 만에 실제 계정으로 방 렌더링과 방문이 동작하는 WebGL 빌드를 얻었습니다. 공통 933개 파일 중 833개를 바이트 동일로 유지했고, Node 테스트 412건과 Unity 에디터 검증기로 검증합니다. 외부 검증과 15건의 패리티 부채가 남은 내부 R&D입니다.',
+          en: 'In about a month (Jun–Jul 2026), produced a WebGL build that renders and visits real rooms with real accounts. Kept 833 of 933 shared files byte-identical, verified by 412 Node tests and Unity Editor verifiers. External verification and 15 parity debts remain; this is internal R&D.',
+        },
+      },
+      {
+        id: 'world-webgl',
+        group: { ko: 'Web Platform — WebPETO · WebGL 런타임', en: 'Web Platform — WebPETO & WebGL runtimes' },
+        title: { ko: '월드 WebGL — gRPC 클라이언트를 브라우저에서 실행하기 위한 릴레이와 시작 성능', en: 'World WebGL — a relay and startup performance for running a gRPC client in the browser' },
+        context: {
+          ko: 'ZEPETO 월드 클라이언트는 gRPC 스트림, LZMA 어드레서블, 대용량 번들에 의존해 브라우저에서 바로 실행되지 않았습니다. 2주 R&D로 로그인·월드 입장·멀티플레이 이동·보이스가 동작하는 알파 테스트 빌드를 목표로 했습니다.',
+          en: 'The ZEPETO world client depended on gRPC streams, LZMA addressables and large bundles that cannot run in a browser. The goal of a two-week R&D spike was an alpha build with login, world entry, multiplayer movement and voice.',
+        },
+        approach: [
+          {
+            ko: '원본 RPC 계층은 유지하고 전송만 WebSocket↔gRPC 릴레이로 바꿨습니다. 번들은 LZMA를 제거하고 타깃 플랫폼을 WebGL로 재작성하는 트랜스코더로 변환하고 맵 단위로 트리밍했습니다.',
+            en: 'Kept the original RPC layer and swapped only the transport for a WebSocket-to-gRPC relay. Converted bundles with a transcoder that strips LZMA and rewrites the target platform to WebGL, trimming them per map.',
+          },
+          {
+            ko: '세션→토큰→입장→맵 로드→이동 스트림→플레이 루프까지 단계별 Playwright 스모크와 콜드·웜·메모리 게이트를 두고 최적화를 반복했습니다. 에셋 임포트·씬 최적화, 폰트·StreamingAssets 범위 축소, 서비스 워커와 Brotli 사이드카를 적용했습니다. 외부 프리뷰는 루프백 전용 프록시, 격리 헤더, 테스트 계정 잠금으로 보호했습니다.',
+            en: 'Iterated against a staged Playwright smoke ladder — session, token, entry, map load, movement stream, play loop — and cold, warm and memory gates. Applied asset-import and scene optimisation, narrower font and StreamingAssets scopes, a service worker and Brotli sidecars. Protected the external preview with a loopback-only proxy, isolation headers and a test-account lock.',
+          },
+        ],
+        outcome: {
+          ko: '로컬 측정 기준 콜드 진입 32.1초→6.6초, 전송량 208MB→53MB, 22→60fps, WASM 힙 487→248MiB로 개선했고, 실제 세션이 전 단계를 통과하며 두 클라이언트가 같은 방에서 이동하는 것을 확인했습니다. 고사양 기준 서비스 게이트는 충족했지만 저사양·프로덕션 게이트는 미달인 알파 단계입니다.',
+          en: 'Local measurements improved cold entry from 32.1 s to 6.6 s, transfer from 208 MB to 53 MB, 22 to 60 fps and WASM heap from 487 to 248 MiB; real sessions pass every stage and two clients move in the same room. The high-end service gate was met while low-end and production gates remain unmet, so this is alpha.',
+        },
+      },
+
+      /* ---------------------------------------------- AI Authoring R&D */
+      {
+        id: 'genworld-authoring',
+        group: { ko: 'AI Authoring R&D — GenWorld · ZepetoField · AI NPC', en: 'AI Authoring R&D — GenWorld, ZepetoField & AI NPC' },
+        title: { ko: 'GenWorld — AI가 쓴 월드 코드를 브라우저에서 실행·격리·공유하는 제작 환경', en: 'GenWorld — running, isolating and sharing AI-written world code in the browser' },
+        context: {
+          ko: 'ZEPETO 월드 제작에는 Unity와 Studio 툴체인이 필요했습니다. AI 코딩 앱이 실제 ZEPETO Script(TypeScript)를 작성하고, 비개발자가 Unity 설치 없이 브라우저에서 실행 결과를 보고 변경 내역을 검토·수정·공유할 수 있는 환경을 목표로 했습니다. 임의의 생성 코드를 안전하게 실행하고 무한 루프 같은 실패에서 복구하는 것이 핵심 과제였습니다.',
+          en: 'Creating a ZEPETO world required the Unity and Studio toolchain. The goal was an environment where AI coding apps write real ZEPETO Script (TypeScript) and non-developers, without installing Unity, watch it run in the browser and review, fix and share the changes. Running arbitrary generated code safely and recovering from failures such as infinite loops was the core problem.',
+        },
+        approach: [
+          {
+            ko: 'React·Vite 편집기, Hono API, MCP 서버(33개 도구, stdio·Streamable HTTP, OAuth 2.0 PKCE·동적 클라이언트 등록), 자가 갱신 로컬 연결 도구로 이뤄진 npm 워크스페이스 모노레포를 설계했습니다. 미리 빌드한 Unity 2022.3 WebGL Player가 서버에서 컴파일한 TypeScript를 런타임에 로드하므로 월드 수정마다 Unity를 다시 빌드하지 않습니다.',
+            en: 'Designed an npm-workspace monorepo of a React/Vite editor, a Hono API, an MCP server (33 tools over stdio and Streamable HTTP with OAuth 2.0 PKCE and dynamic client registration) and a self-updating local connector. A prebuilt Unity 2022.3 WebGL Player loads server-compiled TypeScript at runtime, so world changes never require another Unity build.',
+          },
+          {
+            ko: '생성 코드의 AST 허용 목록만으로는 격리가 되지 않는다는 점을 확인하고, opaque origin sandbox iframe과 코드 설치 전 CSP 네트워크 차단, 발신 프레임·origin·nonce 검증으로 경계를 세션 단위로 옮겼습니다. iframe 교체만으로는 폭주한 렌더러가 복구되지 않아 Playwright 기반 서버 Chromium 실행(10초 heartbeat watchdog, 프로세스 종료·재생성)과 사용자 Chrome을 DevTools Protocol로 구동하는 로컬 실행 경로를 추가했고, 브라우저 실행은 about:blank 이동과 nonce 폐기로 복구하도록 고쳤습니다.',
+            en: 'Confirmed that an AST allowlist alone gave no isolation and moved the boundary to the session: an opaque-origin sandboxed iframe, a CSP network lock applied before code install, and sender-frame, origin and nonce checks. Because replacing the iframe could not recover a runaway renderer, added a server Chromium runtime driven by Playwright (10 s heartbeat watchdog, kill and respawn) and a local transport driving the user’s Chrome over the DevTools Protocol, and fixed in-browser recovery by navigating the frame to about:blank and discarding late messages by nonce.',
+          },
+          {
+            ko: '제안→적용 흐름을 SQLite 리비전 원장(idempotency key, head compare-and-set, 역패치, append-only 되돌리기)에 기록하고 버전별 AI 작업 기록과 라인 diff를 편집기에 표시했습니다. WebGL에서 생성 코드가 동작하지 않던 원인이 엔진·관리 코드 두 스트리퍼임을 찾아 link.xml로 114개 어셈블리를 보존했습니다. 해시 기반 불변 릴리스와 스테이징 DB 복원·롤백, Grafana·Prometheus·Loki 모니터링을 갖추고, Vitest 약 1,200건·Playwright+axe e2e·Unity EditMode·계약 퍼징을 단일 CI 게이트로 묶었습니다.',
+            en: 'Recorded propose-to-apply in a SQLite revision ledger (idempotency keys, head compare-and-set, inverse patches, append-only reverts) and showed per-version AI activity with line diffs in the editor. Traced generated code failing in WebGL to two independent strippers and preserved 114 assemblies via link.xml. Ran it with hash-named immutable releases, staging DB restore and rollback, Grafana/Prometheus/Loki monitoring, and one CI gate combining about 1,200 Vitest tests, Playwright with axe e2e, Unity EditMode tests and contract fuzzing.',
+          },
+        ],
+        outcome: {
+          ko: '반복당 Unity 빌드 0회로 코드 수정과 재실행을 반복하고, 링크 공유와 사내 둘러보기 목록까지 갖춘 서비스로 사내에 배포했습니다(2026.09, 단독 개발). 실제 Chrome에서 무한 루프 종료·복구를 확인했으며, AI 작성 코드는 공개 월드 출시가 아닌 비정본 미리보기로 유지합니다.',
+          en: 'Iterates on code and re-runs it with zero Unity builds, and is deployed internally as a service with link sharing and an internal Discover listing (Sep 2026, solo). Infinite-loop termination and recovery are verified in real Chrome, and AI-written code stays a non-canonical preview rather than a public world release.',
         },
       },
       {
         id: 'zepetofield-jobs',
-        title: { ko: 'ZepetoField — 오래 걸리는 생성 작업의 상태와 재시작 처리', en: 'ZepetoField — managing long-running generation jobs and restarts' },
+        group: { ko: 'AI Authoring R&D — GenWorld · ZepetoField · AI NPC', en: 'AI Authoring R&D — GenWorld, ZepetoField & AI NPC' },
+        title: { ko: 'ZepetoField — 프롬프트로 만드는 게임 포털의 생성 작업 큐와 병렬 빌드', en: 'ZepetoField — generation queues and parallel builds for a prompt-to-game portal' },
         context: {
-          ko: '자연어로 게임을 생성하는 포털에서 여러 사용자의 요청을 받되, Unity 프로젝트를 동시에 빌드해 작업 파일이 충돌하거나 요청 재전송으로 같은 게임을 중복 생성하지 않도록 해야 했습니다.',
-          en: 'The prompt-to-game portal needed to accept requests from multiple users without concurrent builds colliding in the same Unity project or retries generating the same game twice.',
+          ko: '자연어로 게임을 생성하는 포털이 여러 사용자의 요청을 받되, 공유 Unity 프로젝트를 동시에 빌드해 작업 파일이 충돌하거나 요청 재전송으로 같은 게임을 중복 생성하지 않아야 했습니다. 사용자가 늘면서 잡 큐의 읽기 경로가 병목이 되었습니다.',
+          en: 'The prompt-to-game portal had to accept requests from many users without concurrent builds colliding in a shared Unity project or retries generating the same game twice. As usage grew, the job queue’s read path became the bottleneck.',
         },
         approach: [
           {
-            ko: '요청별 idempotency key로 중복 접수를 방지하고, 사용자별 작업 조회와 활성 작업 수 제한을 구성했습니다. 웹에는 대기 순서·생성 단계·완료·실패 상태를 제공하고 작업 상태를 파일에 영속화했습니다.',
-            en: 'Used per-request idempotency keys to prevent duplicate submissions, scoped job queries to their owners and limited active jobs. Exposed queue position, generation stage, completion and failure in the portal, with persisted job state.',
+            ko: '요청별 idempotency key로 중복 접수를 막고, 사용자별 활성 작업 3개·전체 24개 제한과 공정성 순환을 두었습니다. 웹에는 대기 순서와 8단계 생성 진행·완료·실패 상태를 제공하고 작업 상태를 파일에 영속화했습니다. 서버 재시작 시 실행 중이던 작업은 중단 상태로 복구해 자동 중복 실행을 피했습니다.',
+            en: 'Prevented duplicate submissions with per-request idempotency keys, limited active jobs to 3 per user and 24 overall with fairness rotation, exposed queue position and eight generation stages in the portal, and persisted job state. On restart, recovered running jobs as interrupted instead of re-executing them.',
           },
           {
-            ko: '공유 Unity 프로젝트의 빌드는 직렬로 실행하고, 워커 슬롯을 늘릴 때는 별도 프로젝트 루트에 작업을 배정하도록 구성했습니다. 서버 재시작 시 실행 중이던 작업은 중단 상태로 복구해 자동 중복 실행을 피했습니다.',
-            en: 'Serialised builds within a shared Unity project and assigned additional worker slots to separate project roots. On server restart, recovered previously running jobs as interrupted instead of automatically executing them again.',
+            ko: '부하 테스트에서 상태 조회마다 잡 디렉터리를 다시 읽는 O(N²) 경로를 찾아, 기동 시 한 번 로드하는 인메모리 인덱스와 write-through 저장으로 바꿨습니다. Unity 빌드는 클론 프로젝트 풀로 2개 워커가 병렬 실행하고 게시 전용 메인 루트는 mkdir 락으로 보호했습니다. 직접 빌드가 포털 산출물을 덮어쓰는 문제는 서버 측 자기복구 가드로, 고아 프로세스가 포트를 점유하는 문제는 supervisor 정리로 해결했습니다.',
+            en: 'Load tests exposed an O(N²) path that re-read the job directory on every status poll; replaced it with an in-memory index loaded once at startup with write-through saves. Ran Unity builds on two workers from a clone-project pool with a publish-only main root guarded by a mkdir lock, added a server-side self-healing guard against raw builds overwriting the portal, and cleaned up orphaned processes in the supervisor.',
+          },
+          {
+            ko: '포털을 MCP 서버(stdio·Streamable HTTP, OAuth 2.1/PKCE)로도 노출해 AI 코딩 앱에서 게임 생성을 요청할 수 있게 했습니다.',
+            en: 'Also exposed the portal as an MCP server (stdio and Streamable HTTP with OAuth 2.1/PKCE) so AI coding apps can request generation.',
           },
         ],
         outcome: {
-          ko: '프롬프트 입력·생성 진행 상태·결과 카탈로그·WebGL 플레이를 연결한 PoC를 구현했습니다. GenWorld의 미리 빌드한 Player 재사용 방식과 달리, 이 파이프라인은 생성한 게임마다 Unity 씬과 WebGL 빌드를 산출합니다.',
-          en: 'Implemented a PoC connecting prompt entry, generation progress, a result catalogue and WebGL play. This pipeline builds a Unity scene and WebGL output for each generated game; GenWorld separately reuses a prebuilt Player.',
+          ko: '잡 3,000개·폴러 60명 부하에서 조회 호출당 572ms→2.58ms(약 222배), 실서버 p95 59ms→21ms로 개선하고 병렬 빌드 2슬롯을 확보했습니다. 프롬프트 입력·진행 상태·결과 카탈로그·WebGL 플레이를 연결한 사내망 PoC로, 생성한 게임마다 Unity 씬과 WebGL 빌드를 산출하는 점이 미리 빌드한 Player를 재사용하는 GenWorld와 다릅니다.',
+          en: 'Under 3,000 jobs and 60 pollers, status calls fell from 572 ms to 2.58 ms (about 222×) and live p95 from 59 ms to 21 ms, with two parallel build slots. It is an internal-network PoC connecting prompt entry, progress, a result catalogue and WebGL play; unlike GenWorld’s prebuilt Player, it produces a Unity scene and WebGL build per generated game.',
+        },
+      },
+      {
+        id: 'world-art-direction',
+        group: { ko: 'AI Authoring R&D — GenWorld · ZepetoField · AI NPC', en: 'AI Authoring R&D — GenWorld, ZepetoField & AI NPC' },
+        title: { ko: '프롬프트 기반 월드 아트 디렉션 — LLM은 의도만, 배치는 결정론으로', en: 'Prompt-driven world art direction — the LLM decides intent, placement stays deterministic' },
+        context: {
+          ko: '프롬프트 한 줄로 ZEPETO 월드의 분위기와 소품 배치를 만들되, LLM이 존재하지 않는 에셋 ID를 지어내거나 실행마다 다른 결과를 내어 씬을 깨는 일이 없어야 했습니다. 사내 에셋 레지스트리에는 권리·의존성 정보가 완전하지 않았습니다.',
+          en: 'A single prompt had to produce a ZEPETO world’s look and prop placement without the LLM inventing asset IDs or breaking scenes with a different result on every run. The internal asset registry also lacked complete rights and dependency data.',
+        },
+        approach: [
+          {
+            ko: 'Unity Editor 전용 도구로 설계해 LLM은 엄격한 의도 스키마만 채우고, 결정론적 리졸버가 스타일 카탈로그의 실제 템플릿·룩 레시피를 고르며, 배치 시드는 프롬프트 해시에서 뽑아 LLM의 비결정성이 배치를 바꾸지 못하게 했습니다. 매칭되지 않은 표현은 숨기지 않고 보고합니다.',
+            en: 'Designed it as a Unity Editor-only tool where the LLM fills only a strict intent schema, a deterministic resolver picks real templates and look recipes from a style catalogue, and the placement seed derives from the prompt hash so LLM nondeterminism cannot alter placement. Unmatched terms are reported rather than hidden.',
+          },
+          {
+            ko: '1만 1천여 개 사내 에셋 레지스트리를 연동하되 권리·의존성·폴리곤 게이트를 클라이언트에서 걸고, 이름 검색이 침실에 피규어를 넣는 문제는 비전 LLM으로 썸네일을 검수해 보수적으로 걸러냈습니다. 구역 제약 배치와 헤드리스 미리보기 캡처로 원본 씬을 저장하지 않고 결과를 확인했습니다.',
+            en: 'Integrated an internal registry of over 11,000 assets behind client-side rights, dependency and triangle gates, and vetted thumbnails with a vision LLM to stop name search placing figurines in bedrooms. Zone-constrained placement and headless preview captures let results be checked without saving the source scene.',
+          },
+        ],
+        outcome: {
+          ko: 'EditMode 테스트 41건이 통과하는 도구로 정리하고, 사내 에셋만으로 구성한 월드를 ZepetoField 파이프라인에 연결해 종단 생성까지 확인했습니다(2026.08, 사내 PoC).',
+          en: 'Delivered a tool with 41 passing EditMode tests and connected an asset-native world to the ZepetoField pipeline end to end (Aug 2026, internal PoC).',
+        },
+      },
+      {
+        id: 'ai-npc',
+        group: { ko: 'AI Authoring R&D — GenWorld · ZepetoField · AI NPC', en: 'AI Authoring R&D — GenWorld, ZepetoField & AI NPC' },
+        title: { ko: 'AI NPC — 셀프호스팅 LLM으로 마이룸에 상주하는 캐릭터 만들기', en: 'AI NPC — a resident MyRoom character on a self-hosted LLM' },
+        context: {
+          ko: '마이룸에 상주하며 대화하고 스스로 움직이는 NPC를 만들되, 8B급 셀프호스팅 모델의 1~3초 응답 지연과 지시 불이행 속에서도 자연스러워야 했습니다. Unity 팀에 전달할 기술 탐색 과제였습니다.',
+          en: 'The goal was an NPC that lives in MyRoom, talks and moves on its own, and still feels natural despite the 1–3 s latency and instruction-following gaps of a self-hosted 8B-class model. It was a technical exploration for the Unity team.',
+        },
+        approach: [
+          {
+            ko: 'FastAPI 서버와 Ollama로 서빙한 Qwen3-8B 위에, Unity가 방·플레이어 상태 스냅샷과 이벤트(대화·유휴 틱·입장·셀피)를 보내면 의도·대사·이동 대상·제스처·시선을 JSON으로 돌려주는 양방향 프로토콜을 설계했습니다. 매 프레임 LLM을 부를 수 없어 이벤트 트리거와 5~25초 유휴 루프를 섞은 하이브리드 구조로 지연을 숨겼습니다.',
+            en: 'On a FastAPI server with Qwen3-8B served through Ollama, designed a bidirectional protocol where Unity sends room and player snapshots plus events (chat, idle ticks, joins, selfies) and receives intent, speech, movement target, gesture and gaze as JSON. Since the LLM cannot run per frame, hid latency with a hybrid of event triggers and a 5–25 s idle loop.',
+          },
+          {
+            ko: '모델의 thinking 출력으로 빈 응답이 나오는 문제, 규칙 무시, 반복 대사, 소품 이름 불일치를 각각 관용적 JSON 파서·검증기와 후처리, 온도·few-shot 샘플링과 n-gram 반복 가드, 4단계 이름 매칭과 아이템 이름 캐시로 풀었습니다. 관계 단계별 프롬프트와 60여 개 2차 시나리오(무드 관성, 의도적 무행동)로 기계적인 느낌을 줄였습니다.',
+            en: 'Addressed empty replies from the model’s thinking output, ignored rules, repetitive lines and prop-name mismatches with a tolerant JSON parser plus validators and post-processing, temperature and few-shot sampling with an n-gram repetition guard, and four-level name matching with an item-name cache. Relationship-stage prompts and about 60 secondary scenarios with mood inertia and deliberate inaction reduced the mechanical feel.',
+          },
+          {
+            ko: 'LLM으로 합성한 학습 데이터 1만여 건으로 Unsloth QLoRA 파인튜닝과 GGUF 배포를 실험했지만 제한된 상황에서 과적합이 확인되어, 프롬프트와 후처리 전략을 유지하는 결론을 문서화했습니다. 결정 타임라인 대시보드와 행동 패턴 편집 UI를 함께 만들었습니다.',
+            en: 'Experimented with Unsloth QLoRA fine-tuning and GGUF deployment on about 10,000 LLM-synthesised samples, found overfitting in the constrained setting, and documented the decision to stay with prompting and post-processing. Also built a decision-timeline dashboard and a behaviour-pattern editor.',
+          },
+        ],
+        outcome: {
+          ko: '자율 행동이 동작하는 NPC 서버와 Unity 연동을 사내 서버에서 시연하고, 파인튜닝 과적합과 TTS 지연·품질 한계 같은 부정 결과까지 정리한 기술 탐색 결과를 공유했습니다(2026.03–04, 출시 아님).',
+          en: 'Demonstrated a working autonomous NPC server with Unity integration on an internal server and shared the exploration results, including negative findings on fine-tuning overfitting and TTS latency and quality (Mar–Apr 2026, not shipped).',
+        },
+      },
+
+      /* ---------------------------------------------- Unity Client */
+      {
+        id: 'world-youtube',
+        group: { ko: 'Unity Client — ZEPETO 앱', en: 'Unity Client — ZEPETO app' },
+        title: { ko: '월드 내 YouTube 플레이어와 다중 초대 — 다인 동기화 재생과 권한 모델', en: 'In-world YouTube player and multi-user invites — synchronised playback and permissions' },
+        context: {
+          ko: '방장이 고른 영상을 방 안의 모든 사용자가 3D 스크린에서 동시에 보는 기능이 필요했습니다. 재생 백엔드, 권한, iOS·Android·PC 플랫폼 차이를 함께 풀어야 했고, 이어서 월드 초대를 여러 사용자에게 한 번에 보내는 기능이 필요했습니다.',
+          en: 'Rooms needed shared, owner-curated video playback on in-world 3D screens for everyone present. Playback backend, permissions and iOS, Android and PC differences had to be solved together, followed by inviting several users to a world at once.',
+        },
+        approach: [
+          {
+            ko: '플레이리스트 추가·삭제·이동·동기화 이벤트와 씬 내 플레이어 레지스트리로 모든 스크린의 재생·일시정지·탐색·음소거를 동기화했습니다. 재생 백엔드는 Unity VideoPlayer에서 AVPro를 거쳐 JS↔C# 메시지 프로토콜을 쓰는 임베디드 WebView 플레이어로 바꿔 안정화했고, 추가 전에 헤드리스 플레이어로 URL이 재생 가능하고 라이브가 아닌지 검증했습니다.',
+            en: 'Synchronised play, pause, seek and mute across every screen through playlist add, remove, move and sync events and an in-scene player registry. Moved the backend from Unity VideoPlayer through AVPro to an embedded WebView player with a JS–C# message protocol, and validated URLs with a headless player before adding them.',
+          },
+          {
+            ko: '재생 권한 판정을 클라이언트 허용 목록에서 서버 RPC로 옮기고, 플레이어 페이지 URL을 서버 설정으로 두어 iOS 저메모리 기기를 분기했습니다. 영상별 신고와 차단 기능, Android WebView 재개와 iOS 뒤로가기 같은 네이티브 경계 문제도 처리했습니다.',
+            en: 'Moved playback authorisation from a client allowlist to a server RPC, made the player page URL server-configurable to route iOS low-memory devices, and added per-video reporting and blocking plus native-boundary fixes such as Android WebView resume and iOS back navigation.',
+          },
+          {
+            ko: '초대는 JSON 배열 기반 다중 초대로 확장해 Unity C#과 Kotlin·Objective-C 네이티브 브리지를 함께 수정했고, PC에서는 실시간 메시징 서비스로 초대를 전달했습니다. 방 생성·입장 경로를 구분하는 referrer 이벤트를 추가했습니다. 월드 입장 시 불필요한 로비 연결 왕복을 제거하고 이동 스트림에 20초 heartbeat를 넣었습니다.',
+            en: 'Extended invites to JSON multi-invite across the Unity C# and Kotlin/Objective-C native bridges, delivered PC invites through the real-time messaging service, and added referrer events distinguishing room creation and entry paths. Also removed a redundant lobby round-trip on world entry and added a 20 s heartbeat to the movement stream.',
+          },
+        ],
+        outcome: {
+          ko: 'YouTube 플레이어는 2024년 9월 iOS·Android·Windows·macOS에 출시된 뒤 신고·권한·기기 대응을 이어갔고, 다중 초대는 2024년 12월, 접속 경로 개선은 2025년 초 릴리스에 포함됐습니다.',
+          en: 'The YouTube player shipped on iOS, Android, Windows and macOS in September 2024 with reporting, permission and device follow-ups; multi-invite shipped in December 2024 and the connection-path changes in early 2025 releases.',
         },
       },
       {
         id: 'pc-release',
-        title: { ko: 'Windows·macOS 출시 대응', en: 'Supporting the Windows and macOS release' },
+        group: { ko: 'Unity Client — ZEPETO 앱', en: 'Unity Client — ZEPETO app' },
+        title: { ko: 'NewWorld의 Windows·macOS 지원 — 네이티브 셸 없는 PC에 홈·초대·채팅·상점 만들기', en: 'NewWorld on Windows and macOS — home, invites, chat and shop for a PC without a native shell' },
         context: {
-          ko: 'ZEPETO의 지원 범위를 Windows·macOS로 확장하는 PC 출시 작업에 참여했습니다.',
-          en: 'Contributed to ZEPETO’s PC release, extending platform support to Windows and macOS.',
+          ko: '모바일에서는 네이티브 앱이 NewWorld의 홈·초대·채팅·상점 UI를 제공하지만, PC 클라이언트에는 네이티브 셸이 없어 NewWorld 월드를 실행할 수 없었습니다.',
+          en: 'On mobile the native app hosts NewWorld’s home, invite, chat and shop interfaces. The PC client had no native shell, so NewWorld worlds could not run there.',
         },
         approach: [
           {
-            ko: 'Unity 클라이언트의 PC 크로스플랫폼 지원을 맡았습니다.',
-            en: 'Worked on cross-platform PC support in the Unity client.',
+            ko: '기존 네이티브 프록시 계층 뒤에 Unity 구현체를 두어 홈·방 인원·친구 초대·설정 화면을 만들고, ESC로 홈 복귀와 진입 가이드를 붙였습니다. uGUI InputField 캐럿 호환, 채팅 포커스 중 캐릭터 이동 차단, Return·Slash 단축키, PC에서의 화면 회전 예외 등 키보드 UX를 정리했습니다.',
+            en: 'Implemented home, room roster, friend invite and settings screens in Unity behind the existing native-proxy layer, with ESC returning home and an entry guide. Cleaned up keyboard UX: uGUI InputField caret compatibility, blocking character movement while chat is focused, Return and Slash shortcuts, and orientation exceptions on PC.',
           },
           {
-            ko: 'Windows·macOS 환경에서 발생한 런타임 이슈를 분석하고 해결했습니다.',
-            en: 'Investigated and resolved runtime issues on Windows and macOS.',
+            ko: '차단 목록을 로드해 차단·해제 시 음성 뮤트와 스피커 표시를 연동했고, 광고·결제처럼 PC에서 지원되지 않는 기능은 안내 메시지와 실패 콜백으로 처리했습니다. SDK 모듈(Product·Shop·Social·Gui·Mannequin)에는 결제 불가 플랫폼 처리, 차단 콜백, safe-area 예외를 넣고 마네킹 상점을 실제 구매 요청에 연결했습니다.',
+            en: 'Loaded block lists and tied block and unblock to voice mute and speaker visibility, and made unsupported PC features such as ads and payments fail gracefully with messages and callbacks. In the SDK modules (Product, Shop, Social, Gui, Mannequin) added payment-unsupported flows, block callbacks and safe-area exceptions, and connected the mannequin shop to a real purchase request.',
           },
         ],
+        outcome: {
+          ko: '2025년 6월 Windows·macOS 4.1.0 릴리스에 출시했고, 마네킹 구매는 같은 해 9월 4.6.0에 추가했습니다.',
+          en: 'Shipped in the June 2025 Windows and macOS 4.1.0 release; mannequin purchase followed in 4.6.0 in September 2025.',
+        },
       },
     ],
     resumeHighlights: [
       {
-        ko: 'WebPETO 초기 WebGL 압축 빌드 약 43% 축소(13.29→7.64MB, 2026.06) — 리소스·의존성 정리, 캐시 우선 표시·부가 콘텐츠 지연 로딩',
-        en: 'Reduced WebPETO’s compressed WebGL build by ~43% (13.29→7.64 MB, Jun 2026); pruned resources/dependencies, rendered cached data first and deferred optional content',
+        ko: 'WebPETO — 아바타 WebGL 압축 빌드 13.29→7.64MB(42%), 콜드 로그인→아바타 표시 2.6→1.2초(2026.05, 테스트 서버)',
+        en: 'WebPETO — avatar WebGL build 13.29→7.64 MB (42%), cold login-to-avatar 2.6→1.2 s (May 2026, test server)',
       },
       {
-        ko: 'React·RTK Query 기반 웹 UI·API 상태 관리, JavaScript–Unity 브리지 및 OAuth·PKCE 기반 공통 로그인 연동',
-        en: 'React/RTK Query interfaces and API state, JavaScript–Unity bridges and shared OAuth/PKCE sign-in integration',
+        ko: 'React 19·RTK Query로 20여 라우트 단계 전환, Android 앱 기준 문자열·딥링크 파이프라인, Vite 백엔드 어댑터, Playwright QA 하네스·릴리스 게이트',
+        en: 'Staged React 19/RTK Query migration of 20+ routes, an Android-as-spec string and deep-link pipeline, a Vite backend adapter, a Playwright QA harness and release gate',
       },
       {
-        ko: 'GenWorld·ZepetoField R&D — TypeScript·MCP 제작 도구, 실행 격리·복구, 사용자별 생성 작업 큐·중복 요청 방지',
-        en: 'GenWorld/ZepetoField R&D: TypeScript/MCP authoring tools, execution isolation/recovery, per-user generation queues and request deduplication',
+        ko: 'GenWorld 단독 개발 — AI가 쓴 코드를 sandbox·watchdog 아래 사전 빌드 WebGL Player로 실행(Unity 재빌드 0회), MCP 33개 도구·리비전 원장·불변 릴리스',
+        en: 'GenWorld, built solo — runs AI-written code in a prebuilt WebGL Player under a sandbox and watchdog (zero Unity rebuilds), with a 33-tool MCP server, revision ledger and immutable releases',
       },
       {
-        ko: 'ZEPETO Studio·SDK 모듈 개발 및 Windows·macOS 출시 — 크로스플랫폼 지원과 런타임 이슈 해결',
-        en: 'Developed ZEPETO Studio/SDK modules and supported the Windows/macOS release, resolving cross-platform runtime issues',
+        ko: 'MyRoom·월드 Unity 런타임 WebGL 이식(원본 동일성 검증·gRPC 릴레이, 콜드 32→6.6초), 월드 내 YouTube 플레이어·다중 초대·NewWorld PC 지원 출시',
+        en: 'Ported the MyRoom and world Unity runtimes to WebGL (parity verification, gRPC relay, cold entry 32→6.6 s); shipped the in-world YouTube player, multi-invite and NewWorld on PC',
       },
     ],
-    stack: ['TypeScript', 'React', 'Redux Toolkit', 'RTK Query', 'Vite', 'Node.js', 'Unity3D', 'C#', 'WebGL', 'MCP', 'Vitest'],
+    stack: ['TypeScript', 'React', 'Unity3D', 'WebGL', 'MCP', 'Redux Toolkit', 'RTK Query', 'Vite', 'Node.js', 'Playwright', 'Vitest', 'OAuth 2.0', 'C#', 'Python'],
     image: '/projects/zepeto.webp',
     sections: [
       {
         heading: { ko: 'Web Lab · 프로젝트 범위', en: 'Web Lab · Project Scope' },
         items: [
           {
-            ko: 'WebPETO — 기존 모바일 앱의 홈·상점·피드·프로필을 웹으로 옮긴 프로토타입과 아바타 WebGL 뷰어',
-            en: 'WebPETO — a web prototype of the mobile app’s home, shop, feed and profile, with a WebGL avatar viewer',
+            ko: 'WebPETO — 기존 모바일 앱의 홈·상점·피드·프로필 등 비월드 화면을 웹으로 옮긴 프로토타입과 아바타 WebGL 뷰어',
+            en: 'WebPETO — a web prototype of the mobile app’s non-world surfaces (home, shop, feed, profile and more) with a WebGL avatar viewer',
           },
           {
-            ko: 'NewWorld Package WebGL Player — NewWorld 패키지의 브라우저 실행, 월드 입장·매치메이킹·릴레이 연동 R&D',
-            en: 'NewWorld Package WebGL Player — R&D on browser execution, world entry, matchmaking and relay integration for NewWorld packages',
+            ko: '온보딩 아바타 런타임 — 아바타 생성·편집용 WebGL 런타임을 SHA-256 매니페스트와 공개 JS 어댑터로 패키징해 웹 팀에 인계, Android와 동일한 제스처 잠금·캡처 규격',
+            en: 'Onboarding avatar runtime — a WebGL runtime for avatar creation and editing packaged with a SHA-256 manifest and a public JS adapter for the web team, matching Android gesture locks and capture specs',
+          },
+          {
+            ko: 'MyRoom WebGL — 원본 마이룸 Unity 런타임의 WebGL 이식과 원본 동일성 검증',
+            en: 'MyRoom WebGL — a WebGL port of the original MyRoom Unity runtime with parity verification against the original',
+          },
+          {
+            ko: '월드 WebGL — 레거시 월드 클라이언트의 WebGL 이식, WebSocket↔gRPC 릴레이, 알파 테스트 UI',
+            en: 'World WebGL — a WebGL port of the legacy world client with a WebSocket-to-gRPC relay and alpha test UI',
+          },
+          {
+            ko: 'NewWorld Package WebGL Player — NewWorld 패키지의 브라우저 실행, 월드 입장·매치메이킹 프록시·WebSocket 릴레이 연동, 월드 변환 파이프라인 R&D',
+            en: 'NewWorld Package WebGL Player — R&D on browser execution of NewWorld packages, world entry, a matchmaking proxy and WebSocket relay, and a per-world conversion pipeline',
+          },
+          {
+            ko: 'GenWorld — AI 코딩 앱이 월드 코드를 쓰고 사용자가 브라우저에서 실행·검토·수정·공유하는 제작 환경(MCP 서버·OAuth 연결 도구 포함)',
+            en: 'GenWorld — an authoring environment where AI coding apps write world code and users run, review, fix and share it in the browser, including an MCP server and OAuth connector',
           },
           {
             ko: 'ZepetoField — 자연어 기반 게임 설계·Unity 빌드·결과 카탈로그·브라우저 플레이를 연결한 PoC',
             en: 'ZepetoField — a PoC connecting prompt-based game design, Unity builds, a result catalogue and browser play',
           },
           {
+            ko: '월드 기획 보조 도구 — 공개 차트 수집과 아바타 플레이 적합성 검수로 제작 우선순위 점수를 내고, 기획서→에셋 생성→Unity 구성→QA를 재시작 복구형 작업 러너로 잇는 실험',
+            en: 'World planning aid — an experiment scoring production priority from public-chart collection and avatar-playability vetting, and chaining brief, asset generation, Unity composition and QA through a restart-resumable job runner',
+          },
+          {
             ko: 'Prop Atlas — 월드 제작용 프롭 카탈로그 검색 도구',
             en: 'Prop Atlas — a searchable prop catalogue for world authoring',
           },
           {
-            ko: 'GenWorld — AI와 사용자가 코드를 수정하고 실행 결과·오류·변경 기록을 확인하는 웹 제작 환경',
-            en: 'GenWorld — a web authoring environment where AI and users revise code and inspect execution results, errors and change history',
-          },
-          {
-            ko: 'ZS Runtime Test — 생성한 TypeScript를 서버에서 컴파일하고 격리된 WebGL 런타임에 부착하는 실험',
-            en: 'ZS Runtime Test — an experiment compiling generated TypeScript on the server and attaching it to an isolated WebGL runtime',
+            ko: 'ZS Runtime Test — 생성한 TypeScript를 서버에서 컴파일하고 격리된 WebGL 런타임에 부착하는 실험(GenWorld의 전신)',
+            en: 'ZS Runtime Test — an experiment compiling generated TypeScript on the server and attaching it to an isolated WebGL runtime, the predecessor of GenWorld',
           },
         ],
       },
@@ -428,29 +626,74 @@ export const projects: Project[] = [
         heading: { ko: '웹 플랫폼', en: 'Web Platform' },
         items: [
           {
-            ko: 'WebPETO의 React 앱 셸·상점 UI와 API 상태 관리, 기존 DOM 화면의 점진적 이관',
-            en: 'React app shell, shop interfaces and API state management for WebPETO, with incremental migration from legacy DOM interfaces',
+            ko: 'WebPETO의 React 19 앱 셸·RTK Query 상태 계층과 피처 플래그 기반 점진적 이관, 서버 확인 응답 기반 캐시 패치',
+            en: 'React 19 app shell and RTK Query state layer for WebPETO, feature-flagged incremental migration and cache patching from server acknowledgements',
           },
           {
-            ko: '아바타 WebGL 빌드 경량화·초기 로딩 경로 개선 및 웹–Unity 메타데이터·카메라 연동',
-            en: 'Smaller avatar WebGL builds, improved initial loading and web–Unity metadata/camera integration',
+            ko: 'Vite 서버 기반 백엔드 어댑터 — 환경 프록시, 모바일 클라이언트 헤더 주입, COOP/COEP 격리, Unity 산출물 Content-Encoding·캐시 헤더',
+            en: 'Vite-server backend adapter — env proxies, mobile-client header injection, COOP/COEP isolation, Content-Encoding and cache headers for Unity artefacts',
           },
           {
-            ko: 'GenWorld의 React·TypeScript 편집기, MCP 코드 제작·관찰 도구와 AI 변경 기록 UI 개발',
-            en: 'React and TypeScript editor, MCP code-authoring/observation tools and AI change-history interfaces for GenWorld',
+            ko: 'Android strings.xml 기반 문자열 생성, 디자인 토큰 치환, 앱 scheme·공유 URL·직접 경로 파서와 하드코딩 문구 차단 smoke 검사',
+            en: 'String generation from Android strings.xml, design-token replacement, an app-scheme, share-URL and direct-path parser, and smoke checks blocking hard-coded copy',
+          },
+          {
+            ko: '아바타 WebGL 빌드 경량화·초기 로딩 경로 개선, 웹–Unity 메타데이터·카메라·제스처 연동, Three.js 대체 PoC 비교 후 Unity 유지 결정',
+            en: 'Smaller avatar WebGL builds and improved initial loading, web–Unity metadata, camera and gesture integration, and a Three.js replacement PoC that confirmed keeping Unity',
+          },
+          {
+            ko: 'Playwright 전 라우트 스캔(iOS Safari·Windows Chromium), 이중 플래그로만 열리는 변경 프로브, 앱 내 리포트 페이지, SHA·배포 시각 검증 릴리스 게이트, Caddy 릴리스·자동 롤백',
+            en: 'Playwright full-route scans (iOS Safari, Windows Chromium), mutation probes behind paired flags, in-app report pages, a release gate checking SHA and deploy time, and Caddy releases with automatic rollback',
+          },
+          {
+            ko: 'GenWorld의 React·TypeScript 편집기, MCP 코드 제작·관찰 도구, 버전별 AI 작업 기록·라인 diff UI, 링크 공유·둘러보기 목록',
+            en: 'GenWorld’s React and TypeScript editor, MCP code-authoring and observation tools, per-version AI activity with line diffs, link sharing and a Discover listing',
           },
         ],
       },
       {
-        heading: { ko: '주요 성과', en: 'Highlights' },
+        heading: { ko: 'AI · 자동화 R&D', en: 'AI & Automation R&D' },
         items: [
           {
-            ko: 'LLM 기반 AI NPC(Companion) R&D',
-            en: 'LLM-based AI NPC (Companion) R&D',
+            ko: 'GenWorld — opaque-origin sandbox·CSP 네트워크 차단·nonce 검증과 외부 watchdog, 서버 Chromium·로컬 Chrome(DevTools Protocol) 실행 경로, SQLite 리비전 원장, 자가 갱신 연결 도구, 불변 릴리스·Grafana 모니터링',
+            en: 'GenWorld — opaque-origin sandbox with CSP network lock and nonce checks plus an external watchdog, server Chromium and local Chrome (DevTools Protocol) transports, a SQLite revision ledger, a self-updating connector, immutable releases and Grafana monitoring',
           },
           {
-            ko: 'LLM 기반 AI 월드 생성 R&D',
-            en: 'LLM-based AI world generation R&D',
+            ko: 'LLM 기반 AI NPC(Companion) R&D — FastAPI·Ollama(Qwen3-8B) 서버, Unity 양방향 상태·의도 프로토콜, 하이브리드 트리거, 합성 데이터 QLoRA 파인튜닝 실험과 과적합 분석',
+            en: 'LLM-based AI NPC (Companion) R&D — FastAPI and Ollama (Qwen3-8B) server, a bidirectional Unity state and intent protocol, hybrid triggering, and a synthetic-data QLoRA fine-tuning experiment with overfitting analysis',
+          },
+          {
+            ko: 'LLM 기반 AI 월드 생성 R&D — ZepetoField 생성 작업 큐·병렬 Unity 빌드·MCP 노출, 프롬프트→의도 스키마→결정론 리졸버 아트 디렉션 도구(EditMode 테스트 41건), 사내 에셋 레지스트리 권리·비전 검수 게이트',
+            en: 'LLM-based AI world generation R&D — ZepetoField generation queue, parallel Unity builds and MCP exposure, a prompt-to-intent-schema-to-deterministic-resolver art-direction tool (41 EditMode tests), and rights and vision vetting gates over the internal asset registry',
+          },
+          {
+            ko: 'Blender 헤드리스 에셋 생성과 8방향 렌더·비전 판정 품질 게이트, 기획서→에셋→Unity 구성→QA를 잇는 재시작 복구형 작업 러너 실험',
+            en: 'Headless Blender asset generation with 8-view renders and a vision-verdict quality gate, and a restart-resumable job runner from brief to assets, Unity composition and QA',
+          },
+        ],
+      },
+      {
+        heading: { ko: 'Unity 클라이언트', en: 'Unity Client' },
+        items: [
+          {
+            ko: '월드 내 YouTube 플레이어 — 플레이리스트·다인 동기화 재생, 임베디드 WebView 백엔드와 JS↔C# 프로토콜, 서버 RPC 권한 판정, 영상 검증·신고 (2024.09 출시)',
+            en: 'In-world YouTube player — playlist and synchronised multi-user playback, embedded WebView backend with a JS–C# protocol, server-side permission checks, URL validation and reporting (shipped Sep 2024)',
+          },
+          {
+            ko: '다중 초대 프로토콜(Unity C# · Kotlin · Objective-C 브리지)과 방 진입 referrer 분석 이벤트 (2024.12 출시), 2024 할로윈 인월드 이벤트 UI·랭킹',
+            en: 'Multi-invite protocol across the Unity C#, Kotlin and Objective-C bridges with room-entry referrer analytics (shipped Dec 2024), and the 2024 Halloween in-world event UI and ranking',
+          },
+          {
+            ko: '월드 접속 경로 개선 — 불필요한 로비 연결 왕복 제거, 이동 스트림 heartbeat, 팔로워 API 중복 호출 제거',
+            en: 'World connection path — removed a redundant lobby round-trip, added a movement-stream heartbeat and deduplicated follower API calls',
+          },
+          {
+            ko: 'NewWorld Windows·macOS 지원 — PC 홈·방 인원·초대 UI, 키보드 입력·채팅 단축키, 차단·보이스 연동, PC 미지원 기능 처리, 마네킹 상점·구매 (2025.06/09 출시)',
+            en: 'NewWorld on Windows/macOS — PC home, roster and invite UI, keyboard input and chat shortcuts, block and voice integration, unsupported-feature handling, mannequin shop and purchase (shipped Jun/Sep 2025)',
+          },
+          {
+            ko: 'SDK 모듈(Product·Shop·Social·Gui·Mannequin)의 PC 대응 — 결제 불가 플랫폼 처리, 차단 콜백, safe-area 예외',
+            en: 'PC adaptation of SDK modules (Product, Shop, Social, Gui, Mannequin) — payment-unsupported flows, block callbacks, safe-area exceptions',
           },
           {
             ko: "ZEPETO 'Slime Party' 월드 — 실시간 멀티플레이 기반 캐주얼 콘텐츠 개발 및 유지보수",
@@ -459,6 +702,10 @@ export const projects: Project[] = [
           {
             ko: "ZEPETO 'MyHome' 월드 — 유저 커스터마이징·소셜 기능 중심의 신규 기능 개발 및 운영",
             en: "ZEPETO 'MyHome' world — new features and live operation centred on user customisation and social play",
+          },
+          {
+            ko: '모바일 네이티브–Unity 연동 — iOS/Android 네이티브 시스템과 Unity 사이의 이슈 분석 및 해결',
+            en: 'Mobile native ↔ Unity bridge — diagnosed and fixed issues across the iOS/Android native boundary',
           },
         ],
       },
@@ -471,19 +718,6 @@ export const projects: Project[] = [
           { ko: 'ZEPETO WebGL 빌드 구현', en: 'ZEPETO WebGL build' },
           { ko: '사내 공용 에셋 리소스 라이브러리 구축', en: 'Internal shared asset resource library' },
           { ko: 'LLM 기반 코드 리뷰 도구 개발', en: 'LLM-based code review tool' },
-        ],
-      },
-      {
-        heading: { ko: '클라이언트 엔지니어링', en: 'Client Engineering' },
-        items: [
-          {
-            ko: 'Unity 기반 YouTube Player — 월드 내 동영상 스트리밍 기능 구현 및 최적화',
-            en: 'Unity-based YouTube player — in-world video streaming, implemented and optimised',
-          },
-          {
-            ko: '모바일 네이티브-Unity 연동 — iOS/Android 네이티브 시스템과 Unity 사이의 이슈 분석 및 해결',
-            en: 'Mobile native ↔ Unity bridge — diagnosed and fixed issues across the iOS/Android native boundary',
-          },
         ],
       },
     ],
@@ -1185,15 +1419,22 @@ export const skills: SkillGroup[] = [
       {
         label: 'TypeScript / React',
         detail: {
-          ko: 'WebPETO·GenWorld R&D, Next.js App Router, TanStack React Query, PWA',
-          en: 'WebPETO and GenWorld R&D, Next.js App Router, TanStack React Query, PWA',
+          ko: 'WebPETO·GenWorld, React 19, Redux Toolkit·RTK Query, Next.js App Router, TanStack React Query, PWA',
+          en: 'WebPETO and GenWorld, React 19, Redux Toolkit/RTK Query, Next.js App Router, TanStack React Query, PWA',
         },
       },
       {
         label: 'Build & Runtime',
         detail: {
-          ko: 'Vite, Webpack, WebGL, Windows/macOS, iOS/Android 네이티브 연동',
-          en: 'Vite, Webpack, WebGL, Windows/macOS and iOS/Android native integration',
+          ko: 'Vite, Webpack, Unity WebGL 빌드 경량화(IL2CPP·스트리핑·Brotli), COOP/COEP 격리, JavaScript–Unity 브리지, Windows/macOS, iOS/Android 네이티브 연동',
+          en: 'Vite, Webpack, Unity WebGL build slimming (IL2CPP, stripping, Brotli), COOP/COEP isolation, JavaScript–Unity bridges, Windows/macOS and iOS/Android native integration',
+        },
+      },
+      {
+        label: 'Quality & Delivery',
+        detail: {
+          ko: 'Playwright·Vitest, 계약 기반 smoke 검사, 릴리스 게이트, Caddy 정적 릴리스·롤백, GitHub Actions',
+          en: 'Playwright and Vitest, contract-based smoke checks, release gates, Caddy static releases with rollback, GitHub Actions',
         },
       },
     ],
@@ -1230,8 +1471,8 @@ export const skills: SkillGroup[] = [
       {
         label: 'Backend & Data',
         detail: {
-          ko: 'C# 웹 서버, Spring Boot, Nest.js, Django·Flask, Node.js, Go / MySQL, Redis, MongoDB',
-          en: 'C# web servers, Spring Boot, Nest.js, Django/Flask, Node.js, Go / MySQL, Redis, MongoDB',
+          ko: 'Node.js(Hono·Express), FastAPI, C# 웹 서버, Spring Boot, Nest.js, Django·Flask, Go / MySQL, Redis, MongoDB, SQLite',
+          en: 'Node.js (Hono, Express), FastAPI, C# web servers, Spring Boot, Nest.js, Django/Flask, Go / MySQL, Redis, MongoDB, SQLite',
         },
       },
       {
@@ -1268,8 +1509,8 @@ export const skills: SkillGroup[] = [
       {
         label: 'LLM Applications',
         detail: {
-          ko: 'AI NPC(Companion)·AI 월드 생성 R&D, LLM 기반 코드 리뷰 도구',
-          en: 'AI NPC (Companion) and AI world generation R&D, LLM-based code review tooling',
+          ko: 'MCP 서버·OAuth 연결 도구, 생성 코드 격리 실행(sandbox·watchdog), 셀프호스팅 LLM(Ollama) NPC 서버와 QLoRA 파인튜닝 실험, LLM 의도 스키마 + 결정론 리졸버 설계, LLM 기반 코드 리뷰 도구',
+          en: 'MCP servers and OAuth connectors, isolated execution of generated code (sandbox, watchdog), self-hosted LLM (Ollama) NPC server with a QLoRA fine-tuning experiment, LLM intent schema + deterministic resolver design, LLM-based code review tooling',
         },
       },
       {

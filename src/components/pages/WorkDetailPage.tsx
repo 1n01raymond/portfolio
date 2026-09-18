@@ -85,9 +85,21 @@ export default function WorkDetailPage({ lang, slug }: { lang: Lang; slug: strin
             </nav>
           )}
           <div className="max-w-[900px] space-y-12">
-            {project.caseStudies.map((study, index) => (
-              <ProjectCaseStudy key={study.id} lang={lang} study={study} index={index} />
-            ))}
+            {project.caseStudies.map((study, index, all) => {
+              /* 같은 group 이 이어지는 첫 사례 앞에만 소제목을 둡니다 */
+              const previous = index > 0 ? all[index - 1].group : undefined
+              const startsGroup = study.group && study.group.en !== previous?.en
+              return (
+                <div key={study.id} className={startsGroup ? 'space-y-12' : undefined}>
+                  {startsGroup && study.group && (
+                    <h3 className="mono-label mt-4 text-[0.72rem] font-semibold tracking-[0.12em] text-accent">
+                      {t(lang, study.group)}
+                    </h3>
+                  )}
+                  <ProjectCaseStudy lang={lang} study={study} index={index} />
+                </div>
+              )
+            })}
           </div>
         </section>
       )}
