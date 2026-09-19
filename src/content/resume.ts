@@ -315,8 +315,8 @@ export const projects: Project[] = [
             en: 'Recorded a summary, console and network logs and screenshots per run and rendered them in an in-app report page. The release gate marks reports stale when the commit SHA or deploy time mismatches, and CI runs smoke, typecheck and build on every PR.',
           },
           {
-            ko: '배포는 타임스탬프 릴리스 디렉터리를 만들고 Caddy 설정을 바꿔 전환하며, HTTPS 헬스체크가 실패하면 자동으로 이전 설정으로 되돌립니다. 최근 릴리스 5개만 보존합니다.',
-            en: 'Releases create a timestamped directory and switch a Caddy snippet, rolling back automatically when the HTTPS health check fails and keeping the last five releases.',
+            ko: '배포는 타임스탬프 릴리스 디렉터리를 만들고 정적 서빙 설정을 바꿔 전환하며, HTTPS 헬스체크가 실패하면 자동으로 이전 설정으로 되돌립니다. 최근 릴리스 5개만 보존합니다.',
+            en: 'Releases create a timestamped directory and switch the static serving configuration, rolling back automatically when the HTTPS health check fails and keeping the last five releases.',
           },
         ],
         outcome: {
@@ -334,16 +334,16 @@ export const projects: Project[] = [
         },
         approach: [
           {
-            ko: 'Node.js 공통 로그인 허브와 Caddy 로그인 게이트를 구성하고, 로그인 후 원래 서비스로 돌아가 각 서비스의 세션을 이어주는 핸드오프를 구현했습니다. 로그인 실패·만료·로그아웃과 서비스별 진입 경로를 함께 다뤘습니다.',
-            en: 'Built a shared Node.js sign-in hub and Caddy login gate, with handoffs that return users to the original service and establish its session. Handled failed sign-in, expiry, sign-out and service-specific entry paths.',
+            ko: 'Node.js 기반 공통 로그인 허브를 두고, 인증 후 원래 서비스로 돌아가 각 서비스의 세션을 이어주는 흐름을 구현했습니다. 로그인 실패·만료·로그아웃과 서비스별 진입 경로를 함께 다뤘습니다.',
+            en: 'Built a shared Node.js sign-in hub that returned users to the originating service and established its session. Handled failed sign-in, expiry, sign-out and service-specific entry paths.',
           },
           {
-            ko: '다른 origin의 웹앱과 Unity Editor·CLI에는 OAuth 2.0 authorization code + PKCE 연동을 제공했습니다. 등록된 redirect URI와 요청 권한을 검증하고, 브로커 클라이언트에는 원본 계정 토큰 대신 허브 세션에 종속된 토큰과 허용된 API 프록시를 제공했습니다.',
-            en: 'Provided OAuth 2.0 authorization code and PKCE integration for other-origin web apps, Unity Editor and CLI clients. Validated registered redirect URIs and scopes, and gave broker clients session-bound tokens and an allowlisted API proxy instead of the upstream account token.',
+            ko: '다른 origin의 웹앱과 Unity Editor·CLI에는 OAuth 2.0 authorization code + PKCE를 적용했습니다. 등록된 redirect URI와 요청 권한을 검증하고, 상위 계정 토큰을 클라이언트에 직접 노출하지 않도록 세션 경계를 설계했습니다.',
+            en: 'Applied OAuth 2.0 authorization code and PKCE to other-origin web apps, Unity Editor and CLI clients. Validated registered redirect URIs and scopes, and designed the session boundary to avoid exposing the upstream account token directly to clients.',
           },
           {
-            ko: '세션 종료와 클라이언트 등록 해지를 토큰 무효화에 연결하고, 브로커 계약 테스트와 로그인 핸드오프 종단 점검 도구를 구성했습니다. 내부 도구 연동 범위의 구현으로, 외부 공개 인증 플랫폼 출시는 별도입니다.',
-            en: 'Linked session termination and client deregistration to token invalidation, and added broker contract tests and end-to-end handoff checks. This implementation supports internal tool integration; it is separate from launching a public identity platform.',
+            ko: '세션 종료와 클라이언트 등록 해지를 토큰 무효화에 연결하고, 계약 테스트와 로그인 흐름의 종단 점검을 구성했습니다.',
+            en: 'Linked session termination and client deregistration to token invalidation, with contract tests and end-to-end checks for the sign-in flow.',
           },
         ],
       },
@@ -574,7 +574,7 @@ export const projects: Project[] = [
         en: 'Ported the MyRoom and world Unity runtimes to WebGL (parity verification, gRPC relay, cold entry 32→6.6 s); shipped the in-world YouTube player, multi-invite and NewWorld on PC',
       },
     ],
-    stack: ['TypeScript', 'React', 'Unity3D', 'WebGL', 'MCP', 'Redux Toolkit', 'RTK Query', 'Vite', 'Node.js', 'Playwright', 'Vitest', 'OAuth 2.0', 'C#', 'Python'],
+    stack: ['TypeScript', 'React', 'Unity3D', 'WebGL', 'MCP', 'Redux Toolkit', 'RTK Query', 'Vite', 'Webpack', 'Node.js', 'C#', 'Python', 'Playwright', 'Vitest', 'OAuth 2.0', 'Windows/macOS'],
     image: '/projects/zepeto.webp',
     sections: [
       {
@@ -642,8 +642,8 @@ export const projects: Project[] = [
             en: 'Smaller avatar WebGL builds and improved initial loading, web–Unity metadata, camera and gesture integration, and a Three.js replacement PoC that confirmed keeping Unity',
           },
           {
-            ko: 'Playwright 전 라우트 스캔(iOS Safari·Windows Chromium), 이중 플래그로만 열리는 변경 프로브, 앱 내 리포트 페이지, SHA·배포 시각 검증 릴리스 게이트, Caddy 릴리스·자동 롤백',
-            en: 'Playwright full-route scans (iOS Safari, Windows Chromium), mutation probes behind paired flags, in-app report pages, a release gate checking SHA and deploy time, and Caddy releases with automatic rollback',
+            ko: 'Playwright 전 라우트 스캔(iOS Safari·Windows Chromium), 이중 플래그로만 열리는 변경 프로브, 앱 내 리포트 페이지, SHA·배포 시각 검증 릴리스 게이트, 정적 릴리스 전환·자동 롤백',
+            en: 'Playwright full-route scans (iOS Safari, Windows Chromium), mutation probes behind paired flags, in-app report pages, a release gate checking SHA and deploy time, and static release switching with automatic rollback',
           },
           {
             ko: 'GenWorld의 React·TypeScript 편집기, MCP 코드 제작·관찰 도구, 버전별 AI 작업 기록·라인 diff UI, 링크 공유·둘러보기 목록',
@@ -1433,8 +1433,8 @@ export const skills: SkillGroup[] = [
       {
         label: 'Quality & Delivery',
         detail: {
-          ko: 'Playwright·Vitest, 계약 기반 smoke 검사, 릴리스 게이트, Caddy 정적 릴리스·롤백, GitHub Actions',
-          en: 'Playwright and Vitest, contract-based smoke checks, release gates, Caddy static releases with rollback, GitHub Actions',
+          ko: 'Playwright·Vitest, 계약 기반 smoke 검사, 릴리스 게이트, 불변 정적 릴리스·롤백, GitHub Actions',
+          en: 'Playwright and Vitest, contract-based smoke checks, release gates, immutable static releases with rollback, GitHub Actions',
         },
       },
     ],
