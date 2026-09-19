@@ -1,6 +1,6 @@
 # portfolio
 
-최순형(Soonhyung Choi) — Software Engineer · Unity.
+최순형(Soonhyung Choi) — Software Engineer · Frontend Platform · Unity.
 
 Next.js(App Router, 정적 export) + Tailwind CSS v4 + TypeScript.
 대표 작업과 기술 사례를 중심으로 구성한 한·영 포트폴리오입니다.

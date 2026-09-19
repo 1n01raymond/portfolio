@@ -194,7 +194,7 @@ body {
   /* 화면용 큰 섹션 여백을 문서 밀도로 압축 */
   main > section,
   main > header {
-    margin-bottom: 0.72rem !important;
+    margin-bottom: 0.58rem !important;
   }
 
   /* Tailwind v4의 space-y는 margin-block-end를 쓰므로 양쪽 여백을 재설정합니다. */
@@ -204,7 +204,7 @@ body {
   }
 
   main .space-y-10 > * + * {
-    margin-block-start: 0.65rem !important;
+    margin-block-start: 0.52rem !important;
   }
 
   main .space-y-6 > * + * {
@@ -212,7 +212,7 @@ body {
   }
 
   main h2 {
-    margin-bottom: 0.6rem !important;
+    margin-bottom: 0.48rem !important;
     break-after: avoid;
   }
 

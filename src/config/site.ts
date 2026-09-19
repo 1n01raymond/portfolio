@@ -16,7 +16,7 @@ export const site = {
     en: 'Soonhyung Choi — Software Engineer',
   },
   description: {
-    ko: '소프트웨어 엔지니어 최순형. Unity를 주력으로 클라이언트, 서버, 웹과 네이티브를 개발합니다.',
-    en: 'Soonhyung Choi, Software Engineer. Unity is my primary focus, with experience across client, server, web and native development.',
+    ko: '소프트웨어 엔지니어 최순형. TypeScript·React 웹 플랫폼과 Unity 클라이언트, WebGL 런타임과 AI 제작 도구를 개발합니다.',
+    en: 'Soonhyung Choi, Software Engineer. I build TypeScript and React web platforms, Unity clients, WebGL runtimes and AI authoring tools.',
   },
 } as const
