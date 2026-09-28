@@ -184,6 +184,8 @@ export type Project = {
   summary: I18n
   /** 대표 이미지 앞에서 읽을 역할·과제·담당 범위 */
   overview?: { role: I18n; focus: I18n; contribution: I18n }
+  /** 상세 페이지 상단에서 주요 성과를 짧게 소개하고 기술 사례로 연결 */
+  highlights?: { label: I18n; text: I18n; caseStudyId: string }[]
   /** 확인된 사실로 구성한 기술 사례. 수치나 결과가 불명확하면 outcome은 생략 */
   caseStudies?: {
     id: string
@@ -240,6 +242,32 @@ export const projects: Project[] = [
         en: 'Developed React and RTK Query interfaces with API state, JavaScript–Unity bridges, smaller WebGL builds with staged loading, WebGL ports of the original Unity runtimes, and an MCP server, OAuth connector and isolated execution runtime. In the Unity client, shipped the in-world YouTube player, multi-user invites and NewWorld on PC, and adapted SDK modules for PC.',
       },
     },
+    highlights: [
+      {
+        label: { ko: 'WebPETO · 성능', en: 'WebPETO · Performance' },
+        text: {
+          ko: 'WebGL 압축 산출물을 약 42% 줄이고, 테스트 서버의 콜드 로그인→아바타 표시 중앙값을 2.6초에서 1.2초로 단축했습니다.',
+          en: 'Reduced compressed WebGL build files by about 42% and cut median cold login-to-avatar time from 2.6 s to 1.2 s on a test server.',
+        },
+        caseStudyId: 'webpeto-loading',
+      },
+      {
+        label: { ko: 'GenWorld · 사내 R&D', en: 'GenWorld · Internal R&D' },
+        text: {
+          ko: 'AI 생성 월드 코드를 Unity 재빌드 없이 실행·검토·공유하는 환경을 단독 개발해 사내에 배포했습니다.',
+          en: 'Built and internally deployed an environment for running, reviewing and sharing AI-authored world code without rebuilding Unity.',
+        },
+        caseStudyId: 'genworld-authoring',
+      },
+      {
+        label: { ko: 'Unity 클라이언트 · 출시', en: 'Unity Client · Shipped' },
+        text: {
+          ko: '월드 내 YouTube 플레이어와 다중 초대를 출시하고, NewWorld의 Windows·macOS 지원을 맡았습니다.',
+          en: 'Shipped the in-world YouTube player and multi-user invites, and delivered NewWorld support for Windows and macOS.',
+        },
+        caseStudyId: 'world-youtube',
+      },
+    ],
     caseStudies: [
       /* ---------------------------------------------- Web Platform */
       {
@@ -1698,6 +1726,7 @@ export const ui = {
   projectLabels: {
     selectedWork: { ko: 'Selected Work', en: 'Selected Work' },
     otherWork: { ko: 'More Work', en: 'More Work' },
+    highlights: { ko: '핵심 성과', en: 'Highlights' },
     role: { ko: '역할', en: 'Role' },
     focus: { ko: '핵심 과제', en: 'Focus' },
     contribution: { ko: '담당 범위', en: 'Contribution' },

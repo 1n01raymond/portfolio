@@ -38,6 +38,32 @@ export default function WorkDetailPage({ lang, slug }: { lang: Lang; slug: strin
           {t(lang, project.summary)}
         </p>
 
+        {project.highlights && (
+          <section aria-labelledby="project-highlights-heading" className="mt-8">
+            <h2 id="project-highlights-heading" className="section-title mb-4">
+              {t(lang, labels.highlights)}
+            </h2>
+            <ul className="grid gap-3 sm:grid-cols-3">
+              {project.highlights.map((highlight) => (
+                <li key={highlight.caseStudyId}>
+                  <a
+                    href={`#${highlight.caseStudyId}`}
+                    className="group block h-full rounded-lg border border-line/70 bg-surface/35 p-4 transition-colors hover:border-accent/60 hover:bg-surface/70 focus-visible:border-accent"
+                  >
+                    <span className="mono-label flex items-start justify-between gap-2 font-semibold text-accent">
+                      {t(lang, highlight.label)}
+                      <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+                    </span>
+                    <span className="mt-3 block text-sm leading-relaxed text-ink/90">
+                      {t(lang, highlight.text)}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {overview && (
           <dl className="mt-8 grid gap-6 border-y border-line/70 py-6 sm:grid-cols-[0.8fr_1fr_1.4fr] sm:gap-8">
             {(['role', 'focus', 'contribution'] as const).map((key) => (
