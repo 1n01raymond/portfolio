@@ -889,10 +889,7 @@ export const projects: Project[] = [
     featured: true,
     company: { ko: '어썸피스', en: 'Awesomepiece' },
     title: { ko: '킹갓캐슬', en: 'King God Castle' },
-    periodNote: {
-      ko: '좀비고 팀 근무 후 킹갓캐슬 팀으로 이동',
-      en: 'Moved to the King God Castle team after working on Zombie High',
-    },
+    period: { ko: '2020.03 — 2022.04', en: 'Mar 2020 — Apr 2022' },
     summary: {
       ko: '메인 프로그래머로 신규 개발부터 출시, 글로벌 라이브 서비스까지 담당한 모바일 전략 RPG.',
       en: 'A mobile strategy RPG I took from first build through launch into global live service, as main programmer.',
@@ -978,6 +975,7 @@ export const projects: Project[] = [
     featured: true,
     company: { ko: '어썸피스', en: 'Awesomepiece' },
     title: { ko: '좀비고등학교', en: 'Zombie High' },
+    period: { ko: '2018.01 — 2020.02', en: 'Jan 2018 — Feb 2020' },
     resumeContext: {
       ko: '최대 동시접속자 13만 명을 기록한 모바일 게임',
       en: 'Mobile game with a peak of 130,000 concurrent players',
