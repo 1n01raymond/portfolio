@@ -186,6 +186,18 @@ body {
      모두 화면과 같은 비율로 줄어듭니다. */
   main.resume {
     zoom: 0.826;
+    /* 글머리 점은 배경색이라 인쇄 대화상자의 '배경 그래픽'이 꺼져 있어도 찍히게 합니다. */
+    print-color-adjust: exact;
+  }
+
+  /* 반투명 글자색은 PDF 에 투명도(ca)와 함께 들어가 일부 뷰어가 그 글자만 자간을 뭉개 그립니다.
+     흰 종이에 미리 섞은 불투명 색으로 바꿔 화면과 같은 농도를 유지합니다. */
+  .resume .text-ink\/90 {
+    color: color-mix(in oklab, var(--text) 90%, #ffffff);
+  }
+
+  .resume .text-ink\/85 {
+    color: color-mix(in oklab, var(--text) 85%, #ffffff);
   }
 
   main h2 {
