@@ -1036,8 +1036,8 @@ export const projects: Project[] = [
         id: 'unified-accounts',
         title: { ko: '분리된 로그인 계정을 하나의 대표 계정으로', en: 'Bringing separate logins under one primary account' },
         context: {
-          ko: '이메일·Google·Facebook 로그인이 각각 별도 계정이었고, 계정 하나에 캐릭터 하나가 연결된 구조였습니다.',
-          en: 'Email, Google and Facebook logins were separate accounts, each associated with one character.',
+          ko: '이메일·Google·Facebook 간편가입이라 한 사람이 계정을 여러 개 만들 수 있어 누적 계정이 2,000만 개를 넘었고, 1년 내 접속한 계정은 약 500만 개였습니다. 로그인 방식마다 별도 계정이었고, 계정 하나에 캐릭터 하나가 연결된 구조였습니다.',
+          en: 'Quick email, Google and Facebook sign-ups let one player hold several accounts, so there were more than 20 million in total, about 5 million of them active within a year. Each login was a separate account associated with one character.',
         },
         approach: [
           {
@@ -1119,12 +1119,12 @@ export const projects: Project[] = [
     ],
     resumeHighlights: [
       {
-        ko: '동시 100명 서바이벌 서커스 구현 — Unity·Java Netty 기반 동기화 구조 설계 및 네트워크 부하 최적화',
-        en: 'Implemented 100-player Survival Circus with Unity and Java Netty — sync architecture and network load optimisation',
+        ko: '간편가입으로 2,000만 개 넘게 쌓인 계정(1년 내 접속 약 500만)을 휴대폰 인증 대표 계정 하나로 묶는 통합 계정 시스템 설계·개발 — 기존 계정을 캐릭터로 연결, 다중 캐릭터·계정 복구 지원',
+        en: 'Designed and built unified accounts for 20M+ quick sign-up accounts (about 5M active within a year): a phone-verified primary account that links existing email, Google and Facebook logins as characters, with account recovery',
       },
       {
-        ko: '이메일·구글·페이스북 계정을 대표 계정 하나로 묶는 통합 계정 시스템 설계·개발 — 다중 캐릭터 및 계정 복구 지원',
-        en: 'Designed and built unified accounts merging email, Google and Facebook logins, with multiple characters and account recovery',
+        ko: '동시 100명 서바이벌 서커스 구현 — Unity·Java Netty 기반 동기화 구조 설계 및 네트워크 부하 최적화',
+        en: 'Implemented 100-player Survival Circus with Unity and Java Netty — sync architecture and network load optimisation',
       },
       {
         ko: 'Java 서버 GC pause 감소를 위한 라이브 프로파일링과 ZGC 전환',
