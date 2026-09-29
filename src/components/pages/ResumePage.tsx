@@ -71,7 +71,7 @@ export default function ResumePage({ lang }: { lang: Lang }) {
 
       {/* ---------------------------------------------- 요약 */}
       <section className="avoid-break mb-14">
-        <p className="max-w-[68ch] leading-relaxed text-ink/90 print:max-w-none">{t(lang, profile.intro)}</p>
+        <p className="max-w-[68ch] leading-relaxed text-ink/90">{t(lang, profile.intro)}</p>
       </section>
 
       {/* ---------------------------------------------- 경력 */}
@@ -82,7 +82,7 @@ export default function ResumePage({ lang }: { lang: Lang }) {
             <li key={job.slug} className="avoid-break grid gap-1 sm:grid-cols-[190px_1fr] sm:gap-6">
               <span className="mono-label pt-0.5 text-[0.78rem] text-muted">
                 {formatPeriod(job.start, job.end, lang)}
-                <span className="mt-0.5 block text-[0.72rem] text-muted print:text-[0.82rem]">
+                <span className="mt-0.5 block text-[0.72rem] text-muted">
                   {formatDuration(job.start, job.end, lang)}
                 </span>
               </span>

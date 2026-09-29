@@ -171,7 +171,7 @@ body {
 
   @page {
     size: A4;
-    margin: 15mm 18mm;
+    margin: 18mm;
     /* 위·아래 여백 상자를 정의하면 Chrome 이 그 자리의 인쇄 머리글(날짜·제목)·바닥글(URL·쪽 번호)을 그리지 않습니다. */
     @top-left {
       content: '';
@@ -181,73 +181,69 @@ body {
     }
   }
 
-  /* Tailwind 크기·간격이 rem 기반이므로 루트 축소 하나로 전체가 조밀해짐 */
-  html {
+  /* 이력서 — 화면 레이아웃을 그대로 A4 폭에 맞춰 축소합니다. 화면 본문 폭 796px 이
+     A4 인쇄 폭(210mm − 양쪽 18mm = 657.6px)에 들어가는 비율이라 글자·여백·열 너비가
+     모두 화면과 같은 비율로 줄어듭니다. */
+  main.resume {
+    zoom: 0.826;
+  }
+
+  main h2 {
+    break-after: avoid;
+  }
+
+  /* 그 밖의 페이지(/ai)는 루트 축소와 여백 압축으로 문서 밀도를 맞춥니다.
+     Tailwind 크기·간격이 rem 기반이므로 루트 축소 하나로 전체가 조밀해짐.
+     :where() 로 감싸 이력서 제외 조건이 선택자 우선순위를 올리지 않게 합니다(.ai-portfolio 규칙이 이겨야 함). */
+  html:where(:not(:has(main.resume))) {
     font-size: 11px;
   }
 
   /* 날짜 열은 px 고정폭이라 별도로 좁힘 */
-  main .grid {
+  main:where(:not(.resume)) .grid {
     grid-template-columns: 110px 1fr !important;
     column-gap: 1.2rem !important;
+  }
+
+  main:where(:not(.resume)) {
+    line-height: 1.45;
+  }
+
+  /* 화면용 큰 섹션 여백을 문서 밀도로 압축 */
+  main:where(:not(.resume)) > section,
+  main:where(:not(.resume)) > header {
+    margin-bottom: 0.58rem !important;
+  }
+
+  /* Tailwind v4의 space-y는 margin-block-end를 쓰므로 양쪽 여백을 재설정합니다. */
+  main:where(:not(.resume)) .space-y-10 > *,
+  main:where(:not(.resume)) .space-y-6 > * {
+    margin-block: 0 !important;
+  }
+
+  main:where(:not(.resume)) .space-y-10 > * + * {
+    margin-block-start: 0.52rem !important;
+  }
+
+  main:where(:not(.resume)) .space-y-6 > * + * {
+    margin-block-start: 0.5rem !important;
+  }
+
+  main:where(:not(.resume)) h2 {
+    margin-bottom: 0.48rem !important;
+  }
+
+  main:where(:not(.resume)) h3.mono-label {
+    margin-bottom: 0.25rem !important;
+  }
+
+  main:where(:not(.resume)) article > p.mono-label {
+    margin-top: 0.35rem !important;
   }
 
   body {
     background: #ffffff !important;
     color: #0f172a !important;
-    line-height: 1.45;
-  }
-
-  /* 화면용 큰 섹션 여백을 문서 밀도로 압축 */
-  main > section,
-  main > header {
-    margin-bottom: 0.58rem !important;
-  }
-
-  /* Tailwind v4의 space-y는 margin-block-end를 쓰므로 양쪽 여백을 재설정합니다. */
-  main .space-y-10 > *,
-  main .space-y-6 > * {
-    margin-block: 0 !important;
-  }
-
-  main .space-y-10 > * + * {
-    margin-block-start: 0.52rem !important;
-  }
-
-  main .space-y-6 > * + * {
-    margin-block-start: 0.5rem !important;
-  }
-
-  main h2 {
-    margin-bottom: 0.48rem !important;
-    break-after: avoid;
-  }
-
-  /* 스킬 그룹 제목만 (프로젝트 제목 h3에는 여백을 주지 않는다) */
-  main h3.mono-label {
-    margin-bottom: 0.25rem !important;
-  }
-
-  /* 선정한 대표 성과는 화면과 인쇄에 모두 표시하고 간격만 압축합니다. */
-  .resume-highlights {
-    margin-top: 0.35rem !important;
-  }
-
-  .resume-highlights > li {
-    margin-block: 0 !important;
-  }
-
-  .resume-highlights > li + li {
-    margin-block-start: 0.15rem !important;
-  }
-
-  main article > p.mono-label {
-    margin-top: 0.35rem !important;
-  }
-
-  /* 이력서의 날짜·팀·스킬 라벨은 11px 루트에서 6.7pt 까지 작아지므로 인쇄 때만 키웁니다. */
-  .resume .mono-label {
-    font-size: 0.9rem;
   }
 
   .print-hidden {
