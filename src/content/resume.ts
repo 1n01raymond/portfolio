@@ -1036,22 +1036,22 @@ export const projects: Project[] = [
         id: 'unified-accounts',
         title: { ko: '분리된 로그인 계정을 하나의 대표 계정으로', en: 'Bringing separate logins under one primary account' },
         context: {
-          ko: '이메일·Google·Facebook 간편가입이라 한 사람이 계정을 여러 개 만들 수 있어 누적 계정이 2,000만 개를 넘었고, 1년 내 접속한 계정은 약 500만 개였습니다. 로그인 방식마다 별도 계정이었고, 계정 하나에 캐릭터 하나가 연결된 구조였습니다.',
-          en: 'Quick email, Google and Facebook sign-ups let one player hold several accounts, so there were more than 20 million in total, about 5 million of them active within a year. Each login was a separate account associated with one character.',
+          ko: '이메일·Google·Facebook 로그인이 각각 별도 계정이었고, 계정 하나에 캐릭터 하나가 연결된 구조였습니다. 1년 내 접속한 계정은 약 500만 개였습니다. 이용자 보호를 위해 휴대폰 본인인증을 도입해야 했는데, 본인인증을 거치면 한 사람이 계정을 하나만 가질 수 있어 여러 계정을 쓰던 플레이어가 캐릭터를 한 계정으로 모을 방법이 필요했습니다.',
+          en: 'Email, Google and Facebook logins were separate accounts, each associated with one character, and about 5 million accounts had logged in within a year. Phone identity verification had to be introduced to protect players, and it allows only one account per person, so players who used several accounts needed a way to bring their characters under one account.',
         },
         approach: [
           {
-            ko: '기존 계정을 대표 계정 아래 연결하고, 여러 캐릭터를 만들어 선택해 접속하는 통합 계정 시스템을 설계·개발했습니다.',
-            en: 'Designed and built unified accounts that link existing accounts under a primary account and let users create and select multiple characters.',
+            ko: 'NCP 기반 휴대폰 본인인증을 대표 계정 생성의 필수 절차로 적용하고, 계정 복구를 지원했습니다.',
+            en: 'Required NCP-based phone verification when creating a primary account and added account recovery support.',
           },
           {
-            ko: '본인인증 요구가 강화되던 시기에 NCP 기반 휴대폰 본인인증을 대표 계정 생성의 필수 절차로 적용하고, 계정 복구를 지원했습니다.',
-            en: 'As identity verification requirements grew, required NCP-based phone verification when creating a primary account and added account recovery support.',
+            ko: '기존 계정을 대표 계정 아래 캐릭터로 연결하고, 여러 캐릭터를 만들어 선택해 접속하는 통합 계정 시스템을 설계·개발했습니다.',
+            en: 'Designed and built unified accounts that link existing accounts as characters under the primary account and let players create and select multiple characters.',
           },
         ],
         outcome: {
-          ko: '로그인 방식마다 나뉜 계정을 대표 계정 아래 묶고, 다중 캐릭터 선택과 계정 복구를 지원하는 구조로 전환했습니다.',
-          en: 'Replaced accounts separated by login method with a primary-account model supporting multiple characters and account recovery.',
+          ko: '본인인증 1인 1계정 요건을 지키면서 플레이어가 기존 캐릭터를 계속 쓸 수 있도록, 로그인 방식마다 나뉜 계정을 대표 계정 아래 묶고 다중 캐릭터 선택과 계정 복구를 지원하는 구조로 전환했습니다.',
+          en: 'Met the one-account-per-verified-person rule while letting players keep their existing characters, replacing accounts separated by login method with a primary-account model supporting multiple characters and account recovery.',
         },
         diagram: {
           caption: {
@@ -1119,8 +1119,8 @@ export const projects: Project[] = [
     ],
     resumeHighlights: [
       {
-        ko: '간편가입으로 2,000만 개 넘게 쌓인 계정(1년 내 접속 약 500만)을 휴대폰 인증 대표 계정 하나로 묶는 통합 계정 시스템 설계·개발 — 기존 계정을 캐릭터로 연결, 다중 캐릭터·계정 복구 지원',
-        en: 'Designed and built unified accounts for 20M+ quick sign-up accounts (about 5M active within a year): a phone-verified primary account that links existing email, Google and Facebook logins as characters, with account recovery',
+        ko: '1년 내 접속 약 500만 계정 규모에서 휴대폰 본인인증(1인 1계정) 도입에 맞춰 통합 계정 시스템 설계·개발 — 기존 이메일·구글·페이스북 계정을 대표 계정 아래 캐릭터로 연결, 다중 캐릭터·계정 복구 지원',
+        en: 'Designed and built unified accounts for about 5M accounts active within a year when phone identity verification (one account per person) was introduced: existing email, Google and Facebook logins linked as characters under one primary account, with account recovery',
       },
       {
         ko: '동시 100명 서바이벌 서커스 구현 — Unity·Java Netty 기반 동기화 구조 설계 및 네트워크 부하 최적화',
