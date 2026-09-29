@@ -47,7 +47,7 @@
   --color-accent-soft: var(--accent-soft);
 
   /* 라틴은 Inter, 한글은 Noto Sans KR. Pretendard 는 남은 글리프의 보험. */
-  --font-sans: var(--font-inter), var(--font-noto-sans-kr), 'Pretendard Variable',
+  --font-sans: Inter, 'Noto Sans KR', 'Pretendard Variable',
     Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI',
     'Apple SD Gothic Neo', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -171,7 +171,14 @@ body {
 
   @page {
     size: A4;
-    margin: 18mm;
+    margin: 15mm 18mm;
+    /* 위·아래 여백 상자를 정의하면 Chrome 이 그 자리의 인쇄 머리글(날짜·제목)·바닥글(URL·쪽 번호)을 그리지 않습니다. */
+    @top-left {
+      content: '';
+    }
+    @bottom-left {
+      content: '';
+    }
   }
 
   /* Tailwind 크기·간격이 rem 기반이므로 루트 축소 하나로 전체가 조밀해짐 */
@@ -236,6 +243,11 @@ body {
 
   main article > p.mono-label {
     margin-top: 0.35rem !important;
+  }
+
+  /* 이력서의 날짜·팀·스킬 라벨은 11px 루트에서 6.7pt 까지 작아지므로 인쇄 때만 키웁니다. */
+  .resume .mono-label {
+    font-size: 0.9rem;
   }
 
   .print-hidden {

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css'
 import '../globals.css'
-import { fontVariables } from '../fonts'
+import '../fonts'
 import { site } from '@/config/site'
 import { withBase } from '@/lib/base-path'
 import Nav from '@/components/Nav'
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function KoLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={fontVariables} data-scroll-behavior="smooth">
+    <html lang="ko" data-scroll-behavior="smooth">
       <body>
         <Nav lang="ko" />
         {children}

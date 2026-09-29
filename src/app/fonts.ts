@@ -1,23 +1,19 @@
-import { Inter, Noto_Sans_KR } from 'next/font/google'
-
-/** 라틴 본문 겸 제목. 사이트 전체가 이 한 벌로 갑니다. */
-export const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
 /**
- * 한글 본문. 라틴 문자는 Inter 가 먼저 잡으므로 한글에만 적용됩니다.
- * Inter 와 골격·자폭이 맞는 모던 고딕이라 섞여도 티가 나지 않습니다.
- * next/font 가 아는 subset 은 'latin' 뿐이지만, 구글이 내려주는 CSS 에
- * 한글 unicode-range 조각이 모두 들어 있어 한글도 함께 셀프호스팅됩니다.
+ * 웹폰트. 라틴은 Inter, 한글은 Noto Sans KR 이고 globals.css 의 --font-sans 가
+ * 이 순서로 씁니다. Noto Sans KR 은 Inter 와 골격·자폭이 맞는 모던 고딕이라
+ * 섞여도 티가 나지 않습니다.
+ *
+ * next/font/google 대신 Fontsource 의 정적 굵기 파일을 씁니다. 구글은 두 폰트
+ * 모두 굵기와 관계없이 가변 폰트 한 벌을 내려주는데, Chrome 이 가변 폰트를
+ * PDF 에 Type3 윤곽선으로 넣어 이력서 PDF 의 글자가 뭉개지고 자간이 흔들렸습니다.
+ * 정적 파일은 일반 TrueType 으로 들어갑니다.
+ *
+ * 사이트에서 쓰는 굵기만 불러옵니다: Inter 400·500·600·700, Noto Sans KR 400·500·700.
  */
-export const notoSansKr = Noto_Sans_KR({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-noto-sans-kr',
-  display: 'swap',
-})
-
-export const fontVariables = `${inter.variable} ${notoSansKr.variable}`
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/600.css'
+import '@fontsource/inter/700.css'
+import '@fontsource/noto-sans-kr/400.css'
+import '@fontsource/noto-sans-kr/500.css'
+import '@fontsource/noto-sans-kr/700.css'

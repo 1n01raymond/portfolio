@@ -24,7 +24,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 export default function ResumePage({ lang }: { lang: Lang }) {
   return (
-    <main className="mx-auto w-full max-w-[860px] px-5 pt-28 pb-24 print:pt-0 print:pb-0 sm:px-8">
+    <main className="resume mx-auto w-full max-w-[860px] px-5 pt-28 pb-24 print:pt-0 print:pb-0 sm:px-8">
       <SurfaceLight />
 
       {/* ---------------------------------------------- 헤더 */}
@@ -82,7 +82,7 @@ export default function ResumePage({ lang }: { lang: Lang }) {
             <li key={job.slug} className="avoid-break grid gap-1 sm:grid-cols-[190px_1fr] sm:gap-6">
               <span className="mono-label pt-0.5 text-[0.78rem] text-muted">
                 {formatPeriod(job.start, job.end, lang)}
-                <span className="mt-0.5 block text-[0.72rem] text-muted">
+                <span className="mt-0.5 block text-[0.72rem] text-muted print:text-[0.82rem]">
                   {formatDuration(job.start, job.end, lang)}
                 </span>
               </span>
